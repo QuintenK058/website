@@ -140,7 +140,8 @@ export const packages: Pkg[] = [
     forWho: 'Je hebt een eigen marketeer of webshopteam en mist een ervaren sparringpartner.',
     includes: ['Elke week 1 uur, online of op locatie', 'Review van campagnes, SEO, webshop en cijfers', 'Actielijst na elke sessie', 'WhatsApp-lijn tussendoor'],
     excludes: ['Uitvoering'],
-    price: { amount: 595, unit: 'mnd' },
+    priceNote: '4 uur per maand, €75 per uur.',
+    price: { amount: 300, unit: 'mnd' },
   },
   {
     id: 'consultancy-maanduren', name: 'Consultancy Maanduren', kind: 'advies', group: 'doorlopend', proposal: true, recommended: true,
@@ -148,8 +149,8 @@ export const packages: Pkg[] = [
     forWho: 'Je wilt meer dan een wekelijks gesprek: meekijken, meedenken en je team op weg helpen.',
     includes: ['8 uur per maand, vrij te verdelen', 'Sessies, reviews en meelopen met je team', 'Briefings voor je bureau of freelancers', 'Urenoverzicht per maand', 'WhatsApp-lijn tussendoor'],
     excludes: ['Uitvoering'],
-    priceNote: 'Meer uren nodig? €125 per uur.',
-    price: { amount: 995, unit: 'mnd' },
+    priceNote: '€75 per uur. Meer of minder uren? We spreken een vast maandbedrag af.',
+    price: { amount: 600, unit: 'mnd' },
   },
   {
     id: 'groeistrategie', name: 'Groeistrategie', kind: 'advies', group: 'doorlopend', proposal: true,
@@ -157,13 +158,22 @@ export const packages: Pkg[] = [
     forWho: 'Je wilt richting en regie, maar geen fulltime manager aannemen.',
     includes: ['Plan van aanpak in de eerste maand inbegrepen', 'Wekelijks 1 uur en maandelijks een dagdeel met je team', 'Maandelijkse KPI-review', 'Kwartaalplan en kwartaalreview', 'Aanschuiven bij overleg met bureaus en leveranciers'],
     excludes: ['Uitvoering'],
-    price: { amount: 1250, from: true, unit: 'mnd' },
+    price: { amount: 995, from: true, unit: 'mnd' },
+  },
+  {
+    id: 'consultancy-uur', name: 'Consultancy per uur', kind: 'advies', group: 'eenmalig', proposal: true,
+    summary: 'Een specialist wanneer het jou uitkomt. Geen abonnement.',
+    forWho: 'Je hebt af en toe een vraag of een klus waar je een specialist bij wilt.',
+    includes: ['Per uur, online of op locatie', 'Achteraf per maand gefactureerd', 'Urenoverzicht'],
+    excludes: ['Uitvoering'],
+    priceNote: 'Losse uren €85. Met een vaste maandafspraak €75 per uur.',
+    price: { amount: 75, from: true, unit: 'uur' },
   },
   {
     id: 'strategiesessie', name: 'Strategiesessie', kind: 'advies', group: 'eenmalig', proposal: true,
     summary: 'Eén uur, voorbereid met jouw data. Achteraf een actielijst.',
     includes: ['Vooraf: analyse van je site en cijfers', '1 uur, online of op locatie', 'Actielijst achteraf'],
-    price: { amount: 195, unit: 'sessie' },
+    price: { amount: 150, unit: 'sessie' },
   },
   {
     id: 'plan-van-aanpak', name: 'Plan van aanpak', kind: 'advies', group: 'eenmalig', proposal: true,
@@ -172,7 +182,8 @@ export const packages: Pkg[] = [
     includes: ['Intake en analyse: data, kanalen, site, marges en team', 'Doelen, prioriteiten en een roadmap voor 12 maanden', 'KPI\'s en meetplan', 'Taakverdeling, tools en budget', 'Overdrachtssessie met je team', '30 dagen vragen stellen via WhatsApp'],
     excludes: ['Uitvoering'],
     delivery: 'TODO: levertijd',
-    price: { amount: 1495, from: true, unit: 'eenmalig' },
+    priceNote: 'Circa 16 uur werk, tegen €75 per uur.',
+    price: { amount: 1195, from: true, unit: 'eenmalig' },
   },
 ];
 

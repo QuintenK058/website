@@ -709,7 +709,7 @@ export const lines: Line[] = [
   {
     id: 'consultancy',
     index: '07',
-    fromId: 'consultancy-wekelijks',
+    fromId: 'consultancy-uur',
     inBundles: [],
     inText: 'Los af te nemen · ook naast een groeipakket',
     name: 'Consultancy',
@@ -717,7 +717,7 @@ export const lines: Line[] = [
     icon: 'consult',
     headline: ['Jullie voeren uit.', 'Wij brengen richting.'],
     seoTitle: 'E-commerce en marketing consultancy: wekelijks of per maand een specialist',
-    description: 'Consultancy voor bedrijven die het in huis houden: elke week een uur (€595/mnd), 8 uur per maand (€995/mnd), een compleet plan van aanpak (vanaf €1.495) of Groeistrategie (vanaf €1.250/mnd). Excl. btw.',
+    description: 'Consultancy voor bedrijven die het in huis houden: vanaf €75 per uur, of een vast maandbedrag: elke week een uur (€300/mnd), 8 uur per maand (€600/mnd), een compleet plan van aanpak (vanaf €1.195) of Groeistrategie (vanaf €995/mnd). Excl. btw.',
     intro: 'Je wilt niet uitbesteden. Je hebt een eigen marketeer, webshopteam of doet het zelf. Wat je mist, is iemand die het vak kent, de valkuilen al eens gezien heeft en zegt wat eerst moet. Wekelijks een uur, of maandelijks een aantal uren. Met een plan van aanpak dat je team zelf kan uitvoeren. De kennis blijft bij jou.',
     problems: [
       'Je team is druk, maar niemand weet zeker of het de goede dingen doet.',
@@ -732,10 +732,11 @@ export const lines: Line[] = [
       { title: 'Begeleiding', text: 'Wekelijks of maandelijks: meekijken, bijsturen, vragen beantwoorden. Jouw team voert uit.' },
     ],
     outcomes: ['Een plan dat je team zelf kan uitvoeren', 'Duidelijkheid: wat eerst, wat later, wat niet', 'De kennis blijft in huis', 'Eén vast aanspreekpunt met e-commerce- en B2B-ervaring'],
-    packageIds: ['consultancy-wekelijks', 'consultancy-maanduren', 'groeistrategie', 'strategiesessie', 'plan-van-aanpak'],
+    packageIds: ['consultancy-uur', 'consultancy-wekelijks', 'consultancy-maanduren', 'groeistrategie', 'strategiesessie', 'plan-van-aanpak'],
     faq: [
       { q: 'Wat is het verschil met een groeipakket?', a: 'Bij een groeipakket voeren wij het werk uit. Bij consultancy doet je eigen team het, en brengen wij de richting, de kennis en het plan. Wil je toch dat wij het doen? Kies dan een <a href="/pakketten#maandelijks">groeipakket</a>.' },
       { q: 'Waar kunnen jullie bij helpen?', a: 'Webshops (Shopify, WooCommerce en Magento), SEO en GEO, Google Ads en Meta Ads, conversie, e-mailmarketing, data en tracking, AI in je werkprocessen, en het aansturen van bureaus en freelancers. Met de nadruk op B2B en B2B/B2C-webshops.' },
+      { q: 'Wat kost consultancy?', a: 'Vanaf €75 per uur. Losse uren kosten €85 per uur. Spreek je een vast aantal uren per maand af, dan betaal je €75 per uur in een vast maandbedrag: bijvoorbeeld €300 voor 4 uur of €600 voor 8 uur.' },
       { q: 'Wekelijks of maanduren: wat past bij mij?', a: 'Wil je een vast ritme en een sparringpartner, kies dan Consultancy Wekelijks (elke week 1 uur). Wil je ook dat we meekijken in je accounts, je team inwerken of briefings schrijven voor je bureau, kies dan Consultancy Maanduren (8 uur per maand, vrij in te zetten).' },
       { q: 'Moet ik met een plan van aanpak beginnen?', a: 'Niet verplicht, wel aan te raden als er nog geen plan ligt. Bij Groeistrategie zit het plan van aanpak in de eerste maand inbegrepen.' },
       { q: 'Hoe lang zit ik vast?', a: 'Doorlopende consultancy loopt minimaal 3 maanden, daarna maandelijks opzegbaar. Een strategiesessie of plan van aanpak is eenmalig.' },
@@ -749,8 +750,8 @@ export const lines: Line[] = [
         slug: 'wekelijkse-sparring',
         name: 'Wekelijkse sparring',
         title: 'Consultancy Wekelijks: elke week een uur met een specialist',
-        seoTitle: 'Wekelijkse e-commerce- en marketingsparring: €595 per maand',
-        description: 'Elke week 1 uur met een e-commerce- en marketingspecialist, online of op locatie. Review van campagnes, SEO, webshop en cijfers, met een actielijst. €595 per maand excl. btw.',
+        seoTitle: 'Wekelijkse e-commerce- en marketingsparring: €300 per maand',
+        description: 'Elke week 1 uur met een e-commerce- en marketingspecialist, online of op locatie. Review van campagnes, SEO, webshop en cijfers, met een actielijst. €300 per maand excl. btw.',
         intro: 'Een vast uur per week waarin we samen kijken naar wat er gebeurt en wat er moet gebeuren. Jij of je team voert uit, wij houden de lijn vast.',
         points: [
           { title: 'Vast ritme', text: 'Elke week 1 uur, op een vaste dag. Online of op locatie.' },
@@ -769,8 +770,8 @@ export const lines: Line[] = [
         slug: 'maanduren',
         name: 'Maanduren',
         title: 'Consultancy Maanduren: 8 uur per maand, vrij in te zetten',
-        seoTitle: 'Consultancy per maand: 8 uur specialist voor €995',
-        description: '8 uur per maand een e-commerce- en marketingspecialist: sessies, reviews in je accounts, je team inwerken, briefings voor je bureau. €995 per maand excl. btw.',
+        seoTitle: 'Consultancy per maand: 8 uur specialist voor €600',
+        description: '8 uur per maand een e-commerce- en marketingspecialist: sessies, reviews in je accounts, je team inwerken, briefings voor je bureau. €600 per maand excl. btw.',
         intro: 'Meer dan een wekelijks gesprek. Een specialist die meekijkt in je accounts, je team op weg helpt en meedenkt over de grote keuzes. Jij bepaalt waar de uren heen gaan.',
         points: [
           { title: '8 uur per maand', text: 'Vrij te verdelen: één dagdeel per week, of een paar dagen als het druk is.' },
@@ -781,7 +782,7 @@ export const lines: Line[] = [
         forWho: ['Webshops met een eigen team', 'B2B-bedrijven die online willen groeien', 'Bedrijven die een bureau inhuren en grip willen houden'],
         packageIds: ['consultancy-maanduren', 'consultancy-wekelijks'],
         faq: [
-          { q: 'Wat als ik meer uren nodig heb?', a: 'Extra uren kosten €125 per uur. Je krijgt elke maand een urenoverzicht.' },
+          { q: 'Wat als ik meer uren nodig heb?', a: 'Extra uren kosten €75 per uur. Wil je structureel meer of minder uren, dan spreken we een ander vast maandbedrag af. Je krijgt elke maand een urenoverzicht.' },
           { q: 'Schuiven ongebruikte uren door?', a: 'Ongebruikte uren schuiven één maand door.' },
         ],
       },
@@ -789,8 +790,8 @@ export const lines: Line[] = [
         slug: 'plan-van-aanpak',
         name: 'Plan van aanpak',
         title: 'Plan van aanpak: een compleet plan voor je eigen team',
-        seoTitle: 'Online plan van aanpak voor je webshop of marketing: vanaf €1.495',
-        description: 'Analyse van data, kanalen, site en team, en een compleet plan van aanpak: doelen, prioriteiten, roadmap voor 12 maanden, KPI\'s en taakverdeling. Vanaf €1.495 eenmalig excl. btw.',
+        seoTitle: 'Online plan van aanpak voor je webshop of marketing: vanaf €1.195',
+        description: 'Analyse van data, kanalen, site en team, en een compleet plan van aanpak: doelen, prioriteiten, roadmap voor 12 maanden, KPI\'s en taakverdeling. Vanaf €1.195 eenmalig excl. btw.',
         intro: 'Geen dik rapport voor in de la, maar een plan dat je team morgen kan oppakken. Wat moet er gebeuren, in welke volgorde, door wie, met welk budget, en hoe meet je of het werkt?',
         points: [
           { title: 'Analyse', text: 'Data, kanalen, site of webshop, marges en de mensen die het moeten doen.' },
@@ -810,8 +811,8 @@ export const lines: Line[] = [
         slug: 'groeistrategie',
         name: 'Groeistrategie',
         title: 'Groeistrategie: je externe e-commerce- en marketingmanager',
-        seoTitle: 'Externe e-commerce- en marketingmanager: Groeistrategie vanaf €1.250 per maand',
-        description: 'Plan van aanpak, wekelijkse begeleiding, maandelijkse KPI-review en een kwartaalplan. Je externe e-commerce- en marketingmanager, vanaf €1.250 per maand excl. btw.',
+        seoTitle: 'Externe e-commerce- en marketingmanager: Groeistrategie vanaf €995 per maand',
+        description: 'Plan van aanpak, wekelijkse begeleiding, maandelijkse KPI-review en een kwartaalplan. Je externe e-commerce- en marketingmanager, vanaf €600 per maand excl. btw.',
         intro: 'Richting en regie, zonder een fulltime manager aan te nemen. We maken het plan, sturen elke maand bij en schuiven aan bij overleg met je bureaus en leveranciers. Je eigen team voert uit.',
         points: [
           { title: 'Plan van aanpak', text: 'In de eerste maand inbegrepen.' },

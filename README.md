@@ -72,8 +72,8 @@ Alles staat in `site.config.ts` en `content/`. Je hoeft geen componenten te open
 | Webshops | Shop Start vanaf €2.750 · Shop Groei vanaf €4.950 · Migratie vanaf €1.500 · Magento/maatwerk €95 per uur | eenmalig |
 | Checks & setup | Audit €395 · GEO-scan €245 · Bedrijfsprofiel-setup €245 · Koppeling vanaf €495 | eenmalig |
 | AI | AI-Chatbot €1.250 eenmalig + €129 per maand · AI Implementatie vanaf €1.995 · workshops per persoon | |
-| Consultancy (doorlopend) | Consultancy Wekelijks €595 (1 uur per week) · Consultancy Maanduren €995 (8 uur, extra uur €125) · Groeistrategie vanaf €1.250 | per maand |
-| Consultancy (eenmalig) | Strategiesessie €195 · Plan van aanpak vanaf €1.495 | |
+| Consultancy (doorlopend, €75 per uur) | Consultancy Wekelijks €300 (4 uur) · Consultancy Maanduren €600 (8 uur, extra uur €75) · Groeistrategie vanaf €995 | per maand |
+| Consultancy (los/eenmalig) | Per uur: €85 los, €75 bij maandafspraak · Strategiesessie €150 · Plan van aanpak vanaf €1.195 | |
 
 `/pakketten` heeft 4 tabs met deeplinks: `#maandelijks`, `#projecten`, `#ai`, `#consultancy`. Oude ankers (`#ecommerce`, `#webshop`, `#consultancy`, …) springen naar de juiste tab. Zonder JS staan alle vier onder elkaar.
 
@@ -246,7 +246,7 @@ Let op: link vanuit andere teksten pas naar een artikel als het gepubliceerd is.
 - [ ] Betaaltermijn facturen ("Zo start je" / facturatie)
 - [ ] Doorlooptijd inrichting (dagen) bij groeipakketten en ads-modules
 - [ ] Geld-terug-regeling bevestigen: tekst staat als voorstel in spelregels, FAQ en `content/legal/algemene-voorwaarden.md` (gemarkeerd `TODO: bevestigen`)
-- [ ] Voorstelprijzen bevestigen (`proposal: true`): Ontzorgd Op Maat, Development-uren, dev-uur €95, Koppeling, alle consultancyprijzen (Wekelijks €595, Maanduren €995 + €125/uur, Groeistrategie, Strategiesessie, Plan van aanpak) en de levertijd van het plan van aanpak
+- [ ] Voorstelprijzen bevestigen (`proposal: true`): Ontzorgd Op Maat, Development-uren, dev-uur €95, Koppeling, alle consultancyprijzen (€75/€85 per uur, Wekelijks €300, Maanduren €600, Groeistrategie €995, Strategiesessie €150, Plan van aanpak €1.195) en de levertijd van het plan van aanpak
 - [ ] Zorg Webshop: aantal productmutaties per maand
 
 ### Cases (`content/cases.ts`)

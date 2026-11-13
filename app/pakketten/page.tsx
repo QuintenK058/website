@@ -25,7 +25,7 @@ const faq = [
   { q: 'Waar begin ik?', a: 'Doe de pakketkiezer bovenaan deze pagina, of de <a href="/online-check">gratis Online Check</a>. Twijfel je tussen twee pakketten? Kies het kleinste. Opschalen kan altijd.' },
   { q: 'Wat is het verschil tussen een basis en een groeipakket?', a: 'Een basis (Zorg Basis, Plus of Webshop) houdt je site of shop veilig en actueel. Een groeipakket (Ontzorgd Lokaal, Leads of Webshop) bevat een basis, en werkt daarnaast aan vindbaarheid, advertenties en conversie.' },
   { q: 'Zijn de inrichtingskosten inbegrepen?', a: 'Bij groeipakketten wel. Losse ads-modules hebben eenmalige inrichtingskosten: €345 voor Google Ads Lokaal en €495 voor Google Ads Shop.' },
-  { q: 'Wij willen het in huis houden. Kan dat?', a: 'Ja. Met <a href="/diensten/consultancy">consultancy</a> voert je eigen team uit, en brengen wij richting en expertise: elke week een uur, 8 uur per maand, of een compleet plan van aanpak.' },
+  { q: 'Wij willen het in huis houden. Kan dat?', a: 'Ja. Met <a href="/diensten/consultancy">consultancy</a> voert je eigen team uit, en brengen wij richting en expertise: vanaf €75 per uur, of een vast maandbedrag voor bijvoorbeeld elke week een uur.' },
   { q: 'Hoe lang zit ik vast?', a: 'Minimaal 3 maanden, daarna maandelijks opzegbaar.' },
   { q: 'Zit het advertentiebudget in de prijs?', a: 'Nee. Dat betaal je rechtstreeks aan Google of Meta, via een account op jouw naam.' },
   { q: 'Wat als ik niet tevreden ben na de eerste maand?', a: 'Laat het binnen 30 dagen weten. Dan stoppen we zonder opzegtermijn en krijg je de eerste maandfee terug. Dit geldt niet voor advertentiebudget, eenmalige projecten en workshops.' },
@@ -100,6 +100,7 @@ export default function PakkettenPage() {
           <div>
             <h3 className="text-2xl font-bold md:text-3xl">Je houdt het in huis.</h3>
             <p className="mt-3 text-ink-2">Je wilt niet uitbesteden, maar mist soms een specialist. Iemand die richting geeft, de valkuilen kent en een plan maakt dat je eigen team kan uitvoeren. Wekelijks een uur, of maandelijks een aantal uren. De kennis blijft bij jou.</p>
+            <p className="mt-4 text-xl font-semibold text-ink">Vanaf €75 per uur. Of een vast maandbedrag.</p>
           </div>
           <div>
             <p className="mono-label mb-3 text-[11px] text-accent">Expertise</p>
@@ -114,9 +115,9 @@ export default function PakkettenPage() {
           <div className="grid gap-4 md:grid-cols-3">{byGroup('doorlopend').map((p) => <PkgCard key={p.id} p={p} />)}</div>
         </div>
         <div>
-          <p className="mono-label mb-2 text-[11px] text-accent">Eenmalig</p>
-          <h3 className="mb-6 text-2xl font-bold">Eerst richting, dan aan de slag.</h3>
-          <div className="grid gap-4 md:grid-cols-2">{byGroup('eenmalig').map((p) => <PkgCard key={p.id} p={p} />)}</div>
+          <p className="mono-label mb-2 text-[11px] text-accent">Los of eenmalig</p>
+          <h3 className="mb-6 text-2xl font-bold">Per uur, of eerst richting.</h3>
+          <div className="grid gap-4 md:grid-cols-3">{byGroup('eenmalig').map((p) => <PkgCard key={p.id} p={p} />)}</div>
         </div>
         <div>
           <h3 className="mb-6 text-2xl font-bold">Zo werkt consultancy.</h3>
