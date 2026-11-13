@@ -14,7 +14,7 @@ export function GET() {
   const L: string[] = [];
   L.push(`# ${siteConfig.name}`, '', `> ${siteConfig.tagline} ${siteConfig.description}`, '');
   L.push(
-    `${siteConfig.shortName} (QK) is een full-service online agency in ${siteConfig.address.city}, Friesland, opgericht door ${siteConfig.founder.name}, e-commercespecialist met de nadruk op B2B. QK werkt voor mkb zonder eigen marketingafdeling: zakelijke dienstverleners, bouw en installatie, zorg, horeca, kappers en salons, en webshops (Shopify en Magento). Kenmerken: gepubliceerde prijzen en scope, minimaal 3 maanden en daarna maandelijks opzegbaar, alle accounts op naam van de klant, elke maand een rapport van één pagina, en een niet-tevreden-geld-terugregeling na de eerste maand.`,
+    `${siteConfig.shortName} (QK) is een full-service online agency in ${siteConfig.address.city}, Friesland, opgericht door ${siteConfig.founder.name}, e-commercespecialist met de nadruk op B2B. QK werkt voor mkb zonder eigen marketingafdeling: zakelijke dienstverleners, bouw en installatie, zorg, horeca, kappers en salons, en webshops (Shopify bouwen en beheren, Magento-shops runnen; geen Magento-development of -beheer). Kenmerken: gepubliceerde prijzen en scope, minimaal 3 maanden en daarna maandelijks opzegbaar, alle accounts op naam van de klant, elke maand een rapport van één pagina, en een niet-tevreden-geld-terugregeling na de eerste maand.`,
     '',
   );
   L.push('## Kerngegevens', '');

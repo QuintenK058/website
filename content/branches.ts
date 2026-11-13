@@ -175,7 +175,7 @@ export const branches: Branch[] = [
     services: [{ line: 'webshops', sub: 'beheer' }, { line: 'webshops', sub: 'magento' }, { line: 'webshops', sub: 'conversie-optimalisatie' }, { line: 'advertenties', sub: 'e-mailmarketing' }, { line: 'advertenties', sub: 'mediabuying' }, { line: 'onderhoud', sub: 'koppelingen' }],
     bundle: 'webshop',
     faq: [
-      { q: 'Werken jullie alleen met Shopify?', a: 'Nee. We bouwen het liefst op Shopify, maar beheren en ontwikkelen ook Magento-shops. Heb je WooCommerce, dan bespreken we beheer of een migratie.' },
+      { q: 'Werken jullie alleen met Shopify?', a: 'Nee. Nieuwe shops bouwen en beheren we op Shopify. Magento-shops runnen we (assortiment, campagnes, conversie), terwijl je eigen Magento-bureau de techniek doet. Heb je WooCommerce, dan bespreken we beheer of een migratie.' },
       { q: 'Doen jullie ook B2B?', a: 'Ja. Zakelijke accounts met nettoprijzen, bestellijsten en prijzen excl. btw vragen een eigen aanpak.' },
     ],
   },

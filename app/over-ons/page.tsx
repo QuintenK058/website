@@ -19,7 +19,7 @@ const facts = [
   ['Gevestigd in', 'Leeuwarden'],
   ['Werkgebied', 'Op locatie in Friesland en Noord-Nederland, online daarbuiten'],
   ['Specialisme', 'E-commerce (B2B en B2C), SEO/GEO, ads en AI'],
-  ['Platforms', 'Shopify, Magento, WordPress'],
+  ['Platforms', 'Shopify en WordPress (bouwen), Magento (runnen)'],
 ];
 
 export default function OverOnsPage() {

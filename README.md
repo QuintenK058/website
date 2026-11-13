@@ -69,7 +69,7 @@ Alles staat in `site.config.ts` en `content/`. Je hoeft geen componenten te open
 | Groei | Ontzorgd Op Maat | vanaf €1.950 per maand |
 | Modules | Lokaal Zichtbaar €395 · SEO+GEO Groei €795 · Google Ads Lokaal €275 (+ €345 inrichting) · Google Ads Shop €495 (+ €495) · Meta Ads €545 · Meta Ads + Creatives €1.195 · Development-uren €360 (4 uur) · AI-Partner €295 | per maand |
 | Websites | Web Start €1.195 · Web Groei vanaf €2.450 · Web Maatwerk vanaf €4.000 | eenmalig |
-| Webshops | Shop Start vanaf €2.750 · Shop Groei vanaf €4.950 · Migratie vanaf €1.500 · Magento/maatwerk €95 per uur | eenmalig |
+| Webshops | Shop Start vanaf €2.750 · Shop Groei vanaf €4.950 · Migratie vanaf €1.500 · Shopify-development €95 per uur | eenmalig |
 | Checks & setup | Audit €395 · GEO-scan €245 · Bedrijfsprofiel-setup €245 · Koppeling vanaf €495 | eenmalig |
 | AI | AI-Chatbot €1.250 eenmalig + €129 per maand · AI Implementatie vanaf €1.995 · workshops per persoon | |
 | Consultancy (doorlopend, €75 per uur) | Consultancy Wekelijks €300 (4 uur) · Consultancy Maanduren €600 (8 uur, extra uur €75) · Groeistrategie vanaf €995 | per maand |
@@ -258,7 +258,7 @@ Let op: link vanuit andere teksten pas naar een artikel als het gepubliceerd is.
 - [ ] Wierenga & De Graaf: inhoud en concept-URL (staat nu op `approved: false`)
 
 ### Teksten
-- [ ] `content/services.ts`: doorlooptijden, gebruikte platforms/CMS, hostingpartij, ERP/PIM-ervaring, Magento-versies, data van de open workshops
+- [ ] `content/services.ts`: doorlooptijden, gebruikte platforms/CMS, hostingpartij, ERP/PIM-ervaring, data van de open workshops
 - [ ] `content/home.ts`: FAQ "niet tevreden"
 - [ ] `content/over-ons.md`: eigen achtergrond en eventuele partners
 - [ ] Foto's: zie §2b (`npm run images:check`), o.a. portret Quinten

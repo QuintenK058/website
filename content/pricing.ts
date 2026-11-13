@@ -58,8 +58,8 @@ export const packages: Pkg[] = [
   },
   {
     id: 'zorg-webshop', name: 'Zorg Webshop', kind: 'basis',
-    summary: 'Je Shopify- of Magento-shop beheerd en bewaakt.',
-    forWho: 'Je hebt een Shopify- of Magento-shop.',
+    summary: 'Je Shopify-shop beheerd en bewaakt.',
+    forWho: 'Je hebt een Shopify-shop.',
     includes: ['Shop-, app- en thema-updates', 'Productmutaties (TODO: aantal per maand)', 'Wekelijkse checkout- en betaalcheck', 'Maandrapport van één pagina'],
     excludes: ['Ads', 'E-mail', 'Nieuwe functies'],
     price: { amount: 149, unit: 'mnd' },
@@ -109,7 +109,7 @@ export const packages: Pkg[] = [
   { id: 'google-ads-shop', name: 'Google Ads Shop', kind: 'module', summary: 'Shopping en Performance Max voor webshops.', includes: ['Shopping / Performance Max', 'Feedbeheer', 'Sturen op ROAS'], price: { amount: 495, unit: 'mnd', setup: 495 }, adBudget: 'Advertentiebudget €1.500–€5.000/mnd' },
   { id: 'meta-ads', name: 'Meta Ads', kind: 'module', summary: 'Facebook en Instagram: structuur, doelgroepen en tests. Creatives lever je zelf aan.', includes: ['Campagnestructuur', 'Doelgroepen en tests', 'Rapportage'], price: { amount: 545, unit: 'mnd' } },
   { id: 'meta-ads-creatives', name: 'Meta Ads + Creatives', kind: 'module', summary: 'Meta Ads inclusief 6–10 advertenties per maand die wij maken.', includes: ['Alles uit Meta Ads', '6–10 statische of video-advertenties per maand'], price: { amount: 1195, unit: 'mnd' } },
-  { id: 'development-uren', name: 'Development-uren', kind: 'module', proposal: true, summary: '4 uur development per maand voor verbeteringen, functies en koppelingen. Uren schuiven niet door.', includes: ['4 uur per maand (€90 per uur)', 'Shopify, Magento en WordPress', 'Maandelijkse prioriteitenlijst'], price: { amount: 360, unit: 'mnd' } },
+  { id: 'development-uren', name: 'Development-uren', kind: 'module', proposal: true, summary: '4 uur development per maand voor verbeteringen, functies en koppelingen. Uren schuiven niet door.', includes: ['4 uur per maand (€90 per uur)', 'Shopify en WordPress', 'Maandelijkse prioriteitenlijst'], price: { amount: 360, unit: 'mnd' } },
   { id: 'ai-partner', name: 'AI-Partner', kind: 'module', group: 'volhouden', summary: 'Maandelijks spreekuur, onderhoud van bots en workflows, één nieuwe use case per kwartaal.', includes: ['Maandelijks spreekuur', 'Onderhoud bots en workflows', 'Eén nieuwe use case per kwartaal', 'Updates van het AI-dossier'], price: { amount: 295, unit: 'mnd' } },
 
   /* ---------------- Eenmalige projecten ---------------- */
@@ -119,7 +119,7 @@ export const packages: Pkg[] = [
   { id: 'shop-start', name: 'Shop Start', kind: 'project', group: 'webshops', summary: 'Een Shopify-webshop tot 50 producten.', includes: ['Shopify, tot 50 producten', 'iDEAL en betaalmethoden', 'Basistracking (GA4, Meta Pixel)'], price: { amount: 2750, from: true, unit: 'eenmalig' }, delivery: 'TODO: levertijd Shop Start' },
   { id: 'shop-groei', name: 'Shop Groei', kind: 'project', group: 'webshops', summary: 'Een webshop tot 500 producten, klaar om te schalen.', includes: ['Tot 500 producten', 'Productfeeds (Google, Meta)', 'E-mailflows', 'CRO-basis'], price: { amount: 4950, from: true, unit: 'eenmalig' }, delivery: 'TODO: levertijd Shop Groei' },
   { id: 'migratie', name: 'Migratie naar Shopify', kind: 'project', group: 'webshops', summary: 'Van WooCommerce of Magento naar Shopify, zonder posities te verliezen.', includes: ['Producten, klanten, bestellingen', '301-redirects', 'Controle na livegang'], price: { amount: 1500, from: true, unit: 'eenmalig' }, delivery: 'TODO: levertijd migratie' },
-  { id: 'dev-uur', name: 'Magento- en maatwerkdevelopment', kind: 'project', group: 'webshops', proposal: true, summary: 'Nieuwe functies, extensies, upgrades en B2B-maatwerk. Per uur, of een vaste prijs per project.', includes: ['Magento (Adobe Commerce), Shopify, WordPress', 'B2B-functies, configurators, portalen', 'Vaste projectprijs na technisch ontwerp'], price: { amount: 95, unit: 'uur' }, delivery: 'TODO: levertijd in overleg per project' },
+  { id: 'dev-uur', name: 'Shopify-development', kind: 'project', group: 'webshops', proposal: true, summary: 'Nieuwe functies, thema-aanpassingen, apps en B2B-maatwerk op Shopify. Per uur, of een vaste prijs per project.', includes: ['Shopify en WordPress', 'B2B-functies, thema- en app-maatwerk', 'Vaste projectprijs na technisch ontwerp'], price: { amount: 95, unit: 'uur' }, delivery: 'TODO: levertijd in overleg per project' },
   { id: 'website-audit', name: 'Website-audit', kind: 'project', group: 'checks', summary: 'Techniek, snelheid, SEO, GEO en beveiliging, met prioriteitenlijst.', includes: ['Rapport in gewone taal', 'Prioriteitenlijst'], price: { amount: 395, unit: 'eenmalig' }, delivery: 'TODO: levertijd audit' },
   { id: 'geo-scan', name: 'GEO-scan', kind: 'project', group: 'checks', summary: 'Hoe ChatGPT, Gemini, Perplexity en Claude jouw bedrijf noemen, met verbeterlijst.', includes: ['Meting in 4 AI-assistenten', 'Verbeterlijst'], price: { amount: 245, unit: 'eenmalig' }, priceNote: 'Een mini-versie zit gratis in de Online Check.', delivery: 'TODO: levertijd GEO-scan' },
   { id: 'bedrijfsprofiel-setup', name: 'Bedrijfsprofiel-setup', kind: 'project', group: 'checks', summary: 'Google Bedrijfsprofiel, Bing Places en Apple Business Connect ingericht.', includes: ['Categorieën en diensten', 'Foto\'s', 'Reviewlink'], price: { amount: 245, unit: 'eenmalig' }, delivery: 'TODO: levertijd setup' },
