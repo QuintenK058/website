@@ -21,9 +21,9 @@ export function Related({ services = [], branches = [], regions = [], articles =
           {groups.map((g) => (
             <div key={g.label}>
               <h3 className="mono-label mb-3 text-[11px] text-muted">{g.label}</h3>
-              <ul className="grid gap-2">
+              <ul className="grid gap-0.5">
                 {g.items.map((i) => (
-                  <li key={i.href}><Link href={i.href} className="group inline-flex items-start gap-2 text-ink-2 hover:text-accent"><Icon name="arrow" size={15} className="mt-1 shrink-0 text-accent" />{i.text}</Link></li>
+                  <li key={i.href}><Link href={i.href} className="group inline-flex items-start gap-2 py-2 text-ink-2 hover:text-accent"><Icon name="arrow" size={15} className="mt-1 shrink-0 text-accent" />{i.text}</Link></li>
                 ))}
               </ul>
             </div>

@@ -4,6 +4,8 @@ import { Page } from '@/components/layout/Page';
 import { PageHero, Section, SectionHead, Faq, CtaBand } from '@/components/sections/Basics';
 import { PkgCard, GroeiCard, OpMaatCard, SetupNote, InvoicingNote, HouseRules, CompareTable } from '@/components/sections/Packages';
 import { Tabs } from '@/components/sections/Tabs';
+import { SwipeHint } from '@/components/ui/SwipeHint';
+import { snapRow } from '@/lib/ui';
 import { Calculator } from '@/components/sections/Calculator';
 import { StepLine } from '@/components/sections/StepLine';
 import { PackageFinder } from '@/components/sections/PackageFinder';
@@ -52,7 +54,8 @@ export default function PakkettenPage() {
           <p className="mono-label mb-2 text-[11px] text-accent">Stap 2</p>
           <h3 className="text-2xl font-bold md:text-3xl">Kies je groeipakket.</h3>
           <p className="mt-2 mb-8 text-muted">Hierin zit je basis al.</p>
-          <div className="grid items-stretch gap-4 lg:grid-cols-3">{groei.map((p) => <GroeiCard key={p.id} p={p} />)}</div>
+          <div className={`grid items-stretch gap-4 lg:grid-cols-3 ${snapRow}`}>{groei.map((p) => <GroeiCard key={p.id} p={p} />)}</div>
+          <SwipeHint text="Swipe voor alle drie" />
           <div className="mt-4"><OpMaatCard /></div>
           <div className="mt-6"><SetupNote /></div>
         </div>

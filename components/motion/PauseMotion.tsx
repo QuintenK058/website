@@ -20,7 +20,7 @@ export function PauseMotion({ className = '' }: { className?: string }) {
   }, [paused]);
   if (!show) return null;
   return (
-    <button type="button" onClick={() => setPaused((p) => !p)} aria-pressed={paused} className={`mono-label cursor-pointer rounded-full border border-line bg-bg/70 px-3 py-1.5 text-[10px] text-muted hover:text-ink ${className}`}>
+    <button type="button" onClick={() => setPaused((p) => !p)} aria-pressed={paused} className={`mono-label inline-flex min-h-8 cursor-pointer items-center rounded-full border border-line bg-bg/70 px-3 py-1.5 text-[10px] text-muted hover:text-ink ${className}`}>
       {paused ? '▶ Animatie aan' : '❚❚ Animatie pauzeren'}
     </button>
   );

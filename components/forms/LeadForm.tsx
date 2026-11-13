@@ -124,7 +124,7 @@ export function LeadForm({ form, fields, submitLabel, successTitle, successText,
       </div>
       <div className="grid gap-1.5">
         <label className="flex items-start gap-3 text-sm text-muted">
-          <input type="checkbox" name="privacy" value="akkoord" required id={`${form}-privacy`} aria-describedby={`${form}-privacy-err`} className="mt-1 size-4 accent-[var(--color-accent)]" onChange={(e) => validate(e.target)} />
+          <input type="checkbox" name="privacy" value="akkoord" required id={`${form}-privacy`} aria-describedby={`${form}-privacy-err`} className="mt-1 size-5 accent-[var(--color-accent)]" onChange={(e) => validate(e.target)} />
           <span>Ik ga akkoord dat QK Commerce Solutions mijn gegevens gebruikt om contact met mij op te nemen. Zie de <a href="/privacy" className="text-accent underline">privacyverklaring</a>. <span className="text-danger" aria-hidden="true">*</span></span>
         </label>
         <p id={`${form}-privacy-err`} className="text-sm text-danger" aria-live="polite">{errors.privacy}</p>

@@ -40,7 +40,7 @@ export function ConnectionMap() {
       <div className="panel-in p-4 md:p-8">
         <div className="mb-2 flex justify-end">
           {!reduce && (
-            <button type="button" onClick={() => setPaused((p) => !p)} aria-pressed={paused} className="mono-label cursor-pointer rounded-full border border-line px-3 py-1 text-[10px] text-muted hover:text-ink">
+            <button type="button" onClick={() => setPaused((p) => !p)} aria-pressed={paused} className="mono-label inline-flex min-h-8 cursor-pointer items-center rounded-full border border-line px-3 py-1 text-[10px] text-muted hover:text-ink">
               {paused ? '▶ Speel' : '❚❚ Pauze'}
             </button>
           )}

@@ -124,7 +124,7 @@ export function AgentLog({ lines = defaultLines, title = 'Activiteitenlog', clas
           <span className="flex items-center gap-2">
             <span className="mono-label rounded-full border border-line px-2 py-0.5 text-[10px] text-muted">Voorbeeldweergave</span>
             {canAnimate && (
-              <button type="button" onClick={() => setPaused((p) => !p)} aria-pressed={paused} className="mono-label cursor-pointer rounded-full border border-line px-2 py-0.5 text-[10px] text-muted hover:text-ink">
+              <button type="button" onClick={() => setPaused((p) => !p)} aria-pressed={paused} className="mono-label inline-flex min-h-8 cursor-pointer items-center rounded-full border border-line px-2 py-0.5 text-[10px] text-muted hover:text-ink">
                 {paused ? '▶ Speel' : '❚❚ Pauze'}
               </button>
             )}

@@ -41,7 +41,7 @@ export function Calculator({ bases, modules }: { bases: Mod[]; modules: Mod[] })
             <div className="grid gap-2 sm:grid-cols-3">
               {bases.map((b) => (
                 <label key={b.id} className={row}>
-                  <input type="radio" name="calc-base" checked={base === b.id} onChange={() => pickBase(b.id)} className="size-4 accent-[var(--color-accent)]" />
+                  <input type="radio" name="calc-base" checked={base === b.id} onChange={() => pickBase(b.id)} className="size-5 accent-[var(--color-accent)]" />
                   <span className="flex-1">{b.name}</span>{' '}
                   <span className="font-mono text-xs text-muted">{fmt(b.monthly)}/mnd</span>
                 </label>
@@ -53,7 +53,7 @@ export function Calculator({ bases, modules }: { bases: Mod[]; modules: Mod[] })
             <div className="grid gap-2 sm:grid-cols-2">
               {modules.map((m) => (
                 <label key={m.id} className={row}>
-                  <input type="checkbox" checked={sel.includes(m.id)} onChange={() => toggle(m.id)} className="size-4 accent-[var(--color-accent)]" />
+                  <input type="checkbox" checked={sel.includes(m.id)} onChange={() => toggle(m.id)} className="size-5 accent-[var(--color-accent)]" />
                   <span className="flex-1">{m.name}{m.note && <span className="block text-xs text-muted">{m.note}</span>}</span>{' '}
                   <span className="text-right font-mono text-xs text-muted">{fmt(m.monthly)}/mnd{m.setup ? <span className="block"> + {fmt(m.setup)} inrichting</span> : null}</span>
                 </label>

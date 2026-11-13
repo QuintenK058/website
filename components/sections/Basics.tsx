@@ -18,7 +18,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
         {items.map((it, i) => (
           <li key={it.href} className="flex items-center gap-2">
             {i > 0 && <span aria-hidden="true" className="opacity-40">/</span>}
-            {i < items.length - 1 ? <Link href={it.href} className="hover:text-accent">{it.name}</Link> : <span aria-current="page" className="text-ink-2">{it.name}</span>}
+            {i < items.length - 1 ? <Link href={it.href} className="inline-block py-2 hover:text-accent">{it.name}</Link> : <span aria-current="page" className="text-ink-2">{it.name}</span>}
           </li>
         ))}
       </ol>

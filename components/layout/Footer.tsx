@@ -51,8 +51,8 @@ export function Footer() {
           {cols.map((c) => (
             <nav key={c.title} aria-label={c.title}>
               <h2 className="mono-label mb-4 text-[11px] text-ink">{c.title}</h2>
-              <ul className="grid gap-2.5 text-sm">
-                {c.links.map((l) => <li key={l.href}><Link href={l.href} className="text-muted hover:text-accent">{l.label}</Link></li>)}
+              <ul className="grid gap-0.5 text-sm">
+                {c.links.map((l) => <li key={l.href}><Link href={l.href} className="inline-block py-2 text-muted hover:text-accent">{l.label}</Link></li>)}
               </ul>
             </nav>
           ))}

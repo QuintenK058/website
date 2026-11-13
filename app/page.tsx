@@ -5,6 +5,8 @@ import { HomeHero } from '@/components/sections/HomeHero';
 import { Section, SectionHead, Faq, CtaBand, Source } from '@/components/sections/Basics';
 import { Marquee, Magnetic, CountUp } from '@/components/motion/primitives';
 import { ServiceRail } from '@/components/sections/ServiceRail';
+import { SwipeHint } from '@/components/ui/SwipeHint';
+import { snapRow } from '@/lib/ui';
 import { PackageFinder } from '@/components/sections/PackageFinder';
 import { FinderFallback } from '@/components/sections/FinderFallback';
 import { GroeiCard } from '@/components/sections/Packages';
@@ -67,7 +69,7 @@ export default function HomePage() {
       {/* Diensten-rail */}
       <section className="border-t border-line py-20 md:py-32" aria-labelledby="diensten-title">
         <div className="container-site">
-          <SectionHead index="02" label="Diensten" title={['Zes diensten.', 'Eén aanspreekpunt.']} intro="Diensten zijn wat we doen. Pakketten zijn hoe je het afneemt." id="diensten-title" />
+          <SectionHead index="02" label="Diensten" title={['Zeven diensten.', 'Eén aanspreekpunt.']} intro="Diensten zijn wat we doen. Pakketten zijn hoe je het afneemt." id="diensten-title" />
         </div>
         <ServiceRail items={rail} />
       </section>
@@ -106,7 +108,7 @@ export default function HomePage() {
       {/* 5. Mission Control */}
       <Section id="ontzorgd" labelledby="mc-title">
         <SectionHead index="04" label="Mission control" title={['Jij onderneemt.', 'Wij houden het in de gaten.']} intro="Zo ziet ontzorgd eruit: alles bewaakt, alles gemeten, elke maand een rapport van één pagina." id="mc-title" />
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
+        <div className={`grid grid-cols-1 gap-4 lg:grid-cols-12 ${snapRow}`}>
           <StatusCard className="lg:col-span-4" />
           <MetricCard className="lg:col-span-8" title="Weergaven Bedrijfsprofiel · 30 dagen" value={1284} delta="+22%" points={[12, 18, 15, 24, 22, 31, 28, 40, 37, 49, 56]} />
           <AIVisibilityCard className="lg:col-span-5" />
@@ -114,6 +116,7 @@ export default function HomePage() {
           <MetricCard className="lg:col-span-4" title="Ads · kosten per aanvraag" value={23.4} decimals={2} prefix="€" delta="−18%" points={[40, 38, 35, 36, 31, 29, 30, 26, 25, 23]} />
           <GovernancePanel className="lg:col-span-8" />
         </div>
+        <SwipeHint />
         <p className="mono-label mt-6 text-[10px] text-muted">Alle cijfers in deze panelen zijn illustratief en horen niet bij een echte klant.</p>
       </Section>
 
@@ -138,9 +141,10 @@ export default function HomePage() {
       {/* 8. Pakketten */}
       <Section id="pakketten" labelledby="pk-title">
         <SectionHead index="07" label="Volledig ontzorgd" title={['Vaste prijs.', 'Vaste scope.']} intro="Drie groeipakketten waarin je basis al zit, met wat we doen én wat er níet in zit. Prijzen excl. btw, inrichting inbegrepen." id="pk-title" />
-        <div className="grid items-stretch gap-4 lg:grid-cols-3">
+        <div className={`grid items-stretch gap-4 lg:grid-cols-3 ${snapRow}`}>
           {['ontzorgd-lokaal', 'ontzorgd-leads', 'ontzorgd-webshop'].map((id) => <GroeiCard key={id} p={pkg(id)} />)}
         </div>
+        <SwipeHint text="Swipe voor alle drie" />
         <div className="mt-8"><Magnetic><Link href="/pakketten" className="btn btn-ghost">Alle pakketten, projecten, AI en advies <Icon name="arrow" size={16} /></Link></Magnetic></div>
       </Section>
 
