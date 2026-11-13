@@ -16,15 +16,16 @@ import { pageMeta, offerCatalogLd } from '@/lib/seo';
 import { showTodos } from '@/lib/todo';
 
 const title = 'Pakketten en prijzen: eerst je basis, dan je groei';
-const description = 'Vaste prijzen, vaste scope. Zorg Basis €49/mnd, Ontzorgd Lokaal €199/mnd, Ontzorgd Leads €745/mnd, Ontzorgd Webshop €1.195/mnd. Plus losse projecten, AI-workshops en consultancy. Excl. btw.';
+const description = 'Vaste prijzen, vaste scope. Zorg Basis €49/mnd, Lokaal Gevonden €199/mnd, Meer Aanvragen €745/mnd, Meer Verkopen €1.195/mnd. Plus losse projecten, AI-workshops en consultancy. Excl. btw.';
 export const metadata: Metadata = pageMeta({ title, description, path: '/pakketten' });
 
 const consultExpertise = ['Webshops (Shopify, WooCommerce, Magento)', 'SEO en GEO', 'Google Ads', 'Meta Ads', 'Conversie (CRO)', 'E-mailmarketing', 'Data en tracking', 'AI in je processen', 'Bureaus aansturen', 'B2B-e-commerce'];
 
 const faq = [
   { q: 'Waar begin ik?', a: 'Doe de pakketkiezer bovenaan deze pagina, of de <a href="/online-check">gratis Online Check</a>. Twijfel je tussen twee pakketten? Kies het kleinste. Opschalen kan altijd.' },
-  { q: 'Wat is het verschil tussen een basis en een groeipakket?', a: 'Een basis (Zorg Basis, Plus of Webshop) houdt je site of shop veilig en actueel. Een groeipakket (Ontzorgd Lokaal, Leads of Webshop) bevat een basis, en werkt daarnaast aan vindbaarheid, advertenties en conversie.' },
-  { q: 'Zijn de inrichtingskosten inbegrepen?', a: 'Bij groeipakketten wel. Losse ads-modules hebben eenmalige inrichtingskosten: €345 voor Google Ads Lokaal en €495 voor Google Ads Shop.' },
+  { q: 'Wat is het verschil tussen een basis en een groeipakket?', a: 'Een basis (Zorg Basis, Plus of Webshop) houdt je site of shop veilig en actueel. Een groeipakket (Lokaal Gevonden, Leads of Webshop) bevat een basis, en werkt daarnaast aan vindbaarheid, advertenties en conversie.' },
+  { q: 'Zijn er opstartkosten?', a: 'Nee. De inrichting is overal inbegrepen, ook bij advertenties.' },
+  { q: 'Hoe werkt de prijs van advertenties?', a: 'Beheer van Google Ads of Meta Ads kost €499 per maand per kanaal, plus 2% van je advertentiebudget. Het budget zelf betaal je rechtstreeks aan Google of Meta.' },
   { q: 'Wij willen het in huis houden. Kan dat?', a: 'Ja. Met <a href="/diensten/consultancy">consultancy</a> voert je eigen team uit, en brengen wij richting en expertise: vanaf €75 per uur, of een vast maandbedrag voor bijvoorbeeld elke week een uur.' },
   { q: 'Hoe lang zit ik vast?', a: 'Minimaal 3 maanden, daarna maandelijks opzegbaar.' },
   { q: 'Zit het advertentiebudget in de prijs?', a: 'Nee. Dat betaal je rechtstreeks aan Google of Meta, via een account op jouw naam.' },
@@ -36,7 +37,7 @@ export default function PakkettenPage() {
   const groei = ['ontzorgd-lokaal', 'ontzorgd-leads', 'ontzorgd-webshop'].map(pkg);
   const modules = byKind('module');
   const calcBases = bases.map((p) => ({ id: p.id, name: p.name, monthly: p.price.amount }));
-  const calcModules = modules.map((p) => ({ id: p.id, name: p.name, monthly: p.price.amount, setup: p.price.setup }));
+  const calcModules = modules.map((p) => ({ id: p.id, name: p.name, monthly: p.price.amount, setup: p.price.setup, note: p.price.extra ? `+ ${p.price.extra}` : undefined }));
 
   const panels = {
     maandelijks: (
@@ -61,7 +62,7 @@ export default function PakkettenPage() {
           <p className="mt-2 mb-6 text-muted">Stel zelf samen: kies een basis en vink modules aan.</p>
           <Calculator bases={calcBases} modules={calcModules} />
           <ul className="sr-only">
-            {modules.map((m) => <li key={m.id}>{m.name}: {formatPriceLong(m.price)}{m.price.setup ? `, plus €${m.price.setup} eenmalige inrichting` : ''}</li>)}
+            {modules.map((m) => <li key={m.id}>{m.name}: {formatPriceLong(m.price)}{m.price.extra ? `, plus ${m.price.extra}` : ''}</li>)}
           </ul>
         </div>
         <div>
@@ -78,7 +79,7 @@ export default function PakkettenPage() {
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">{byGroup(g).map((p) => <PkgCard key={p.id} p={p} cta="Aanvragen" afterDelivery={g !== 'checks'} />)}</div>
           </div>
         ))}
-        <p className="rounded-[var(--radius-card)] border border-accent/40 bg-accent/[0.06] p-5 text-ink-2">Kies je Ontzorgd Lokaal voor 12 maanden, dan kost Web Start €595 in plaats van €1.195.</p>
+        <p className="rounded-[var(--radius-card)] border border-accent/40 bg-accent/[0.06] p-5 text-ink-2">Kies je Lokaal Gevonden voor 12 maanden, dan kost Web Start €595 in plaats van €995.</p>
       </div>
     ),
     ai: (
@@ -86,12 +87,13 @@ export default function PakkettenPage() {
         <div className="panel max-w-3xl"><div className="panel-in"><ImageSlot id="quinten-workshop" sizes="(min-width:1024px) 60vw, 100vw" /></div></div>
         <StepLine
           steps={[
-            { label: '01 · Leren', title: 'Leren', body: <AiList ids={['ai-kennismaking', 'ai-teamworkshop']} /> },
-            { label: '02 · Toepassen', title: 'Toepassen', body: <AiList ids={['ai-quickscan', 'ai-chatbot', 'ai-automatisering', 'ai-implementatie']} /> },
-            { label: '03 · Volhouden', title: 'Volhouden', body: <AiList ids={['ai-partner']} /> },
+            { label: '01 · Leren', title: 'Workshops', body: <AiList ids={['ai-kennismaking', 'ai-teamworkshop']} /> },
+            { label: '02 · Bouwen', title: 'AI-systemen en agents', body: <AiList ids={['ai-quickscan', 'ai-chatbot', 'ai-automatisering', 'ai-kennisbank', 'ai-agent', 'ai-implementatie']} /> },
+            { label: '03 · Volhouden', title: 'Beheer', body: <AiList ids={['ai-partner']} /> },
           ]}
         />
-        <p className="text-sm text-muted">De AI-teamworkshop zit één keer per jaar in Ontzorgd Leads. Artikel 4 van de AI Act vraagt organisaties maatregelen te nemen voor AI-geletterdheid; het dossier uit de workshop helpt je dat aantoonbaar te maken. Dit is geen juridisch advies.</p>
+        <p className="text-sm text-ink-2">Wat kost AI? Dat hangt af van wat je wilt: een workshop is iets anders dan een systeem of een agent. Een workshop is eenmalig. Een chatbot, kennisbank, workflow of agent kost eenmalig om te bouwen, plus een vast maandbedrag voor hosting, modelkosten en onderhoud. Twijfel je? Begin met de AI-Quickscan.</p>
+        <p className="text-sm text-muted">De AI-teamworkshop zit één keer per jaar in Meer Aanvragen. Artikel 4 van de AI Act vraagt organisaties maatregelen te nemen voor AI-geletterdheid; het dossier uit de workshop helpt je dat aantoonbaar te maken. Dit is geen juridisch advies.</p>
       </div>
     ),
     consultancy: (

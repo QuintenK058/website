@@ -8,7 +8,7 @@ readingTime: 6
 relatedServices: [websites/laten-maken, onderhoud]
 faq:
   - q: Wat kost een website in Leeuwarden?
-    a: Volgens Trustoo ligt het gemiddelde voor een nieuwe website in Leeuwarden tussen €800 en €4.000. Bij QK Commerce Solutions kost Web Start €1.195 en Web Groei vanaf €2.450, excl. btw.
+    a: Volgens Trustoo ligt het gemiddelde voor een nieuwe website in Leeuwarden tussen €800 en €4.000. Bij QK Commerce Solutions kost Web Start €995 en Web Groei vanaf €2.450, excl. btw.
   - q: Wat zijn de maandelijkse kosten?
     a: Reken op hosting, updates, back-ups en beveiliging. Ons zorgabonnement begint bij €49 per maand excl. btw.
   - q: Waarom zeggen veel bureaus "prijs op aanvraag"?
@@ -34,7 +34,7 @@ We publiceren onze prijzen, zodat je niet eerst een offerte hoeft aan te vragen.
 
 | Pakket | Wat je krijgt | Prijs |
 | --- | --- | --- |
-| Web Start | 1–5 pagina's, mobiel-first, basis-SEO, Bedrijfsprofiel gekoppeld, structured data | €1.195 |
+| Web Start | 1–5 pagina's, mobiel-first, basis-SEO, Bedrijfsprofiel gekoppeld, structured data | €995 |
 | Web Groei | 6–15 pagina's, maatwerkdesign, copywriting, lokale landingspagina's, conversietracking | vanaf €2.450 |
 | Web Maatwerk | Animatierijk ontwerp, integraties, meertalig | vanaf €4.000 |
 | Website-audit | Techniek, snelheid, SEO, GEO en beveiliging, met prioriteitenlijst | €395 |

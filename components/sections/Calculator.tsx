@@ -65,7 +65,7 @@ export function Calculator({ bases, modules }: { bases: Mod[]; modules: Mod[] })
           <span className="mono-label text-[11px] text-muted">Jouw maandprijs</span>
           <span ref={monthRef} aria-live="polite" className="text-6xl font-bold tracking-[-0.05em] tabular-nums md:text-7xl">{fmt(total)}</span>
           <span className="text-sm text-ink-2">{setup > 0 ? `+ ${fmt(setup)} eenmalige inrichting` : 'Geen eenmalige inrichting'}</span>
-          {' '}<span className="mono-label text-[10px] text-muted">excl. btw · excl. advertentiebudget</span>
+          {' '}<span className="mono-label text-[10px] text-muted">excl. btw · excl. advertentiebudget · ads + 2% van je budget</span>
           <p className="mt-2 text-sm text-muted">Tip: in een groeipakket is de inrichting inbegrepen en betaal je vaak minder.</p>
         </div>
       </div>

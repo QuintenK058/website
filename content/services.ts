@@ -62,7 +62,7 @@ export const lines: Line[] = [
     icon: 'web',
     headline: ['Een website die werkt.', 'Ook als jij er niet naar kijkt.'],
     seoTitle: 'Website laten maken in Leeuwarden en Friesland, vaste prijzen',
-    description: 'Website laten maken, vernieuwen of laten checken. Web Start €1.195, Web Groei vanaf €2.450, Website-audit €395. Excl. btw, inclusief SEO-basis en structured data.',
+    description: 'Website laten maken, vernieuwen of laten checken. Web Start €995, Web Groei vanaf €2.450, Website-audit €395. Excl. btw, inclusief SEO-basis en structured data.',
     intro: 'Je website is vaak het eerste wat een klant van je ziet. We bouwen sites die snel laden, goed scoren in Google en AI, en bezoekers omzetten in aanvragen. Met een vaste prijs vooraf.',
     problems: ['Je site is verouderd en traag op mobiel.', 'Aanpassen kan alleen via iemand die niet meer reageert.', 'Bezoekers komen wel, maar bellen niet.', 'Je weet niet of de software nog veilig is.'],
     approach: [
@@ -74,7 +74,7 @@ export const lines: Line[] = [
     outcomes: ['Meer aanvragen uit dezelfde bezoekers', 'Een snelle site die goed scoort in Google én AI', 'Een uitstraling waar je trots op bent', 'Geen zorgen over updates of beveiliging'],
     packageIds: ['web-start', 'web-groei', 'web-maatwerk', 'website-audit'],
     faq: [
-      { q: 'Wat kost een website?', a: 'Web Start kost €1.195, Web Groei vanaf €2.450 en Web Maatwerk vanaf €4.000. Alles excl. btw. Hosting en onderhoud regel je met een <a href="/diensten/onderhoud">zorgabonnement</a> vanaf €49 per maand.' },
+      { q: 'Wat kost een website?', a: 'Web Start kost €995, Web Groei vanaf €2.450 en Web Maatwerk vanaf €4.000. Alles excl. btw. Hosting en onderhoud regel je met een <a href="/diensten/onderhoud">zorgabonnement</a> vanaf €49 per maand.' },
       { q: 'Is een zorgabonnement verplicht?', a: 'Ja. Elke site die we bouwen, houden we ook veilig en up-to-date. Zo voorkom je dat je site over twee jaar op verouderde software draait.' },
       { q: 'Hoe lang duurt het?', a: 'TODO: doorlooptijden (bijv. Web Start 2–3 weken, Web Groei 4–6 weken).' },
       { q: 'Staat de site op mijn naam?', a: 'Ja. Domein, hosting en accounts staan op jouw naam. Stop je met ons, dan neem je alles mee.' },
@@ -87,8 +87,8 @@ export const lines: Line[] = [
         slug: 'laten-maken',
         name: 'Website laten maken',
         title: 'Website laten maken met een vaste prijs',
-        seoTitle: 'Website laten maken, vaste prijs vanaf €1.195',
-        description: 'Website laten maken in Friesland of online. Web Start €1.195, Web Groei vanaf €2.450, Web Maatwerk vanaf €4.000. Inclusief SEO-basis, structured data en Bedrijfsprofiel.',
+        seoTitle: 'Website laten maken, vaste prijs vanaf €995',
+        description: 'Website laten maken in Friesland of online. Web Start €995, Web Groei vanaf €2.450, Web Maatwerk vanaf €4.000. Inclusief SEO-basis, structured data en Bedrijfsprofiel.',
         intro: 'Van een site van een paar pagina\'s tot een uitgebreide, animatierijke site. Je weet vooraf wat het kost en wat erin zit.',
         points: [
           { title: 'Mobiel-first', text: 'De meeste bezoekers komen via hun telefoon. Daar ontwerpen we eerst voor.' },
@@ -174,7 +174,7 @@ export const lines: Line[] = [
     faq: [
       { q: 'Shopify of Magento?', a: 'Voor de meeste mkb-webshops is Shopify de beste keuze: stabiel, veilig en weinig onderhoud. Nieuwe shops bouwen we daarom op Shopify. Heb je al een Magento-shop, dan runnen we die voor je, naast je eigen Magento-bureau of -developer, dat de techniek blijft doen. Overstappen naar Shopify? We rekenen eerlijk door of dat slimmer is.' },
       { q: 'Kunnen jullie een bestaande webshop beheren?', a: 'Ja, als hij op Shopify draait. We hoeven je shop niet gebouwd te hebben om hem te beheren. Magento-shops runnen we wel, maar technisch beheer doen we daar niet. Zie <a href="/diensten/webshops/beheer">webshopbeheer</a>.' },
-      { q: 'Wat kost webshopbeheer?', a: 'Zorg Webshop kost €149 per maand. Met advertenties en CRO erbij is <a href="/pakketten#maandelijks">Ontzorgd Webshop</a> (€1.195/mnd) vaak voordeliger.' },
+      { q: 'Wat kost webshopbeheer?', a: 'Zorg Webshop kost €149 per maand. Met advertenties en CRO erbij is <a href="/pakketten#maandelijks">Meer Verkopen</a> (€1.195/mnd) vaak voordeliger.' },
       { q: 'Zijn de Shopify-kosten inbegrepen?', a: 'Nee. Het Shopify-abonnement en eventuele apps betaal je rechtstreeks aan Shopify. Ze staan op jouw naam.' },
     ],
     relatedBranches: ['webshops'],
@@ -220,7 +220,7 @@ export const lines: Line[] = [
         faq: [
           { q: 'Hoeveel productmutaties zitten erin?', a: 'TODO: hoeveel productmutaties of uren per maand in Zorg Webshop zitten.' },
           { q: 'Doen jullie ook Magento of WooCommerce?', a: 'Magento-shops runnen we (assortiment, content, campagnes, conversie); technisch beheer en development doet je Magento-bureau. Zie <a href="/diensten/webshops/magento">Magento-shop runnen</a>. Voor WooCommerce bespreken we beheer of een <a href="/diensten/webshops/migratie-naar-shopify">migratie</a>.' },
-          { q: 'Kunnen jullie ook adverteren?', a: 'Ja. Combineer met <a href="/diensten/advertenties">advertenties</a>, of kies <a href="/pakketten#maandelijks">Ontzorgd Webshop</a>.' },
+          { q: 'Kunnen jullie ook adverteren?', a: 'Ja. Combineer met <a href="/diensten/advertenties">advertenties</a>, of kies <a href="/pakketten#maandelijks">Meer Verkopen</a>.' },
         ],
       },
       {
@@ -239,7 +239,7 @@ export const lines: Line[] = [
         packageIds: ['ontzorgd-webshop'],
         faq: [
           { q: 'Hoeveel bezoekers heb ik nodig voor A/B-testen?', a: 'Dat hangt af van je conversie. Bij weinig verkeer werken we met analyse en best practices in plaats van statistische tests.' },
-          { q: 'Wat kost CRO?', a: 'In <a href="/pakketten#maandelijks">Ontzorgd Webshop</a> (€1.195 per maand) zit een maandelijkse CRO-review. Losse verbeteringen bouwen we met development-uren (€360 per maand voor 4 uur).' },
+          { q: 'Wat kost CRO?', a: 'In <a href="/pakketten#maandelijks">Meer Verkopen</a> (€1.195 per maand) zit een maandelijkse CRO-review. Losse verbeteringen bouwen we met development-uren (€360 per maand voor 4 uur).' },
         ],
       },
       {
@@ -261,7 +261,7 @@ export const lines: Line[] = [
         faq: [
           { q: 'Doen jullie ook het technische onderhoud van Magento?', a: 'Nee. Security-patches, upgrades, extensies en development doet je eigen Magento-bureau of -developer. Wij runnen de shop en sturen die partij aan.' },
           { q: 'Bouwen jullie Magento-shops?', a: 'Nee. Nieuwe webshops bouwen we op <a href="/diensten/webshops/laten-maken">Shopify</a>. Wil je van Magento af, dan regelen we de <a href="/diensten/webshops/migratie-naar-shopify">migratie naar Shopify</a>.' },
-          { q: 'Wat kost het?', a: 'Laat je de shop helemaal runnen, dan is dat <a href="/pakketten#ontzorgd-op-maat">Ontzorgd Op Maat</a> (vanaf €1.950 per maand, zonder technisch beheer). Wil je een eigen team dat het doet, met ons als regisseur, dan kies je <a href="/diensten/consultancy/groeistrategie">Groeistrategie</a> of consultancy vanaf €75 per uur.' },
+          { q: 'Wat kost het?', a: 'Laat je de shop helemaal runnen, dan is dat <a href="/pakketten#ontzorgd-op-maat">Groei Op Maat</a> (vanaf €1.950 per maand, zonder technisch beheer). Wil je een eigen team dat het doet, met ons als regisseur, dan kies je <a href="/diensten/consultancy/groeistrategie">Groeistrategie</a> of consultancy vanaf €75 per uur.' },
         ],
       },
       {
@@ -373,7 +373,7 @@ export const lines: Line[] = [
     icon: 'search',
     headline: ['Gevonden in Google.', 'Genoemd door AI.'],
     seoTitle: 'SEO, lokale SEO en GEO in Friesland, gevonden in Google en AI',
-    description: 'SEO, lokale SEO, Google Bedrijfsprofiel en GEO (AI-vindbaarheid). Bedrijfsprofiel-setup €245, Lokaal Zichtbaar €395/mnd, SEO + GEO Groei €795/mnd. Excl. btw.',
+    description: 'SEO, lokale SEO, Google Bedrijfsprofiel en GEO (AI-vindbaarheid). Bedrijfsprofiel-setup €245, Lokale SEO €395/mnd, SEO + GEO Groei €795/mnd. Excl. btw.',
     intro: 'Klanten zoeken in Google, in Google Maps en steeds vaker in ChatGPT, Gemini en Perplexity. Wij zorgen dat jij daar gevonden wordt, en we meten het.',
     problems: ['Je concurrent staat bovenaan, ook al ben jij beter.', 'Je Bedrijfsprofiel is half ingevuld en heeft weinig reviews.', 'In ChatGPT word je niet genoemd.', 'Je weet niet wat SEO je oplevert.'],
     approach: [
@@ -419,7 +419,7 @@ export const lines: Line[] = [
         name: 'Lokale SEO',
         title: 'Lokale SEO: gevonden in je eigen regio',
         seoTitle: 'Lokale SEO in Leeuwarden en Friesland vanaf €395/mnd',
-        description: 'Lokale SEO voor Friese ondernemers: Bedrijfsprofiel, reviews, lokale pagina\'s en GEO-monitoring. Lokaal Zichtbaar €395/mnd excl. btw.',
+        description: 'Lokale SEO voor Friese ondernemers: Bedrijfsprofiel, reviews, lokale pagina\'s en GEO-monitoring. Lokale SEO €395/mnd excl. btw.',
         intro: 'Zoekopdrachten als "installateur Leeuwarden" of "kapper Sneek" leveren klanten op die nú iets nodig hebben. Lokale SEO zorgt dat jij dan in beeld bent.',
         points: [
           { title: 'Bedrijfsprofiel-beheer', text: 'Actueel, compleet en met regelmatige updates.' },
@@ -472,7 +472,7 @@ export const lines: Line[] = [
         packageIds: ['bedrijfsprofiel-setup', 'lokaal-zichtbaar'],
         faq: [
           { q: 'Mijn profiel is door iemand anders geclaimd, wat nu?', a: 'Dat lossen we op via Google. Het profiel komt daarna op jouw naam te staan.' },
-          { q: 'Houden jullie het daarna bij?', a: 'Met <a href="/diensten/vindbaarheid/lokale-seo">Lokaal Zichtbaar</a> beheren we het doorlopend.' },
+          { q: 'Houden jullie het daarna bij?', a: 'Met <a href="/diensten/vindbaarheid/lokale-seo">Lokale SEO</a> beheren we het doorlopend.' },
         ],
       },
     ],
@@ -482,14 +482,14 @@ export const lines: Line[] = [
   {
     id: 'advertenties',
     index: '05',
-    fromId: 'google-ads-lokaal',
+    fromId: 'google-ads',
     inBundles: ['ontzorgd-leads', 'ontzorgd-webshop', 'ontzorgd-op-maat'],
     name: 'Advertenties & e-mail',
     short: 'Google Ads, Meta Ads, mediabuying en e-mailcampagnes op maat.',
     icon: 'ads',
     headline: ['Elke euro budget.', 'Te volgen tot de aanvraag.'],
     seoTitle: 'Google Ads, Meta Ads en e-mailmarketing uitbesteden',
-    description: 'Google Ads Lokaal €275/mnd + €345 inrichting, Google Ads Shop €495/mnd + €495 inrichting, Meta Ads €545/mnd. Excl. btw en excl. advertentiebudget.',
+    description: 'Google Ads of Meta Ads uitbesteden: €499 per maand per kanaal + 2% van je advertentiebudget. Geen opstartkosten. Excl. btw.',
     intro: 'Advertenties werken als je weet wat ze opleveren. We richten campagnes in met goede conversietracking, sturen op kosten per aanvraag of omzet, en rapporteren in gewone taal.',
     problems: ['Er gaat budget naar Google of Meta, maar niemand weet wat het oplevert.', 'Conversies worden niet of dubbel gemeten.', 'Campagnes staan op "automatisch".', 'Je account staat op naam van een vorig bureau.'],
     approach: [
@@ -499,11 +499,12 @@ export const lines: Line[] = [
       { title: 'Rapporteren', text: 'Eén pagina per maand: kosten, aanvragen en volgende stappen.' },
     ],
     outcomes: ['Inzicht in kosten per aanvraag', 'Minder verspild budget', 'Accounts op jouw naam', 'Geen lange contracten'],
-    packageIds: ['google-ads-lokaal', 'google-ads-shop', 'meta-ads', 'meta-ads-creatives', 'ontzorgd-webshop', 'ontzorgd-op-maat'],
+    packageIds: ['google-ads', 'meta-ads', 'ontzorgd-webshop', 'ontzorgd-op-maat'],
     faq: [
       { q: 'Hoeveel advertentiebudget heb ik nodig?', a: 'Voor een lokale dienstverlener is een paar honderd tot €1.500 per maand een realistische start. In de kennismaking geven we een eerlijke inschatting.' },
       { q: 'Betaal ik het budget aan jullie?', a: 'Nee. Het budget betaal je rechtstreeks aan Google of Meta, via een account op jouw naam. Wij rekenen alleen voor het beheer.' },
-      { q: 'Maken jullie ook de advertenties?', a: 'Bij Meta Ads + Creatives maken we 6–10 statische of video-advertenties per maand. Bij Meta Ads lever je ze zelf aan.' },
+      { q: 'Wat kost advertentiebeheer?', a: '€499 per maand per kanaal (Google Ads of Meta Ads), plus 2% van je advertentiebudget. Geen opstartkosten. In Meer Aanvragen en Meer Verkopen zit het beheer al in de prijs; daar betaal je alleen de 2%.' },
+      { q: 'Maken jullie ook de advertenties?', a: 'Teksten en eenvoudige beelden maken we zelf. Foto\'s en video\'s van je product of bedrijf lever je aan, of we spreken een vaste prijs af voor een shoot.' },
     ],
     relatedBranches: ['webshops', 'bouw-en-installatie'],
     relatedArticles: [],
@@ -513,8 +514,8 @@ export const lines: Line[] = [
         slug: 'google-ads',
         name: 'Google Ads',
         title: 'Google Ads: bovenaan op het moment dat iemand zoekt',
-        seoTitle: 'Google Ads uitbesteden vanaf €275/mnd',
-        description: 'Google Ads beheer: Google Ads Lokaal €275/mnd + €345 inrichting, Google Ads Shop €495/mnd + €495 inrichting. Excl. btw en advertentiebudget.',
+        seoTitle: 'Google Ads uitbesteden: €499 per maand + 2% van je budget',
+        description: 'Google Ads beheer (Search, Shopping, Performance Max): €499 per maand + 2% van je advertentiebudget. Geen opstartkosten. Excl. btw.',
         intro: 'Search-campagnes voor lokale dienstverleners, Shopping en Performance Max voor webshops. Met conversietracking die klopt.',
         points: [
           { title: 'Search lokaal', text: 'Zoekwoorden met koopintentie in jouw werkgebied, met uitsluitingen.' },
@@ -523,7 +524,7 @@ export const lines: Line[] = [
           { title: 'Maandrapport', text: 'Wat kostte het, wat leverde het op?' },
         ],
         forWho: ['Lokale dienstverleners (budget tot €1.500)', 'Webshops (budget €1.500–€5.000)'],
-        packageIds: ['google-ads-lokaal', 'google-ads-shop'],
+        packageIds: ['google-ads'],
         faq: [
           { q: 'Wat is Consent Mode v2?', a: 'Een manier om Google te laten weten of een bezoeker toestemming gaf voor cookies. Nodig om in de EU goed te blijven meten en remarketing te gebruiken.' },
           { q: 'Mijn account staat bij een ander bureau.', a: 'We helpen je het account op je eigen naam te krijgen. Daarna krijgen wij beheerrechten.' },
@@ -533,8 +534,8 @@ export const lines: Line[] = [
         slug: 'meta-ads',
         name: 'Meta Ads',
         title: 'Meta Ads: Facebook en Instagram, gestructureerd getest',
-        seoTitle: 'Meta Ads (Facebook en Instagram) uitbesteden vanaf €545/mnd',
-        description: 'Meta Ads beheer €545/mnd, of Meta Ads + Creatives €1.195/mnd met 6–10 advertenties per maand. Excl. btw en advertentiebudget.',
+        seoTitle: 'Meta Ads (Facebook en Instagram) uitbesteden: €499 per maand + 2%',
+        description: 'Meta Ads beheer (Facebook en Instagram): €499 per maand + 2% van je advertentiebudget. Geen opstartkosten. Excl. btw.',
         intro: 'Meta is sterk voor webshops en voor bedrijven die vraag willen creëren. We bouwen een heldere campagnestructuur en testen gestructureerd wat werkt.',
         points: [
           { title: 'Campagnestructuur', text: 'Overzichtelijk, met duidelijke doelen en budgetten.' },
@@ -543,10 +544,10 @@ export const lines: Line[] = [
           { title: 'Tracking', text: 'Meta Pixel en Conversions API goed ingericht.' },
         ],
         forWho: ['Webshops', 'Horeca, salons en events', 'Merken met een visueel product'],
-        packageIds: ['meta-ads', 'meta-ads-creatives'],
+        packageIds: ['meta-ads'],
         faq: [
-          { q: 'Wat lever ik aan bij Meta Ads?', a: 'Foto\'s, video\'s of kant-en-klare advertenties. Liever niet zelf? Kies Meta Ads + Creatives.' },
-          { q: 'Doen jullie ook TikTok?', a: 'Ja, als onderdeel van <a href="/pakketten#maandelijks">Ontzorgd Op Maat</a> (vanaf €1.950 per maand), als het past bij je product en doelgroep.' },
+          { q: 'Wat lever ik aan bij Meta Ads?', a: 'Foto\'s en video\'s van je product of bedrijf. Teksten en eenvoudige beelden maken we zelf.' },
+          { q: 'Doen jullie ook TikTok?', a: 'Ja, als onderdeel van <a href="/pakketten#maandelijks">Groei Op Maat</a> (vanaf €1.950 per maand), als het past bij je product en doelgroep.' },
         ],
       },
       {
@@ -562,10 +563,10 @@ export const lines: Line[] = [
           { title: 'Eén rapport', text: 'Alle kanalen op één pagina.' },
         ],
         forWho: ['Webshops met meerdere kanalen', 'Bedrijven met een advertentiebudget vanaf ±€2.000/mnd'],
-        packageIds: ['google-ads-shop', 'meta-ads'],
+        packageIds: ['google-ads', 'meta-ads'],
         faq: [
           { q: 'Vanaf welk budget is mediabuying zinvol?', a: 'Vanaf ongeveer €2.000 per maand over meerdere kanalen. Daaronder is focus op één kanaal meestal beter.' },
-          { q: 'Wat kost het?', a: 'Je combineert de beheerpakketten per kanaal. Voor webshops is <a href="/pakketten#maandelijks">Ontzorgd Webshop</a> vaak de handigste vorm.' },
+          { q: 'Wat kost het?', a: 'Je combineert de beheerpakketten per kanaal. Voor webshops is <a href="/pakketten#maandelijks">Meer Verkopen</a> vaak de handigste vorm.' },
         ],
       },
       {
@@ -603,7 +604,7 @@ export const lines: Line[] = [
     icon: 'ai',
     headline: ['Van losse proefjes.', 'Naar veilig, gemeten AI.'],
     seoTitle: 'AI-workshops en AI-implementatie voor mkb in Friesland',
-    description: 'AI-workshops in Leeuwarden (€195 p.p.) en in-company (€1.295) met AI-geletterdheidsdossier, AI-Quickscan €795, chatbots en automatisering. Veilig AI-gebruik voor mkb.',
+    description: 'AI-workshops in Leeuwarden (€245 p.p.) en in-company (€1.495) met AI-geletterdheidsdossier, AI-Quickscan €795, chatbots en automatisering. Veilig AI-gebruik voor mkb.',
     intro: 'Bijna elk bedrijf heeft ChatGPT wel eens geprobeerd. Weinig bedrijven gebruiken AI veilig en structureel. De grootste drempels zijn gebrek aan ervaring en zorgen over privacy, niet de kosten. Wij brengen je van losse proefjes naar veilig, gemeten en gekoppeld AI-gebruik.',
     problems: ['Medewerkers plakken klantgegevens in gratis chatbots.', 'Iedereen gebruikt een ander tooltje, niemand meet wat het oplevert.', 'Je wilt "iets met AI", maar weet niet waar te beginnen.', 'Je hebt geen idee wat de AI Act van je vraagt.'],
     approach: [
@@ -613,7 +614,7 @@ export const lines: Line[] = [
       { title: 'Partner', text: 'Maandelijks spreekuur, onderhoud en elk kwartaal een nieuwe use case.' },
     ],
     outcomes: ['Veilig AI-gebruik met duidelijke afspraken', 'Aantoonbare maatregelen voor AI-geletterdheid', 'Gemeten tijdwinst', 'AI gekoppeld aan je eigen systemen'],
-    packageIds: ['ai-kennismaking', 'ai-teamworkshop', 'ai-quickscan', 'ai-chatbot', 'ai-automatisering', 'ai-implementatie', 'ai-partner'],
+    packageIds: ['ai-kennismaking', 'ai-teamworkshop', 'ai-quickscan', 'ai-chatbot', 'ai-kennisbank', 'ai-automatisering', 'ai-agent', 'ai-implementatie', 'ai-partner'],
     faq: [
       { q: 'Wat vraagt de AI Act van mijn bedrijf?', a: 'Artikel 4 van de AI Act vraagt organisaties maatregelen te nemen voor de AI-geletterdheid van hun mensen. Het AI-geletterdheidsdossier uit de teamworkshop helpt je dat aantoonbaar te maken. <em>Dit is geen juridisch advies.</em>' },
       { q: 'Is het gebruik van gratis chatbots een AVG-risico?', a: 'Het kan. Wie vertrouwelijke of persoonsgegevens in een gratis chatbot plakt, verliest de controle over die gegevens. In de workshop maken we afspraken over wat wel en niet mag. <em>Dit is geen juridisch advies.</em>' },
@@ -628,8 +629,8 @@ export const lines: Line[] = [
         slug: 'workshops',
         name: 'AI-workshops',
         title: 'AI-workshops: veilig werken met ChatGPT, Copilot en Claude',
-        seoTitle: 'AI-workshop Leeuwarden €195 p.p., in-company €1.295',
-        description: 'AI-workshop in Leeuwarden (open groep, €195 p.p.) of in-company (halve dag €1.295, max. 12 personen) met AI-geletterdheidsdossier.',
+        seoTitle: 'AI-workshop Leeuwarden €245 p.p., in-company €1.495',
+        description: 'AI-workshop in Leeuwarden (open groep, €245 p.p.) of in-company (halve dag €1.495, max. 12 personen) met AI-geletterdheidsdossier.',
         intro: 'Een praktische workshop waarin je team leert veilig en slim met AI te werken, met jullie eigen werk als oefenmateriaal. Je gaat naar huis met een dossier dat laat zien welke maatregelen je hebt genomen.',
         points: [
           { title: 'Open groep in Leeuwarden', text: 'Middagworkshop van 3 uur. Ideaal om zelf te beginnen.' },
@@ -660,7 +661,7 @@ export const lines: Line[] = [
           { title: 'AI-Partner', text: 'Daarna maandelijks spreekuur en elk kwartaal een nieuwe use case.' },
         ],
         forWho: ['Bedrijven die AI structureel willen inzetten', 'Organisaties met veel repeterend kantoorwerk'],
-        packageIds: ['ai-quickscan', 'ai-implementatie', 'ai-partner'],
+        packageIds: ['ai-quickscan', 'ai-kennisbank', 'ai-implementatie', 'ai-partner'],
         faq: [
           { q: 'Komt de quickscan in aanmerking voor subsidie?', a: 'Een AI-quickscan met een duurzaamheidshoek kan mogelijk in aanmerking komen voor de Adviesvoucherregeling Fryslân. Vraag ons ernaar. Garanties kunnen we niet geven.' },
           { q: 'Wat als AI niet geschikt blijkt?', a: 'Dan zeggen we dat. Ook dat is een uitkomst die je geld bespaart.' },
@@ -670,8 +671,8 @@ export const lines: Line[] = [
         slug: 'chatbots',
         name: 'AI-chatbots',
         title: 'AI-chatbot op je site of webshop',
-        seoTitle: 'AI-chatbot voor website of webshop: €1.250 eenmalig + €129 per maand',
-        description: 'AI-chatbot voor FAQ of klantenservice op je website of webshop: €1.250 eenmalig + €129 per maand, excl. btw. Kennisbank gevuld en getest.',
+        seoTitle: 'AI-chatbot voor website of webshop: €1.495 eenmalig + €149 per maand',
+        description: 'AI-chatbot voor FAQ of klantenservice op je website of webshop: €1.495 eenmalig + €149 per maand, excl. btw. Kennisbank gevuld en getest.',
         intro: 'Een chatbot die vragen van klanten beantwoordt op basis van jouw eigen informatie, ook \'s avonds en in het weekend. Getest voordat hij live gaat.',
         points: [
           { title: 'Jouw kennisbank', text: 'Gevuld met je eigen FAQ\'s, producten en voorwaarden.' },
@@ -688,20 +689,22 @@ export const lines: Line[] = [
       },
       {
         slug: 'automatisering',
-        name: 'Automatisering',
-        title: 'AI-automatisering: werk dat zichzelf doet',
-        seoTitle: 'AI-automatisering met n8n of Make vanaf €1.750 per workflow',
-        description: 'Eén AI-workflow met n8n of Make, bijvoorbeeld leadopvolging, offertes, mail-triage of productteksten. Vanaf €1.750 per workflow excl. btw.',
+        name: 'Automatisering & agents',
+        title: 'AI-automatisering en AI-agents: werk dat zichzelf doet',
+        seoTitle: 'AI-automatisering met n8n of Make vanaf €1.950 per workflow',
+        description: 'Eén AI-workflow met n8n of Make, bijvoorbeeld leadopvolging, offertes, mail-triage of productteksten. Vanaf €1.950 per workflow excl. btw.',
         intro: 'Leads opvolgen, offertes voorbereiden, e-mail sorteren, productteksten schrijven. We bouwen één workflow die een taak uit handen neemt, en meten hoeveel tijd het scheelt.',
         points: [
           { title: 'Leadopvolging', text: 'Nieuwe aanvraag → CRM → bevestiging → herinnering.' },
           { title: 'Offertes', text: 'Een concept-offerte op basis van de aanvraag, klaar om te checken.' },
           { title: 'Mail-triage', text: 'Inkomende mail gesorteerd en samengevat.' },
           { title: 'Productteksten', text: 'Teksten in jouw toon, voor tientallen producten tegelijk.' },
+          { title: 'AI-agents', text: 'Een agent die zelf stappen zet in je CRM, mail of agenda, met menselijke controle op belangrijke beslissingen. Vanaf €4.950.' },
         ],
         forWho: ['Bedrijven met repeterende administratieve taken', 'Webshops met veel producten'],
-        packageIds: ['ai-automatisering', 'ai-partner'],
+        packageIds: ['ai-automatisering', 'ai-agent', 'ai-partner'],
         faq: [
+          { q: 'Wat is het verschil tussen een workflow en een agent?', a: 'Een workflow volgt steeds dezelfde vaste stappen. Een agent kiest zelf de volgende stap binnen grenzen die we samen bepalen. Agents zijn krachtiger, maar vragen meer ontwerp en controle. Daarom kosten ze meer.' },
           { q: 'Met welke systemen kunnen jullie koppelen?', a: 'Met de meeste systemen die een API of koppeling hebben: e-mail, CRM, boekhouding, Shopify, formulieren en agenda.' },
           { q: 'Wie onderhoudt de workflow?', a: 'Met <a href="/diensten/ai/implementatie">AI-Partner</a> onderhouden wij hem. Je kunt hem ook zelf beheren.' },
         ],

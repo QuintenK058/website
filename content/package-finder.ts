@@ -25,11 +25,11 @@ export const rules: Rule[] = [
   { when: (a) => a.involve === 'zelf', advice: () => ({ primary: 'plan-van-aanpak', extra: 'consultancy-wekelijks', why: 'Een compleet plan dat je eigen team kan uitvoeren. Wil je daarna elke week een specialist erbij, kies dan Consultancy Wekelijks.' }) },
   // Geen website
   { when: (a) => a.have === 'geen' && a.goal === 'verkopen', advice: () => ({ primary: 'shop-start', extra: 'ontzorgd-webshop', why: 'Eerst een webshop die kan verkopen. Daarna zorgen we dat er bezoekers komen.' }) },
-  { when: (a) => a.have === 'geen', advice: () => ({ primary: 'web-start', extra: 'ontzorgd-lokaal', why: 'Een professionele site, en daarna onderhoud en vindbaarheid in je regio.', note: 'Kies je Ontzorgd Lokaal voor 12 maanden, dan kost Web Start €595 in plaats van €1.195.' }) },
+  { when: (a) => a.have === 'geen', advice: () => ({ primary: 'web-start', extra: 'ontzorgd-lokaal', why: 'Een professionele site, en daarna onderhoud en vindbaarheid in je regio.', note: 'Kies je Lokaal Gevonden voor 12 maanden, dan kost Web Start €595 in plaats van €995.' }) },
   // Webshop
   { when: (a) => a.have === 'webshop' && a.goal === 'techniek', advice: () => ({ primary: 'zorg-webshop', extra: 'development-uren', why: 'Je shop veilig en actueel, met wekelijkse checkout-check. Verbeteringen via development-uren.' }) },
   { when: (a) => a.have === 'webshop' && a.involve === 'meedenken', advice: () => ({ primary: 'ontzorgd-webshop', extra: 'strategiesessie', why: 'Wij doen ads, e-mail en conversie. Met een strategiesessie bepalen we samen de koers.' }) },
-  { when: (a) => a.have === 'webshop', advice: () => ({ primary: 'ontzorgd-webshop', extra: 'meta-ads-creatives', why: 'Meta Ads, Google Shopping, e-mailflows en een maandelijkse CRO-review, met je shop in beheer.' }) },
+  { when: (a) => a.have === 'webshop', advice: () => ({ primary: 'ontzorgd-webshop', extra: 'ai-chatbot', why: 'Meta Ads, Google Shopping, e-mailflows en elke maand een conversie-review, met je Shopify-shop in beheer. Een AI-chatbot beantwoordt ondertussen klantvragen.' }) },
   // Website
   { when: (a) => a.have === 'website' && a.goal === 'techniek', advice: () => ({ primary: 'zorg-plus', extra: 'website-audit', why: 'Hosting, updates, back-ups en elke maand een uur wijzigingen. Een audit laat zien wat er beter kan.' }) },
   { when: (a) => a.have === 'website' && (a.goal === 'aanvragen' || a.goal === 'verkopen'), advice: () => ({ primary: 'ontzorgd-leads', extra: 'meta-ads', why: 'Gevonden worden én Google Ads, zodat de telefoon gaat. Inclusief onderhoud van je site.' }) },

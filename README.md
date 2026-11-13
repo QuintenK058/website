@@ -65,13 +65,14 @@ Alles staat in `site.config.ts` en `content/`. Je hoeft geen componenten te open
 | Soort | Pakket | Prijs |
 | --- | --- | --- |
 | Basis | Zorg Basis / Zorg Plus / Zorg Webshop | €49 / €99 / €149 per maand |
-| Groei | Ontzorgd Lokaal / **Ontzorgd Leads** (aanrader) / Ontzorgd Webshop | €199 / €745 / €1.195 per maand |
-| Groei | Ontzorgd Op Maat | vanaf €1.950 per maand |
-| Modules | Lokaal Zichtbaar €395 · SEO+GEO Groei €795 · Google Ads Lokaal €275 (+ €345 inrichting) · Google Ads Shop €495 (+ €495) · Meta Ads €545 · Meta Ads + Creatives €1.195 · Development-uren €360 (4 uur) · AI-Partner €295 | per maand |
-| Websites | Web Start €1.195 · Web Groei vanaf €2.450 · Web Maatwerk vanaf €4.000 | eenmalig |
+| Groei | Lokaal Gevonden / **Meer Aanvragen** (aanrader) / Meer Verkopen | €199 / €745 / €1.195 per maand (met ads: + 2% van het advertentiebudget) |
+| Groei | Groei Op Maat | vanaf €1.950 per maand + 2% advertentiebudget |
+| Modules | Lokale SEO €395 · SEO+GEO Groei €795 · Google Ads €499 + 2% · Meta Ads €499 + 2% (geen opstartkosten) · Development-uren €360 (4 uur) · AI-Partner €295 | per maand |
+| Websites | Web Start €995 (€595 met 12 mnd Lokaal Gevonden) · Web Groei vanaf €2.450 · Web Maatwerk vanaf €4.000 | eenmalig |
 | Webshops | Shop Start vanaf €2.750 · Shop Groei vanaf €4.950 · Migratie vanaf €1.500 · Shopify-development €95 per uur | eenmalig |
 | Checks & setup | Audit €395 · GEO-scan €245 · Bedrijfsprofiel-setup €245 · Koppeling vanaf €495 | eenmalig |
-| AI | AI-Chatbot €1.250 eenmalig + €129 per maand · AI Implementatie vanaf €1.995 · workshops per persoon | |
+| AI: workshops | AI-Kennismaking €245 p.p. · AI-Teamworkshop €1.495 (halve dag) / €2.450 (hele dag) | |
+| AI: systemen en agents | Quickscan €795 · Chatbot €1.495 + €149/mnd · Kennisbank vanaf €3.950 + vanaf €199/mnd · Automatisering vanaf €1.950 + €49/mnd per workflow · Agent vanaf €4.950 + vanaf €249/mnd · AI Implementatie vanaf €2.495 · AI-Partner €295/mnd | |
 | Consultancy (doorlopend, €75 per uur) | Consultancy Wekelijks €300 (4 uur) · Consultancy Maanduren €600 (8 uur, extra uur €75) · Groeistrategie vanaf €995 | per maand |
 | Consultancy (los/eenmalig) | Per uur: €85 los, €75 bij maandafspraak · Strategiesessie €150 · Plan van aanpak vanaf €1.195 | |
 
@@ -246,8 +247,9 @@ Let op: link vanuit andere teksten pas naar een artikel als het gepubliceerd is.
 - [ ] Betaaltermijn facturen ("Zo start je" / facturatie)
 - [ ] Doorlooptijd inrichting (dagen) bij groeipakketten en ads-modules
 - [ ] Geld-terug-regeling bevestigen: tekst staat als voorstel in spelregels, FAQ en `content/legal/algemene-voorwaarden.md` (gemarkeerd `TODO: bevestigen`)
-- [ ] Voorstelprijzen bevestigen (`proposal: true`): Ontzorgd Op Maat, Development-uren, dev-uur €95, Koppeling, alle consultancyprijzen (€75/€85 per uur, Wekelijks €300, Maanduren €600, Groeistrategie €995, Strategiesessie €150, Plan van aanpak €1.195) en de levertijd van het plan van aanpak
+- [ ] Voorstelprijzen bevestigen (`proposal: true`): Groei Op Maat, Development-uren, dev-uur €95, Koppeling, alle consultancyprijzen (€75/€85 per uur, Wekelijks €300, Maanduren €600, Groeistrategie €995, Strategiesessie €150, Plan van aanpak €1.195) en de levertijd van het plan van aanpak
 - [ ] Zorg Webshop: aantal productmutaties per maand
+- [ ] Portretfoto: nu tijdelijk de LinkedIn-foto (200×200 px), vervangen door een scherpe versie (min. 1600×2000)
 
 ### Cases (`content/cases.ts`)
 - [ ] Screenshots desktop + mobiel per case (slots in `content/images.ts`, map `public/images/cases/`)

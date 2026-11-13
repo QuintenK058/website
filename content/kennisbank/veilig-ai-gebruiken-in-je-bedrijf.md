@@ -45,4 +45,4 @@ TODO: controleer vóór publicatie de actuele tekst en status van artikel 4 (inc
 
 ## Hulp nodig?
 
-In de [AI-teamworkshop](/diensten/ai/workshops) oefent je team met eigen werk en gaan jullie naar huis met een AI-geletterdheidsdossier: AI-beleid, toolregister, data-do's en -don'ts en een presentielijst. Liever eerst zelf? De open AI-kennismaking in Leeuwarden kost €195 per persoon, excl. btw.
+In de [AI-teamworkshop](/diensten/ai/workshops) oefent je team met eigen werk en gaan jullie naar huis met een AI-geletterdheidsdossier: AI-beleid, toolregister, data-do's en -don'ts en een presentielijst. Liever eerst zelf? De open AI-kennismaking in Leeuwarden kost €245 per persoon, excl. btw.

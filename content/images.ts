@@ -23,7 +23,7 @@ const caseSlots = (slug: string, name: string, extra = ''): Slot[] => [
 ];
 
 export const slots: Slot[] = [
-  { id: 'quinten-portret', src: 'team/quinten-portret.jpg', alt: 'Portret van Quinten, oprichter van QK Commerce Solutions', width: 1600, height: 2000, status: 'placeholder', label: 'Foto Quinten, portret 4:5', where: 'Home "Ik kom gewoon langs", Over ons, Person-schema', note: 'Rustige achtergrond; mag een donkere duotone krijgen' },
+  { id: 'quinten-portret', src: 'team/quinten-portret.jpg', alt: 'Portret van Quinten, oprichter van QK Commerce Solutions', width: 1600, height: 2000, status: 'placeholder', label: 'Foto Quinten, portret 4:5', where: 'Home "Ik kom gewoon langs", Over ons, Person-schema', note: 'TIJDELIJK: LinkedIn-foto (200×200 px). Vervangen door een scherpe versie van minimaal 1600×2000 px' },
   { id: 'quinten-werk', src: 'team/quinten-aan-het-werk.jpg', alt: 'Quinten aan het werk met een laptop bij een klant', width: 2400, height: 1600, status: 'placeholder', label: 'Foto Quinten aan het werk, 3:2', where: 'Over ons, Werkwijze', note: 'Laptop, op locatie of op kantoor' },
   { id: 'quinten-workshop', src: 'team/quinten-workshop.jpg', alt: 'Quinten geeft een AI-workshop aan een team', width: 2400, height: 1600, status: 'placeholder', label: 'Foto AI-workshop, 3:2', where: '/diensten/ai/workshops, AI-tab op /pakketten', note: 'Pas plaatsen na een echte workshop' },
   ...caseSlots('lado-bridal', 'Lado Bridal'),

@@ -20,11 +20,11 @@ Alle prijzen zijn exclusief btw, tenzij anders vermeld. TODO: betalingstermijn e
 
 ## Looptijd en opzegging
 
-Minimale looptijd 3 maanden, daarna maandelijks opzegbaar. TODO: opzegtermijn, en wat er gebeurt bij Ontzorgd Lokaal met een Web Start-site voor €595 bij 12 maanden looptijd.
+Minimale looptijd 3 maanden, daarna maandelijks opzegbaar. TODO: opzegtermijn, en wat er gebeurt bij Lokaal Gevonden met een Web Start-site voor €595 bij 12 maanden looptijd.
 
 ## Niet tevreden, geld terug
 
-TODO: bevestigen. Voorstel: Ben je na je eerste maand van een maandpakket (Zorg- of Ontzorgd-pakket, module of doorlopende consultancy) niet tevreden? Meld dit dan schriftelijk binnen 30 dagen na de start. We beëindigen de overeenkomst dan zonder opzegtermijn en betalen de fee van de eerste maand terug. Deze regeling geldt niet voor advertentiebudget, eenmalige projecten (zoals websites, webshops, audits en koppelingen), workshops en kosten van derden (zoals licenties en Shopify-abonnementen). De regeling geldt eenmaal per klant.
+TODO: bevestigen. Voorstel: Ben je na je eerste maand van een maandpakket (Zorg- of groeipakket, module of doorlopende consultancy) niet tevreden? Meld dit dan schriftelijk binnen 30 dagen na de start. We beëindigen de overeenkomst dan zonder opzegtermijn en betalen de fee van de eerste maand terug. Deze regeling geldt niet voor advertentiebudget, eenmalige projecten (zoals websites, webshops, audits en koppelingen), workshops en kosten van derden (zoals licenties en Shopify-abonnementen). De regeling geldt eenmaal per klant.
 
 ## Eigendom en intellectueel eigendom
 

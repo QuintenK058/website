@@ -5,7 +5,7 @@ export const home = {
     'Websites, webshops, vindbaarheid, advertenties en AI voor ondernemers in Friesland en daarbuiten. Eén partner, vaste prijzen, gepubliceerd. Vraag de gratis Online Check aan.',
   hero: {
     eyebrow: '// FULL-SERVICE ONLINE AGENCY — LEEUWARDEN',
-    lines: ['Alles rondom', 'internet.', 'Volledig ontzorgd.'],
+    lines: ['Alles rondom', 'internet', 'verbeteren.'],
     dimFrom: 2, // vanaf welke regel (0-index) grijs
     sub: 'Websites, webshops, vindbaarheid, advertenties en AI voor ondernemers in Friesland en daarbuiten. Eén partner, vaste prijzen.',
   },
@@ -30,12 +30,12 @@ export const home = {
   ],
   pipelineConsole: [
     '> intake\n  bedrijf ......... Installatiebedrijf (voorbeeld)\n  regio ........... Leeuwarden + 30 km\n  doel ............ meer offerteaanvragen\n  status .......... gesprek gepland',
-    '> plan\n  pakket .......... Ontzorgd Leads\n  prijs ........... €745/mnd excl. btw\n  looptijd ........ 3 mnd, daarna maandelijks\n  status .......... akkoord',
+    '> plan\n  pakket .......... Meer Aanvragen\n  prijs ........... €745/mnd excl. btw\n  looptijd ........ 3 mnd, daarna maandelijks\n  status .......... akkoord',
     '> build\n  website ......... live ✓\n  tracking ........ GA4 + Consent Mode v2 ✓\n  bedrijfsprofiel . geoptimaliseerd ✓\n  google ads ...... campagne actief ✓',
     '> beheer\n  updates ......... automatisch ✓\n  rapport ......... 1 pagina, gewone taal\n  volgende stap ... lokale pagina Sneek\n  status .......... SYS: ONLINE',
   ],
   faq: [
-    { q: 'Wat kost het?', a: 'Dat staat gewoon op de site. Je basis (Zorg Basis, Plus of Webshop) kost €49, €99 of €149 per maand. De groeipakketten Ontzorgd Lokaal, Ontzorgd Leads en Ontzorgd Webshop kosten €199, €745 en €1.195 per maand. Een Web Start-site kost €1.195 eenmalig. Alles excl. btw. Zie <a href="/pakketten">pakketten</a>.' },
+    { q: 'Wat kost het?', a: 'Dat staat gewoon op de site. Je basis (Zorg Basis, Plus of Webshop) kost €49, €99 of €149 per maand. De groeipakketten Lokaal Gevonden, Meer Aanvragen en Meer Verkopen kosten €199, €745 en €1.195 per maand. Een Web Start-site kost €995 eenmalig. Advertentiebeheer kost €499 per maand per kanaal plus 2% van je budget. Alles excl. btw. Zie <a href="/pakketten">pakketten</a>.' },
     { q: 'Zit ik vast aan een lang contract?', a: 'Nee. De minimale looptijd is 3 maanden. Daarna zeg je per maand op.' },
     { q: 'Wat als ik niet tevreden ben na de eerste maand?', a: 'Laat het binnen 30 dagen weten. Dan stoppen we zonder opzegtermijn en krijg je de eerste maandfee terug. Dit geldt niet voor advertentiebudget, eenmalige projecten en workshops. De volledige voorwaarden staan in de <a href="/algemene-voorwaarden">algemene voorwaarden</a>.' },
     { q: 'Van wie zijn de accounts?', a: 'Van jou. Domein, hosting, Google- en Meta-accounts staan op jouw naam. Wij krijgen beheerrechten.' },

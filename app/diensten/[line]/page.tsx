@@ -103,7 +103,7 @@ export default async function LinePage({ params }: { params: Promise<{ line: str
         <Section labelledby="bundle-title">
           <SectionHead label={lineInBundles(l)} title={['Liever alles in één pakket?', 'Dan zit dit er al in.']} id="bundle-title" />
           <div className="grid items-stretch gap-4 lg:grid-cols-3">{l.inBundles.filter((id) => id !== 'ontzorgd-op-maat').map((id) => <GroeiCard key={id} p={pkg(id)} />)}</div>
-          <p className="mt-6 text-muted">Meer kanalen of B2B? Bekijk <Link href="/pakketten#ontzorgd-op-maat" className="text-accent underline underline-offset-4">Ontzorgd Op Maat</Link>.</p>
+          <p className="mt-6 text-muted">Meer kanalen of B2B? Bekijk <Link href="/pakketten#ontzorgd-op-maat" className="text-accent underline underline-offset-4">Groei Op Maat</Link>.</p>
         </Section>
       ) : null}
 

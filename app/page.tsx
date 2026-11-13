@@ -151,8 +151,8 @@ export default function HomePage() {
           <div>
             <SectionHead index="08" label="AI · mission control" title={['Van losse proefjes.', 'Naar veilig, gemeten AI.']} intro="Workshops in Leeuwarden en in-company, met een AI-geletterdheidsdossier. Daarna chatbots en workflows die echt werk uit handen nemen." id="ai-title" />
             <div className="grid gap-3 sm:grid-cols-2">
-              <div className="panel" data-reveal><div className="panel-in p-5"><p className="mono-label text-[10px] text-accent">Open groep</p><p className="mt-2 text-xl font-bold">AI-Kennismaking</p><p className="text-muted">€195 p.p. · 3 uur in Leeuwarden</p></div></div>
-              <div className="panel" data-reveal><div className="panel-in p-5"><p className="mono-label text-[10px] text-accent">In-company</p><p className="mt-2 text-xl font-bold">AI-Teamworkshop</p><p className="text-muted">€1.295 · incl. AI-dossier</p></div></div>
+              <div className="panel" data-reveal><div className="panel-in p-5"><p className="mono-label text-[10px] text-accent">Open groep</p><p className="mt-2 text-xl font-bold">AI-Kennismaking</p><p className="text-muted">€245 p.p. · 3 uur in Leeuwarden</p></div></div>
+              <div className="panel" data-reveal><div className="panel-in p-5"><p className="mono-label text-[10px] text-accent">In-company</p><p className="mt-2 text-xl font-bold">AI-Teamworkshop</p><p className="text-muted">€1.495 · incl. AI-dossier</p></div></div>
             </div>
             <div className="mt-6 flex flex-wrap gap-3"><Magnetic><Link href="/diensten/ai" className="btn btn-primary">Bekijk AI <Icon name="arrow" size={16} /></Link></Magnetic></div>
             <p className="mt-6 text-sm text-muted">{stats.aiExperience.display} van de microbedrijven noemt gebrek aan ervaring als drempel voor AI. <Source source={stats.aiExperience.source} url={stats.aiExperience.url} /></p>
@@ -175,9 +175,14 @@ export default function HomePage() {
       {/* 11. Branches */}
       <Section labelledby="br-title">
         <SectionHead index="10" label="Branches" title={['Voor mkb zonder', 'eigen marketingafdeling.']} id="br-title" />
-        <ul className="flex flex-wrap gap-3">
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {branches.map((b) => (
-            <li key={b.slug}><Link href={branchHref(b.slug)} data-reveal className="inline-flex items-center gap-3 rounded-full border border-line px-5 py-3 text-lg font-semibold transition-colors hover:border-accent hover:text-accent">{b.name}<Icon name="arrow" size={16} /></Link></li>
+            <li key={b.slug}>
+              <Link href={branchHref(b.slug)} data-reveal className="group flex h-full flex-col gap-2 rounded-[var(--radius-card)] border border-line p-5 transition-colors hover:border-accent">
+                <span className="flex items-center justify-between gap-3 text-lg font-semibold group-hover:text-accent">{b.name}<Icon name="arrow" size={16} className="shrink-0" /></span>{' '}
+                <span className="text-sm text-muted">{b.examples.slice(0, 4).join(' · ')}</span>
+              </Link>
+            </li>
           ))}
         </ul>
       </Section>

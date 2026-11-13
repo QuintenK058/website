@@ -5,8 +5,8 @@ import { pkg, formatPriceLong } from '@/content/pricing';
 export const lineFromPrice = (l: Line) => formatPriceLong(pkg(l.fromId).price).replace(/^€/, 'vanaf €').replace(/^vanaf vanaf/, 'vanaf');
 export const lineInBundles = (l: Line) => {
   if (!l.inBundles.length) return l.inText ?? '';
-  const names = l.inBundles.map((id) => pkg(id).name.replace(/^Ontzorgd /, ''));
-  return `${l.inLabel ?? 'Zit in'}: Ontzorgd ${names.join(' / ')}`;
+  const names = l.inBundles.map((id) => pkg(id).name);
+  return `${l.inLabel ?? 'Zit in'}: ${names.join(' / ')}`;
 };
 export const railItems = () =>
   lines.map((l) => ({

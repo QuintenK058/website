@@ -83,6 +83,11 @@ export function GroeiCard({ p }: { p: Pkg }) {
           <span className={`mono-label text-[11px] ${p.recommended ? 'text-accent' : 'text-muted'}`}>Groeipakket</span>
           <h3 className="mt-2 text-2xl font-bold">{p.name}</h3>
           <p className="mt-2 text-sm text-muted">{p.forWho}</p>
+          {p.services && (
+            <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Diensten in dit pakket">
+              {p.services.map((d) => <li key={d} className="rounded-full border border-accent/30 bg-accent/[0.06] px-2.5 py-1 text-xs text-ink-2">{d}</li>)}
+            </ul>
+          )}
         </div>
         <PriceTag p={p} size="lg" />
         <div>
@@ -106,7 +111,7 @@ export function GroeiCard({ p }: { p: Pkg }) {
   );
 }
 
-/** Smalle, brede vierde kaart: Ontzorgd Op Maat. */
+/** Smalle, brede vierde kaart: Groei Op Maat. */
 export function OpMaatCard() {
   const p = pkg('ontzorgd-op-maat');
   return (
@@ -153,7 +158,6 @@ export function SetupNote() {
       <ul className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
         {setupDetails.map((d) => <li key={d} className="flex gap-2"><Icon name="check" size={16} className="mt-0.5 shrink-0 text-accent" />{d}</li>)}
       </ul>
-      <p className="mt-3 text-sm text-muted">Losse modules: Google Ads Lokaal €345 en Google Ads Shop €495 eenmalige inrichting.</p>
     </details>
   );
 }
@@ -201,7 +205,7 @@ export function CompareTable() {
       </p>
       <div className="max-w-full overflow-x-auto rounded-[var(--radius-card)] border border-line" tabIndex={0} role="region" aria-label="Vergelijkingstabel groeipakketten (scrollbaar)">
         <table className="w-full min-w-[720px] border-separate border-spacing-0 text-left text-sm">
-          <caption className="sr-only">Vergelijking van Ontzorgd Lokaal, Leads, Webshop en Op Maat</caption>
+          <caption className="sr-only">Vergelijking van Lokaal Gevonden, Leads, Webshop en Op Maat</caption>
           <thead>
             <tr>
               <th scope="col" className="sticky left-0 z-10 border-b border-line bg-surface p-4 font-medium text-muted">Onderdeel</th>
