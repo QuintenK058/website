@@ -1,9 +1,9 @@
 /**
- * DIENSTEN: 6 productlijnen met subpagina's. Teksten hier aanpassen.
+ * DIENSTEN: 7 productlijnen met subpagina's. Teksten hier aanpassen.
  * Prijzen komen uit content/pricing.ts via packageIds.
  * In tekstvelden mag je eenvoudige HTML-links gebruiken: <a href="/...">.
  */
-export type LineId = 'websites' | 'webshops' | 'onderhoud' | 'vindbaarheid' | 'advertenties' | 'ai';
+export type LineId = 'websites' | 'webshops' | 'onderhoud' | 'vindbaarheid' | 'advertenties' | 'ai' | 'consultancy';
 
 export type QA = { q: string; a: string };
 export type Item = { title: string; text: string };
@@ -26,7 +26,7 @@ export type Line = {
   index: string; // [01]
   name: string;
   short: string;
-  icon: 'web' | 'shop' | 'shield' | 'search' | 'ads' | 'ai';
+  icon: 'web' | 'shop' | 'shield' | 'search' | 'ads' | 'ai' | 'consult';
   headline: [string, string]; // gepaarde kop
   seoTitle: string;
   description: string;
@@ -40,6 +40,8 @@ export type Line = {
   /** "Zit in": groeipakketten waarin deze dienst zit */
   inBundles: string[];
   inLabel?: string;
+  /** Tekst als de dienst in geen enkel groeipakket zit */
+  inText?: string;
   faq: QA[];
   subpages: SubPage[];
   relatedBranches: string[];
@@ -594,8 +596,8 @@ export const lines: Line[] = [
     fromId: 'ai-kennismaking',
     inBundles: ['ontzorgd-leads'],
     inLabel: 'AI-teamworkshop zit in',
-    name: 'AI & advies',
-    short: 'AI-workshops, implementatie, chatbots en automatisering, plus strategie en sparring.',
+    name: 'AI',
+    short: 'AI-workshops, implementatie, chatbots en automatisering.',
     icon: 'ai',
     headline: ['Van losse proefjes.', 'Naar veilig, gemeten AI.'],
     seoTitle: 'AI-workshops en AI-implementatie voor mkb in Friesland',
@@ -702,25 +704,127 @@ export const lines: Line[] = [
           { q: 'Wie onderhoudt de workflow?', a: 'Met <a href="/diensten/ai/implementatie">AI-Partner</a> onderhouden wij hem. Je kunt hem ook zelf beheren.' },
         ],
       },
+    ],
+  },
+  {
+    id: 'consultancy',
+    index: '07',
+    fromId: 'consultancy-wekelijks',
+    inBundles: [],
+    inText: 'Los af te nemen · ook naast een groeipakket',
+    name: 'Consultancy',
+    short: 'Je houdt het in huis. Een specialist brengt richting, expertise en een plan van aanpak.',
+    icon: 'consult',
+    headline: ['Jullie voeren uit.', 'Wij brengen richting.'],
+    seoTitle: 'E-commerce en marketing consultancy: wekelijks of per maand een specialist',
+    description: 'Consultancy voor bedrijven die het in huis houden: elke week een uur (€595/mnd), 8 uur per maand (€995/mnd), een compleet plan van aanpak (vanaf €1.495) of Groeistrategie (vanaf €1.250/mnd). Excl. btw.',
+    intro: 'Je wilt niet uitbesteden. Je hebt een eigen marketeer, webshopteam of doet het zelf. Wat je mist, is iemand die het vak kent, de valkuilen al eens gezien heeft en zegt wat eerst moet. Wekelijks een uur, of maandelijks een aantal uren. Met een plan van aanpak dat je team zelf kan uitvoeren. De kennis blijft bij jou.',
+    problems: [
+      'Je team is druk, maar niemand weet zeker of het de goede dingen doet.',
+      'Je bureau of freelancer stuurt rapporten die je niet kunt beoordelen.',
+      'Er liggen tien ideeën, maar geen plan en geen volgorde.',
+      'Een fulltime e-commerce- of marketingmanager is te zwaar voor je bedrijf.',
+    ],
+    approach: [
+      { title: 'Intake', text: 'Waar sta je, wat wil je bereiken, en wie doet wat in je team?' },
+      { title: 'Analyse', text: 'Data, kanalen, site of webshop, marges. We kijken waar de groei en de lekken zitten.' },
+      { title: 'Plan van aanpak', text: 'Doelen, prioriteiten, een roadmap, KPI\'s en een taakverdeling. Concreet genoeg om morgen te beginnen.' },
+      { title: 'Begeleiding', text: 'Wekelijks of maandelijks: meekijken, bijsturen, vragen beantwoorden. Jouw team voert uit.' },
+    ],
+    outcomes: ['Een plan dat je team zelf kan uitvoeren', 'Duidelijkheid: wat eerst, wat later, wat niet', 'De kennis blijft in huis', 'Eén vast aanspreekpunt met e-commerce- en B2B-ervaring'],
+    packageIds: ['consultancy-wekelijks', 'consultancy-maanduren', 'groeistrategie', 'strategiesessie', 'plan-van-aanpak'],
+    faq: [
+      { q: 'Wat is het verschil met een groeipakket?', a: 'Bij een groeipakket voeren wij het werk uit. Bij consultancy doet je eigen team het, en brengen wij de richting, de kennis en het plan. Wil je toch dat wij het doen? Kies dan een <a href="/pakketten#maandelijks">groeipakket</a>.' },
+      { q: 'Waar kunnen jullie bij helpen?', a: 'Webshops (Shopify, WooCommerce en Magento), SEO en GEO, Google Ads en Meta Ads, conversie, e-mailmarketing, data en tracking, AI in je werkprocessen, en het aansturen van bureaus en freelancers. Met de nadruk op B2B en B2B/B2C-webshops.' },
+      { q: 'Wekelijks of maanduren: wat past bij mij?', a: 'Wil je een vast ritme en een sparringpartner, kies dan Consultancy Wekelijks (elke week 1 uur). Wil je ook dat we meekijken in je accounts, je team inwerken of briefings schrijven voor je bureau, kies dan Consultancy Maanduren (8 uur per maand, vrij in te zetten).' },
+      { q: 'Moet ik met een plan van aanpak beginnen?', a: 'Niet verplicht, wel aan te raden als er nog geen plan ligt. Bij Groeistrategie zit het plan van aanpak in de eerste maand inbegrepen.' },
+      { q: 'Hoe lang zit ik vast?', a: 'Doorlopende consultancy loopt minimaal 3 maanden, daarna maandelijks opzegbaar. Een strategiesessie of plan van aanpak is eenmalig.' },
+      { q: 'Is dit online of op locatie?', a: 'Allebei. Online waar het kan, op locatie waar het helpt. In Friesland en Groningen kom ik gewoon langs.' },
+    ],
+    relatedBranches: ['webshops', 'zakelijke-dienstverlening'],
+    relatedArticles: [],
+    serviceType: 'E-commerce- en marketingconsultancy',
+    subpages: [
       {
-        slug: 'strategie-en-sparring',
-        name: 'Strategie & sparring',
-        title: 'Strategie & sparring: jij doet het, wij denken mee',
-        seoTitle: 'E-commerce en marketing sparring: strategiesessie €195, Sparring €595/mnd',
-        description: 'Advies van een e-commercespecialist met B2B-ervaring: strategiesessie €195, Sparring €595 per maand (4 sessies), Groeistrategie vanaf €1.250 per maand. Excl. btw.',
-        intro: 'Voor bedrijven die zelf uitvoeren, maar een ervaren sparringpartner missen. Over campagnes, SEO, conversie, data en strategie, met de nadruk op B2B. Uitvoering zit er niet in. Wil je dat wij het doen? Kies een groeipakket.',
+        slug: 'wekelijkse-sparring',
+        name: 'Wekelijkse sparring',
+        title: 'Consultancy Wekelijks: elke week een uur met een specialist',
+        seoTitle: 'Wekelijkse e-commerce- en marketingsparring: €595 per maand',
+        description: 'Elke week 1 uur met een e-commerce- en marketingspecialist, online of op locatie. Review van campagnes, SEO, webshop en cijfers, met een actielijst. €595 per maand excl. btw.',
+        intro: 'Een vast uur per week waarin we samen kijken naar wat er gebeurt en wat er moet gebeuren. Jij of je team voert uit, wij houden de lijn vast.',
         points: [
-          { title: 'Strategiesessie', text: 'Eén uur, voorbereid met jouw data, met een actielijst achteraf.' },
-          { title: 'Sparring', text: 'Vier sessies per maand: campagnes, SEO en cijfers, met een WhatsApp-lijn tussendoor.' },
-          { title: 'Groeistrategie', text: 'Analyse van data, kanalen en marges, een kwartaalplan met KPI\'s en wekelijkse begeleiding.' },
+          { title: 'Vast ritme', text: 'Elke week 1 uur, op een vaste dag. Online of op locatie.' },
+          { title: 'Review', text: 'Campagnes, SEO, webshop en cijfers: wat werkt, wat niet, en waarom.' },
+          { title: 'Actielijst', text: 'Na elke sessie weet je team wat het deze week doet.' },
+          { title: 'Tussendoor', text: 'Een WhatsApp-lijn voor vragen die niet tot volgende week kunnen wachten.' },
+        ],
+        forWho: ['Bedrijven met een eigen marketeer of webshopteam', 'Ondernemers die zelf marketing doen', 'Teams die een bureau willen leren aansturen'],
+        packageIds: ['consultancy-wekelijks', 'strategiesessie'],
+        faq: [
+          { q: 'Wat als ik een week oversla?', a: 'Dan schuiven we het uur door binnen dezelfde maand.' },
+          { q: 'Hoe lang loopt het?', a: 'Minimaal 3 maanden, daarna maandelijks opzegbaar.' },
+        ],
+      },
+      {
+        slug: 'maanduren',
+        name: 'Maanduren',
+        title: 'Consultancy Maanduren: 8 uur per maand, vrij in te zetten',
+        seoTitle: 'Consultancy per maand: 8 uur specialist voor €995',
+        description: '8 uur per maand een e-commerce- en marketingspecialist: sessies, reviews in je accounts, je team inwerken, briefings voor je bureau. €995 per maand excl. btw.',
+        intro: 'Meer dan een wekelijks gesprek. Een specialist die meekijkt in je accounts, je team op weg helpt en meedenkt over de grote keuzes. Jij bepaalt waar de uren heen gaan.',
+        points: [
+          { title: '8 uur per maand', text: 'Vrij te verdelen: één dagdeel per week, of een paar dagen als het druk is.' },
+          { title: 'Meekijken', text: 'In Google Ads, Meta, Analytics en je webshop. Met concrete verbeterpunten.' },
+          { title: 'Je team op weg', text: 'Uitleg, inwerken en meelopen, zodat de kennis in huis blijft.' },
+          { title: 'Bureaus aansturen', text: 'Briefings schrijven en rapporten beoordelen van je bureau of freelancers.' },
+        ],
+        forWho: ['Webshops met een eigen team', 'B2B-bedrijven die online willen groeien', 'Bedrijven die een bureau inhuren en grip willen houden'],
+        packageIds: ['consultancy-maanduren', 'consultancy-wekelijks'],
+        faq: [
+          { q: 'Wat als ik meer uren nodig heb?', a: 'Extra uren kosten €125 per uur. Je krijgt elke maand een urenoverzicht.' },
+          { q: 'Schuiven ongebruikte uren door?', a: 'Ongebruikte uren schuiven één maand door.' },
+        ],
+      },
+      {
+        slug: 'plan-van-aanpak',
+        name: 'Plan van aanpak',
+        title: 'Plan van aanpak: een compleet plan voor je eigen team',
+        seoTitle: 'Online plan van aanpak voor je webshop of marketing: vanaf €1.495',
+        description: 'Analyse van data, kanalen, site en team, en een compleet plan van aanpak: doelen, prioriteiten, roadmap voor 12 maanden, KPI\'s en taakverdeling. Vanaf €1.495 eenmalig excl. btw.',
+        intro: 'Geen dik rapport voor in de la, maar een plan dat je team morgen kan oppakken. Wat moet er gebeuren, in welke volgorde, door wie, met welk budget, en hoe meet je of het werkt?',
+        points: [
+          { title: 'Analyse', text: 'Data, kanalen, site of webshop, marges en de mensen die het moeten doen.' },
+          { title: 'Roadmap', text: 'Doelen en prioriteiten voor 12 maanden, uitgewerkt per kwartaal.' },
+          { title: 'KPI\'s en meetplan', text: 'Wat meet je, waar, en wanneer is iets een succes?' },
+          { title: 'Taakverdeling', text: 'Wie doet wat, welke tools zijn nodig, en wat kost het.' },
+          { title: 'Overdracht', text: 'Een sessie met je team, en daarna 30 dagen vragen stellen via WhatsApp.' },
+        ],
+        forWho: ['Bedrijven die willen groeien maar geen plan hebben', 'Nieuwe marketeers of webshopmanagers die een vliegende start willen', 'Directies die richting willen geven aan hun team'],
+        packageIds: ['plan-van-aanpak', 'strategiesessie'],
+        faq: [
+          { q: 'Hoe lang duurt het?', a: 'TODO: levertijd plan van aanpak.' },
+          { q: 'Kunnen jullie het plan ook uitvoeren?', a: 'Ja. Dan kies je een <a href="/pakketten#maandelijks">groeipakket</a>. Wil je zelf uitvoeren met begeleiding, kies dan Consultancy Wekelijks of Maanduren.' },
+        ],
+      },
+      {
+        slug: 'groeistrategie',
+        name: 'Groeistrategie',
+        title: 'Groeistrategie: je externe e-commerce- en marketingmanager',
+        seoTitle: 'Externe e-commerce- en marketingmanager: Groeistrategie vanaf €1.250 per maand',
+        description: 'Plan van aanpak, wekelijkse begeleiding, maandelijkse KPI-review en een kwartaalplan. Je externe e-commerce- en marketingmanager, vanaf €1.250 per maand excl. btw.',
+        intro: 'Richting en regie, zonder een fulltime manager aan te nemen. We maken het plan, sturen elke maand bij en schuiven aan bij overleg met je bureaus en leveranciers. Je eigen team voert uit.',
+        points: [
+          { title: 'Plan van aanpak', text: 'In de eerste maand inbegrepen.' },
+          { title: 'Ritme', text: 'Wekelijks 1 uur, en maandelijks een dagdeel met je team.' },
+          { title: 'KPI-review', text: 'Elke maand: liggen we op koers, en wat sturen we bij?' },
+          { title: 'Kwartaalplan', text: 'Elk kwartaal een nieuw plan en een review van het vorige.' },
           { title: 'B2B-ervaring', text: 'Bij een B2B/B2C-webshop groeide de omzet in 11 maanden met 75%. Die ervaring breng ik aan tafel.' },
         ],
-        forWho: ['Bedrijven met een eigen marketeer of webshopteam', 'B2B-webshops en groothandels', 'Ondernemers die zelf marketing doen'],
-        packageIds: ['strategiesessie', 'sparring', 'groeistrategie'],
+        forWho: ['B2B-webshops en groothandels', 'Bedrijven met een team maar zonder e-commercemanager', 'Directies die grip willen op online groei'],
+        packageIds: ['groeistrategie', 'plan-van-aanpak'],
         faq: [
-          { q: 'Zit uitvoering erin?', a: 'Nee. Wil je dat wij het doen? Kies dan een groeipakket, zoals <a href="/pakketten#maandelijks">Ontzorgd Leads of Ontzorgd Webshop</a>.' },
-          { q: 'Is dit ook voor B2B?', a: 'Juist. Zakelijke accounts, nettoprijzen en herhaalorders vragen een andere aanpak dan B2C. Daar ligt mijn specialisatie.' },
-          { q: 'Hoe lang loopt Sparring?', a: 'Minimaal 3 maanden, daarna maandelijks opzegbaar.' },
+          { q: 'Waarom "vanaf"?', a: 'De prijs hangt af van het aantal kanalen en hoe vaak we met je team aan tafel zitten. Je krijgt vooraf een vaste maandprijs.' },
+          { q: 'Hoe lang loopt het?', a: 'Minimaal 3 maanden, daarna maandelijks opzegbaar.' },
         ],
       },
     ],

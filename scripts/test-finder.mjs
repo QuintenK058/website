@@ -16,7 +16,8 @@ const must = [
   [{ have: 'webshop', goal: 'verkopen', involve: 'niets' }, 'ontzorgd-webshop'],
   [{ have: 'geen', goal: 'gevonden', involve: 'niets' }, 'web-start'],
   [{ have: 'website', goal: 'ai', involve: 'niets' }, 'ai-teamworkshop'],
-  [{ have: 'website', goal: 'aanvragen', involve: 'zelf' }, 'strategiesessie'],
+  [{ have: 'website', goal: 'aanvragen', involve: 'zelf' }, 'plan-van-aanpak'],
+  [{ have: 'webshop', goal: 'verkopen', involve: 'zelf' }, 'consultancy-wekelijks'],
 ];
 for (const [a, want] of must) { const got = recommend(a).primary; if (got !== want) { fail++; console.error('Verwacht', want, 'kreeg', got, a); } }
 for (const a of allCombos()) { const r = recommend(a); const name = packages.find((x) => x.id === r.primary)?.name ?? ''; if (!contactOptionFor(name)) { fail++; console.error('Geen contactoptie voor', r.primary); } }

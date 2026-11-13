@@ -99,17 +99,26 @@ export default async function LinePage({ params }: { params: Promise<{ line: str
       )}
 
       {/* In welke pakketten zit deze dienst? */}
-      <Section labelledby="bundle-title">
-        <SectionHead label={lineInBundles(l)} title={['Liever alles in één pakket?', 'Dan zit dit er al in.']} id="bundle-title" />
-        <div className="grid items-stretch gap-4 lg:grid-cols-3">{l.inBundles.filter((id) => id !== 'ontzorgd-op-maat').map((id) => <GroeiCard key={id} p={pkg(id)} />)}</div>
-        <p className="mt-6 text-muted">Meer kanalen of B2B? Bekijk <Link href="/pakketten#ontzorgd-op-maat" className="text-accent underline underline-offset-4">Ontzorgd Op Maat</Link>.</p>
-      </Section>
+      {l.inBundles.length > 0 ? (
+        <Section labelledby="bundle-title">
+          <SectionHead label={lineInBundles(l)} title={['Liever alles in één pakket?', 'Dan zit dit er al in.']} id="bundle-title" />
+          <div className="grid items-stretch gap-4 lg:grid-cols-3">{l.inBundles.filter((id) => id !== 'ontzorgd-op-maat').map((id) => <GroeiCard key={id} p={pkg(id)} />)}</div>
+          <p className="mt-6 text-muted">Meer kanalen of B2B? Bekijk <Link href="/pakketten#ontzorgd-op-maat" className="text-accent underline underline-offset-4">Ontzorgd Op Maat</Link>.</p>
+        </Section>
+      ) : null}
 
       {/* Losse prijzen */}
       <Section labelledby="pp-title">
         <SectionHead label="Prijzen" title={['Los te bestellen.', 'Vaste prijs.']} id="pp-title" />
         <PackageGrid ids={l.packageIds} />
       </Section>
+
+      {l.id === 'consultancy' && (
+        <Section labelledby="uitbesteden-title">
+          <SectionHead label="Toch liever uitbesteden?" title={['Wil je dat wij het uitvoeren?', 'Kies een groeipakket.']} id="uitbesteden-title" />
+          <div className="grid items-stretch gap-4 lg:grid-cols-3">{['ontzorgd-lokaal', 'ontzorgd-leads', 'ontzorgd-webshop'].map((id) => <GroeiCard key={id} p={pkg(id)} />)}</div>
+        </Section>
+      )}
 
       {cases.length > 0 && (
         <Section labelledby="c-title">

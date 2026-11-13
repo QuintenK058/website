@@ -12,7 +12,7 @@ export type Advice = { primary: string; extra?: string; why: string; note?: stri
 export const questions = [
   { key: 'have', q: 'Wat heb je nu?', options: [{ v: 'geen', l: 'Geen website' }, { v: 'website', l: 'Een website' }, { v: 'webshop', l: 'Een webshop' }] },
   { key: 'goal', q: 'Wat wil je vooral?', options: [{ v: 'gevonden', l: 'Gevonden worden' }, { v: 'aanvragen', l: 'Meer aanvragen' }, { v: 'verkopen', l: 'Meer verkopen' }, { v: 'techniek', l: 'Minder gedoe met techniek' }, { v: 'ai', l: 'Iets met AI' }] },
-  { key: 'involve', q: 'Hoeveel wil je zelf doen?', options: [{ v: 'niets', l: 'Niets, regel het maar' }, { v: 'meedenken', l: 'Ik wil meedenken' }, { v: 'zelf', l: 'Ik doe het zelf, help me op weg' }] },
+  { key: 'involve', q: 'Hoeveel wil je zelf doen?', options: [{ v: 'niets', l: 'Niets, regel het maar' }, { v: 'meedenken', l: 'Ik wil meedenken' }, { v: 'zelf', l: 'Ons eigen team doet het, ik zoek een specialist' }] },
 ] as const;
 
 type Rule = { when: (a: Answers) => boolean; advice: (a: Answers) => Advice };
@@ -21,14 +21,14 @@ export const rules: Rule[] = [
   // AI wint altijd
   { when: (a) => a.goal === 'ai', advice: () => ({ primary: 'ai-teamworkshop', extra: 'ai-implementatie', why: 'Begin met veilig leren werken met AI, met een dossier. Daarna bouwen we één toepassing die tijd oplevert.' }) },
   // Zelf doen → advies
-  { when: (a) => a.involve === 'zelf' && a.have === 'webshop', advice: () => ({ primary: 'sparring', extra: 'strategiesessie', why: 'Jij voert uit, wij kijken elke week mee naar je shop, campagnes en cijfers.' }) },
-  { when: (a) => a.involve === 'zelf', advice: () => ({ primary: 'strategiesessie', extra: 'sparring', why: 'Eén goed voorbereide sessie met een actielijst. Wil je doorlopend sparren, dan kies je Sparring.' }) },
+  { when: (a) => a.involve === 'zelf' && a.have === 'webshop', advice: () => ({ primary: 'consultancy-wekelijks', extra: 'plan-van-aanpak', why: 'Jij voert uit, wij kijken elke week mee naar je shop, campagnes en cijfers. Met een plan van aanpak weet je team precies wat te doen.' }) },
+  { when: (a) => a.involve === 'zelf', advice: () => ({ primary: 'plan-van-aanpak', extra: 'consultancy-wekelijks', why: 'Een compleet plan dat je eigen team kan uitvoeren. Wil je daarna elke week een specialist erbij, kies dan Consultancy Wekelijks.' }) },
   // Geen website
   { when: (a) => a.have === 'geen' && a.goal === 'verkopen', advice: () => ({ primary: 'shop-start', extra: 'ontzorgd-webshop', why: 'Eerst een webshop die kan verkopen. Daarna zorgen we dat er bezoekers komen.' }) },
   { when: (a) => a.have === 'geen', advice: () => ({ primary: 'web-start', extra: 'ontzorgd-lokaal', why: 'Een professionele site, en daarna onderhoud en vindbaarheid in je regio.', note: 'Kies je Ontzorgd Lokaal voor 12 maanden, dan kost Web Start €595 in plaats van €1.195.' }) },
   // Webshop
   { when: (a) => a.have === 'webshop' && a.goal === 'techniek', advice: () => ({ primary: 'zorg-webshop', extra: 'development-uren', why: 'Je shop veilig en actueel, met wekelijkse checkout-check. Verbeteringen via development-uren.' }) },
-  { when: (a) => a.have === 'webshop' && a.involve === 'meedenken', advice: () => ({ primary: 'ontzorgd-webshop', extra: 'sparring', why: 'Wij doen ads, e-mail en conversie. Met Sparring denk je elke week mee.' }) },
+  { when: (a) => a.have === 'webshop' && a.involve === 'meedenken', advice: () => ({ primary: 'ontzorgd-webshop', extra: 'strategiesessie', why: 'Wij doen ads, e-mail en conversie. Met een strategiesessie bepalen we samen de koers.' }) },
   { when: (a) => a.have === 'webshop', advice: () => ({ primary: 'ontzorgd-webshop', extra: 'meta-ads-creatives', why: 'Meta Ads, Google Shopping, e-mailflows en een maandelijkse CRO-review, met je shop in beheer.' }) },
   // Website
   { when: (a) => a.have === 'website' && a.goal === 'techniek', advice: () => ({ primary: 'zorg-plus', extra: 'website-audit', why: 'Hosting, updates, back-ups en elke maand een uur wijzigingen. Een audit laat zien wat er beter kan.' }) },
@@ -56,5 +56,5 @@ export const finderSummary: { when: string; id: string }[] = [
   { when: 'Je hebt nog geen website', id: 'web-start' },
   { when: 'Je wilt minder gedoe met de techniek', id: 'zorg-plus' },
   { when: 'Je wilt iets met AI', id: 'ai-teamworkshop' },
-  { when: 'Je doet het zelf en wilt iemand die meedenkt', id: 'sparring' },
+  { when: 'Je houdt het in huis en wilt een specialist die meedenkt', id: 'consultancy-wekelijks' },
 ];

@@ -130,7 +130,7 @@ function offerLd(p: Pkg) {
 }
 
 export function offerCatalogLd() {
-  const groups: [string, Pkg['kind']][] = [['Basis', 'basis'], ['Groeipakketten', 'groei'], ['Modules', 'module'], ['Eenmalige projecten', 'project'], ['AI & workshops', 'ai'], ['Advies & sparring', 'advies']];
+  const groups: [string, Pkg['kind']][] = [['Basis', 'basis'], ['Groeipakketten', 'groei'], ['Modules', 'module'], ['Eenmalige projecten', 'project'], ['AI & workshops', 'ai'], ['Consultancy', 'advies']];
   return {
     '@type': 'OfferCatalog',
     '@id': `${siteConfig.url}/pakketten#catalog`,

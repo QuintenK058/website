@@ -17,7 +17,7 @@ export const metadata: Metadata = pageMeta({ title, description, path: '/werkwij
 const faq = [
   { q: 'Hoe snel kunnen we starten?', a: 'TODO: gebruikelijke starttermijn na akkoord.' },
   { q: 'Wat moet ik zelf aanleveren?', a: 'Informatie over je bedrijf en klanten, eventueel foto\'s en je logo, en toegang tot bestaande accounts. Teksten schrijven we op basis van een gesprek.' },
-  { q: 'Hoe vaak hebben we contact?', a: 'Dat hangt af van je pakket: maandelijks een rapport, per kwartaal een gesprek, of elke maand een sessie bij Sparring en Groeistrategie. Tussendoor ben ik bereikbaar.' },
+  { q: 'Hoe vaak hebben we contact?', a: 'Dat hangt af van je pakket: maandelijks een rapport, per kwartaal een gesprek, of elke week een sessie bij consultancy. Tussendoor ben ik bereikbaar.' },
   { q: 'Wat als het niet bevalt?', a: 'Na 3 maanden zeg je maandelijks op, en je neemt alles mee. Niet tevreden? Dan krijg je je geld terug. TODO: voorwaarden kort samenvatten.' },
 ];
 

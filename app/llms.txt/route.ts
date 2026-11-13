@@ -24,7 +24,7 @@ export function GET() {
   L.push(`- Gratis Online Check (website, beveiliging/PHP, Bedrijfsprofiel, AI-zichtbaarheid; 3 verbeterpunten binnen 2 werkdagen): ${u('/online-check')}`, `- Contact: ${u('/contact')}`, '');
 
   L.push('## Pakketten', '', 'Principe: eerst je basis, dan je groei. Losse projecten en AI ernaast. Overal vaste prijzen.', '');
-  const groups: [string, Parameters<typeof byKind>[0]][] = [['Basis (maandelijks)', 'basis'], ['Groeipakketten (basis inbegrepen, inrichting inbegrepen)', 'groei'], ['Losse modules (maandelijks)', 'module'], ['Eenmalige projecten', 'project'], ['AI & workshops', 'ai'], ['Advies & sparring', 'advies']];
+  const groups: [string, Parameters<typeof byKind>[0]][] = [['Basis (maandelijks)', 'basis'], ['Groeipakketten (basis inbegrepen, inrichting inbegrepen)', 'groei'], ['Losse modules (maandelijks)', 'module'], ['Eenmalige projecten', 'project'], ['AI & workshops', 'ai'], ['Consultancy (jij voert uit, wij brengen richting)', 'advies']];
   const clean = (t: string) => t.replace(/\s*\(TODO[^)]*\)/g, '');
   for (const [title, kind] of groups) {
     L.push(`### ${title}`, '');

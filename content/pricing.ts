@@ -8,7 +8,7 @@
  *   module  → losse maandmodules (calculator)
  *   project → eenmalige projecten
  *   ai      → AI & workshops
- *   advies  → advies & sparring
+ *   advies  → consultancy (jij voert uit, wij brengen richting en expertise)
  *
  * proposal: true = voorstelprijs, nog te bevestigen.
  */
@@ -33,7 +33,7 @@ export type Pkg = {
   adBudget?: string;
   /** levertijd voor projecten */
   delivery?: string;
-  group?: 'websites' | 'webshops' | 'checks' | 'leren' | 'toepassen' | 'volhouden';
+  group?: 'websites' | 'webshops' | 'checks' | 'leren' | 'toepassen' | 'volhouden' | 'doorlopend' | 'eenmalig';
   recommended?: boolean;
   proposal?: boolean;
 };
@@ -133,10 +133,47 @@ export const packages: Pkg[] = [
   { id: 'ai-automatisering', name: 'AI-Automatisering', kind: 'ai', group: 'toepassen', summary: 'Eén workflow (n8n of Make) die werk uit handen neemt.', includes: ['Bijv. leadopvolging, offertes, mail-triage of productteksten'], price: { amount: 1750, from: true, unit: 'eenmalig', extra: 'per workflow' } },
   { id: 'ai-implementatie', name: 'AI Implementatie', kind: 'ai', group: 'toepassen', summary: 'Quickscan plus één chatbot of workflow, gebouwd, getest en na 30 dagen gemeten.', includes: ['AI-Quickscan', 'Eén chatbot of workflow', 'Meting na 30 dagen'], price: { amount: 1995, from: true, unit: 'eenmalig' }, priceNote: 'Je bespaart tot €550 t.o.v. los.' },
 
-  /* ---------------- Advies & sparring ---------------- */
-  { id: 'strategiesessie', name: 'Strategiesessie', kind: 'advies', proposal: true, summary: '1 uur, online of op locatie, voorbereid met jouw data.', includes: ['Voorbereid met jouw data', 'Actielijst achteraf'], price: { amount: 195, unit: 'sessie' } },
-  { id: 'sparring', name: 'Sparring', kind: 'advies', proposal: true, summary: '4 sessies van 1 uur per maand, met een WhatsApp-lijn tussendoor.', includes: ['4 sessies van 1 uur per maand', 'Review van campagnes, SEO en cijfers', 'WhatsApp-lijn tussendoor'], price: { amount: 595, unit: 'mnd' } },
-  { id: 'groeistrategie', name: 'Groeistrategie', kind: 'advies', proposal: true, summary: 'Een kwartaalgroeiplan met KPI\'s en wekelijkse begeleiding.', includes: ['Data-, kanaal- en marge-analyse', 'Kwartaalgroeiplan met KPI\'s', 'Wekelijks 1 uur', 'Kwartaalreview'], price: { amount: 1250, from: true, unit: 'mnd' } },
+  /* ---------------- Consultancy ---------------- */
+  {
+    id: 'consultancy-wekelijks', name: 'Consultancy Wekelijks', kind: 'advies', group: 'doorlopend', proposal: true,
+    summary: 'Elke week een uur met een specialist. Jouw team voert uit.',
+    forWho: 'Je hebt een eigen marketeer of webshopteam en mist een ervaren sparringpartner.',
+    includes: ['Elke week 1 uur, online of op locatie', 'Review van campagnes, SEO, webshop en cijfers', 'Actielijst na elke sessie', 'WhatsApp-lijn tussendoor'],
+    excludes: ['Uitvoering'],
+    price: { amount: 595, unit: 'mnd' },
+  },
+  {
+    id: 'consultancy-maanduren', name: 'Consultancy Maanduren', kind: 'advies', group: 'doorlopend', proposal: true, recommended: true,
+    summary: '8 uur per maand, vrij in te zetten waar het nodig is.',
+    forWho: 'Je wilt meer dan een wekelijks gesprek: meekijken, meedenken en je team op weg helpen.',
+    includes: ['8 uur per maand, vrij te verdelen', 'Sessies, reviews en meelopen met je team', 'Briefings voor je bureau of freelancers', 'Urenoverzicht per maand', 'WhatsApp-lijn tussendoor'],
+    excludes: ['Uitvoering'],
+    priceNote: 'Meer uren nodig? €125 per uur.',
+    price: { amount: 995, unit: 'mnd' },
+  },
+  {
+    id: 'groeistrategie', name: 'Groeistrategie', kind: 'advies', group: 'doorlopend', proposal: true,
+    summary: 'Je externe e-commerce- en marketingmanager: plan, ritme en bijsturing.',
+    forWho: 'Je wilt richting en regie, maar geen fulltime manager aannemen.',
+    includes: ['Plan van aanpak in de eerste maand inbegrepen', 'Wekelijks 1 uur en maandelijks een dagdeel met je team', 'Maandelijkse KPI-review', 'Kwartaalplan en kwartaalreview', 'Aanschuiven bij overleg met bureaus en leveranciers'],
+    excludes: ['Uitvoering'],
+    price: { amount: 1250, from: true, unit: 'mnd' },
+  },
+  {
+    id: 'strategiesessie', name: 'Strategiesessie', kind: 'advies', group: 'eenmalig', proposal: true,
+    summary: 'Eén uur, voorbereid met jouw data. Achteraf een actielijst.',
+    includes: ['Vooraf: analyse van je site en cijfers', '1 uur, online of op locatie', 'Actielijst achteraf'],
+    price: { amount: 195, unit: 'sessie' },
+  },
+  {
+    id: 'plan-van-aanpak', name: 'Plan van aanpak', kind: 'advies', group: 'eenmalig', proposal: true,
+    summary: 'Een compleet plan dat je eigen team kan uitvoeren.',
+    forWho: 'Je wilt weten wat je moet doen, in welke volgorde, en wie wat doet.',
+    includes: ['Intake en analyse: data, kanalen, site, marges en team', 'Doelen, prioriteiten en een roadmap voor 12 maanden', 'KPI\'s en meetplan', 'Taakverdeling, tools en budget', 'Overdrachtssessie met je team', '30 dagen vragen stellen via WhatsApp'],
+    excludes: ['Uitvoering'],
+    delivery: 'TODO: levertijd',
+    price: { amount: 1495, from: true, unit: 'eenmalig' },
+  },
 ];
 
 export const pkg = (id: string): Pkg => {
@@ -171,10 +208,10 @@ export const tabs = [
   { id: 'maandelijks', label: 'Maandelijks ontzorgd', line: 'Wij regelen je online zaken elke maand. Jij hoeft er niet naar om te kijken.' },
   { id: 'projecten', label: 'Eenmalige projecten', line: 'Een nieuwe website, webshop of audit, voor een vaste prijs.' },
   { id: 'ai', label: 'AI & workshops', line: 'Van losse proefjes naar veilig, gemeten AI-gebruik.' },
-  { id: 'advies', label: 'Advies & sparring', line: 'Je doet het zelf, wij denken mee.' },
+  { id: 'consultancy', label: 'Consultancy', line: 'Je houdt het in huis. Wij brengen richting en expertise.' },
 ] as const;
 /** Oude deep links → nieuwe tabs */
-export const legacyHash: Record<string, string> = { ecommerce: 'maandelijks', marketing: 'maandelijks', website: 'maandelijks', consultancy: 'advies', webshop: 'maandelijks', lokaal: 'maandelijks', groei: 'maandelijks' };
+export const legacyHash: Record<string, string> = { ecommerce: 'maandelijks', marketing: 'maandelijks', website: 'maandelijks', advies: 'consultancy', sparring: 'consultancy', webshop: 'maandelijks', lokaal: 'maandelijks', groei: 'maandelijks' };
 
 export const setupLine = 'Bij groeipakketten is de inrichting inbegrepen. Losse ads-modules hebben eenmalige inrichtingskosten.';
 export const setupDetails = ['Accounts koppelen (op jouw naam)', 'Tracking: GA4, Meta Pixel en conversies', 'Campagnestructuur opzetten', 'Google Bedrijfsprofiel optimaliseren', 'De eerste rapportage'];

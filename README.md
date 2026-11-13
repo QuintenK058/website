@@ -47,7 +47,7 @@ Alles staat in `site.config.ts` en `content/`. Je hoeft geen componenten te open
 | **Bedrijfsgegevens**: naam, KvK, btw, adres, telefoon, WhatsApp, e-mail, socials, agenda-link | `site.config.ts` |
 | **Alle pakketten en prijzen** (basis, groei, modules, projecten, AI, advies), tabs, vergelijkingstabel, "Zo start je", facturatie, geld-terug, contactopties | `content/pricing.ts` |
 | **Pakketkiezer**: vragen en regels (uitkomst per antwoord) | `content/package-finder.ts` (test: `npm run test:finder`) |
-| **Diensten** (6 diensten [01]–[06] + subpagina's): teksten, FAQ, welke pakketten erbij horen | `content/services.ts` |
+| **Diensten** (7 diensten [01]–[07] + subpagina's): teksten, FAQ, welke pakketten erbij horen | `content/services.ts` |
 | **Afbeeldingen**: alle fotoplekken, alt-teksten, formaten | `content/images.ts` (zie §2b) |
 | **Cases** | `content/cases.ts` |
 | **Branches** | `content/branches.ts` |
@@ -72,11 +72,12 @@ Alles staat in `site.config.ts` en `content/`. Je hoeft geen componenten te open
 | Webshops | Shop Start vanaf €2.750 · Shop Groei vanaf €4.950 · Migratie vanaf €1.500 · Magento/maatwerk €95 per uur | eenmalig |
 | Checks & setup | Audit €395 · GEO-scan €245 · Bedrijfsprofiel-setup €245 · Koppeling vanaf €495 | eenmalig |
 | AI | AI-Chatbot €1.250 eenmalig + €129 per maand · AI Implementatie vanaf €1.995 · workshops per persoon | |
-| Advies | Strategiesessie €195 · Sparring €595 per maand · Groeistrategie vanaf €1.250 per maand | |
+| Consultancy (doorlopend) | Consultancy Wekelijks €595 (1 uur per week) · Consultancy Maanduren €995 (8 uur, extra uur €125) · Groeistrategie vanaf €1.250 | per maand |
+| Consultancy (eenmalig) | Strategiesessie €195 · Plan van aanpak vanaf €1.495 | |
 
-`/pakketten` heeft 4 tabs met deeplinks: `#maandelijks`, `#projecten`, `#ai`, `#advies`. Oude ankers (`#ecommerce`, `#webshop`, `#consultancy`, …) springen naar de juiste tab. Zonder JS staan alle vier onder elkaar.
+`/pakketten` heeft 4 tabs met deeplinks: `#maandelijks`, `#projecten`, `#ai`, `#consultancy`. Oude ankers (`#ecommerce`, `#webshop`, `#consultancy`, …) springen naar de juiste tab. Zonder JS staan alle vier onder elkaar.
 
-**Diensten en redirects** (`next.config.ts`): `/diensten/development` → `/diensten/onderhoud`, `/diensten/development/maatwerk|koppelingen` → `/diensten/onderhoud/…`, `/diensten/consultancy/*` → `/diensten/ai/strategie-en-sparring`, `/website-check` → `/online-check` (alle 301/308).
+**Diensten en redirects** (`next.config.ts`): `/diensten/development` → `/diensten/onderhoud`, `/diensten/development/maatwerk|koppelingen` → `/diensten/onderhoud/…`, `/diensten/consultancy/e-commerce|online-marketing` en `/diensten/ai/strategie-en-sparring` → `/diensten/consultancy`, `/website-check` → `/online-check` (alle 301/308).
 
 **TODO's**: alles wat met `TODO` begint is een placeholder.
 - In dev en preview zie je ze als gele markering.
@@ -245,7 +246,7 @@ Let op: link vanuit andere teksten pas naar een artikel als het gepubliceerd is.
 - [ ] Betaaltermijn facturen ("Zo start je" / facturatie)
 - [ ] Doorlooptijd inrichting (dagen) bij groeipakketten en ads-modules
 - [ ] Geld-terug-regeling bevestigen: tekst staat als voorstel in spelregels, FAQ en `content/legal/algemene-voorwaarden.md` (gemarkeerd `TODO: bevestigen`)
-- [ ] Voorstelprijzen bevestigen (`proposal: true`): Ontzorgd Op Maat, Development-uren, dev-uur €95, Koppeling, Strategiesessie, Sparring, Groeistrategie
+- [ ] Voorstelprijzen bevestigen (`proposal: true`): Ontzorgd Op Maat, Development-uren, dev-uur €95, Koppeling, alle consultancyprijzen (Wekelijks €595, Maanduren €995 + €125/uur, Groeistrategie, Strategiesessie, Plan van aanpak) en de levertijd van het plan van aanpak
 - [ ] Zorg Webshop: aantal productmutaties per maand
 
 ### Cases (`content/cases.ts`)

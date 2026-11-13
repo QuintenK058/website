@@ -9,8 +9,8 @@ const nextConfig: NextConfig = {
     return [
       { source: '/diensten/development', destination: '/diensten/onderhoud', permanent: true },
       { source: '/diensten/development/:slug(maatwerk|koppelingen)', destination: '/diensten/onderhoud/:slug', permanent: true },
-      { source: '/diensten/consultancy', destination: '/diensten/ai/strategie-en-sparring', permanent: true },
-      { source: '/diensten/consultancy/:slug*', destination: '/diensten/ai/strategie-en-sparring', permanent: true },
+      { source: '/diensten/consultancy/:slug(e-commerce|online-marketing)', destination: '/diensten/consultancy', permanent: true },
+      { source: '/diensten/ai/strategie-en-sparring', destination: '/diensten/consultancy', permanent: true },
       { source: '/website-check', destination: '/online-check', permanent: true },
     ];
   },

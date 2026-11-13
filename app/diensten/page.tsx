@@ -9,7 +9,7 @@ import { lineFromPrice, lineInBundles } from '@/lib/services-view';
 import { pageMeta } from '@/lib/seo';
 
 const title = 'Diensten: websites, webshops, onderhoud, vindbaarheid, ads en AI';
-const description = 'Zes diensten van QK Commerce Solutions: websites, webshops & e-commerce, onderhoud & development, vindbaarheid (SEO en GEO), advertenties & e-mail, en AI & advies. Met vanaf-prijzen.';
+const description = 'Zeven diensten van QK Commerce Solutions: websites, webshops & e-commerce, onderhoud & development, vindbaarheid (SEO en GEO), advertenties & e-mail, AI en consultancy. Met vanaf-prijzen.';
 export const metadata: Metadata = pageMeta({ title, description, path: '/diensten' });
 
 export default function DienstenPage() {
@@ -25,8 +25,8 @@ export default function DienstenPage() {
           </div>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
-          {lines.map((l) => (
-            <article key={l.id} className="panel panel-glow" data-reveal>
+          {lines.map((l, i) => (
+            <article key={l.id} className={`panel panel-glow ${i === lines.length - 1 && lines.length % 2 ? 'md:col-span-2' : ''}`} data-reveal>
               <div className="panel-in grid h-full content-start gap-4 p-6 md:p-7">
                 <div className="flex items-start justify-between gap-4">
                   <span className="mono-label text-[11px] text-accent">[{l.index}]</span>

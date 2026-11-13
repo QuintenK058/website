@@ -16,13 +16,16 @@ import { pageMeta, offerCatalogLd } from '@/lib/seo';
 import { showTodos } from '@/lib/todo';
 
 const title = 'Pakketten en prijzen: eerst je basis, dan je groei';
-const description = 'Vaste prijzen, vaste scope. Zorg Basis €49/mnd, Ontzorgd Lokaal €199/mnd, Ontzorgd Leads €745/mnd, Ontzorgd Webshop €1.195/mnd. Plus losse projecten, AI-workshops en sparring. Excl. btw.';
+const description = 'Vaste prijzen, vaste scope. Zorg Basis €49/mnd, Ontzorgd Lokaal €199/mnd, Ontzorgd Leads €745/mnd, Ontzorgd Webshop €1.195/mnd. Plus losse projecten, AI-workshops en consultancy. Excl. btw.';
 export const metadata: Metadata = pageMeta({ title, description, path: '/pakketten' });
+
+const consultExpertise = ['Webshops (Shopify, WooCommerce, Magento)', 'SEO en GEO', 'Google Ads', 'Meta Ads', 'Conversie (CRO)', 'E-mailmarketing', 'Data en tracking', 'AI in je processen', 'Bureaus aansturen', 'B2B-e-commerce'];
 
 const faq = [
   { q: 'Waar begin ik?', a: 'Doe de pakketkiezer bovenaan deze pagina, of de <a href="/online-check">gratis Online Check</a>. Twijfel je tussen twee pakketten? Kies het kleinste. Opschalen kan altijd.' },
   { q: 'Wat is het verschil tussen een basis en een groeipakket?', a: 'Een basis (Zorg Basis, Plus of Webshop) houdt je site of shop veilig en actueel. Een groeipakket (Ontzorgd Lokaal, Leads of Webshop) bevat een basis, en werkt daarnaast aan vindbaarheid, advertenties en conversie.' },
   { q: 'Zijn de inrichtingskosten inbegrepen?', a: 'Bij groeipakketten wel. Losse ads-modules hebben eenmalige inrichtingskosten: €345 voor Google Ads Lokaal en €495 voor Google Ads Shop.' },
+  { q: 'Wij willen het in huis houden. Kan dat?', a: 'Ja. Met <a href="/diensten/consultancy">consultancy</a> voert je eigen team uit, en brengen wij richting en expertise: elke week een uur, 8 uur per maand, of een compleet plan van aanpak.' },
   { q: 'Hoe lang zit ik vast?', a: 'Minimaal 3 maanden, daarna maandelijks opzegbaar.' },
   { q: 'Zit het advertentiebudget in de prijs?', a: 'Nee. Dat betaal je rechtstreeks aan Google of Meta, via een account op jouw naam.' },
   { q: 'Wat als ik niet tevreden ben na de eerste maand?', a: 'Laat het binnen 30 dagen weten. Dan stoppen we zonder opzegtermijn en krijg je de eerste maandfee terug. Dit geldt niet voor advertentiebudget, eenmalige projecten en workshops.' },
@@ -91,10 +94,42 @@ export default function PakkettenPage() {
         <p className="text-sm text-muted">De AI-teamworkshop zit één keer per jaar in Ontzorgd Leads. Artikel 4 van de AI Act vraagt organisaties maatregelen te nemen voor AI-geletterdheid; het dossier uit de workshop helpt je dat aantoonbaar te maken. Dit is geen juridisch advies.</p>
       </div>
     ),
-    advies: (
-      <div className="grid gap-6">
-        <div className="grid gap-4 md:grid-cols-3">{byKind('advies').map((p) => <PkgCard key={p.id} p={p} />)}</div>
-        <p className="rounded-[var(--radius-card)] border border-line p-5 text-ink-2">Uitvoering niet inbegrepen. Wil je dat wij het doen? <Link href="#maandelijks" className="font-semibold text-accent underline underline-offset-4">Kies een groeipakket</Link>.</p>
+    consultancy: (
+      <div className="grid gap-14 [&>*]:min-w-0">
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+          <div>
+            <h3 className="text-2xl font-bold md:text-3xl">Je houdt het in huis.</h3>
+            <p className="mt-3 text-ink-2">Je wilt niet uitbesteden, maar mist soms een specialist. Iemand die richting geeft, de valkuilen kent en een plan maakt dat je eigen team kan uitvoeren. Wekelijks een uur, of maandelijks een aantal uren. De kennis blijft bij jou.</p>
+          </div>
+          <div>
+            <p className="mono-label mb-3 text-[11px] text-accent">Expertise</p>
+            <ul className="flex flex-wrap gap-2">
+              {consultExpertise.map((e) => <li key={e} className="rounded-full border border-line px-3 py-1.5 text-sm text-ink-2">{e}</li>)}
+            </ul>
+          </div>
+        </div>
+        <div>
+          <p className="mono-label mb-2 text-[11px] text-accent">Doorlopend</p>
+          <h3 className="mb-6 text-2xl font-bold">Een specialist erbij, in je eigen ritme.</h3>
+          <div className="grid gap-4 md:grid-cols-3">{byGroup('doorlopend').map((p) => <PkgCard key={p.id} p={p} />)}</div>
+        </div>
+        <div>
+          <p className="mono-label mb-2 text-[11px] text-accent">Eenmalig</p>
+          <h3 className="mb-6 text-2xl font-bold">Eerst richting, dan aan de slag.</h3>
+          <div className="grid gap-4 md:grid-cols-2">{byGroup('eenmalig').map((p) => <PkgCard key={p.id} p={p} />)}</div>
+        </div>
+        <div>
+          <h3 className="mb-6 text-2xl font-bold">Zo werkt consultancy.</h3>
+          <StepLine
+            steps={[
+              { label: '01 · Intake', title: 'Intake', body: 'Waar sta je, wat wil je bereiken, en wie doet wat in je team?' },
+              { label: '02 · Analyse', title: 'Analyse', body: 'Data, kanalen, site of webshop en marges: waar zit de groei, waar lekt het?' },
+              { label: '03 · Plan', title: 'Plan van aanpak', body: 'Doelen, prioriteiten, roadmap, KPI\'s en taakverdeling. Concreet genoeg om morgen te beginnen.' },
+              { label: '04 · Begeleiding', title: 'Begeleiding', body: 'Wekelijks of maandelijks meekijken en bijsturen. Jouw team voert uit.' },
+            ]}
+          />
+        </div>
+        <p className="rounded-[var(--radius-card)] border border-line p-5 text-ink-2">Uitvoering zit niet in consultancy. Wil je dat wij het doen? <Link href="#maandelijks" className="font-semibold text-accent underline underline-offset-4">Kies een groeipakket</Link>. Meer weten? <Link href="/diensten/consultancy" className="font-semibold text-accent underline underline-offset-4">Bekijk consultancy</Link>.</p>
       </div>
     ),
   };

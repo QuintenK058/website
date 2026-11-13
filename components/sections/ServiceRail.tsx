@@ -1,6 +1,6 @@
 'use client';
 
-/** Horizontale, gepinde rail met de zes diensten. Alleen desktop; mobiel = gestapeld. */
+/** Horizontale, gepinde rail met alle diensten. Alleen desktop; mobiel = gestapeld. */
 import Link from 'next/link';
 import { useRef } from 'react';
 import gsap from 'gsap';
