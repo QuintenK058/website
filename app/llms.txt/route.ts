@@ -1,8 +1,7 @@
 /** /llms.txt: samenvatting voor AI-systemen, bij elke build opnieuw uit de content. */
 import { siteConfig } from '@/site.config';
-import { directions } from '@/content/directions';
 import { lines, lineHref, subHref } from '@/content/services';
-import { packages, formatPrice, euro, VAT_NOTE, AD_BUDGET_NOTE } from '@/content/pricing';
+import { byKind, formatPriceLong, formatExtra, VAT_NOTE, AD_BUDGET_NOTE, moneyBack } from '@/content/pricing';
 import { branches, branchHref } from '@/content/branches';
 import { cases, caseHref } from '@/content/cases';
 import { getRegions, getArticles } from '@/lib/content';
@@ -15,7 +14,7 @@ export function GET() {
   const L: string[] = [];
   L.push(`# ${siteConfig.name}`, '', `> ${siteConfig.tagline} ${siteConfig.description}`, '');
   L.push(
-    `${siteConfig.shortName} (QK) is een full-service online agency in ${siteConfig.address.city}, Friesland, opgericht door ${siteConfig.founder.name}, e-commercespecialist met de nadruk op B2B. QK werkt voor mkb zonder eigen marketingafdeling: zakelijke dienstverleners, bouw en installatie, zorg, horeca, kappers en salons, en webshops (Shopify en Magento). Kenmerken: gepubliceerde prijzen en scope, minimaal 3 maanden en daarna maandelijks opzegbaar, alle accounts op naam van de klant, elke maand een rapport van één pagina, en "niet tevreden = geld terug".`,
+    `${siteConfig.shortName} (QK) is een full-service online agency in ${siteConfig.address.city}, Friesland, opgericht door ${siteConfig.founder.name}, e-commercespecialist met de nadruk op B2B. QK werkt voor mkb zonder eigen marketingafdeling: zakelijke dienstverleners, bouw en installatie, zorg, horeca, kappers en salons, en webshops (Shopify en Magento). Kenmerken: gepubliceerde prijzen en scope, minimaal 3 maanden en daarna maandelijks opzegbaar, alle accounts op naam van de klant, elke maand een rapport van één pagina, en een niet-tevreden-geld-terugregeling na de eerste maand.`,
     '',
   );
   L.push('## Kerngegevens', '');
@@ -24,24 +23,24 @@ export function GET() {
   if (filled(siteConfig.phoneDisplay)) L.push(`- Telefoon: ${siteConfig.phoneDisplay}`);
   L.push(`- Gratis Online Check (website, beveiliging/PHP, Bedrijfsprofiel, AI-zichtbaarheid; 3 verbeterpunten binnen 2 werkdagen): ${u('/online-check')}`, `- Contact: ${u('/contact')}`, '');
 
-  L.push('## Richtingen en pakketten', '');
-  for (const d of directions) {
-    L.push(`### ${d.name}`, '', d.pitch, '');
-    for (const t of d.tiers) {
-      const price = t.monthly != null ? `${euro(t.monthly)}/mnd` : t.oneOff ?? 'op offerte';
-      L.push(`- ${t.name} (${price}): ${t.weDo.map(stripTodo).filter(Boolean).join('; ')}. Niet inbegrepen: ${t.excludes.join('; ')}.`);
+  L.push('## Pakketten', '', 'Principe: eerst je basis, dan je groei. Losse projecten en AI ernaast. Overal vaste prijzen.', '');
+  const groups: [string, Parameters<typeof byKind>[0]][] = [['Basis (maandelijks)', 'basis'], ['Groeipakketten (basis inbegrepen, inrichting inbegrepen)', 'groei'], ['Losse modules (maandelijks)', 'module'], ['Eenmalige projecten', 'project'], ['AI & workshops', 'ai'], ['Advies & sparring', 'advies']];
+  const clean = (t: string) => t.replace(/\s*\(TODO[^)]*\)/g, '');
+  for (const [title, kind] of groups) {
+    L.push(`### ${title}`, '');
+    for (const p of byKind(kind)) {
+      const extra = formatExtra(p.price);
+      L.push(`- ${p.name}: ${formatPriceLong(p.price)}${extra ? ` ${extra}` : ''}. ${p.summary} Inbegrepen: ${p.includes.map(clean).join('; ')}.${p.excludes ? ` Niet inbegrepen: ${p.excludes.join('; ')}.` : ''}${p.priceNote ? ` ${p.priceNote}` : ''}`);
     }
-    L.push(`- Details: ${u(`/pakketten#${d.id}`)}`, '');
+    L.push('');
   }
-  L.push(`${VAT_NOTE} ${AD_BUDGET_NOTE}`, '');
+  L.push(`${VAT_NOTE} ${AD_BUDGET_NOTE} Minimale looptijd maandpakketten: 3 maanden, daarna maandelijks opzegbaar. ${moneyBack.title} ${moneyBack.text}`, `Details: ${u('/pakketten')}`, '');
 
-  L.push('## Diensten en losse prijzen', '');
+  L.push('## Diensten', '');
   for (const l of lines) {
     L.push(`- [${l.name}](${u(lineHref(l.id))}): ${l.short}`);
     for (const s of l.subpages) L.push(`  - [${s.name}](${u(subHref(l.id, s.slug))})`);
   }
-  L.push('');
-  for (const p of packages) L.push(`- ${p.name}: ${formatPrice(p.price)}${p.price.setup ? ` + ${euro(p.price.setup)} setup` : ''}${p.price.extra ? ` (${p.price.extra})` : ''}. ${p.summary}`);
   L.push('');
 
   const approved = cases.filter((c) => c.approved);

@@ -2,8 +2,7 @@
  * CASES. Alleen approved: true wordt gepubliceerd (pagina, lijsten, sitemap,
  * llms.txt). Verzin geen resultaten of quotes: laat ze TODO tot je ze aanlevert.
  *
- * Screenshots: zet bestanden in /public/cases/<slug>/desktop.jpg en mobile.jpg
- * en vul de paden hieronder in.
+ * Screenshots en foto's: zie content/images.ts (public/images/cases/<slug>/).
  */
 export type Metric = { value: number; prefix?: string; suffix: string; label: string };
 export type Case = {
@@ -32,7 +31,6 @@ export type Case = {
   quote: { text: string; name: string; role?: string };
   url: string;
   urlLive: boolean;
-  screenshots: { desktop?: string; mobile?: string; alt?: string };
 };
 
 const TODO_QUOTE = { text: 'TODO: klantquote', name: 'TODO: naam', role: 'TODO: functie' };
@@ -59,7 +57,6 @@ export const cases: Case[] = [
     quote: TODO_QUOTE,
     url: 'https://miedemagroep.nl',
     urlLive: true,
-    screenshots: {},
   },
   {
     slug: 'crossing-of-limits',
@@ -82,7 +79,6 @@ export const cases: Case[] = [
     quote: TODO_QUOTE,
     url: 'https://crossingoflimits.nl',
     urlLive: true,
-    screenshots: {},
   },
   {
     slug: 'lado-bridal',
@@ -111,7 +107,6 @@ export const cases: Case[] = [
     quote: TODO_QUOTE,
     url: 'https://ladobridal.com',
     urlLive: true,
-    screenshots: {},
   },
   {
     slug: 'miedema-webshop',
@@ -140,7 +135,6 @@ export const cases: Case[] = [
     quote: TODO_QUOTE,
     url: 'https://miedemabouwmaterialen.nl',
     urlLive: true,
-    screenshots: {},
   },
   {
     slug: 'wierenga-de-graaf',
@@ -163,7 +157,6 @@ export const cases: Case[] = [
     quote: TODO_QUOTE,
     url: 'TODO: URL van het concept',
     urlLive: false,
-    screenshots: {},
   },
 ];
 

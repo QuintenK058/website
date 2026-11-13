@@ -13,7 +13,7 @@ export default function NotFound() {
         <h1 className="text-5xl font-bold md:text-7xl">Deze pagina is <span className="text-accent">offline.</span></h1>
         <p className="max-w-xl text-lg text-muted">De pagina die je zoekt bestaat niet of is verhuisd. De rest van het systeem draait gewoon.</p>
         <div className="flex flex-wrap gap-3">
-          <Link href="/" className="btn btn-primary">Terug naar home</Link>
+          <Link href="/" className="btn btn-primary">Terug naar home</Link>{' '}
           <Link href="/online-check" className="btn btn-ghost">Gratis Online Check</Link>
         </div>
         <nav aria-label="Populaire pagina's" className="pt-4">

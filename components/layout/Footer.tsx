@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Wordmark } from '@/components/ui/Monogram';
+import { BrandLogo } from '@/components/ui/BrandLogo';
 import { Icon } from '@/components/ui/Icon';
 import { Todo } from '@/components/ui/Todo';
 import { siteConfig } from '@/site.config';
@@ -27,7 +27,7 @@ export function Footer() {
     <footer className="relative border-t border-line bg-bg-2 pb-24 lg:pb-0">
       <div className="container-site grid gap-12 py-16 lg:grid-cols-[1.2fr_2fr]">
         <div className="grid content-start gap-6">
-          <Wordmark />
+          <BrandLogo />
           <p className="max-w-sm text-muted">{siteConfig.tagline} Eén partner voor web, webshops, vindbaarheid, ads en AI. Vaste prijzen, gepubliceerd.</p>
           <address className="grid gap-2 text-sm not-italic text-ink-2">
             {contact.mailHref ? <a href={contact.mailHref} className="inline-flex items-center gap-2 hover:text-accent"><Icon name="mail" size={16} />{contact.email}</a> : <Todo text={siteConfig.email} />}
@@ -36,7 +36,7 @@ export function Footer() {
             <span className="inline-flex items-start gap-2"><Icon name="pin" size={16} className="mt-1 shrink-0" />{filled(a.street) ? `${a.street}, ${a.postalCode} ${a.city}` : `Gevestigd in ${a.city}`}</span>
           </address>
           <div className="flex flex-wrap gap-2">
-            <Link href="/online-check" className="btn btn-primary btn-sm">Gratis Online Check</Link>
+            <Link href="/online-check" className="btn btn-primary btn-sm">Gratis Online Check</Link>{' '}
             <Link href="/contact" className="btn btn-ghost btn-sm">Plan een kennismaking</Link>
           </div>
           {socials.length > 0 && (
@@ -61,8 +61,7 @@ export function Footer() {
       <div className="border-t border-line">
         <div className="container-site flex flex-col gap-3 py-6 text-xs text-muted md:flex-row md:items-center md:justify-between">
           <p className="mono-label flex flex-wrap gap-x-4 gap-y-1 text-[11px]">
-            <span>© {year} {siteConfig.name}</span>
-            <span>{a.city}</span>
+            <span>© {year} {siteConfig.name} · {a.city}</span>
             {isTodo(siteConfig.kvk) ? <Todo text={siteConfig.kvk} /> : <span>KvK {siteConfig.kvk}</span>}
             {isTodo(siteConfig.btw) ? <Todo text={siteConfig.btw} /> : <span>Btw {siteConfig.btw}</span>}
           </p>

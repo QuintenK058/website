@@ -51,7 +51,7 @@ export function PageHero({ eyebrow, title, intro, crumbs, children, ctas = true 
           {children}
           {ctas === true ? (
             <div className="flex flex-wrap gap-3 pt-2">
-              <Magnetic><Link href="/online-check" className="btn btn-primary">Gratis Online Check <Icon name="arrow" size={18} /></Link></Magnetic>
+              <Magnetic><Link href="/online-check" className="btn btn-primary">Gratis Online Check <Icon name="arrow" size={18} /></Link></Magnetic>{' '}
               <Magnetic><Link href="/pakketten" className="btn btn-ghost">Bekijk pakketten</Link></Magnetic>
             </div>
           ) : ctas || null}
@@ -107,7 +107,7 @@ export function CtaBand({ title = ['Hoe staat jouw site ervoor?', 'Gratis gechec
             <SplitHeading lines={title} dimFrom={1} id="cta-title" className="max-w-4xl text-4xl leading-[0.95] font-bold md:text-7xl" />
             <p className="max-w-2xl text-lg text-muted">{text}</p>
             <div className="flex flex-wrap gap-3 pt-2">
-              <Magnetic><Link href="/online-check" className="btn btn-primary">Start de Online Check <Icon name="arrow" size={18} /></Link></Magnetic>
+              <Magnetic><Link href="/online-check" className="btn btn-primary">Start de Online Check <Icon name="arrow" size={18} /></Link></Magnetic>{' '}
               <Magnetic><Link href="/contact" className="btn btn-ghost">Plan een kennismaking</Link></Magnetic>
             </div>
           </div>

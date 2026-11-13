@@ -7,7 +7,8 @@
  * NEXT_PUBLIC_PREVIEW=true zie je ze als gele markering.
  */
 export const siteConfig = {
-  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.qkcommerce.nl').replace(/\/$/, ''),
+  /** Eén domein voor canonical, og:url, sitemap en llms.txt. */
+  url: 'https://qkcommerce.nl',
   name: 'QK Commerce Solutions B.V.',
   shortName: 'QK Commerce Solutions',
   short: 'QK',

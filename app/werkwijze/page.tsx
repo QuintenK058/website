@@ -6,6 +6,7 @@ import { HouseRules } from '@/components/sections/Packages';
 import { GovernancePanel } from '@/components/control/GovernancePanel';
 import { AgentLog } from '@/components/control/Animated';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { ImageSlot } from '@/components/ui/ImageSlot';
 import { home } from '@/content/home';
 import { pageMeta } from '@/lib/seo';
 
@@ -16,7 +17,7 @@ export const metadata: Metadata = pageMeta({ title, description, path: '/werkwij
 const faq = [
   { q: 'Hoe snel kunnen we starten?', a: 'TODO: gebruikelijke starttermijn na akkoord.' },
   { q: 'Wat moet ik zelf aanleveren?', a: 'Informatie over je bedrijf en klanten, eventueel foto\'s en je logo, en toegang tot bestaande accounts. Teksten schrijven we op basis van een gesprek.' },
-  { q: 'Hoe vaak hebben we contact?', a: 'Dat hangt af van je pakket: maandelijks een rapport, per kwartaal een gesprek, of elke week een uur bij consultancy en de Partner-pakketten. Tussendoor ben ik bereikbaar.' },
+  { q: 'Hoe vaak hebben we contact?', a: 'Dat hangt af van je pakket: maandelijks een rapport, per kwartaal een gesprek, of elke maand een sessie bij Sparring en Groeistrategie. Tussendoor ben ik bereikbaar.' },
   { q: 'Wat als het niet bevalt?', a: 'Na 3 maanden zeg je maandelijks op, en je neemt alles mee. Niet tevreden? Dan krijg je je geld terug. TODO: voorwaarden kort samenvatten.' },
 ];
 
@@ -32,6 +33,7 @@ export default function WerkwijzePage() {
         <HouseRules />
       </Section>
       <Section>
+        <div className="panel mb-8" data-reveal><div className="panel-in"><ImageSlot id="quinten-werk" sizes="100vw" /></div></div>
         <div className="grid gap-4 lg:grid-cols-2">
           <GovernancePanel />
           <AgentLog title="Een week ontzorgd · log" />

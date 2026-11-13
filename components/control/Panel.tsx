@@ -10,7 +10,7 @@ export function Panel({ title, children, demo = true, className = '', right }: {
     <div className={`panel panel-glow ${className}`} data-reveal>
       <div className="panel-in grid content-start gap-4 p-5">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <span className="mono-label text-[11px] text-muted">{title}</span>
+          <span className="mono-label text-[11px] text-muted">{title}</span>{' '}
           {right ?? (demo ? <DemoLabel /> : null)}
         </div>
         {children}

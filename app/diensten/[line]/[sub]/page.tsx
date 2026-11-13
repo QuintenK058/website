@@ -7,8 +7,8 @@ import { PackageGrid } from '@/components/sections/Packages';
 import { Related } from '@/components/sections/Related';
 import { Icon } from '@/components/ui/Icon';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { ImageSlot } from '@/components/ui/ImageSlot';
 import { lines, line, subpage, lineHref, subHref } from '@/content/services';
-import { directionForLine } from '@/content/directions';
 import { pageMeta, serviceLd } from '@/lib/seo';
 
 export const dynamicParams = false;
@@ -29,7 +29,6 @@ export default async function SubPage({ params }: { params: Promise<{ line: stri
   const s = subpage(lid, sub);
   if (!l || !s) notFound();
   const path = subHref(l.id, s.slug);
-  const dir = directionForLine(l.id);
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Diensten', href: '/diensten' }, { name: l.name, href: lineHref(l.id) }, { name: s.name, href: path }];
   const words = s.title.split(':');
   const title: [string, string] = words.length > 1 ? [`${words[0]}:`, words.slice(1).join(':').trim()] : [s.title, ''];
@@ -38,6 +37,9 @@ export default async function SubPage({ params }: { params: Promise<{ line: stri
       <JsonLd nodes={[serviceLd({ name: s.name, description: s.description, path, serviceType: l.serviceType, packageIds: s.packageIds })]} page={{ path, title: s.seoTitle, description: s.description }} />
       <PageHero eyebrow={`// ${l.name.toUpperCase()} · ${s.name.toUpperCase()}`} title={title[1] ? title : [s.title]} intro={s.intro} crumbs={crumbs} />
 
+      {l.id === 'ai' && s.slug === 'workshops' && (
+        <div className="container-site pt-12"><div className="panel" data-reveal><div className="panel-in"><ImageSlot id="quinten-workshop" sizes="100vw" /></div></div></div>
+      )}
       <Section labelledby="wd-title">
         <SectionHead label="Wat we concreet doen" title={['Dit regelen we.', 'Jij hoeft er niet naar te kijken.']} id="wd-title" />
         <div className="grid gap-4 md:grid-cols-2">
@@ -52,19 +54,17 @@ export default async function SubPage({ params }: { params: Promise<{ line: stri
           ))}
         </div>
         <div className="mt-10 flex flex-wrap items-center gap-3">
-          <span className="mono-label text-[11px] text-muted">Voor wie:</span>
-          {s.forWho.map((f) => <span key={f} className="rounded-full border border-line px-3 py-1.5 text-sm text-ink-2">{f}</span>)}
+          <span className="mono-label text-[11px] text-muted">Voor wie:</span>{' '}
+          <ul className="flex flex-wrap gap-3">{s.forWho.map((f) => <li key={f} className="rounded-full border border-line px-3 py-1.5 text-sm text-ink-2">{f}</li>)}</ul>
         </div>
       </Section>
 
       <Section labelledby="sp-title">
         <SectionHead label="Prijzen" title={['Vaste prijs.', 'Vooraf duidelijk.']} id="sp-title" />
         <PackageGrid ids={s.packageIds} />
-        {dir && (
-          <p className="mt-8 text-muted">
-            Liever alles in één pakket? Bekijk de <Link href={`/pakketten#${dir.id}`} className="font-semibold text-accent underline underline-offset-4">{dir.name}-pakketten</Link>.
-          </p>
-        )}
+        <p className="mt-8 text-muted">
+          Liever alles in één pakket? Bekijk de <Link href="/pakketten#maandelijks" className="font-semibold text-accent underline underline-offset-4">groeipakketten</Link>, met je basis erin.
+        </p>
       </Section>
 
       <Faq items={s.faq} path={path} title={[`Vragen over ${s.name.toLowerCase()}.`, 'Eerlijk beantwoord.']} />

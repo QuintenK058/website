@@ -3,15 +3,15 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { Page } from '@/components/layout/Page';
 import { PageHero, Section, SectionHead, Faq, CtaBand, Source } from '@/components/sections/Basics';
-import { PackageGrid, TierCard } from '@/components/sections/Packages';
+import { PackageGrid, GroeiCard } from '@/components/sections/Packages';
 import { CaseCard } from '@/components/sections/CaseCard';
 import { Related } from '@/components/sections/Related';
 import { Icon } from '@/components/ui/Icon';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { lines, line, lineHref, subHref } from '@/content/services';
-import { directionForLine } from '@/content/directions';
+import { lineInBundles } from '@/lib/services-view';
 import { visibleCases } from '@/content/cases';
-import { packagesIn } from '@/content/pricing';
+import { pkg } from '@/content/pricing';
 import { stats } from '@/content/stats';
 import { pageMeta, serviceLd } from '@/lib/seo';
 
@@ -29,11 +29,9 @@ export async function generateMetadata({ params }: { params: Promise<{ line: str
 export default async function LinePage({ params }: { params: Promise<{ line: string }> }) {
   const l = line((await params).line);
   if (!l) notFound();
-  const dir = directionForLine(l.id);
   const cases = visibleCases().filter((c) => c.relatedService.line === l.id).slice(0, 2);
   const path = lineHref(l.id);
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Diensten', href: '/diensten' }, { name: l.name, href: path }];
-  const ecomAll = l.id === 'webshops' ? packagesIn('ecommerce').filter((p) => !l.packageIds.includes(p.id)) : [];
   return (
     <Page>
       <JsonLd nodes={[serviceLd({ name: l.name, description: l.description, path, serviceType: l.serviceType, packageIds: l.packageIds })]} page={{ path, title: l.seoTitle, description: l.description }} />
@@ -45,7 +43,7 @@ export default async function LinePage({ params }: { params: Promise<{ line: str
           <SectionHead label="Herken je dit?" title={['Waar het vaak', 'misgaat.']} id="pr-title" />
           <ul className="grid gap-3 sm:grid-cols-2">
             {l.problems.map((p) => (
-              <li key={p} className="panel" data-reveal><div className="panel-in flex gap-3 p-5"><span className="mono-label pt-0.5 text-[10px] text-danger">ERR</span><span>{p}</span></div></li>
+              <li key={p} className="panel" data-reveal><div className="panel-in flex gap-3 p-5"><span className="mono-label pt-0.5 text-[10px] text-danger">ERR</span>{' '}<span>{p}</span></div></li>
             ))}
           </ul>
         </div>
@@ -100,26 +98,17 @@ export default async function LinePage({ params }: { params: Promise<{ line: str
         </Section>
       )}
 
-      {/* Pakketten in deze richting */}
-      {dir && (
-        <Section labelledby="dir-title">
-          <SectionHead label={`Pakketten · ${dir.name}`} title={['Liever alles in één pakket?', 'Kies een niveau.']} id="dir-title" />
-          <div className="grid gap-4 lg:grid-cols-3">{dir.tiers.map((t) => <TierCard key={t.id} t={t} direction={dir} />)}</div>
-        </Section>
-      )}
+      {/* In welke pakketten zit deze dienst? */}
+      <Section labelledby="bundle-title">
+        <SectionHead label={lineInBundles(l)} title={['Liever alles in één pakket?', 'Dan zit dit er al in.']} id="bundle-title" />
+        <div className="grid items-stretch gap-4 lg:grid-cols-3">{l.inBundles.filter((id) => id !== 'ontzorgd-op-maat').map((id) => <GroeiCard key={id} p={pkg(id)} />)}</div>
+        <p className="mt-6 text-muted">Meer kanalen of B2B? Bekijk <Link href="/pakketten#ontzorgd-op-maat" className="text-accent underline underline-offset-4">Ontzorgd Op Maat</Link>.</p>
+      </Section>
 
       {/* Losse prijzen */}
       <Section labelledby="pp-title">
         <SectionHead label="Prijzen" title={['Los te bestellen.', 'Vaste prijs.']} id="pp-title" />
         <PackageGrid ids={l.packageIds} />
-        {ecomAll.length > 0 && (
-          <div className="mt-14">
-            <h3 className="mono-label mb-4 text-ink-2">Echt alles rondom je webshop</h3>
-            <ul className="flex flex-wrap gap-2">
-              {ecomAll.map((p) => <li key={p.id}><Link href={`/pakketten#ecommerce`} className="inline-block rounded-full border border-line px-3 py-1.5 text-sm text-ink-2 hover:border-accent hover:text-accent">{p.name}</Link></li>)}
-            </ul>
-          </div>
-        )}
       </Section>
 
       {cases.length > 0 && (

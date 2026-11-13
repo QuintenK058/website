@@ -2,115 +2,165 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Page } from '@/components/layout/Page';
 import { PageHero, Section, SectionHead, Faq, CtaBand } from '@/components/sections/Basics';
-import { TierCard, PackageRow, HouseRules, CompareTable } from '@/components/sections/Packages';
-import { DirectionTabs } from '@/components/sections/DirectionTabs';
+import { PkgCard, GroeiCard, OpMaatCard, SetupNote, InvoicingNote, HouseRules, CompareTable } from '@/components/sections/Packages';
+import { Tabs } from '@/components/sections/Tabs';
 import { Calculator } from '@/components/sections/Calculator';
-import { Icon } from '@/components/ui/Icon';
+import { StepLine } from '@/components/sections/StepLine';
+import { PackageFinder } from '@/components/sections/PackageFinder';
+import { FinderFallback } from '@/components/sections/FinderFallback';
+import { Todo } from '@/components/ui/Todo';
+import { ImageSlot } from '@/components/ui/ImageSlot';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { directions } from '@/content/directions';
-import { pkg, calculatorModules, VAT_NOTE, AD_BUDGET_NOTE } from '@/content/pricing';
-import { lineHref, line } from '@/content/services';
+import { pkg, byKind, byGroup, tabs, legacyHash, startSteps, formatPriceLong, VAT_NOTE, AD_BUDGET_NOTE } from '@/content/pricing';
 import { pageMeta, offerCatalogLd } from '@/lib/seo';
+import { showTodos } from '@/lib/todo';
 
-const title = 'Pakketten en prijzen: kies je richting';
-const description = 'Kies een richting (e-commerce, online marketing, website, AI of consultancy) en daarbinnen een pakket met vaste prijs en scope. Ontzorgd vanaf €99/mnd. Alle prijzen excl. btw.';
+const title = 'Pakketten en prijzen: eerst je basis, dan je groei';
+const description = 'Vaste prijzen, vaste scope. Zorg Basis €49/mnd, Ontzorgd Lokaal €199/mnd, Ontzorgd Leads €745/mnd, Ontzorgd Webshop €1.195/mnd. Plus losse projecten, AI-workshops en sparring. Excl. btw.';
 export const metadata: Metadata = pageMeta({ title, description, path: '/pakketten' });
 
 const faq = [
-  { q: 'Hoe kies ik de juiste richting?', a: 'Heb je een webshop, kies dan E-commerce. Wil je meer aanvragen voor je dienst, kies Online marketing. Heb je vooral een (nieuwe) site nodig, kies Website & development. Twijfel je? De <a href="/online-check">gratis Online Check</a> geeft richting.' },
-  { q: 'Kan ik pakketten combineren?', a: 'Ja. Veel klanten combineren bijvoorbeeld Webshop Groei met Wekelijkse sparring, of Ontzorgd Lokaal met een AI-workshop. Combineren is altijd mogelijk.' },
-  { q: 'Zijn de setupkosten inbegrepen?', a: 'In de ontzorgpakketten wel. Neem je een module los, dan staan eventuele setupkosten erbij vermeld.' },
-  { q: 'Wat als ik niet tevreden ben?', a: 'Dan krijg je je geld terug. TODO: vat de voorwaarden in één zin samen.' },
+  { q: 'Waar begin ik?', a: 'Doe de pakketkiezer bovenaan deze pagina, of de <a href="/online-check">gratis Online Check</a>. Twijfel je tussen twee pakketten? Kies het kleinste. Opschalen kan altijd.' },
+  { q: 'Wat is het verschil tussen een basis en een groeipakket?', a: 'Een basis (Zorg Basis, Plus of Webshop) houdt je site of shop veilig en actueel. Een groeipakket (Ontzorgd Lokaal, Leads of Webshop) bevat een basis, en werkt daarnaast aan vindbaarheid, advertenties en conversie.' },
+  { q: 'Zijn de inrichtingskosten inbegrepen?', a: 'Bij groeipakketten wel. Losse ads-modules hebben eenmalige inrichtingskosten: €345 voor Google Ads Lokaal en €495 voor Google Ads Shop.' },
   { q: 'Hoe lang zit ik vast?', a: 'Minimaal 3 maanden, daarna maandelijks opzegbaar.' },
-  { q: 'Zit het advertentiebudget in de prijs?', a: 'Nee. Dat betaal je rechtstreeks aan Google, Meta of TikTok, via een account op jouw naam.' },
+  { q: 'Zit het advertentiebudget in de prijs?', a: 'Nee. Dat betaal je rechtstreeks aan Google of Meta, via een account op jouw naam.' },
+  { q: 'Wat als ik niet tevreden ben na de eerste maand?', a: 'Laat het binnen 30 dagen weten. Dan stoppen we zonder opzegtermijn en krijg je de eerste maandfee terug. Dit geldt niet voor advertentiebudget, eenmalige projecten en workshops.' },
 ];
 
 export default function PakkettenPage() {
-  const tabs = directions.map((d) => ({ id: d.id, label: d.name, mono: d.mono, index: d.index }));
-  const panels = Object.fromEntries(
-    directions.map((d) => [
-      d.id,
-      <div key={d.id} className="grid gap-12">
-        <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-end">
-          <div>
-            <p className="mono-label text-[11px] text-accent">[{d.index}] {d.mono}</p>
-            <h2 className="mt-3 text-4xl leading-[0.98] font-bold md:text-5xl">{d.headline[0]} <span className="dim">{d.headline[1]}</span></h2>
-            <p className="mt-4 max-w-2xl text-lg text-muted">{d.pitch}</p>
-          </div>
-          <ul className="flex flex-wrap gap-2 lg:justify-end">
-            {d.forWho.map((f) => <li key={f} className="rounded-full border border-line px-3 py-1.5 text-sm text-ink-2">{f}</li>)}
+  const bases = byKind('basis');
+  const groei = ['ontzorgd-lokaal', 'ontzorgd-leads', 'ontzorgd-webshop'].map(pkg);
+  const modules = byKind('module');
+  const calcBases = bases.map((p) => ({ id: p.id, name: p.name, monthly: p.price.amount }));
+  const calcModules = modules.map((p) => ({ id: p.id, name: p.name, monthly: p.price.amount, setup: p.price.setup }));
+
+  const panels = {
+    maandelijks: (
+      <div className="grid gap-16 [&>*]:min-w-0">
+        <div>
+          <p className="mono-label mb-2 text-[11px] text-accent">Stap 1</p>
+          <h3 className="text-2xl font-bold md:text-3xl">Kies je basis.</h3>
+          <p className="mt-2 mb-6 text-muted">Elke site of webshop die wij beheren, heeft er één nodig.</p>
+          <div className="grid gap-4 md:grid-cols-3">{bases.map((p) => <PkgCard key={p.id} p={p} />)}</div>
+        </div>
+        <div>
+          <p className="mono-label mb-2 text-[11px] text-accent">Stap 2</p>
+          <h3 className="text-2xl font-bold md:text-3xl">Kies je groeipakket.</h3>
+          <p className="mt-2 mb-8 text-muted">Hierin zit je basis al.</p>
+          <div className="grid items-stretch gap-4 lg:grid-cols-3">{groei.map((p) => <GroeiCard key={p.id} p={p} />)}</div>
+          <div className="mt-4"><OpMaatCard /></div>
+          <div className="mt-6"><SetupNote /></div>
+        </div>
+        <div>
+          <p className="mono-label mb-2 text-[11px] text-accent">Stap 3 · optioneel</p>
+          <h3 className="text-2xl font-bold md:text-3xl">Losse modules erbij.</h3>
+          <p className="mt-2 mb-6 text-muted">Stel zelf samen: kies een basis en vink modules aan.</p>
+          <Calculator bases={calcBases} modules={calcModules} />
+          <ul className="sr-only">
+            {modules.map((m) => <li key={m.id}>{m.name}: {formatPriceLong(m.price)}{m.price.setup ? `, plus €${m.price.setup} eenmalige inrichting` : ''}</li>)}
           </ul>
         </div>
-        <div className="grid items-stretch gap-4 lg:grid-cols-3">
-          {d.tiers.map((t) => <div key={t.id} data-tier><TierCard t={t} direction={d} /></div>)}
+        <div>
+          <h3 className="mb-6 text-2xl font-bold md:text-3xl">Vergelijk de groeipakketten.</h3>
+          <CompareTable />
         </div>
-        <div className="grid gap-8 lg:grid-cols-2">
-          <div>
-            <h3 className="mono-label mb-4 text-ink-2">Los bij te boeken</h3>
-            <ul className="grid gap-2">{d.addons.map((id) => <PackageRow key={id} p={pkg(id)} />)}</ul>
+      </div>
+    ),
+    projecten: (
+      <div className="grid gap-14">
+        {([['websites', 'Websites'], ['webshops', 'Webshops'], ['checks', 'Checks & setup']] as const).map(([g, label]) => (
+          <div key={g}>
+            <h3 className="mb-6 text-2xl font-bold">{label}</h3>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">{byGroup(g).map((p) => <PkgCard key={p.id} p={p} cta="Aanvragen" afterDelivery={g !== 'checks'} />)}</div>
           </div>
-          <div>
-            <h3 className="mono-label mb-4 text-ink-2">Eenmalige projecten</h3>
-            <ul className="grid gap-2">{d.oneOffs.map((id) => <PackageRow key={id} p={pkg(id)} />)}</ul>
-          </div>
-        </div>
-        <p className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
-          Meer weten?
-          {d.lines.map((l) => <Link key={l} href={lineHref(l)} className="inline-flex items-center gap-1 font-semibold text-accent hover:underline">{line(l)?.name} <Icon name="arrow" size={14} /></Link>)}
-        </p>
-      </div>,
-    ]),
-  );
-  const modules = calculatorModules
-    .map((id) => pkg(id))
-    .filter((p) => p.price.amount != null && p.price.unit === 'mnd')
-    .map((p) => ({ id: p.id, name: p.name, monthly: p.price.amount!, setup: p.price.setup }));
+        ))}
+        <p className="rounded-[var(--radius-card)] border border-accent/40 bg-accent/[0.06] p-5 text-ink-2">Kies je Ontzorgd Lokaal voor 12 maanden, dan kost Web Start €595 in plaats van €1.195.</p>
+      </div>
+    ),
+    ai: (
+      <div className="grid gap-10">
+        <div className="panel max-w-3xl"><div className="panel-in"><ImageSlot id="quinten-workshop" sizes="(min-width:1024px) 60vw, 100vw" /></div></div>
+        <StepLine
+          steps={[
+            { label: '01 · Leren', title: 'Leren', body: <AiList ids={['ai-kennismaking', 'ai-teamworkshop']} /> },
+            { label: '02 · Toepassen', title: 'Toepassen', body: <AiList ids={['ai-quickscan', 'ai-chatbot', 'ai-automatisering', 'ai-implementatie']} /> },
+            { label: '03 · Volhouden', title: 'Volhouden', body: <AiList ids={['ai-partner']} /> },
+          ]}
+        />
+        <p className="text-sm text-muted">De AI-teamworkshop zit één keer per jaar in Ontzorgd Leads. Artikel 4 van de AI Act vraagt organisaties maatregelen te nemen voor AI-geletterdheid; het dossier uit de workshop helpt je dat aantoonbaar te maken. Dit is geen juridisch advies.</p>
+      </div>
+    ),
+    advies: (
+      <div className="grid gap-6">
+        <div className="grid gap-4 md:grid-cols-3">{byKind('advies').map((p) => <PkgCard key={p.id} p={p} />)}</div>
+        <p className="rounded-[var(--radius-card)] border border-line p-5 text-ink-2">Uitvoering niet inbegrepen. Wil je dat wij het doen? <Link href="#maandelijks" className="font-semibold text-accent underline underline-offset-4">Kies een groeipakket</Link>.</p>
+      </div>
+    ),
+  };
 
   return (
     <Page>
       <JsonLd nodes={[offerCatalogLd()]} page={{ path: '/pakketten', title, description }} />
       <PageHero
-        eyebrow="// PAKKETTEN — VASTE PRIJS, VASTE SCOPE"
-        title={['Kies je richting.', 'Dan je pakket.']}
-        intro="Andere bureaus zeggen ontzorgen en laten je dan een offerte aanvragen. Wij laten zien wat het kost en wat erin zit. Ook wat er níet in zit."
+        eyebrow="// PAKKETTEN · VASTE PRIJS, VASTE SCOPE"
+        title={['Eerst je basis.', 'Dan je groei.']}
+        intro="Losse projecten en AI ernaast. Overal vaste prijzen, en bij elk pakket staat wat erin zit én wat er níet in zit."
         crumbs={[{ name: 'Home', href: '/' }, { name: 'Pakketten', href: '/pakketten' }]}
         ctas={false}
-      >
-        <ul className="grid gap-2 pt-2 sm:grid-cols-5">
-          {directions.map((d) => (
-            <li key={d.id}>
-              <a href={`#${d.id}`} className="flex h-full items-center gap-3 rounded-[var(--radius-panel)] border border-line bg-surface/70 px-4 py-3 transition-colors hover:border-accent">
-                <Icon name={d.icon} size={20} className="shrink-0 text-accent" />
-                <span className="text-sm font-semibold">{d.name}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </PageHero>
+      />
 
-      <Section border={false} labelledby="kies-title">
-        <h2 id="kies-title" className="sr-only">Pakketten per richting</h2>
-        <DirectionTabs tabs={tabs} panels={panels} />
+      <Section border={false} labelledby="kiezer-title">
+        <SectionHead label="Pakketkiezer" title={['Welk pakket past bij mij?', 'Drie vragen, één advies.']} id="kiezer-title" />
+        <div className="min-h-[360px]">
+          <FinderFallback />
+          <PackageFinder />
+        </div>
+      </Section>
+
+      <Section labelledby="tabs-title">
+        <h2 id="tabs-title" className="sr-only">Alle pakketten</h2>
+        <Tabs tabs={tabs.map((t, i) => ({ id: t.id, label: t.label, index: String(i + 1).padStart(2, '0'), line: t.line }))} panels={panels} aliases={legacyHash} />
         <p className="mono-label mt-10 text-[11px] text-muted">{VAT_NOTE} {AD_BUDGET_NOTE}</p>
       </Section>
 
-      <Section labelledby="cmp-title">
-        <SectionHead index="02" label="Vergelijken" title={['De drie ontzorgbundels.', 'Naast elkaar.']} intro="Ontzorgd Lokaal, Groei en Webshop zijn de meest gekozen pakketten uit de richtingen Website, Marketing en E-commerce." id="cmp-title" />
-        <CompareTable />
-      </Section>
-
-      <Section labelledby="calc-title">
-        <SectionHead index="03" label="Calculator" title={['Liever zelf samenstellen?', 'Vink aan wat je nodig hebt.']} id="calc-title" />
-        <Calculator modules={modules} />
+      <Section labelledby="start-title">
+        <SectionHead label="Zo start je" title={['Van keuze tot ritme.', 'In vier stappen.']} id="start-title" />
+        <StepLine
+          steps={startSteps.map((s, i) => ({
+            label: `Stap ${String(i + 1).padStart(2, '0')}`,
+            title: s.title,
+            body: <>{s.text}{s.todo && showTodos ? <> <Todo text={s.todo} /></> : null}</>,
+          }))}
+        />
+        <div className="mt-10"><InvoicingNote /></div>
       </Section>
 
       <Section labelledby="rules-title">
-        <SectionHead index="04" label="Spelregels" title={['Geen kleine lettertjes.', 'Wel duidelijke afspraken.']} id="rules-title" />
+        <SectionHead label="Spelregels" title={['Geen kleine lettertjes.', 'Wel duidelijke afspraken.']} id="rules-title" />
         <HouseRules />
       </Section>
 
-      <Faq items={faq} path="/pakketten" index="05" />
+      <Faq items={faq} path="/pakketten" />
       <CtaBand title={['Twijfel je nog?', 'Begin met de gratis check.']} />
     </Page>
+  );
+}
+
+function AiList({ ids }: { ids: string[] }) {
+  return (
+    <ul className="grid gap-3">
+      {ids.map((id) => {
+        const p = pkg(id);
+        return (
+          <li key={id} id={id} className="rounded-[var(--radius-panel)] border border-line bg-surface p-4">
+            <p className="font-semibold text-ink">{p.name}</p>
+            <p className="font-mono text-sm text-accent">{formatPriceLong(p.price)}{p.price.extra ? ` + ${p.price.extra}` : ''}</p>
+            {p.priceNote && <p className="text-sm text-ink-2">{p.priceNote}</p>}
+            <p className="mt-1 text-sm">{p.summary}</p>
+          </li>
+        );
+      })}
+    </ul>
   );
 }

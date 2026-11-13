@@ -1,103 +1,142 @@
 /**
- * ALLE PRIJZEN. Bedragen in hele euro's, excl. btw.
- * Pas hier een prijs aan en hij verandert overal: dienstpagina's, bundels,
- * calculator, vergelijkingstabel, structured data (OfferCatalog) en llms.txt.
+ * ALLE PAKKETTEN EN PRIJZEN. De enige plek waar namen en bedragen staan.
+ * Bedragen in hele euro's, excl. btw. Bij ads ook excl. advertentiebudget.
  *
- * price.amount = null  → "op offerte"
- * price.from = true    → "vanaf"
- * price.unit           → 'eenmalig' | 'mnd' | 'p.p.'
- * price.setup          → eenmalige setupkosten naast een maandprijs
+ * Structuur: "Eerst je basis, dan je groei. Losse projecten en AI ernaast."
+ *   basis   → Zorg Basis / Plus / Webshop
+ *   groei   → Ontzorgd Lokaal / Leads / Webshop / Op Maat (basis zit erin)
+ *   module  → losse maandmodules (calculator)
+ *   project → eenmalige projecten
+ *   ai      → AI & workshops
+ *   advies  → advies & sparring
+ *
+ * proposal: true = voorstelprijs, nog te bevestigen.
  */
 
 export const VAT_NOTE = 'Alle prijzen zijn exclusief btw.';
-export const AD_BUDGET_NOTE = 'Excl. advertentiebudget: dat betaal je rechtstreeks aan Google, Meta of TikTok.';
+export const AD_BUDGET_NOTE = 'Advertentiebudget betaal je rechtstreeks aan Google of Meta.';
 
-export type Unit = 'eenmalig' | 'mnd' | 'p.p.';
-export type Price = { amount: number | null; from?: boolean; unit: Unit; setup?: number; extra?: string };
-/** Categorieën voor de pakketkiezer op /pakketten. */
-export type Category = 'beheer' | 'development' | 'marketing' | 'ecommerce' | 'ai' | 'consultancy';
-export const categories: { id: Category; label: string; mono: string; text: string }[] = [
-  { id: 'beheer', label: 'Beheer & onderhoud', mono: 'BEHEER', text: 'Je site of webshop veilig, actueel en bewaakt. Elke maand.' },
-  { id: 'development', label: 'Development & maatwerk', mono: 'DEV', text: 'Nieuwe sites en webshops, Magento, koppelingen en maatwerk.' },
-  { id: 'marketing', label: 'Marketing & vindbaarheid', mono: 'MARKETING', text: 'SEO, GEO, Google Ads, Meta Ads en e-mailcampagnes.' },
-  { id: 'ecommerce', label: 'E-commerce & groei', mono: 'E-COM', text: 'Alles rondom je webshop: beheer, conversie, feeds, ads en e-mail.' },
-  { id: 'ai', label: 'AI', mono: 'AI', text: 'Workshops, chatbots, automatisering en AI-oplossingen op maat.' },
-  { id: 'consultancy', label: 'Consultancy', mono: 'CONSULT', text: 'Elke week een vaste sparringpartner voor e-commerce en online marketing.' },
-];
-
+export type Kind = 'basis' | 'groei' | 'module' | 'project' | 'ai' | 'advies';
+export type Unit = 'eenmalig' | 'mnd' | 'pp' | 'uur' | 'sessie';
+export type Price = { amount: number; from?: boolean; unit: Unit; setup?: number; extra?: string };
 export type Pkg = {
   id: string;
-  line: LineId;
-  categories: Category[];
-  /** Placeholder zolang de prijs nog niet is bepaald (amount: null). */
-  priceTodo?: string;
   name: string;
+  kind: Kind;
   summary: string;
+  forWho?: string;
   includes: string[];
+  excludes?: string[];
   price: Price;
+  /** extra prijsregel, bijv. "Hele dag €1.950" */
+  priceNote?: string;
   adBudget?: string;
+  /** levertijd voor projecten */
+  delivery?: string;
+  group?: 'websites' | 'webshops' | 'checks' | 'leren' | 'toepassen' | 'volhouden';
+  recommended?: boolean;
+  proposal?: boolean;
 };
-export type LineId = 'websites' | 'webshops' | 'development' | 'onderhoud' | 'vindbaarheid' | 'advertenties' | 'ai' | 'consultancy';
 
 export const packages: Pkg[] = [
-  // 2.1 Websites
-  { id: 'web-start', line: 'websites', categories: ['development'], name: 'Web Start', summary: 'Een professionele site van 1–5 pagina\'s, snel online.', includes: ['1–5 pagina\'s', 'Mobiel-first ontwerp', 'Basis-SEO', 'Google Bedrijfsprofiel gekoppeld', 'Structured data (JSON-LD)'], price: { amount: 1195, unit: 'eenmalig' } },
-  { id: 'web-groei', line: 'websites', categories: ['development'], name: 'Web Groei', summary: 'Een site op maat die aanvragen moet opleveren.', includes: ['6–15 pagina\'s', 'Maatwerkdesign', 'Copywriting', 'Lokale landingspagina\'s', 'Conversietracking'], price: { amount: 2450, from: true, unit: 'eenmalig' } },
-  { id: 'web-maatwerk', line: 'websites', categories: ['development'], name: 'Web Maatwerk', summary: 'Een animatierijke site met koppelingen, ook meertalig.', includes: ['Animatierijk ontwerp', 'Integraties en koppelingen', 'Meertalig'], price: { amount: 4000, from: true, unit: 'eenmalig' } },
-  { id: 'website-audit', line: 'websites', categories: ['beheer', 'development'], name: 'Website-audit', summary: 'Weten waar je staat, met een prioriteitenlijst.', includes: ['Techniek en snelheid', 'SEO en GEO', 'Beveiliging', 'Rapport met prioriteitenlijst'], price: { amount: 395, unit: 'eenmalig' } },
+  /* ---------------- Basis ---------------- */
+  {
+    id: 'zorg-basis', name: 'Zorg Basis', kind: 'basis',
+    summary: 'Je site veilig en online, zonder omkijken.',
+    forWho: 'Je hebt een site en wilt dat hij veilig en online blijft.',
+    includes: ['Hosting en SSL', 'Updates', 'Dagelijkse back-ups', 'Uptime-monitoring'],
+    excludes: ['Wijzigingen', 'SEO', 'Ads'],
+    price: { amount: 49, unit: 'mnd' },
+  },
+  {
+    id: 'zorg-plus', name: 'Zorg Plus', kind: 'basis',
+    summary: 'Zorg Basis, plus wijzigingen en een maandrapport.',
+    forWho: 'Je wilt ook af en toe iets laten aanpassen.',
+    includes: ['Alles uit Zorg Basis', '1 uur wijzigingen per maand', 'Beveiligingsscan', 'Maandrapport van één pagina'],
+    excludes: ['SEO', 'Ads', 'Nieuwe pagina\'s buiten het wijzigingsuur'],
+    price: { amount: 99, unit: 'mnd' },
+  },
+  {
+    id: 'zorg-webshop', name: 'Zorg Webshop', kind: 'basis',
+    summary: 'Je Shopify- of Magento-shop beheerd en bewaakt.',
+    forWho: 'Je hebt een Shopify- of Magento-shop.',
+    includes: ['Shop-, app- en thema-updates', 'Productmutaties (TODO: aantal per maand)', 'Wekelijkse checkout- en betaalcheck', 'Maandrapport van één pagina'],
+    excludes: ['Ads', 'E-mail', 'Nieuwe functies'],
+    price: { amount: 149, unit: 'mnd' },
+  },
 
-  // 2.2 Webshops
-  { id: 'shop-start', line: 'webshops', categories: ['development', 'ecommerce'], name: 'Shop Start', summary: 'Een Shopify-webshop die meteen kan verkopen.', includes: ['Shopify', 'Tot 50 producten', 'iDEAL en betaalmethoden', 'Basistracking (GA4, Meta Pixel)'], price: { amount: 2750, from: true, unit: 'eenmalig' } },
-  { id: 'shop-groei', line: 'webshops', categories: ['development', 'ecommerce'], name: 'Shop Groei', summary: 'Een webshop die klaar is om te schalen.', includes: ['Tot 500 producten', 'Productfeeds (Google Merchant, Meta-catalogus)', 'E-mailflows', 'CRO-basis'], price: { amount: 4950, from: true, unit: 'eenmalig' } },
-  { id: 'migratie', line: 'webshops', categories: ['development', 'ecommerce'], name: 'Migratie naar Shopify', summary: 'Van WooCommerce of Magento naar Shopify, zonder je posities te verliezen.', includes: ['Producten, klanten en bestellingen', '301-redirects', 'Controle na livegang'], price: { amount: 1500, from: true, unit: 'eenmalig' } },
-  { id: 'cro', line: 'webshops', categories: ['ecommerce', 'marketing'], name: 'E-commerce strategie & CRO', summary: 'Meer omzet uit hetzelfde verkeer.', includes: ['Conversie-analyse', 'A/B-testplan', 'Maandelijkse CRO-review'], price: { amount: null, unit: 'mnd' } },
+  /* ---------------- Groei (basis zit erin) ---------------- */
+  {
+    id: 'ontzorgd-lokaal', name: 'Ontzorgd Lokaal', kind: 'groei',
+    summary: 'Beter gevonden worden in je regio, zonder ads.',
+    forWho: 'Lokale dienstverlener die beter gevonden wil worden zonder ads.',
+    includes: ['Zorg Plus (hosting, updates, 1 uur wijzigingen)', 'Beheer Google Bedrijfsprofiel', 'Reviewopvolging', 'GEO-monitoring in 4 AI-assistenten', 'Maandrapport', 'Kwartaalgesprek'],
+    excludes: ['Ads', 'Lokale landingspagina\'s', 'Nieuwe content buiten het wijzigingsuur'],
+    price: { amount: 199, unit: 'mnd' },
+    priceNote: 'Kies je Ontzorgd Lokaal voor 12 maanden, dan kost Web Start €595 in plaats van €1.195.',
+  },
+  {
+    id: 'ontzorgd-leads', name: 'Ontzorgd Leads', kind: 'groei', recommended: true,
+    summary: 'Meer aanvragen en telefoontjes, organisch én met Google Ads.',
+    forWho: 'Je wilt meer aanvragen en telefoontjes.',
+    includes: ['Alles uit Ontzorgd Lokaal', '1–2 lokale pagina\'s per maand', 'Google Ads Lokaal (search)', 'Eén AI-teamworkshop per jaar'],
+    excludes: ['Meta Ads', 'Advertentiebudget (betaal je zelf aan Google)'],
+    adBudget: 'Aanbevolen advertentiebudget: €500–€1.500 per maand',
+    price: { amount: 745, unit: 'mnd' },
+  },
+  {
+    id: 'ontzorgd-webshop', name: 'Ontzorgd Webshop', kind: 'groei',
+    summary: 'Meer verkopen met je webshop: ads, e-mail en conversie.',
+    forWho: 'Je hebt een webshop en wilt meer verkopen.',
+    includes: ['Zorg Webshop', 'Meta Ads', 'Google Shopping / Performance Max met feedbeheer', 'E-mailflows', 'Maandelijkse CRO-review', 'Maandelijks overleg'],
+    excludes: ['Advertentiebudget', 'Creatives (los bij te boeken: Meta Ads + Creatives)'],
+    adBudget: 'Aanbevolen advertentiebudget: vanaf €1.500 per maand',
+    price: { amount: 1195, unit: 'mnd' },
+  },
+  {
+    id: 'ontzorgd-op-maat', name: 'Ontzorgd Op Maat', kind: 'groei', proposal: true,
+    summary: 'Voor meerdere kanalen, B2B of meerdere vestigingen.',
+    forWho: 'Meerdere kanalen, B2B-webshop of meerdere vestigingen.',
+    includes: ['SEO + GEO Groei', 'Google Ads én Meta Ads', 'E-mailflows en -campagnes', 'Elke week 1 strategie-uur', 'Kwartaalplan met KPI\'s'],
+    excludes: ['Advertentiebudget', 'Grote nieuwbouwprojecten'],
+    price: { amount: 1950, from: true, unit: 'mnd' },
+  },
 
-  // 2.3 Onderhoud
-  { id: 'zorg-basis', line: 'onderhoud', categories: ['beheer'], name: 'Zorg Basis', summary: 'Je site veilig en up-to-date, zonder omkijken.', includes: ['Hosting', 'SSL-certificaat', 'Updates', 'Dagelijkse back-ups', 'Uptime-monitoring'], price: { amount: 49, unit: 'mnd' } },
-  { id: 'zorg-plus', line: 'onderhoud', categories: ['beheer'], name: 'Zorg Plus', summary: 'Basis, plus wijzigingen en een maandrapport.', includes: ['Alles van Zorg Basis', '1 uur wijzigingen per maand', 'Maandrapport van één pagina', 'Beveiligingsscan'], price: { amount: 99, unit: 'mnd' } },
-  { id: 'zorg-webshop', line: 'onderhoud', categories: ['beheer', 'ecommerce'], name: 'Zorg Webshop', summary: 'Je Shopify-winkel beheerd en bewaakt.', includes: ['Shopify-beheer', 'App-updates', 'Productmutaties', 'Checkout-bewaking'], price: { amount: 149, unit: 'mnd' } },
+  /* ---------------- Modules (calculator) ---------------- */
+  { id: 'lokaal-zichtbaar', name: 'Lokaal Zichtbaar', kind: 'module', summary: 'Bedrijfsprofiel, reviews, 1–2 lokale pagina\'s per maand en GEO-monitoring.', includes: ['Beheer Bedrijfsprofiel', 'Reviewopvolging', '1–2 lokale pagina\'s per maand', 'GEO-monitoring'], price: { amount: 395, unit: 'mnd' } },
+  { id: 'seo-geo-groei', name: 'SEO + GEO Groei', kind: 'module', summary: 'Contentplan, technische SEO, structured data en AI-citatiemeting.', includes: ['Contentplan', 'Technische SEO', 'Structured data', 'AI-citatiemeting'], price: { amount: 795, unit: 'mnd' } },
+  { id: 'google-ads-lokaal', name: 'Google Ads Lokaal', kind: 'module', summary: 'Search-campagnes in je regio, met conversietracking.', includes: ['Search-campagnes', 'Conversietracking', 'Maandrapport'], price: { amount: 275, unit: 'mnd', setup: 345 }, adBudget: 'Advertentiebudget tot €1.500/mnd' },
+  { id: 'google-ads-shop', name: 'Google Ads Shop', kind: 'module', summary: 'Shopping en Performance Max voor webshops.', includes: ['Shopping / Performance Max', 'Feedbeheer', 'Sturen op ROAS'], price: { amount: 495, unit: 'mnd', setup: 495 }, adBudget: 'Advertentiebudget €1.500–€5.000/mnd' },
+  { id: 'meta-ads', name: 'Meta Ads', kind: 'module', summary: 'Facebook en Instagram: structuur, doelgroepen en tests. Creatives lever je zelf aan.', includes: ['Campagnestructuur', 'Doelgroepen en tests', 'Rapportage'], price: { amount: 545, unit: 'mnd' } },
+  { id: 'meta-ads-creatives', name: 'Meta Ads + Creatives', kind: 'module', summary: 'Meta Ads inclusief 6–10 advertenties per maand die wij maken.', includes: ['Alles uit Meta Ads', '6–10 statische of video-advertenties per maand'], price: { amount: 1195, unit: 'mnd' } },
+  { id: 'development-uren', name: 'Development-uren', kind: 'module', proposal: true, summary: '4 uur development per maand voor verbeteringen, functies en koppelingen. Uren schuiven niet door.', includes: ['4 uur per maand (€90 per uur)', 'Shopify, Magento en WordPress', 'Maandelijkse prioriteitenlijst'], price: { amount: 360, unit: 'mnd' } },
+  { id: 'ai-partner', name: 'AI-Partner', kind: 'module', group: 'volhouden', summary: 'Maandelijks spreekuur, onderhoud van bots en workflows, één nieuwe use case per kwartaal.', includes: ['Maandelijks spreekuur', 'Onderhoud bots en workflows', 'Eén nieuwe use case per kwartaal', 'Updates van het AI-dossier'], price: { amount: 295, unit: 'mnd' } },
 
-  // 2.4 Vindbaarheid
-  { id: 'bedrijfsprofiel-setup', line: 'vindbaarheid', categories: ['marketing'], name: 'Bedrijfsprofiel-setup', summary: 'Gevonden in Google Maps, Bing en Apple Kaarten.', includes: ['Google Bedrijfsprofiel', 'Bing Places', 'Apple Business Connect', 'Categorieën en foto\'s', 'Reviewlink'], price: { amount: 245, unit: 'eenmalig' } },
-  { id: 'geo-scan', line: 'vindbaarheid', categories: ['marketing', 'ai'], name: 'GEO-scan', summary: 'Hoe ChatGPT, Gemini, Perplexity en Claude jouw bedrijf noemen.', includes: ['Meting in 4 AI-assistenten', 'Concurrentievergelijking', 'Verbeterlijst'], price: { amount: 245, unit: 'eenmalig', extra: 'Gratis mini-versie in de Online Check' } },
-  { id: 'lokaal-zichtbaar', line: 'vindbaarheid', categories: ['marketing'], name: 'Lokaal Zichtbaar', summary: 'Elke maand beter gevonden in je eigen regio.', includes: ['Beheer Bedrijfsprofiel', 'Reviewopvolging', '1–2 lokale pagina\'s per maand', 'GEO-monitoring'], price: { amount: 395, unit: 'mnd' } },
-  { id: 'seo-geo-groei', line: 'vindbaarheid', categories: ['marketing', 'ecommerce'], name: 'SEO + GEO Groei', summary: 'Structureel groeien in Google én in AI-antwoorden.', includes: ['Contentplan', 'Technische SEO', 'Structured data', 'AI-citatiemeting'], price: { amount: 795, unit: 'mnd' } },
+  /* ---------------- Eenmalige projecten ---------------- */
+  { id: 'web-start', name: 'Web Start', kind: 'project', group: 'websites', summary: 'Een professionele site van 1–5 pagina\'s.', includes: ['1–5 pagina\'s, mobiel-first', 'Basis-SEO en structured data', 'Google Bedrijfsprofiel gekoppeld'], price: { amount: 1195, unit: 'eenmalig' }, priceNote: 'Met Ontzorgd Lokaal (12 maanden): €595.', delivery: 'TODO: levertijd Web Start' },
+  { id: 'web-groei', name: 'Web Groei', kind: 'project', group: 'websites', summary: 'Een site op maat van 6–15 pagina\'s die aanvragen oplevert.', includes: ['6–15 pagina\'s, maatwerkdesign', 'Copywriting', 'Lokale landingspagina\'s', 'Conversietracking'], price: { amount: 2450, from: true, unit: 'eenmalig' }, delivery: 'TODO: levertijd Web Groei' },
+  { id: 'web-maatwerk', name: 'Web Maatwerk', kind: 'project', group: 'websites', summary: 'Een geanimeerde site met integraties, ook meertalig.', includes: ['Animatierijk ontwerp', 'Integraties', 'Meertalig'], price: { amount: 4000, from: true, unit: 'eenmalig' }, delivery: 'TODO: levertijd Web Maatwerk' },
+  { id: 'shop-start', name: 'Shop Start', kind: 'project', group: 'webshops', summary: 'Een Shopify-webshop tot 50 producten.', includes: ['Shopify, tot 50 producten', 'iDEAL en betaalmethoden', 'Basistracking (GA4, Meta Pixel)'], price: { amount: 2750, from: true, unit: 'eenmalig' }, delivery: 'TODO: levertijd Shop Start' },
+  { id: 'shop-groei', name: 'Shop Groei', kind: 'project', group: 'webshops', summary: 'Een webshop tot 500 producten, klaar om te schalen.', includes: ['Tot 500 producten', 'Productfeeds (Google, Meta)', 'E-mailflows', 'CRO-basis'], price: { amount: 4950, from: true, unit: 'eenmalig' }, delivery: 'TODO: levertijd Shop Groei' },
+  { id: 'migratie', name: 'Migratie naar Shopify', kind: 'project', group: 'webshops', summary: 'Van WooCommerce of Magento naar Shopify, zonder posities te verliezen.', includes: ['Producten, klanten, bestellingen', '301-redirects', 'Controle na livegang'], price: { amount: 1500, from: true, unit: 'eenmalig' }, delivery: 'TODO: levertijd migratie' },
+  { id: 'dev-uur', name: 'Magento- en maatwerkdevelopment', kind: 'project', group: 'webshops', proposal: true, summary: 'Nieuwe functies, extensies, upgrades en B2B-maatwerk. Per uur, of een vaste prijs per project.', includes: ['Magento (Adobe Commerce), Shopify, WordPress', 'B2B-functies, configurators, portalen', 'Vaste projectprijs na technisch ontwerp'], price: { amount: 95, unit: 'uur' }, delivery: 'TODO: levertijd in overleg per project' },
+  { id: 'website-audit', name: 'Website-audit', kind: 'project', group: 'checks', summary: 'Techniek, snelheid, SEO, GEO en beveiliging, met prioriteitenlijst.', includes: ['Rapport in gewone taal', 'Prioriteitenlijst'], price: { amount: 395, unit: 'eenmalig' }, delivery: 'TODO: levertijd audit' },
+  { id: 'geo-scan', name: 'GEO-scan', kind: 'project', group: 'checks', summary: 'Hoe ChatGPT, Gemini, Perplexity en Claude jouw bedrijf noemen, met verbeterlijst.', includes: ['Meting in 4 AI-assistenten', 'Verbeterlijst'], price: { amount: 245, unit: 'eenmalig' }, priceNote: 'Een mini-versie zit gratis in de Online Check.', delivery: 'TODO: levertijd GEO-scan' },
+  { id: 'bedrijfsprofiel-setup', name: 'Bedrijfsprofiel-setup', kind: 'project', group: 'checks', summary: 'Google Bedrijfsprofiel, Bing Places en Apple Business Connect ingericht.', includes: ['Categorieën en diensten', 'Foto\'s', 'Reviewlink'], price: { amount: 245, unit: 'eenmalig' }, delivery: 'TODO: levertijd setup' },
+  { id: 'koppeling', name: 'Koppeling', kind: 'project', group: 'checks', proposal: true, summary: 'Webshop of site koppelen aan ERP, PIM, voorraad, boekhouding of verzending.', includes: ['Per koppeling', 'Testen met echte data', 'Monitoring'], price: { amount: 495, from: true, unit: 'eenmalig' }, delivery: 'TODO: levertijd koppeling' },
 
-  // 2.5 Advertenties
-  { id: 'google-ads-lokaal', line: 'advertenties', categories: ['marketing'], name: 'Google Ads Lokaal', summary: 'Bovenaan in Google op het moment dat iemand zoekt.', includes: ['Search-campagnes', 'Conversietracking', 'Maandrapport'], price: { amount: 275, unit: 'mnd', setup: 345 }, adBudget: 'Advertentiebudget tot €1.500/mnd' },
-  { id: 'google-ads-shop', line: 'advertenties', categories: ['marketing', 'ecommerce'], name: 'Google Ads Shop', summary: 'Shopping en Performance Max voor webshops.', includes: ['Shopping / Performance Max', 'Feedbeheer', 'Sturen op ROAS'], price: { amount: 495, unit: 'mnd', setup: 495 }, adBudget: 'Advertentiebudget €1.500–€5.000/mnd' },
-  { id: 'meta-ads', line: 'advertenties', categories: ['marketing', 'ecommerce'], name: 'Meta Ads', summary: 'Facebook en Instagram, gestructureerd getest.', includes: ['Campagnestructuur', 'Doelgroepen', 'Testen', 'Rapportage', 'Creatives lever je zelf aan'], price: { amount: 545, unit: 'mnd' } },
-  { id: 'meta-ads-creatives', line: 'advertenties', categories: ['marketing', 'ecommerce'], name: 'Meta Ads + Creatives', summary: 'Meta Ads inclusief advertenties die we voor je maken.', includes: ['Alles van Meta Ads', '6–10 statische of video-advertenties per maand'], price: { amount: 1195, unit: 'mnd' } },
-  { id: 'tiktok-ads', line: 'advertenties', categories: ['marketing', 'ecommerce'], name: 'TikTok Ads', summary: 'Voor merken met een jonge doelgroep.', includes: ['Op aanvraag'], price: { amount: null, unit: 'mnd' } },
+  /* ---------------- AI & workshops ---------------- */
+  { id: 'ai-kennismaking', name: 'AI-Kennismaking', kind: 'ai', group: 'leren', summary: 'Open groep, 3 uur in Leeuwarden: veilig werken met ChatGPT, Copilot en Claude.', includes: ['Open inschrijving', 'Praktijkvoorbeelden'], price: { amount: 195, unit: 'pp' } },
+  { id: 'ai-teamworkshop', name: 'AI-Teamworkshop', kind: 'ai', group: 'leren', summary: 'In-company, max. 12 personen, inclusief AI-geletterdheidsdossier.', includes: ['Oefenen met eigen werk', 'AI-geletterdheidsdossier (beleid, toolregister, data-afspraken, presentielijst)'], price: { amount: 1295, unit: 'eenmalig' }, priceNote: 'Halve dag €1.295 · hele dag €1.950' },
+  { id: 'ai-quickscan', name: 'AI-Quickscan', kind: 'ai', group: 'toepassen', summary: '3 quick wins en een tijdsbaseline.', includes: ['Intake en procesinventarisatie', '3 quick wins', 'Tijdsbaseline'], price: { amount: 795, unit: 'eenmalig' } },
+  { id: 'ai-chatbot', name: 'AI-Chatbot', kind: 'ai', group: 'toepassen', summary: 'Een FAQ- of klantenservicebot op je site of shop.', includes: ['Kennisbank gevuld en getest', 'Hosting en onderhoud van de bot: €129 per maand'], price: { amount: 1250, unit: 'eenmalig', extra: '€129 per maand' } },
+  { id: 'ai-automatisering', name: 'AI-Automatisering', kind: 'ai', group: 'toepassen', summary: 'Eén workflow (n8n of Make) die werk uit handen neemt.', includes: ['Bijv. leadopvolging, offertes, mail-triage of productteksten'], price: { amount: 1750, from: true, unit: 'eenmalig', extra: 'per workflow' } },
+  { id: 'ai-implementatie', name: 'AI Implementatie', kind: 'ai', group: 'toepassen', summary: 'Quickscan plus één chatbot of workflow, gebouwd, getest en na 30 dagen gemeten.', includes: ['AI-Quickscan', 'Eén chatbot of workflow', 'Meting na 30 dagen'], price: { amount: 1995, from: true, unit: 'eenmalig' }, priceNote: 'Je bespaart tot €550 t.o.v. los.' },
 
-  // 2.6 AI
-  { id: 'ai-kennismaking', line: 'ai', categories: ['ai'], name: 'AI-Kennismaking', summary: 'Open groep: middagworkshop van 3 uur in Leeuwarden.', includes: ['Veilig werken met ChatGPT, Copilot en Claude', 'Oefenen met praktijkvoorbeelden', 'Open inschrijving'], price: { amount: 195, unit: 'p.p.' } },
-  { id: 'ai-teamworkshop', line: 'ai', categories: ['ai'], name: 'AI-Teamworkshop', summary: 'In-company, halve dag, max. 12 personen.', includes: ['Oefenen met eigen werk', 'AI-geletterdheidsdossier', 'AI-beleid en toolregister', 'Data-do\'s en -don\'ts', 'Presentielijst'], price: { amount: 1295, unit: 'eenmalig', extra: 'Hele dag €1.950' } },
-  { id: 'ai-quickscan', line: 'ai', categories: ['ai'], name: 'AI-Quickscan', summary: 'Waar levert AI jou tijd op?', includes: ['Intake', 'Procesinventarisatie', '3 quick wins', 'Tijdsbaseline'], price: { amount: 795, unit: 'eenmalig' } },
-  { id: 'ai-chatbot', line: 'ai', categories: ['ai', 'ecommerce'], name: 'AI-Chatbot', summary: 'Een FAQ- of klantenservicebot op je site of shop.', includes: ['Kennisbank gevuld', 'Getest op jouw vragen', 'Op je site of webshop'], price: { amount: 1250, unit: 'eenmalig', extra: '+ €129/mnd' } },
-  { id: 'ai-automatisering', line: 'ai', categories: ['ai', 'development'], name: 'AI-Automatisering', summary: 'Eén workflow die je werk uit handen neemt.', includes: ['n8n of Make', 'Bijv. leadopvolging, offertes, mail-triage of productteksten'], price: { amount: 1750, from: true, unit: 'eenmalig', extra: 'per workflow' } },
-  { id: 'ai-partner', line: 'ai', categories: ['ai', 'beheer'], name: 'AI-Partner', summary: 'Een vaste AI-sparringpartner.', includes: ['Maandelijks spreekuur', 'Onderhoud bots en workflows', 'Eén nieuwe use case per kwartaal'], price: { amount: 295, from: true, unit: 'mnd' } },
-
-  // Magento
-  { id: 'magento-beheer', line: 'webshops', categories: ['beheer', 'ecommerce'], name: 'Magento-beheer', summary: 'Je Magento-webshop veilig, snel en up-to-date.', includes: ['Security-patches en updates', 'Extensies bijwerken', 'Monitoring en back-ups', 'Kleine wijzigingen'], price: { amount: null, unit: 'mnd' }, priceTodo: 'TODO: maandprijs Magento-beheer' },
-  { id: 'magento-development', line: 'webshops', categories: ['development', 'ecommerce'], name: 'Magento-development', summary: 'Nieuwe functies, extensies en upgrades voor Magento (Adobe Commerce).', includes: ['Maatwerkfunctionaliteit', 'Extensies en koppelingen', 'Versie-upgrades', 'Performance'], price: { amount: null, unit: 'eenmalig' }, priceTodo: 'TODO: uurtarief of vanaf-prijs Magento-development' },
-
-  // Development & maatwerk
-  { id: 'maatwerk-development', line: 'development', categories: ['development', 'ecommerce'], name: 'Maatwerk-development', summary: 'Functionaliteit die niet standaard bestaat: configurators, B2B-functies, eigen tools.', includes: ['Analyse en technisch ontwerp', 'Bouw en testen', 'Documentatie', 'Onderhoud mogelijk via beheer'], price: { amount: null, unit: 'eenmalig' }, priceTodo: 'TODO: uurtarief of vanaf-prijs maatwerk' },
-  { id: 'koppelingen', line: 'development', categories: ['development', 'ecommerce'], name: 'Koppelingen & integraties', summary: 'Webshop, ERP, PIM, voorraad, boekhouding en verzending met elkaar laten praten.', includes: ['ERP- en PIM-koppelingen', 'Voorraad en orders synchroon', 'Boekhouding en verzending', 'Monitoring van de koppeling'], price: { amount: null, unit: 'eenmalig' }, priceTodo: 'TODO: vanaf-prijs per koppeling' },
-  { id: 'development-strippenkaart', line: 'development', categories: ['development', 'beheer'], name: 'Development-uren', summary: 'Een vaste bundel uren voor doorlopende verbeteringen.', includes: ['Voor sites én webshops', 'Shopify, Magento en WordPress', 'Prioriteiten samen bepalen', 'Maandelijks overzicht'], price: { amount: null, unit: 'mnd' }, priceTodo: 'TODO: prijs per uurbundel (bijv. 10 uur)' },
-
-  // E-mail
-  { id: 'email-flows', line: 'advertenties', categories: ['marketing', 'ecommerce'], name: 'E-mailflows', summary: 'Automatische e-mails die verkopen terwijl jij slaapt.', includes: ['Welkomstreeks', 'Verlaten winkelmandje', 'Na aankoop en herhaalaankoop', 'Klaviyo of Mailchimp ingericht'], price: { amount: null, unit: 'eenmalig' }, priceTodo: 'TODO: prijs set-up e-mailflows' },
-  { id: 'email-campagnes', line: 'advertenties', categories: ['marketing', 'ecommerce'], name: 'E-mailcampagnes op maat', summary: 'Nieuwsbrieven en campagnes in jouw stijl, met segmentatie.', includes: ['Campagnekalender', 'Ontwerp en teksten', 'Segmentatie', 'Rapportage op omzet'], price: { amount: null, unit: 'mnd' }, priceTodo: 'TODO: maandprijs e-mailcampagnes (bijv. per aantal mails)' },
-
-  // AI op maat
-  { id: 'ai-maatwerk', line: 'ai', categories: ['ai', 'development'], name: 'AI-oplossing op maat', summary: 'Een AI-toepassing die precies past: agents, kennisbanken, interne tools.', includes: ['Analyse en ontwerp', 'Bouw en koppeling met je systemen', 'Testen met echte data', 'Privacy en beveiliging vastgelegd'], price: { amount: null, unit: 'eenmalig' }, priceTodo: 'TODO: vanaf-prijs AI-oplossing op maat' },
-
-  // Consultancy
-  { id: 'consult-uur', line: 'consultancy', categories: ['consultancy'], name: 'Losse sessie', summary: 'Eén strategiesessie van een uur over je webshop, marketing of SEO.', includes: ['Online of op locatie', 'Voorbereiding op basis van je data', 'Kort verslag met actiepunten'], price: { amount: null, unit: 'eenmalig' }, priceTodo: 'TODO: uurtarief consultancy' },
-  { id: 'consult-wekelijks', line: 'consultancy', categories: ['consultancy', 'ecommerce', 'marketing'], name: 'Wekelijkse sparring', summary: 'Elke week 1 uur met een e-commercespecialist: campagnes, SEO, strategie en keuzes.', includes: ['Elke week 1 uur (online of op locatie)', 'Je eigen team voert uit, wij sturen bij', 'Review van campagnes, SEO en cijfers', 'Bereikbaar via WhatsApp tussendoor', 'Maandelijkse prioriteitenlijst'], price: { amount: null, unit: 'mnd' }, priceTodo: 'TODO: maandprijs 4 uur consultancy (1 uur per week)' },
-  { id: 'consult-strategie', line: 'consultancy', categories: ['consultancy', 'ecommerce'], name: 'Groeistrategie', summary: 'Een groeiplan voor je webshop of marketing, plus wekelijkse begeleiding bij de uitvoering.', includes: ['Analyse van data, kanalen en marges', 'Groeiplan voor 3 maanden met KPI\'s', 'Elke week 1 uur sparring', 'Kwartaalevaluatie en nieuw plan'], price: { amount: null, unit: 'mnd' }, priceTodo: 'TODO: maandprijs Groeistrategie' },
+  /* ---------------- Advies & sparring ---------------- */
+  { id: 'strategiesessie', name: 'Strategiesessie', kind: 'advies', proposal: true, summary: '1 uur, online of op locatie, voorbereid met jouw data.', includes: ['Voorbereid met jouw data', 'Actielijst achteraf'], price: { amount: 195, unit: 'sessie' } },
+  { id: 'sparring', name: 'Sparring', kind: 'advies', proposal: true, summary: '4 sessies van 1 uur per maand, met een WhatsApp-lijn tussendoor.', includes: ['4 sessies van 1 uur per maand', 'Review van campagnes, SEO en cijfers', 'WhatsApp-lijn tussendoor'], price: { amount: 595, unit: 'mnd' } },
+  { id: 'groeistrategie', name: 'Groeistrategie', kind: 'advies', proposal: true, summary: 'Een kwartaalgroeiplan met KPI\'s en wekelijkse begeleiding.', includes: ['Data-, kanaal- en marge-analyse', 'Kwartaalgroeiplan met KPI\'s', 'Wekelijks 1 uur', 'Kwartaalreview'], price: { amount: 1250, from: true, unit: 'mnd' } },
 ];
 
 export const pkg = (id: string): Pkg => {
@@ -105,131 +144,102 @@ export const pkg = (id: string): Pkg => {
   if (!p) throw new Error(`Onbekend pakket: ${id}`);
   return p;
 };
-export const packagesFor = (line: LineId) => packages.filter((p) => p.line === line);
-export const packagesIn = (c: Category) => packages.filter((p) => p.categories.includes(c));
-
-/* ---------------- Ontzorgbundels (/pakketten) ---------------- */
-export type Bundle = {
-  id: string;
-  name: string;
-  tagline: string;
-  forWho: string;
-  monthly: number;
-  featured?: boolean;
-  modules: string[]; // ids uit packages
-  includes: string[];
-  excludes: string[];
-  extra?: string;
-};
-
-export const bundles: Bundle[] = [
-  {
-    id: 'lokaal',
-    name: 'Ontzorgd Lokaal',
-    tagline: 'Je website veilig en je bedrijf zichtbaar in de buurt.',
-    forWho: 'Voor lokale dienstverleners: vakmensen, salons, praktijken.',
-    monthly: 199,
-    modules: ['zorg-plus'],
-    includes: ['Zorg Plus: hosting, updates, back-ups, 1 uur wijzigingen', 'Beheer Bedrijfsprofiel en reviews', 'GEO-monitoring in AI-assistenten', 'Kwartaalgesprek', 'Setup inbegrepen'],
-    excludes: ['Advertentiebeheer', 'Nieuwe pagina\'s of content (los te bestellen)', 'Advertentiebudget'],
-    extra: 'Bij 12 maanden looptijd: een Web Start-site voor €595 (normaal €1.195).',
-  },
-  {
-    id: 'groei',
-    name: 'Ontzorgd Groei',
-    tagline: 'Gevonden in Google, Maps én AI. Plus advertenties die je kunt volgen.',
-    forWho: 'Voor bedrijven die structureel meer aanvragen willen.',
-    monthly: 745,
-    featured: true,
-    modules: ['zorg-plus', 'lokaal-zichtbaar', 'google-ads-lokaal', 'ai-teamworkshop'],
-    includes: ['Zorg Plus', 'Lokaal Zichtbaar: Bedrijfsprofiel, reviews, lokale pagina\'s, GEO', 'Google Ads Lokaal (budget tot €1.500/mnd)', 'Eén AI-teamworkshop per jaar, met AI-dossier', 'Setup inbegrepen'],
-    excludes: ['Meta Ads', 'Advertentiebudget', 'Nieuwe website (los of via Web Start/Groei)'],
-  },
-  {
-    id: 'webshop',
-    name: 'Ontzorgd Webshop',
-    tagline: 'Je Shopify-winkel beheerd, gevuld en aan het groeien.',
-    forWho: 'Voor webshops op Shopify die willen doorgroeien.',
-    monthly: 1195,
-    modules: ['zorg-webshop', 'meta-ads', 'google-ads-shop'],
-    includes: ['Zorg Webshop: Shopify-beheer, app-updates, productmutaties', 'Meta Ads', 'Google Shopping / Performance Max', 'E-mailflows', 'Maandelijkse CRO-review', 'Setup inbegrepen'],
-    excludes: ['Creatives (los: Meta Ads + Creatives)', 'Advertentiebudget', 'Webshopbouw'],
-  },
-];
-
-/** Wat de modules los zouden kosten per maand (workshop omgerekend per maand). */
-export function bundleLooseMonthly(b: Bundle): number {
-  return b.modules.reduce((sum, id) => {
-    const p = pkg(id);
-    if (p.price.amount == null) return sum;
-    if (p.price.unit === 'mnd') return sum + p.price.amount;
-    if (id === 'ai-teamworkshop') return sum + Math.round(p.price.amount / 12);
-    return sum;
-  }, 0);
-}
-export function bundleLooseSetup(b: Bundle): number {
-  return b.modules.reduce((s, id) => s + (pkg(id).price.setup ?? 0), 0);
-}
-
-/* ---------------- Calculator-modules ---------------- */
-export const calculatorModules = [
-  'zorg-basis',
-  'zorg-plus',
-  'zorg-webshop',
-  'lokaal-zichtbaar',
-  'seo-geo-groei',
-  'google-ads-lokaal',
-  'google-ads-shop',
-  'meta-ads',
-  'meta-ads-creatives',
-  'magento-beheer',
-  'email-campagnes',
-  'ai-partner',
-] as const;
-
-/* ---------------- Vergelijkingstabel ---------------- */
-export const compareRows: { label: string; values: [boolean | string, boolean | string, boolean | string] }[] = [
-  { label: 'Hosting, SSL, updates, back-ups', values: [true, true, 'Shopify-beheer'] },
-  { label: '1 uur wijzigingen per maand', values: [true, true, false] },
-  { label: 'Maandrapport van één pagina', values: [true, true, true] },
-  { label: 'Beheer Bedrijfsprofiel en reviews', values: [true, true, false] },
-  { label: 'GEO-monitoring (AI-zichtbaarheid)', values: [true, true, false] },
-  { label: 'Lokale pagina\'s (1–2 per maand)', values: [false, true, false] },
-  { label: 'Google Ads', values: [false, 'Search, lokaal', 'Shopping / PMax'] },
-  { label: 'Meta Ads', values: [false, false, true] },
-  { label: 'E-mailflows', values: [false, false, true] },
-  { label: 'CRO-review', values: [false, false, 'Maandelijks'] },
-  { label: 'AI-teamworkshop', values: [false, '1× per jaar', false] },
-  { label: 'Overleg', values: ['Per kwartaal', 'Per kwartaal', 'Maandelijks'] },
-  { label: 'Setupkosten', values: ['Inbegrepen', 'Inbegrepen', 'Inbegrepen'] },
-];
-
-/* ---------------- Spelregels ---------------- */
-export const houseRules = [
-  { title: '3 maanden, daarna maandelijks opzegbaar', text: 'Geen jaarcontracten. Na de eerste drie maanden zeg je per maand op.' },
-  { title: 'Niet tevreden? Geld terug.', text: 'TODO: leg de voorwaarden vast (periode en welk bedrag) in de algemene voorwaarden en vat ze hier in één zin samen.' },
-  { title: 'Alles op jouw naam', text: 'Domein, hosting, Google- en Meta-accounts staan op jouw naam. Stop je, dan neem je alles mee.' },
-  { title: 'Elke maand één pagina', text: 'Een rapport in gewone taal: wat er gebeurde, wat het opleverde en wat we volgende maand doen.' },
-  { title: 'Prijzen excl. btw en advertentiebudget', text: 'Advertentiebudget betaal je rechtstreeks aan Google, Meta of TikTok. Wij rekenen alleen voor het beheer.' },
-];
+export const byKind = (k: Kind) => packages.filter((p) => p.kind === k);
+export const byGroup = (g: NonNullable<Pkg['group']>) => packages.filter((p) => p.group === g);
 
 /* ---------------- Formattering ---------------- */
 const nf = new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 0 });
 export const euro = (n: number) => `€${nf.format(n)}`;
-const unitLabel: Record<Unit, string> = { eenmalig: '', mnd: '/mnd', 'p.p.': ' p.p.' };
+const shortUnit: Record<Unit, string> = { eenmalig: '', mnd: '/mnd', pp: ' per persoon', uur: ' per uur', sessie: ' per sessie' };
+const longUnit: Record<Unit, string> = { eenmalig: ' eenmalig', mnd: ' per maand', pp: ' per persoon', uur: ' per uur', sessie: ' per sessie' };
 
+/** Kort: "€745/mnd", "vanaf €2.450", "€195 per persoon" */
 export function formatPrice(p: Price): string {
-  if (p.amount == null) return 'Op offerte';
-  return `${p.from ? 'vanaf ' : ''}${euro(p.amount)}${unitLabel[p.unit]}`;
+  return `${p.from ? 'vanaf ' : ''}${euro(p.amount)}${shortUnit[p.unit]}`;
 }
-export function formatSetup(p: Price): string | null {
-  return p.setup ? `+ ${euro(p.setup)} setup` : null;
+/** Lang, met eenheid: "vanaf €1.195 eenmalig", "€49 per maand" */
+export function formatPriceLong(p: Price): string {
+  return `${p.from ? 'vanaf ' : ''}${euro(p.amount)}${longUnit[p.unit]}`;
 }
-/** Laagste "vanaf"-prijs voor een productlijn (voor kaarten). */
-export function lineFrom(line: LineId): string {
-  const list = packagesFor(line).filter((p) => p.price.amount != null);
-  const monthly = list.filter((p) => p.price.unit === 'mnd');
-  if (!list.length) return 'op offerte';
-  const pick = (line === 'onderhoud' || line === 'advertenties' ? monthly : list).sort((a, b) => (a.price.amount ?? 0) - (b.price.amount ?? 0))[0];
-  return `vanaf ${euro(pick.price.amount!)}${unitLabel[pick.price.unit]}`;
+export function formatExtra(p: Price): string | null {
+  const parts = [p.extra ? `+ ${p.extra}` : null, p.setup ? `+ ${euro(p.setup)} eenmalige inrichting` : null].filter(Boolean);
+  return parts.length ? parts.join(' · ') : null;
+}
+
+/* ---------------- Tabs op /pakketten ---------------- */
+export const tabs = [
+  { id: 'maandelijks', label: 'Maandelijks ontzorgd', line: 'Wij regelen je online zaken elke maand. Jij hoeft er niet naar om te kijken.' },
+  { id: 'projecten', label: 'Eenmalige projecten', line: 'Een nieuwe website, webshop of audit, voor een vaste prijs.' },
+  { id: 'ai', label: 'AI & workshops', line: 'Van losse proefjes naar veilig, gemeten AI-gebruik.' },
+  { id: 'advies', label: 'Advies & sparring', line: 'Je doet het zelf, wij denken mee.' },
+] as const;
+/** Oude deep links → nieuwe tabs */
+export const legacyHash: Record<string, string> = { ecommerce: 'maandelijks', marketing: 'maandelijks', website: 'maandelijks', consultancy: 'advies', webshop: 'maandelijks', lokaal: 'maandelijks', groei: 'maandelijks' };
+
+export const setupLine = 'Bij groeipakketten is de inrichting inbegrepen. Losse ads-modules hebben eenmalige inrichtingskosten.';
+export const setupDetails = ['Accounts koppelen (op jouw naam)', 'Tracking: GA4, Meta Pixel en conversies', 'Campagnestructuur opzetten', 'Google Bedrijfsprofiel optimaliseren', 'De eerste rapportage'];
+
+/* ---------------- Vergelijking groeipakketten ---------------- */
+export const compareIds = ['ontzorgd-lokaal', 'ontzorgd-leads', 'ontzorgd-webshop', 'ontzorgd-op-maat'] as const;
+export const compareRows: { label: string; values: [string | boolean, string | boolean, string | boolean, string | boolean] }[] = [
+  { label: 'Basis', values: ['Zorg Plus', 'Zorg Plus', 'Zorg Webshop', 'Zorg Plus of Webshop'] },
+  { label: 'Wijzigingsuur per maand', values: [true, true, false, true] },
+  { label: 'Maandrapport', values: [true, true, true, true] },
+  { label: 'Bedrijfsprofiel & reviews', values: [true, true, false, true] },
+  { label: 'GEO-monitoring', values: [true, true, false, true] },
+  { label: 'Lokale pagina\'s', values: [false, '1–2 per maand', false, 'In contentplan'] },
+  { label: 'Google Ads', values: [false, 'Search, lokaal', 'Shopping / PMax', 'Search + Shopping'] },
+  { label: 'Meta Ads', values: [false, false, true, true] },
+  { label: 'E-mailflows', values: [false, false, true, true] },
+  { label: 'CRO-review', values: [false, false, 'Maandelijks', 'Maandelijks'] },
+  { label: 'AI-teamworkshop', values: [false, '1× per jaar', false, 'Op verzoek'] },
+  { label: 'Overleg', values: ['Per kwartaal', 'Per kwartaal', 'Maandelijks', 'Wekelijks'] },
+  { label: 'Inrichting', values: [true, true, true, true] },
+  { label: 'Minimale looptijd', values: ['3 maanden', '3 maanden', '3 maanden', '3 maanden'] },
+  { label: 'Aanbevolen advertentiebudget', values: ['n.v.t.', '€500–€1.500/mnd', 'vanaf €1.500/mnd', 'In overleg'] },
+];
+
+/* ---------------- Zo start je ---------------- */
+export const startSteps: { title: string; text: string; todo?: string }[] = [
+  { title: 'Kies je pakket', text: 'Of doe eerst de gratis Online Check.' },
+  { title: 'Kennismaking van 30 minuten', text: 'We bevestigen de scope en beantwoorden je vragen.' },
+  { title: 'Inrichting', text: 'Accounts op jouw naam, tracking en de eerste verbeteringen.', todo: 'TODO: inrichting duurt X werkdagen' },
+  { title: 'Ritme', text: 'Elke maand een rapport van één pagina, en elk kwartaal een gesprek.' },
+];
+export const invoicing = { text: 'Maandpakketten worden maandelijks vooraf gefactureerd. Eenmalige projecten: 50% bij start, 50% bij oplevering.', todo: 'TODO: betaaltermijn (aantal dagen)' };
+
+/* ---------------- Spelregels ---------------- */
+export const moneyBack = {
+  title: 'Niet tevreden na je eerste maand?',
+  text: 'Laat het binnen 30 dagen weten. Dan stoppen we zonder opzegtermijn en krijg je de eerste maandfee terug. Dit geldt niet voor advertentiebudget, eenmalige projecten en workshops.',
+  todo: 'TODO: bevestigen (volledige tekst staat in de algemene voorwaarden)',
+};
+export const houseRules = [
+  { title: '3 maanden, daarna maandelijks opzegbaar', text: 'Geen jaarcontracten. Na de eerste drie maanden zeg je per maand op.' },
+  { title: moneyBack.title, text: moneyBack.text },
+  { title: 'Alles op jouw naam', text: 'Domein, hosting, Google- en Meta-accounts staan op jouw naam. Stop je, dan neem je alles mee.' },
+  { title: 'Elke maand één pagina', text: 'Een rapport in gewone taal: wat er gebeurde, wat het opleverde en wat we volgende maand doen.' },
+  { title: 'Prijzen excl. btw en advertentiebudget', text: 'Advertentiebudget betaal je rechtstreeks aan Google of Meta. Wij rekenen alleen voor het beheer.' },
+];
+
+/** Namen voor het contactformulier (dropdown). */
+export const contactOptions = [
+  ...byKind('groei').map((p) => p.name),
+  ...byKind('basis').map((p) => p.name),
+  'Website laten maken',
+  'Webshop laten maken',
+  'AI-workshop of AI Implementatie',
+  ...byKind('advies').map((p) => p.name),
+  'Weet ik nog niet',
+];
+
+/** Zet een pakketnaam of -id (uit ?pakket=) om naar een optie in het contactformulier. */
+export function contactOptionFor(value: string): string {
+  const p = packages.find((x) => x.id === value || x.name.toLowerCase() === value.toLowerCase());
+  if (!p) return contactOptions.includes(value) ? value : '';
+  if (contactOptions.includes(p.name)) return p.name;
+  if (p.kind === 'ai' || p.id === 'ai-partner') return 'AI-workshop of AI Implementatie';
+  if (p.group === 'webshops' || p.id.startsWith('shop') || p.id === 'migratie') return 'Webshop laten maken';
+  if (p.group === 'websites' || p.id.startsWith('web-')) return 'Website laten maken';
+  return 'Weet ik nog niet';
 }

@@ -3,7 +3,7 @@
  * Prijzen komen uit content/pricing.ts via packageIds.
  * In tekstvelden mag je eenvoudige HTML-links gebruiken: <a href="/...">.
  */
-import type { LineId } from './pricing';
+export type LineId = 'websites' | 'webshops' | 'onderhoud' | 'vindbaarheid' | 'advertenties' | 'ai';
 
 export type QA = { q: string; a: string };
 export type Item = { title: string; text: string };
@@ -26,7 +26,7 @@ export type Line = {
   index: string; // [01]
   name: string;
   short: string;
-  icon: 'web' | 'shop' | 'code' | 'shield' | 'search' | 'ads' | 'ai' | 'consult';
+  icon: 'web' | 'shop' | 'shield' | 'search' | 'ads' | 'ai';
   headline: [string, string]; // gepaarde kop
   seoTitle: string;
   description: string;
@@ -35,6 +35,11 @@ export type Line = {
   approach: Item[];
   outcomes: string[];
   packageIds: string[];
+  /** Vanaf-prijs op kaarten (pakket-id) */
+  fromId: string;
+  /** "Zit in": groeipakketten waarin deze dienst zit */
+  inBundles: string[];
+  inLabel?: string;
   faq: QA[];
   subpages: SubPage[];
   relatedBranches: string[];
@@ -47,6 +52,9 @@ export const lines: Line[] = [
   {
     id: 'websites',
     index: '01',
+    fromId: 'web-start',
+    inBundles: ['ontzorgd-lokaal', 'ontzorgd-leads', 'ontzorgd-webshop'],
+    inLabel: 'Beheer na oplevering zit in',
     name: 'Websites',
     short: 'Sites die snel zijn, gevonden worden en aanvragen opleveren.',
     icon: 'web',
@@ -143,6 +151,8 @@ export const lines: Line[] = [
   {
     id: 'webshops',
     index: '02',
+    fromId: 'shop-start',
+    inBundles: ['ontzorgd-webshop', 'ontzorgd-op-maat'],
     name: 'Webshops & e-commerce',
     short: 'Shopify en Magento: bouwen, beheren, laten groeien. Echt alles rondom je webshop.',
     icon: 'shop',
@@ -158,11 +168,11 @@ export const lines: Line[] = [
       { title: 'Groeien', text: 'Beheer, CRO en advertenties in één hand.' },
     ],
     outcomes: ['Meer omzet uit hetzelfde verkeer', 'Een shop die altijd actueel is', 'Inzicht in wat winstgevend is', 'Tijd terug voor inkoop en klanten'],
-    packageIds: ['shop-start', 'shop-groei', 'magento-beheer', 'magento-development', 'migratie', 'zorg-webshop', 'cro'],
+    packageIds: ['shop-start', 'shop-groei', 'zorg-webshop', 'dev-uur', 'migratie', 'ontzorgd-webshop'],
     faq: [
       { q: 'Shopify of Magento?', a: 'Voor de meeste mkb-webshops is Shopify de beste keuze: stabiel, veilig en weinig onderhoud. Heb je een grote of complexe B2B-shop op Magento, dan beheren en ontwikkelen we die gewoon door. We adviseren eerlijk of blijven of overstappen slimmer is.' },
       { q: 'Kunnen jullie een bestaande webshop beheren?', a: 'Ja. We hoeven je shop niet gebouwd te hebben om hem te beheren en verder te ontwikkelen. Zie <a href="/diensten/webshops/beheer">webshopbeheer</a>.' },
-      { q: 'Wat kost webshopbeheer?', a: 'Zorg Webshop kost €149 per maand. Met advertenties en CRO erbij is <a href="/pakketten#webshop">Ontzorgd Webshop</a> (€1.195/mnd) vaak voordeliger.' },
+      { q: 'Wat kost webshopbeheer?', a: 'Zorg Webshop kost €149 per maand. Met advertenties en CRO erbij is <a href="/pakketten#maandelijks">Ontzorgd Webshop</a> (€1.195/mnd) vaak voordeliger.' },
       { q: 'Zijn de Shopify-kosten inbegrepen?', a: 'Nee. Het Shopify-abonnement en eventuele apps betaal je rechtstreeks aan Shopify. Ze staan op jouw naam.' },
     ],
     relatedBranches: ['webshops'],
@@ -204,11 +214,11 @@ export const lines: Line[] = [
           { title: 'Doorontwikkeling', text: 'Elke maand een paar verbeteringen op basis van data.' },
         ],
         forWho: ['Shopify-webshops zonder eigen e-commerceteam', 'Ondernemers die te veel tijd aan hun shop kwijt zijn'],
-        packageIds: ['zorg-webshop', 'cro'],
+        packageIds: ['zorg-webshop', 'ontzorgd-webshop'],
         faq: [
           { q: 'Hoeveel productmutaties zitten erin?', a: 'TODO: hoeveel productmutaties of uren per maand in Zorg Webshop zitten.' },
           { q: 'Doen jullie ook Magento of WooCommerce?', a: 'Magento beheren en ontwikkelen we door, zie <a href="/diensten/webshops/magento">Magento</a>. Voor WooCommerce bespreken we beheer of een <a href="/diensten/webshops/migratie-naar-shopify">migratie</a>.' },
-          { q: 'Kunnen jullie ook adverteren?', a: 'Ja. Combineer met <a href="/diensten/advertenties">advertenties</a>, of kies <a href="/pakketten#webshop">Ontzorgd Webshop</a>.' },
+          { q: 'Kunnen jullie ook adverteren?', a: 'Ja. Combineer met <a href="/diensten/advertenties">advertenties</a>, of kies <a href="/pakketten#maandelijks">Ontzorgd Webshop</a>.' },
         ],
       },
       {
@@ -224,10 +234,10 @@ export const lines: Line[] = [
           { title: 'Maandelijkse review', text: 'Wat werkte, wat niet, en wat testen we nu.' },
         ],
         forWho: ['Webshops met voldoende bezoekers om te testen', 'Shops waarvan de advertentiekosten stijgen'],
-        packageIds: ['cro'],
+        packageIds: ['ontzorgd-webshop'],
         faq: [
           { q: 'Hoeveel bezoekers heb ik nodig voor A/B-testen?', a: 'Dat hangt af van je conversie. Bij weinig verkeer werken we met analyse en best practices in plaats van statistische tests.' },
-          { q: 'Wat kost CRO?', a: 'Op offerte, afhankelijk van je shop. In <a href="/pakketten#webshop">Ontzorgd Webshop</a> zit een maandelijkse CRO-review.' },
+          { q: 'Wat kost CRO?', a: 'In <a href="/pakketten#maandelijks">Ontzorgd Webshop</a> (€1.195 per maand) zit een maandelijkse CRO-review. Losse verbeteringen bouwen we met development-uren (€360 per maand voor 4 uur).' },
         ],
       },
       {
@@ -244,7 +254,7 @@ export const lines: Line[] = [
           { title: 'Eerlijk advies', text: 'Blijven of overstappen naar Shopify? We rekenen het samen door.' },
         ],
         forWho: ['Grotere of complexe webshops', 'B2B-shops met klantspecifieke prijzen', 'Shops op een verouderde Magento-versie'],
-        packageIds: ['magento-beheer', 'magento-development', 'migratie'],
+        packageIds: ['zorg-webshop', 'dev-uur', 'migratie'],
         faq: [
           { q: 'Mijn Magento-versie is verouderd. Wat nu?', a: 'Dan is een upgrade of migratie nodig om veilig te blijven. We brengen in kaart wat het kost om te upgraden en wat het kost om over te stappen.' },
           { q: 'Doen jullie ook Adobe Commerce?', a: 'Ja. TODO: beschrijf je ervaring en welke Magento-versies je ondersteunt.' },
@@ -275,32 +285,35 @@ export const lines: Line[] = [
 
   /* ------------------------------------------------------------------ */
   {
-    id: 'development',
+    id: 'onderhoud',
     index: '03',
-    name: 'Development & maatwerk',
-    short: 'Maatwerk, koppelingen en doorlopende development voor sites en webshops.',
-    icon: 'code',
-    headline: ['Standaard is niet genoeg?', 'Dan bouwen we het.'],
-    seoTitle: 'Development en maatwerk: koppelingen, ERP, PIM en webshopfuncties',
-    description: 'Maatwerk-development en koppelingen voor websites en webshops: ERP, PIM, voorraad, boekhouding, B2B-functies en doorlopende development-uren. Shopify, Magento en WordPress.',
-    intro: 'Soms past het standaardpakket niet. Een B2B-prijsstructuur, een configurator, een koppeling met je ERP of een eigen tool. Wij bouwen het, testen het en houden het daarna draaiende.',
-    problems: ['Je tikt orders of voorraad over tussen systemen.', 'Je webshop kan niet wat jouw klanten nodig hebben.', 'Kleine verbeteringen blijven maanden liggen.', 'Een vorige developer is onbereikbaar.'],
+    fromId: 'zorg-basis',
+    inBundles: ['ontzorgd-lokaal', 'ontzorgd-leads', 'ontzorgd-webshop', 'ontzorgd-op-maat'],
+    name: 'Onderhoud, hosting & development',
+    short: 'Zorg-pakketten (hosting, updates, back-ups), development-uren, koppelingen en maatwerk.',
+    icon: 'shield',
+    headline: ['Je site veilig.', 'Elke dag. Zonder omkijken.'],
+    seoTitle: 'Website onderhoud en hosting vanaf €49 per maand',
+    description: 'Zorgabonnement voor je website: hosting, SSL, updates, back-ups en monitoring vanaf €49/mnd. PHP 8.2 stopt eind 2026: check of jouw site veilig is.',
+    intro: 'Het zorgabonnement is de vaste basis onder elke site die we bouwen. Hosting, updates, back-ups en beveiliging, geregeld en gemeten.',
+    problems: ['Niemand weet wanneer de laatste update was.', 'Je site draait op verouderde PHP of plugins.', 'Er is geen back-up, of niemand weet waar hij staat.', 'Je hoort pas dat je site plat lag als een klant belt.'],
     approach: [
-      { title: 'Analyse', text: 'Wat moet het doen, met welke systemen, en wat levert het op?' },
-      { title: 'Technisch ontwerp', text: 'Een helder plan met scope en prijs, voordat we bouwen.' },
-      { title: 'Bouwen en testen', text: 'Op een testomgeving, met jouw echte data.' },
-      { title: 'Beheer', text: 'Monitoring en onderhoud, zodat het blijft werken.' },
+      { title: 'Overzetten', text: 'We nemen je site over op snelle hosting, of nemen bestaande hosting in beheer.' },
+      { title: 'Bijwerken', text: 'Software, plugins en PHP naar een veilige versie.' },
+      { title: 'Bewaken', text: 'Uptime-monitoring, dagelijkse back-ups en beveiligingsscans.' },
+      { title: 'Rapporteren', text: 'Bij Zorg Plus elke maand één pagina: wat er gebeurde.' },
     ],
-    outcomes: ['Minder handwerk en fouten', 'Een webshop die past bij hoe jij verkoopt', 'Verbeteringen die gewoon gebeuren', 'Code en documentatie op jouw naam'],
-    packageIds: ['maatwerk-development', 'koppelingen', 'development-strippenkaart', 'magento-development'],
+    outcomes: ['Een site die veilig en snel blijft', 'Back-ups als het misgaat', 'Geen verrassingen over verouderde software', 'Kleine wijzigingen zonder gedoe'],
+    packageIds: ['zorg-basis', 'zorg-plus', 'zorg-webshop', 'development-uren', 'koppeling', 'dev-uur'],
     faq: [
-      { q: 'Met welke platforms werken jullie?', a: 'Shopify, Magento en WordPress/WooCommerce, en koppelingen via API\'s, n8n of Make. TODO: noem specifieke ERP-, PIM- of boekhoudsystemen waarmee je ervaring hebt.' },
-      { q: 'Van wie is de code?', a: 'Van jou. Je krijgt de code en documentatie, zodat je nooit vastzit aan ons.' },
-      { q: 'Werken jullie met uurtje-factuurtje?', a: 'Voor projecten maken we vooraf een vaste prijs. Voor doorlopende verbeteringen werk je met een vaste bundel development-uren.' },
+      { q: 'Wat gebeurt er als PHP 8.2 stopt?', a: 'Na 31 december 2026 komen er geen beveiligingsupdates meer voor PHP 8.2. Nieuwe lekken worden dan niet meer gedicht. De <a href="/online-check">gratis Online Check</a> laat zien of jouw site op PHP 8.2 draait.' },
+      { q: 'Kunnen jullie mijn bestaande site in onderhoud nemen?', a: 'Ja. We doen eerst een korte check of de basis goed genoeg is. Soms is eerst een update of <a href="/diensten/websites/redesign">redesign</a> nodig.' },
+      { q: 'Wat zit er in "1 uur wijzigingen"?', a: 'Kleine aanpassingen zoals teksten, foto\'s, openingstijden of een nieuwe pagina op basis van een bestaand ontwerp. Niet gebruikt? Dan vervalt het uur.' },
+      { q: 'Waar wordt mijn site gehost?', a: 'TODO: hostingpartij en datacenterlocatie (bij voorkeur EU).' },
     ],
-    relatedBranches: ['webshops', 'zakelijke-dienstverlening'],
-    relatedArticles: [],
-    serviceType: 'Webdevelopment, maatwerk en systeemintegratie',
+    relatedBranches: ['zakelijke-dienstverlening', 'zorg', 'bouw-en-installatie'],
+    relatedArticles: ['php-8-2-stopt-eind-2026'],
+    serviceType: 'Websiteonderhoud, hosting en beveiliging',
     subpages: [
       {
         slug: 'maatwerk',
@@ -316,7 +329,7 @@ export const lines: Line[] = [
           { title: 'Eigen tools', text: 'Interne dashboards en hulpmiddelen die je team tijd besparen.' },
         ],
         forWho: ['B2B-webshops', 'Bedrijven met een afwijkend verkoopproces', 'Teams met veel handwerk'],
-        packageIds: ['maatwerk-development', 'development-strippenkaart'],
+        packageIds: ['dev-uur', 'development-uren'],
         faq: [
           { q: 'Hoe weet ik vooraf wat het kost?', a: 'We maken eerst een technisch ontwerp met een vaste prijs. Pas na jouw akkoord bouwen we.' },
           { q: 'Wie onderhoudt het daarna?', a: 'Wij, via beheer of development-uren. Of je eigen team, met onze documentatie.' },
@@ -336,7 +349,7 @@ export const lines: Line[] = [
           { title: 'Monitoring', text: 'We merken het als een koppeling hapert, vaak vóórdat jij het merkt.' },
         ],
         forWho: ['Webshops met een ERP of PIM', 'Bedrijven die orders handmatig overtikken'],
-        packageIds: ['koppelingen', 'ai-automatisering'],
+        packageIds: ['koppeling', 'ai-automatisering'],
         faq: [
           { q: 'Mijn systeem heeft geen standaardkoppeling.', a: 'Vaak kan het via een API, een bestand (XML/CSV) of een tool als n8n of Make. We zoeken de betrouwbaarste route.' },
           { q: 'Wat als de koppeling stopt?', a: 'Met monitoring krijgen we een melding en lossen we het op. Dat regel je via beheer of development-uren.' },
@@ -347,40 +360,10 @@ export const lines: Line[] = [
 
   /* ------------------------------------------------------------------ */
   {
-    id: 'onderhoud',
-    index: '04',
-    name: 'Onderhoud & hosting',
-    short: 'Zorgabonnement: hosting, updates, back-ups en beveiliging.',
-    icon: 'shield',
-    headline: ['Je site veilig.', 'Elke dag. Zonder omkijken.'],
-    seoTitle: 'Website onderhoud en hosting vanaf €49 per maand',
-    description: 'Zorgabonnement voor je website: hosting, SSL, updates, back-ups en monitoring vanaf €49/mnd. PHP 8.2 stopt eind 2026: check of jouw site veilig is.',
-    intro: 'Het zorgabonnement is de vaste basis onder elke site die we bouwen. Hosting, updates, back-ups en beveiliging, geregeld en gemeten.',
-    problems: ['Niemand weet wanneer de laatste update was.', 'Je site draait op verouderde PHP of plugins.', 'Er is geen back-up, of niemand weet waar hij staat.', 'Je hoort pas dat je site plat lag als een klant belt.'],
-    approach: [
-      { title: 'Overzetten', text: 'We nemen je site over op snelle hosting, of nemen bestaande hosting in beheer.' },
-      { title: 'Bijwerken', text: 'Software, plugins en PHP naar een veilige versie.' },
-      { title: 'Bewaken', text: 'Uptime-monitoring, dagelijkse back-ups en beveiligingsscans.' },
-      { title: 'Rapporteren', text: 'Bij Zorg Plus elke maand één pagina: wat er gebeurde.' },
-    ],
-    outcomes: ['Een site die veilig en snel blijft', 'Back-ups als het misgaat', 'Geen verrassingen over verouderde software', 'Kleine wijzigingen zonder gedoe'],
-    packageIds: ['zorg-basis', 'zorg-plus', 'zorg-webshop'],
-    faq: [
-      { q: 'Wat gebeurt er als PHP 8.2 stopt?', a: 'Na 31 december 2026 komen er geen beveiligingsupdates meer voor PHP 8.2. Nieuwe lekken worden dan niet meer gedicht. De <a href="/online-check">gratis Online Check</a> laat zien of jouw site op PHP 8.2 draait.' },
-      { q: 'Kunnen jullie mijn bestaande site in onderhoud nemen?', a: 'Ja. We doen eerst een korte check of de basis goed genoeg is. Soms is eerst een update of <a href="/diensten/websites/redesign">redesign</a> nodig.' },
-      { q: 'Wat zit er in "1 uur wijzigingen"?', a: 'Kleine aanpassingen zoals teksten, foto\'s, openingstijden of een nieuwe pagina op basis van een bestaand ontwerp. Niet gebruikt? Dan vervalt het uur.' },
-      { q: 'Waar wordt mijn site gehost?', a: 'TODO: hostingpartij en datacenterlocatie (bij voorkeur EU).' },
-    ],
-    relatedBranches: ['zakelijke-dienstverlening', 'zorg', 'bouw-en-installatie'],
-    relatedArticles: ['php-8-2-stopt-eind-2026'],
-    serviceType: 'Websiteonderhoud, hosting en beveiliging',
-    subpages: [],
-  },
-
-  /* ------------------------------------------------------------------ */
-  {
     id: 'vindbaarheid',
-    index: '05',
+    index: '04',
+    fromId: 'ontzorgd-lokaal',
+    inBundles: ['ontzorgd-lokaal', 'ontzorgd-leads', 'ontzorgd-op-maat'],
     name: 'Vindbaarheid',
     short: 'SEO, lokale SEO, Bedrijfsprofiel en GEO: gevonden in Google én AI.',
     icon: 'search',
@@ -494,13 +477,15 @@ export const lines: Line[] = [
   /* ------------------------------------------------------------------ */
   {
     id: 'advertenties',
-    index: '06',
+    index: '05',
+    fromId: 'google-ads-lokaal',
+    inBundles: ['ontzorgd-leads', 'ontzorgd-webshop', 'ontzorgd-op-maat'],
     name: 'Advertenties & e-mail',
     short: 'Google Ads, Meta Ads, mediabuying en e-mailcampagnes op maat.',
     icon: 'ads',
     headline: ['Elke euro budget.', 'Te volgen tot de aanvraag.'],
     seoTitle: 'Google Ads, Meta Ads en e-mailmarketing uitbesteden',
-    description: 'Google Ads Lokaal €275/mnd + €345 setup, Google Ads Shop €495/mnd + €495 setup, Meta Ads €545/mnd. Excl. btw en excl. advertentiebudget.',
+    description: 'Google Ads Lokaal €275/mnd + €345 inrichting, Google Ads Shop €495/mnd + €495 inrichting, Meta Ads €545/mnd. Excl. btw en excl. advertentiebudget.',
     intro: 'Advertenties werken als je weet wat ze opleveren. We richten campagnes in met goede conversietracking, sturen op kosten per aanvraag of omzet, en rapporteren in gewone taal.',
     problems: ['Er gaat budget naar Google of Meta, maar niemand weet wat het oplevert.', 'Conversies worden niet of dubbel gemeten.', 'Campagnes staan op "automatisch".', 'Je account staat op naam van een vorig bureau.'],
     approach: [
@@ -510,7 +495,7 @@ export const lines: Line[] = [
       { title: 'Rapporteren', text: 'Eén pagina per maand: kosten, aanvragen en volgende stappen.' },
     ],
     outcomes: ['Inzicht in kosten per aanvraag', 'Minder verspild budget', 'Accounts op jouw naam', 'Geen lange contracten'],
-    packageIds: ['google-ads-lokaal', 'google-ads-shop', 'meta-ads', 'meta-ads-creatives', 'tiktok-ads', 'email-flows', 'email-campagnes'],
+    packageIds: ['google-ads-lokaal', 'google-ads-shop', 'meta-ads', 'meta-ads-creatives', 'ontzorgd-webshop', 'ontzorgd-op-maat'],
     faq: [
       { q: 'Hoeveel advertentiebudget heb ik nodig?', a: 'Voor een lokale dienstverlener is een paar honderd tot €1.500 per maand een realistische start. In de kennismaking geven we een eerlijke inschatting.' },
       { q: 'Betaal ik het budget aan jullie?', a: 'Nee. Het budget betaal je rechtstreeks aan Google of Meta, via een account op jouw naam. Wij rekenen alleen voor het beheer.' },
@@ -525,7 +510,7 @@ export const lines: Line[] = [
         name: 'Google Ads',
         title: 'Google Ads: bovenaan op het moment dat iemand zoekt',
         seoTitle: 'Google Ads uitbesteden vanaf €275/mnd',
-        description: 'Google Ads beheer: Google Ads Lokaal €275/mnd + €345 setup, Google Ads Shop €495/mnd + €495 setup. Excl. btw en advertentiebudget.',
+        description: 'Google Ads beheer: Google Ads Lokaal €275/mnd + €345 inrichting, Google Ads Shop €495/mnd + €495 inrichting. Excl. btw en advertentiebudget.',
         intro: 'Search-campagnes voor lokale dienstverleners, Shopping en Performance Max voor webshops. Met conversietracking die klopt.',
         points: [
           { title: 'Search lokaal', text: 'Zoekwoorden met koopintentie in jouw werkgebied, met uitsluitingen.' },
@@ -557,7 +542,7 @@ export const lines: Line[] = [
         packageIds: ['meta-ads', 'meta-ads-creatives'],
         faq: [
           { q: 'Wat lever ik aan bij Meta Ads?', a: 'Foto\'s, video\'s of kant-en-klare advertenties. Liever niet zelf? Kies Meta Ads + Creatives.' },
-          { q: 'Doen jullie ook TikTok?', a: 'Op aanvraag. Neem <a href="/contact">contact</a> op.' },
+          { q: 'Doen jullie ook TikTok?', a: 'Ja, als onderdeel van <a href="/pakketten#maandelijks">Ontzorgd Op Maat</a> (vanaf €1.950 per maand), als het past bij je product en doelgroep.' },
         ],
       },
       {
@@ -573,10 +558,10 @@ export const lines: Line[] = [
           { title: 'Eén rapport', text: 'Alle kanalen op één pagina.' },
         ],
         forWho: ['Webshops met meerdere kanalen', 'Bedrijven met een advertentiebudget vanaf ±€2.000/mnd'],
-        packageIds: ['google-ads-shop', 'meta-ads', 'tiktok-ads'],
+        packageIds: ['google-ads-shop', 'meta-ads'],
         faq: [
           { q: 'Vanaf welk budget is mediabuying zinvol?', a: 'Vanaf ongeveer €2.000 per maand over meerdere kanalen. Daaronder is focus op één kanaal meestal beter.' },
-          { q: 'Wat kost het?', a: 'Je combineert de beheerpakketten per kanaal. Voor webshops is <a href="/pakketten#webshop">Ontzorgd Webshop</a> vaak de handigste vorm.' },
+          { q: 'Wat kost het?', a: 'Je combineert de beheerpakketten per kanaal. Voor webshops is <a href="/pakketten#maandelijks">Ontzorgd Webshop</a> vaak de handigste vorm.' },
         ],
       },
       {
@@ -593,7 +578,7 @@ export const lines: Line[] = [
           { title: 'Meten op omzet', text: 'Niet alleen opens en kliks, maar wat het oplevert.' },
         ],
         forWho: ['Webshops', 'Dienstverleners met een klantenbestand', 'Horeca en salons met vaste gasten'],
-        packageIds: ['email-flows', 'email-campagnes'],
+        packageIds: ['ontzorgd-webshop', 'ontzorgd-op-maat'],
         faq: [
           { q: 'Met welk e-mailplatform werken jullie?', a: 'Vooral Klaviyo (webshops) en Mailchimp. Heb je al een platform, dan kijken we of we daarmee verder kunnen.' },
           { q: 'Mag ik zomaar mailen naar mijn klanten?', a: 'Alleen met toestemming of binnen een bestaande klantrelatie, en altijd met een afmeldlink. We richten het AVG-proof in. <em>Dit is geen juridisch advies.</em>' },
@@ -605,9 +590,12 @@ export const lines: Line[] = [
   /* ------------------------------------------------------------------ */
   {
     id: 'ai',
-    index: '07',
-    name: 'AI-implementatie & workshops',
-    short: 'Van losse ChatGPT-proefjes naar veilig, gemeten en gekoppeld AI-gebruik.',
+    index: '06',
+    fromId: 'ai-kennismaking',
+    inBundles: ['ontzorgd-leads'],
+    inLabel: 'AI-teamworkshop zit in',
+    name: 'AI & advies',
+    short: 'AI-workshops, implementatie, chatbots en automatisering, plus strategie en sparring.',
     icon: 'ai',
     headline: ['Van losse proefjes.', 'Naar veilig, gemeten AI.'],
     seoTitle: 'AI-workshops en AI-implementatie voor mkb in Friesland',
@@ -621,7 +609,7 @@ export const lines: Line[] = [
       { title: 'Partner', text: 'Maandelijks spreekuur, onderhoud en elk kwartaal een nieuwe use case.' },
     ],
     outcomes: ['Veilig AI-gebruik met duidelijke afspraken', 'Aantoonbare maatregelen voor AI-geletterdheid', 'Gemeten tijdwinst', 'AI gekoppeld aan je eigen systemen'],
-    packageIds: ['ai-kennismaking', 'ai-teamworkshop', 'ai-quickscan', 'ai-chatbot', 'ai-automatisering', 'ai-maatwerk', 'ai-partner'],
+    packageIds: ['ai-kennismaking', 'ai-teamworkshop', 'ai-quickscan', 'ai-chatbot', 'ai-automatisering', 'ai-implementatie', 'ai-partner'],
     faq: [
       { q: 'Wat vraagt de AI Act van mijn bedrijf?', a: 'Artikel 4 van de AI Act vraagt organisaties maatregelen te nemen voor de AI-geletterdheid van hun mensen. Het AI-geletterdheidsdossier uit de teamworkshop helpt je dat aantoonbaar te maken. <em>Dit is geen juridisch advies.</em>' },
       { q: 'Is het gebruik van gratis chatbots een AVG-risico?', a: 'Het kan. Wie vertrouwelijke of persoonsgegevens in een gratis chatbot plakt, verliest de controle over die gegevens. In de workshop maken we afspraken over wat wel en niet mag. <em>Dit is geen juridisch advies.</em>' },
@@ -668,7 +656,7 @@ export const lines: Line[] = [
           { title: 'AI-Partner', text: 'Daarna maandelijks spreekuur en elk kwartaal een nieuwe use case.' },
         ],
         forWho: ['Bedrijven die AI structureel willen inzetten', 'Organisaties met veel repeterend kantoorwerk'],
-        packageIds: ['ai-quickscan', 'ai-maatwerk', 'ai-partner'],
+        packageIds: ['ai-quickscan', 'ai-implementatie', 'ai-partner'],
         faq: [
           { q: 'Komt de quickscan in aanmerking voor subsidie?', a: 'Een AI-quickscan met een duurzaamheidshoek kan mogelijk in aanmerking komen voor de Adviesvoucherregeling Fryslân. Vraag ons ernaar. Garanties kunnen we niet geven.' },
           { q: 'Wat als AI niet geschikt blijkt?', a: 'Dan zeggen we dat. Ook dat is een uitkomst die je geld bespaart.' },
@@ -678,8 +666,8 @@ export const lines: Line[] = [
         slug: 'chatbots',
         name: 'AI-chatbots',
         title: 'AI-chatbot op je site of webshop',
-        seoTitle: 'AI-chatbot voor website of webshop: €1.250 + €129/mnd',
-        description: 'AI-chatbot voor FAQ of klantenservice op je website of webshop: €1.250 eenmalig + €129/mnd excl. btw. Kennisbank gevuld en getest.',
+        seoTitle: 'AI-chatbot voor website of webshop: €1.250 eenmalig + €129 per maand',
+        description: 'AI-chatbot voor FAQ of klantenservice op je website of webshop: €1.250 eenmalig + €129 per maand, excl. btw. Kennisbank gevuld en getest.',
         intro: 'Een chatbot die vragen van klanten beantwoordt op basis van jouw eigen informatie, ook \'s avonds en in het weekend. Getest voordat hij live gaat.',
         points: [
           { title: 'Jouw kennisbank', text: 'Gevuld met je eigen FAQ\'s, producten en voorwaarden.' },
@@ -714,76 +702,25 @@ export const lines: Line[] = [
           { q: 'Wie onderhoudt de workflow?', a: 'Met <a href="/diensten/ai/implementatie">AI-Partner</a> onderhouden wij hem. Je kunt hem ook zelf beheren.' },
         ],
       },
-    ],
-  },
-  /* ------------------------------------------------------------------ */
-  {
-    id: 'consultancy',
-    index: '08',
-    name: 'Consultancy',
-    short: 'Elke week een e-commercespecialist aan tafel: campagnes, SEO en strategie.',
-    icon: 'consult',
-    headline: ['Jouw team voert uit.', 'Wij sturen bij.'],
-    seoTitle: 'E-commerce en online marketing consultancy, ook B2B',
-    description: 'E-commerce- en marketingconsultancy van een B2B-specialist: wekelijks 1 uur sparring over campagnes, SEO, conversie en strategie. Ervaring: +75% omzet in 11 maanden.',
-    intro: 'Heb je zelf mensen die uitvoeren, maar mis je iemand die meekijkt, keuzes maakt en bijstuurt? Dan schuif ik elke week een uur aan. Als e-commercespecialist, met de nadruk op B2B, en met ervaring van binnenuit: bij Miedema groeide de webshopomzet met 75% in 11 maanden.',
-    problems: ['Je team is druk, maar niemand bewaakt de koers.', 'Je weet niet welke campagnes of kanalen echt iets opleveren.', 'Bureaus leveren rapporten, maar geen keuzes.', 'Je wilt groeien in B2B, maar de aanpak is anders dan B2C.'],
-    approach: [
-      { title: 'Nulmeting', text: 'We kijken naar je data, kanalen, marges en team. Waar zit de groei?' },
-      { title: 'Plan', text: 'Een helder plan voor drie maanden met KPI\'s.' },
-      { title: 'Wekelijks sparren', text: 'Elke week een uur: campagnes, SEO, conversie, keuzes en prioriteiten.' },
-      { title: 'Evalueren', text: 'Elk kwartaal: wat werkte, wat niet, en wat is het volgende plan.' },
-    ],
-    outcomes: ['Een vaste koers en duidelijke prioriteiten', 'Een team dat sneller en beter beslist', 'Budget naar wat werkt', 'Kennis die in je bedrijf blijft'],
-    packageIds: ['consult-uur', 'consult-wekelijks', 'consult-strategie'],
-    faq: [
-      { q: 'Wat bespreken we in een sessie?', a: 'Wat er die week speelt: campagneresultaten, SEO, een nieuwe actie, conversie, budgetverdeling of een strategische keuze. Je krijgt na elke sessie de actiepunten op een rij.' },
-      { q: 'Is dit ook voor B2B?', a: 'Juist. B2B-webshops met zakelijke accounts, nettoprijzen en herhaalorders vragen een andere aanpak dan B2C. Daar ligt mijn specialisatie.' },
-      { q: 'Kan ik daarnaast uitvoering inhuren?', a: 'Ja. Veel klanten combineren consultancy met <a href="/diensten/webshops/beheer">webshopbeheer</a>, <a href="/diensten/advertenties">advertenties</a> of <a href="/diensten/vindbaarheid">SEO</a>.' },
-      { q: 'Hoe lang loopt het?', a: 'Minimaal 3 maanden, daarna maandelijks opzegbaar.' },
-    ],
-    relatedBranches: ['webshops', 'zakelijke-dienstverlening'],
-    relatedArticles: ['webshop-laten-beheren-wat-levert-het-op'],
-    serviceType: 'E-commerce- en online-marketingconsultancy',
-    subpages: [
       {
-        slug: 'e-commerce',
-        name: 'E-commerce consultancy',
-        title: 'E-commerce consultancy, met focus op B2B',
-        seoTitle: 'E-commerce consultancy B2B: groeien met je webshop',
-        description: 'E-commerce consultancy voor B2B- en B2C-webshops: strategie, assortiment, conversie, campagnes en data. Wekelijks 1 uur met een e-commercespecialist.',
-        intro: 'Groeien met je webshop vraagt keuzes: welk assortiment, welke kanalen, welke klanten. Ik help je die keuzes te maken, met ervaring van een B2B/B2C-webshop die in 11 maanden 75% meer omzet, 80% meer orders en 575+ nieuwe klanten realiseerde.',
+        slug: 'strategie-en-sparring',
+        name: 'Strategie & sparring',
+        title: 'Strategie & sparring: jij doet het, wij denken mee',
+        seoTitle: 'E-commerce en marketing sparring: strategiesessie €195, Sparring €595/mnd',
+        description: 'Advies van een e-commercespecialist met B2B-ervaring: strategiesessie €195, Sparring €595 per maand (4 sessies), Groeistrategie vanaf €1.250 per maand. Excl. btw.',
+        intro: 'Voor bedrijven die zelf uitvoeren, maar een ervaren sparringpartner missen. Over campagnes, SEO, conversie, data en strategie, met de nadruk op B2B. Uitvoering zit er niet in. Wil je dat wij het doen? Kies een groeipakket.',
         points: [
-          { title: 'B2B-groei', text: 'Zakelijke accounts, nettoprijzen, herhaalorders en accountmanagement online.' },
-          { title: 'Data en dashboards', text: 'Welke cijfers moet je elke week zien, en wat doe je ermee?' },
-          { title: 'Conversie en assortiment', text: 'Waar haken klanten af, en wat verkoopt eigenlijk?' },
-          { title: 'Kanalen en budget', text: 'Google Shopping, Meta, e-mail en organisch in de juiste verhouding.' },
+          { title: 'Strategiesessie', text: 'Eén uur, voorbereid met jouw data, met een actielijst achteraf.' },
+          { title: 'Sparring', text: 'Vier sessies per maand: campagnes, SEO en cijfers, met een WhatsApp-lijn tussendoor.' },
+          { title: 'Groeistrategie', text: 'Analyse van data, kanalen en marges, een kwartaalplan met KPI\'s en wekelijkse begeleiding.' },
+          { title: 'B2B-ervaring', text: 'Bij een B2B/B2C-webshop groeide de omzet in 11 maanden met 75%. Die ervaring breng ik aan tafel.' },
         ],
-        forWho: ['B2B- en B2B/B2C-webshops', 'Webshops met een eigen team', 'Groothandels die online willen groeien'],
-        packageIds: ['consult-wekelijks', 'consult-strategie'],
+        forWho: ['Bedrijven met een eigen marketeer of webshopteam', 'B2B-webshops en groothandels', 'Ondernemers die zelf marketing doen'],
+        packageIds: ['strategiesessie', 'sparring', 'groeistrategie'],
         faq: [
-          { q: 'Werk je ook met Magento?', a: 'Ja, naast Shopify. De strategie staat los van het platform, maar ik ken beide van binnenuit.' },
-          { q: 'Mijn team is klein. Is dit dan zinvol?', a: 'Juist dan. Een uur per week sparren voorkomt dat je maanden de verkeerde kant op werkt.' },
-        ],
-      },
-      {
-        slug: 'online-marketing',
-        name: 'Online marketing consultancy',
-        title: 'Online marketing consultancy: campagnes, SEO en strategie',
-        seoTitle: 'Online marketing consultancy: SEO, campagnes en strategie',
-        description: 'Online marketing consultancy voor mkb: wekelijks 1 uur sparring over SEO, GEO, Google Ads, Meta Ads, e-mail en strategie. Jouw team voert uit, wij sturen bij.',
-        intro: 'Voor bedrijven die marketing zelf (of met een medewerker) doen, maar een ervaren sparringpartner missen. We kijken samen naar campagnes, SEO en content, en maken elke week duidelijke keuzes.',
-        points: [
-          { title: 'Campagnes', text: 'Google Ads, Meta Ads en e-mail: wat werkt, wat stop je, wat test je.' },
-          { title: 'SEO en GEO', text: 'Contentplan, technische punten en zichtbaarheid in AI-assistenten.' },
-          { title: 'Strategie', text: 'Doelgroepen, positionering en de juiste kanaalmix.' },
-          { title: 'Coaching', text: 'Je medewerker wordt elke week beter.' },
-        ],
-        forWho: ['Bedrijven met een eigen marketeer', 'Ondernemers die zelf marketing doen', 'Teams die een tweede mening willen'],
-        packageIds: ['consult-uur', 'consult-wekelijks'],
-        faq: [
-          { q: 'Hebben jullie toegang nodig tot onze accounts?', a: 'Leestoegang tot Google Ads, Meta en Analytics helpt om goed voorbereid te zijn. Het blijven jouw accounts.' },
-          { q: 'Wat levert het op?', a: 'Dat hangt af van je situatie. Bij Lado Bridal leverde een goede SEO-aanpak, zonder enige advertentie, de hoogste positie in de niche en 3 boekingen in één week op.' },
+          { q: 'Zit uitvoering erin?', a: 'Nee. Wil je dat wij het doen? Kies dan een groeipakket, zoals <a href="/pakketten#maandelijks">Ontzorgd Leads of Ontzorgd Webshop</a>.' },
+          { q: 'Is dit ook voor B2B?', a: 'Juist. Zakelijke accounts, nettoprijzen en herhaalorders vragen een andere aanpak dan B2C. Daar ligt mijn specialisatie.' },
+          { q: 'Hoe lang loopt Sparring?', a: 'Minimaal 3 maanden, daarna maandelijks opzegbaar.' },
         ],
       },
     ],

@@ -63,7 +63,10 @@ export function SplitHeading({ lines, as: Tag = 'h2', className, dimFrom, onScro
     <Tag ref={ref} className={className} aria-label={lines.join(' ')} id={id}>
       {lines.map((l, i) => (
         <span key={i} data-line aria-hidden="true" className="block overflow-hidden pb-[0.08em]">
-          <span className={`block ${dimFrom !== undefined && i >= dimFrom ? 'dim' : ''}`}>{l}</span>
+          <span className={`block ${dimFrom !== undefined && i >= dimFrom ? 'dim' : ''}`}>
+            {l}
+            {i < lines.length - 1 ? ' ' : ''}
+          </span>
         </span>
       ))}
     </Tag>

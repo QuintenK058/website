@@ -53,6 +53,6 @@ Als e-commercespecialist heb ik webshops beheerd aan de kant van de ondernemer, 
 
 ## Hoe werkt het bij ons?
 
-Met de [bundel Ontzorgd Webshop](/pakketten#webshop) nemen we webshopbeheer, Meta Ads, Google Shopping, e-mailflows en een maandelijkse CRO-review in één keer uit handen. We starten met een analyse en maken een plan voor de komende maanden. Daarna werken we maandelijks aan de belangrijkste verbeteringen, en bespreken we samen de cijfers.
+Met de [bundel Ontzorgd Webshop](/pakketten#maandelijks) nemen we webshopbeheer, Meta Ads, Google Shopping, e-mailflows en een maandelijkse CRO-review in één keer uit handen. We starten met een analyse en maken een plan voor de komende maanden. Daarna werken we maandelijks aan de belangrijkste verbeteringen, en bespreken we samen de cijfers.
 
 Meer weten? Lees over [webshops & e-commerce](/diensten/webshops) of [plan een kennismaking](/contact).

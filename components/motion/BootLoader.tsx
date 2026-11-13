@@ -29,7 +29,8 @@ export function BootLoader() {
     <div ref={ref} className="boot-loader" aria-hidden="true" style={{ clipPath: 'inset(0 0 0 0)' }}>
       <div className="grid justify-items-center gap-4">
         <Monogram size={72} />
-        <span data-boot-text className="mono-label text-accent">INITIALISING…</span>
+        {/* Tekst alleen client-side (via GSAP), niet in de HTML voor crawlers */}
+        <span data-boot-text aria-hidden="true" className="mono-label min-h-4 text-accent" />
       </div>
     </div>
   );

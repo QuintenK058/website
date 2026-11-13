@@ -19,7 +19,7 @@ export function HomeHero() {
         <SplitHeading as="h1" id="hero-title" lines={h.lines} dimFrom={h.dimFrom} onScroll={false} className="max-w-[12ch] text-[3rem] leading-[0.9] font-bold tracking-[-0.055em] sm:text-7xl lg:text-[7rem]" />
         <p className="max-w-xl text-lg text-muted md:text-xl">{h.sub}</p>
         <div className="flex flex-wrap gap-3">
-          <Magnetic><Link href="/online-check" className="btn btn-primary">Gratis Online Check <Icon name="arrow" size={18} /></Link></Magnetic>
+          <Magnetic><Link href="/online-check" className="btn btn-primary">Gratis Online Check <Icon name="arrow" size={18} /></Link></Magnetic>{' '}
           <Magnetic><Link href="/pakketten" className="btn btn-ghost">Bekijk pakketten</Link></Magnetic>
         </div>
       </div>

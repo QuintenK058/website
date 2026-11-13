@@ -2,7 +2,7 @@
 
 /** Case-film: screenshot schuift in een device-frame, features verschijnen één voor één (scroll-gestuurd). */
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -11,7 +11,7 @@ import { mq } from '@/lib/motion';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-export function CaseFilm({ client, desktop, alt, features, showTodo }: { client: string; desktop?: string; alt?: string; features: string[]; showTodo: boolean }) {
+export function CaseFilm({ client, desktop, mobile, features, placeholderDesktop, placeholderMobile }: { client: string; desktop?: { url: string; alt: string }; mobile?: { url: string; alt: string }; features: string[]; placeholderDesktop: ReactNode; placeholderMobile: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   useGSAP(
     () => {
@@ -20,6 +20,7 @@ export function CaseFilm({ client, desktop, alt, features, showTodo }: { client:
         const tl = gsap.timeline({ scrollTrigger: { trigger: ref.current, start: 'top top', end: '+=130%', pin: true, scrub: 0.6 } });
         tl.from('[data-device]', { yPercent: 30, rotateX: 18, scale: 0.9, ease: 'none' })
           .from('[data-shot]', { yPercent: 12, ease: 'none' }, 0)
+          .from('[data-mobile]', { yPercent: 40, opacity: 0, ease: 'none' }, 0.05)
           .from('[data-feature]', { opacity: 0, x: 30, stagger: 0.15, ease: 'none' }, 0.1);
       });
       return () => mm.revert();
@@ -29,7 +30,12 @@ export function CaseFilm({ client, desktop, alt, features, showTodo }: { client:
   return (
     <div ref={ref} className="flex min-h-svh items-center border-t border-line py-16">
       <div className="container-site grid items-center gap-12 min-[900px]:grid-cols-[1.4fr_1fr]">
-        <div style={{ perspective: '1400px' }}>
+        <div style={{ perspective: '1400px' }} className="relative">
+          <div data-mobile className="panel absolute -right-2 -bottom-8 z-10 hidden w-[24%] min-w-[110px] rounded-[1.4rem]! sm:block">
+            <div className="panel-in relative aspect-[1170/2532] overflow-hidden rounded-[1.35rem]!">
+              {mobile ? <Image src={mobile.url} alt={mobile.alt} fill sizes="200px" className="object-cover object-top" /> : placeholderMobile}
+            </div>
+          </div>
           <div data-device className="panel">
             <div className="panel-in">
               <div className="flex items-center gap-1.5 border-b border-line px-4 py-2.5">
@@ -38,13 +44,9 @@ export function CaseFilm({ client, desktop, alt, features, showTodo }: { client:
               </div>
               <div className="relative aspect-[16/10] overflow-hidden bg-bg-2">
                 {desktop ? (
-                  <div data-shot className="absolute inset-0"><Image src={desktop} alt={alt ?? `Website van ${client}`} fill sizes="(min-width:900px) 60vw, 100vw" className="object-cover object-top" /></div>
+                  <div data-shot className="absolute inset-0"><Image src={desktop.url} alt={desktop.alt} fill sizes="(min-width:900px) 60vw, 100vw" className="object-cover object-top" /></div>
                 ) : (
-                  <div data-shot className="flex size-full flex-col items-center justify-center gap-2 bg-[repeating-linear-gradient(135deg,#0d0f12_0_14px,#121418_14px_28px)]">
-                    <span className="text-3xl font-bold tracking-tight text-ink-2">{client}</span>
-                    <span className="mono-label text-[10px] text-muted">Screenshot volgt</span>
-                    {showTodo && <span className="rounded-md border border-dashed border-todo bg-todo-bg px-2 py-1 text-xs text-todo">TODO: screenshot desktop + mobiel</span>}
-                  </div>
+                  <div data-shot className="absolute inset-0">{placeholderDesktop}</div>
                 )}
               </div>
             </div>

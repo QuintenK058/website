@@ -3,5 +3,5 @@ export const alt = 'QK Commerce Solutions: alles rondom internet, volledig ontzo
 export const size = ogSize;
 export const contentType = ogContentType;
 export default function Image() {
-  return renderOg({ eyebrow: '// FULL-SERVICE ONLINE AGENCY', title: 'Alles rondom internet. Volledig ontzorgd.', sub: 'E-commerce, marketing, websites, AI en consultancy. Vaste prijzen.' });
+  return renderOg({ eyebrow: '// FULL-SERVICE ONLINE AGENCY', title: 'Alles rondom internet. Volledig ontzorgd.', sub: 'Websites, webshops, vindbaarheid, advertenties en AI. Vaste prijzen.' });
 }

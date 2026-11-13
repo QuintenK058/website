@@ -31,7 +31,7 @@ export function MetricCard({ title, value, decimals = 0, prefix = '', suffix = '
     <div ref={ref} className={className}>
       <Panel title={title}>
         <div className="flex items-end justify-between gap-4">
-          <CountUp value={value} decimals={decimals} prefix={prefix} suffix={suffix} className="text-5xl font-bold tracking-[-0.04em]" />
+          <CountUp value={value} decimals={decimals} prefix={prefix} suffix={suffix} className="text-5xl font-bold tracking-[-0.04em]" />{' '}
           {delta && <span className="mono-label text-[11px] text-ok">{delta}</span>}
         </div>
         <svg viewBox="0 0 400 70" preserveAspectRatio="none" className="block h-[70px] w-full" aria-hidden="true">
@@ -68,10 +68,10 @@ export function AIVisibilityCard({ className }: { className?: string }) {
         <ul className="grid gap-3">
           {assistants.map((a) => (
             <li key={a.name} className="grid grid-cols-[88px_1fr_auto] items-center gap-3 text-sm">
-              <span>{a.name}</span>
+              <span>{a.name}</span>{' '}
               <span className="h-1.5 overflow-hidden rounded-full border border-line bg-surface-2">
                 <span data-meter className="block h-full origin-left rounded-full bg-gradient-to-r from-accent-2 to-accent" style={{ width: `${a.w}%` }} />
-              </span>
+              </span>{' '}
               <span className={`mono-label text-[11px] ${a.s === 'genoemd' ? 'text-accent' : 'text-muted'}`}>{a.s}</span>
             </li>
           ))}

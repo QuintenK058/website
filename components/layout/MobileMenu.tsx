@@ -43,7 +43,7 @@ export function MobileMenu({ services, nav }: { services: L[]; nav: L[] }) {
             {services.map((s) => (
               <li key={s.href}>
                 <Link href={s.href} className="flex items-baseline gap-3 rounded-lg px-2 py-2.5 text-lg font-semibold">
-                  <span className="mono-label text-[10px] text-accent">[{s.index}]</span>
+                  <span className="mono-label text-[10px] text-accent">[{s.index}]</span>{' '}
                   {s.label}
                 </Link>
               </li>
@@ -56,7 +56,7 @@ export function MobileMenu({ services, nav }: { services: L[]; nav: L[] }) {
           </ul>
         </nav>
         <div className="mt-8 grid gap-3">
-          <Link href="/online-check" className="btn btn-primary">Gratis Online Check</Link>
+          <Link href="/online-check" className="btn btn-primary">Gratis Online Check</Link>{' '}
           <Link href="/pakketten" className="btn btn-ghost">Bekijk pakketten</Link>
         </div>
       </div>

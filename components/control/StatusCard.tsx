@@ -14,7 +14,7 @@ export function StatusCard({ className }: { className?: string }) {
         {rows.map((r) => (
           <li key={r.k} className="grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-[var(--radius-panel)] border border-line bg-surface-2 px-3 py-2.5 text-sm">
             <span className="dot" aria-hidden="true" />
-            <span>{r.k}</span>
+            <span>{r.k}</span>{' '}
             <span className={`font-mono text-xs tabular-nums ${r.accent ? 'text-accent' : 'text-muted'}`}>{r.v}</span>
           </li>
         ))}

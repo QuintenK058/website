@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   trailingSlash: false,
   images: { formats: ['image/avif', 'image/webp'] },
+  async redirects() {
+    return [
+      { source: '/diensten/development', destination: '/diensten/onderhoud', permanent: true },
+      { source: '/diensten/development/:slug(maatwerk|koppelingen)', destination: '/diensten/onderhoud/:slug', permanent: true },
+      { source: '/diensten/consultancy', destination: '/diensten/ai/strategie-en-sparring', permanent: true },
+      { source: '/diensten/consultancy/:slug*', destination: '/diensten/ai/strategie-en-sparring', permanent: true },
+      { source: '/website-check', destination: '/online-check', permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

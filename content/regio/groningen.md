@@ -30,7 +30,7 @@ Zoek in Groningen op ‘webdesigner’, ‘kapper’ of ‘fysiotherapeut’ en 
 
 ## Webshops die willen groeien
 
-Groningen heeft veel startende en groeiende webshops. Voor hen hebben we de bundel [Ontzorgd Webshop](/pakketten#webshop): webshopbeheer, conversie-optimalisatie en performance marketing in één. Zo groeit je marketing mee met je omzet, zonder dat je zelf een team hoeft op te bouwen.
+Groningen heeft veel startende en groeiende webshops. Voor hen hebben we de bundel [Ontzorgd Webshop](/pakketten#maandelijks): webshopbeheer, conversie-optimalisatie en performance marketing in één. Zo groeit je marketing mee met je omzet, zonder dat je zelf een team hoeft op te bouwen.
 
 ## Ook in de provincie
 

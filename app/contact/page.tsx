@@ -10,6 +10,7 @@ import { siteConfig } from '@/site.config';
 import { contact } from '@/lib/contact';
 import { filled } from '@/lib/todo';
 import { pageMeta } from '@/lib/seo';
+import { contactOptions } from '@/content/pricing';
 
 const title = 'Contact: plan een kennismaking';
 const description = 'Plan een kennismaking met QK Commerce Solutions in Leeuwarden: op locatie in Friesland, telefonisch of via video. Bel, app, mail of vul het formulier in.';
@@ -42,7 +43,7 @@ export default function ContactPage() {
                 { name: 'bedrijf', label: 'Bedrijf', autoComplete: 'organization', half: true },
                 { name: 'email', label: 'E-mailadres', type: 'email', required: true, autoComplete: 'email', half: true },
                 { name: 'telefoon', label: 'Telefoon', type: 'tel', autoComplete: 'tel', half: true },
-                { name: 'onderwerp', label: 'Richting', type: 'select', options: ['E-commerce', 'Online marketing', 'Website & development', 'AI', 'Consultancy', 'Pakket', 'Iets anders'] },
+                { name: 'pakket', label: 'Pakket', type: 'select', options: contactOptions },
                 { name: 'website', label: 'Huidige website', type: 'url', autoComplete: 'url', placeholder: 'https://' },
                 { name: 'bericht', label: 'Je bericht', type: 'textarea', required: true, placeholder: 'Vertel kort over je bedrijf en waar je hulp bij zoekt.' },
               ]}

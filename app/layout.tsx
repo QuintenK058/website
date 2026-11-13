@@ -11,7 +11,7 @@ import { Footer } from '@/components/layout/Footer';
 import { MobileCTA } from '@/components/layout/MobileCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Analytics } from '@/components/seo/Analytics';
-import { organizationLd, websiteLd } from '@/lib/seo';
+import { organizationLd, websiteLd, noIndexDeploy } from '@/lib/seo';
 
 /* Self-hosted Geist. Alleen de display/body-font wordt vooraf geladen; mono laadt later (labels). */
 const geistSans = localFont({ src: './fonts/Geist-Variable.woff2', variable: '--font-geist-sans', weight: '100 900', display: 'swap', preload: true });
@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.founder.name }],
   alternates: { types: { 'text/plain': '/llms.txt' } },
   formatDetection: { telephone: false },
+  ...(noIndexDeploy ? { robots: { index: false, follow: false } } : {}),
 };
 
 export const viewport: Viewport = {

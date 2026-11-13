@@ -30,14 +30,14 @@ export const home = {
   ],
   pipelineConsole: [
     '> intake\n  bedrijf ......... Installatiebedrijf (voorbeeld)\n  regio ........... Leeuwarden + 30 km\n  doel ............ meer offerteaanvragen\n  status .......... gesprek gepland',
-    '> plan\n  bundel .......... Ontzorgd Groei\n  prijs ........... €745/mnd excl. btw\n  looptijd ........ 3 mnd, daarna maandelijks\n  status .......... akkoord',
+    '> plan\n  pakket .......... Ontzorgd Leads\n  prijs ........... €745/mnd excl. btw\n  looptijd ........ 3 mnd, daarna maandelijks\n  status .......... akkoord',
     '> build\n  website ......... live ✓\n  tracking ........ GA4 + Consent Mode v2 ✓\n  bedrijfsprofiel . geoptimaliseerd ✓\n  google ads ...... campagne actief ✓',
     '> beheer\n  updates ......... automatisch ✓\n  rapport ......... 1 pagina, gewone taal\n  volgende stap ... lokale pagina Sneek\n  status .......... SYS: ONLINE',
   ],
   faq: [
-    { q: 'Wat kost het?', a: 'Dat staat gewoon op de site. Een Web Start-site kost €1.195, het zorgabonnement begint bij €49 per maand, en de ontzorgbundels kosten €199, €745 of €1.195 per maand. Alles excl. btw. Zie <a href="/pakketten">pakketten</a>.' },
+    { q: 'Wat kost het?', a: 'Dat staat gewoon op de site. Je basis (Zorg Basis, Plus of Webshop) kost €49, €99 of €149 per maand. De groeipakketten Ontzorgd Lokaal, Ontzorgd Leads en Ontzorgd Webshop kosten €199, €745 en €1.195 per maand. Een Web Start-site kost €1.195 eenmalig. Alles excl. btw. Zie <a href="/pakketten">pakketten</a>.' },
     { q: 'Zit ik vast aan een lang contract?', a: 'Nee. De minimale looptijd is 3 maanden. Daarna zeg je per maand op.' },
-    { q: 'Wat als ik niet tevreden ben?', a: 'Dan krijg je je geld terug. TODO: vat de voorwaarden in één zin samen (periode en welk bedrag).' },
+    { q: 'Wat als ik niet tevreden ben na de eerste maand?', a: 'Laat het binnen 30 dagen weten. Dan stoppen we zonder opzegtermijn en krijg je de eerste maandfee terug. Dit geldt niet voor advertentiebudget, eenmalige projecten en workshops. De volledige voorwaarden staan in de <a href="/algemene-voorwaarden">algemene voorwaarden</a>.' },
     { q: 'Van wie zijn de accounts?', a: 'Van jou. Domein, hosting, Google- en Meta-accounts staan op jouw naam. Wij krijgen beheerrechten.' },
     { q: 'Wat gebeurt er als ik opzeg?', a: 'Je neemt alles mee: site, domein, accounts en data. We helpen met de overdracht naar jezelf of een andere partij.' },
     { q: 'Garanderen jullie dat ChatGPT mij noemt?', a: 'Nee. Niemand kan een AI-aanbeveling garanderen. We maken je wel citeerbaar en meten elke maand of je genoemd wordt. Dat is ons verschil met bureaus die "gegarandeerd" roepen.' },

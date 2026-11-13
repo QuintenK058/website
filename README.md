@@ -25,13 +25,16 @@ npm run dev
 | `npm start` | Draait de laatste build |
 | `npm run typecheck` | TypeScript-controle |
 | `npm run check` | Crawlt de gebouwde site: 404's, ankers, één H1 per pagina, geldige JSON-LD |
-| `npm run verify` | typecheck + build + check. **Draai dit voor elke deploy.** |
+| `npm run test:finder` | Test alle 45 antwoordcombinaties van de pakketkiezer |
+| `npm run images:check` | Welke fotoslots zijn gevuld? |
+| `npm run verify` | typecheck + finder-test + build + check. **Draai dit voor elke deploy.** |
 
 ### Deployen naar Vercel
 1. Push de repo naar GitHub en importeer hem op vercel.com. Next.js wordt automatisch herkend.
 2. Zet de env-variabelen (zie §5) onder *Settings → Environment Variables*.
-3. Koppel je domein en zet `NEXT_PUBLIC_SITE_URL` op dat domein.
-4. Optioneel: zet voor een preview-omgeving `NEXT_PUBLIC_PREVIEW=true`, zodat je daar TODO's en concepten ziet.
+3. Koppel je domein. Laat `www.qkcommerce.nl` in Vercel doorsturen (308) naar `qkcommerce.nl`. De site-URL staat vast in `site.config.ts` (`https://qkcommerce.nl`); een oude `NEXT_PUBLIC_SITE_URL` in Vercel mag je verwijderen.
+4. Preview-deploys (`VERCEL_ENV=preview`) krijgen automatisch `noindex` en een `robots.txt` die alles blokkeert. Alleen productie wordt geïndexeerd.
+5. Optioneel: zet voor een preview-omgeving `NEXT_PUBLIC_PREVIEW=true`, zodat je daar TODO's en concepten ziet.
 
 ---
 
@@ -42,9 +45,10 @@ Alles staat in `site.config.ts` en `content/`. Je hoeft geen componenten te open
 | Wat | Bestand |
 | --- | --- |
 | **Bedrijfsgegevens**: naam, KvK, btw, adres, telefoon, WhatsApp, e-mail, socials, agenda-link | `site.config.ts` |
-| **Richtingen en pakketten** (E-commerce, Online marketing, Website & development, AI, Consultancy), elk met 3 pakketten: wat we doen, wat er níet in zit, prijs | `content/directions.ts` |
-| **Alle losse prijzen** (modules, projecten, setup), calculator, vergelijkingstabel, spelregels | `content/pricing.ts` |
-| **Diensten** (8 productlijnen + subpagina's): teksten, FAQ, welke pakketten erbij horen | `content/services.ts` |
+| **Alle pakketten en prijzen** (basis, groei, modules, projecten, AI, advies), tabs, vergelijkingstabel, "Zo start je", facturatie, geld-terug, contactopties | `content/pricing.ts` |
+| **Pakketkiezer**: vragen en regels (uitkomst per antwoord) | `content/package-finder.ts` (test: `npm run test:finder`) |
+| **Diensten** (6 diensten [01]–[06] + subpagina's): teksten, FAQ, welke pakketten erbij horen | `content/services.ts` |
+| **Afbeeldingen**: alle fotoplekken, alt-teksten, formaten | `content/images.ts` (zie §2b) |
 | **Cases** | `content/cases.ts` |
 | **Branches** | `content/branches.ts` |
 | **Homepage-teksten**: hero, pijnpunten, pipeline, FAQ | `content/home.ts` |
@@ -54,12 +58,75 @@ Alles staat in `site.config.ts` en `content/`. Je hoeft geen componenten te open
 | **Over ons** (Markdown) | `content/over-ons.md` |
 | **Privacy, cookies, voorwaarden** | `content/legal/*.md` |
 
-**Prijzen**: hele euro's, excl. btw. `amount: null` (of `monthly: null`) toont "Op offerte" en een `priceTodo` als herinnering. Een prijs aanpassen verandert hem overal: pagina's, calculator, OfferCatalog-schema en `llms.txt`.
+**Prijzen**: hele euro's, excl. btw, altijd een vaste prijs of een vanaf-prijs (nooit "op offerte"). Een prijs aanpassen in `content/pricing.ts` verandert hem overal: pakketten, diensten, kiezer, calculator, contactformulier, OfferCatalog-schema en `llms.txt`. Prijzen met `proposal: true` zijn nog een voorstel (zie §9).
+
+**Principe**: eerst je basis, dan je groei. Losse projecten en AI ernaast.
+
+| Soort | Pakket | Prijs |
+| --- | --- | --- |
+| Basis | Zorg Basis / Zorg Plus / Zorg Webshop | €49 / €99 / €149 per maand |
+| Groei | Ontzorgd Lokaal / **Ontzorgd Leads** (aanrader) / Ontzorgd Webshop | €199 / €745 / €1.195 per maand |
+| Groei | Ontzorgd Op Maat | vanaf €1.950 per maand |
+| Modules | Lokaal Zichtbaar €395 · SEO+GEO Groei €795 · Google Ads Lokaal €275 (+ €345 inrichting) · Google Ads Shop €495 (+ €495) · Meta Ads €545 · Meta Ads + Creatives €1.195 · Development-uren €360 (4 uur) · AI-Partner €295 | per maand |
+| Websites | Web Start €1.195 · Web Groei vanaf €2.450 · Web Maatwerk vanaf €4.000 | eenmalig |
+| Webshops | Shop Start vanaf €2.750 · Shop Groei vanaf €4.950 · Migratie vanaf €1.500 · Magento/maatwerk €95 per uur | eenmalig |
+| Checks & setup | Audit €395 · GEO-scan €245 · Bedrijfsprofiel-setup €245 · Koppeling vanaf €495 | eenmalig |
+| AI | AI-Chatbot €1.250 eenmalig + €129 per maand · AI Implementatie vanaf €1.995 · workshops per persoon | |
+| Advies | Strategiesessie €195 · Sparring €595 per maand · Groeistrategie vanaf €1.250 per maand | |
+
+`/pakketten` heeft 4 tabs met deeplinks: `#maandelijks`, `#projecten`, `#ai`, `#advies`. Oude ankers (`#ecommerce`, `#webshop`, `#consultancy`, …) springen naar de juiste tab. Zonder JS staan alle vier onder elkaar.
+
+**Diensten en redirects** (`next.config.ts`): `/diensten/development` → `/diensten/onderhoud`, `/diensten/development/maatwerk|koppelingen` → `/diensten/onderhoud/…`, `/diensten/consultancy/*` → `/diensten/ai/strategie-en-sparring`, `/website-check` → `/online-check` (alle 301/308).
 
 **TODO's**: alles wat met `TODO` begint is een placeholder.
 - In dev en preview zie je ze als gele markering.
 - In productie worden ze verborgen. Een belknop verschijnt pas als het nummer is ingevuld, en FAQ's met een TODO-antwoord worden overgeslagen.
 - Uitzondering: op de juridische pagina's blijven TODO's ook live zichtbaar, met een concept-melding.
+
+### 2b. Afbeeldingen
+
+Elke fotoplek is een *slot* in `content/images.ts` (bestand, Nederlandse alt-tekst, formaat, status). Zet een bestand op de juiste plek in `public/images/` en het verschijnt automatisch via `next/image` met vaste verhouding. Ontbreekt het, dan toont de site een gestileerde console-placeholder (`[IMG] Foto Quinten, portret 4:5`), nooit een kapotte afbeelding. Geen stockfoto's van mensen.
+
+`npm run images:check` laat zien welke slots al gevuld zijn.
+
+| Slot-id | Bestand in `public/images/` | Formaat (px) | Waar |
+| --- | --- | --- | --- |
+| `quinten-portret` | `team/quinten-portret.jpg` | 1600×2000 | Home "Ik kom gewoon langs", Over ons, Person-schema |
+| `quinten-werk` | `team/quinten-aan-het-werk.jpg` | 2400×1600 | Over ons, Werkwijze |
+| `quinten-workshop` | `team/quinten-workshop.jpg` | 2400×1600 | /diensten/ai/workshops, AI-tab op /pakketten |
+| `case-lado-bridal-desktop` | `cases/lado-bridal/desktop.png` | 2880×1800 | Case-kaart, case-detail (device-frame) |
+| `case-lado-bridal-mobile` | `cases/lado-bridal/mobile.png` | 1170×2532 | Case-detail (device-frame) |
+| `case-lado-bridal-hero` | `cases/lado-bridal/hero.jpg` | 2400×1500 | Case-detail header, image-displacement hover |
+| `case-crossing-of-limits-desktop` | `cases/crossing-of-limits/desktop.png` | 2880×1800 | Case-kaart, case-detail (device-frame) |
+| `case-crossing-of-limits-mobile` | `cases/crossing-of-limits/mobile.png` | 1170×2532 | Case-detail (device-frame) |
+| `case-crossing-of-limits-hero` | `cases/crossing-of-limits/hero.jpg` | 2400×1500 | Case-detail header, image-displacement hover |
+| `case-miedema-groep-desktop` | `cases/miedema-groep/desktop.png` | 2880×1800 | Case-kaart, case-detail (device-frame) |
+| `case-miedema-groep-mobile` | `cases/miedema-groep/mobile.png` | 1170×2532 | Case-detail (device-frame) |
+| `case-miedema-groep-hero` | `cases/miedema-groep/hero.jpg` | 2400×1500 | Case-detail header, image-displacement hover |
+| `case-miedema-webshop-desktop` | `cases/miedema-webshop/desktop.png` | 2880×1800 | Case-kaart, case-detail (device-frame) |
+| `case-miedema-webshop-mobile` | `cases/miedema-webshop/mobile.png` | 1170×2532 | Case-detail (device-frame) |
+| `case-wierenga-de-graaf-desktop` | `cases/wierenga-de-graaf/concept-desktop.png` | 2880×1800 | Case-kaart en detail, label "Concept" |
+| `case-wierenga-de-graaf-mobile` | `cases/wierenga-de-graaf/concept-mobile.png` | 1170×2532 | Case-detail |
+| `case-lado-bridal-logo` | `cases/lado-bridal/logo.svg` | 240×80 | Case-kaart |
+| `case-crossing-of-limits-logo` | `cases/crossing-of-limits/logo.svg` | 240×80 | Case-kaart |
+| `case-miedema-groep-logo` | `cases/miedema-groep/logo.svg` | 240×80 | Case-kaart |
+| `case-miedema-webshop-logo` | `cases/miedema-webshop/logo.svg` | 240×80 | Case-kaart |
+| `logo` | `brand/logo-qk.svg` | 220×40 | Header, footer |
+| `logo-mono` | `brand/logo-qk-mono.svg` | 40×40 | Loader, mobiel |
+| `favicon` | `brand/favicon.svg` | 64×64 | <head> |
+| `apple-touch-icon` | `brand/apple-touch-icon.png` | 180×180 | <head> |
+| `regio-leeuwarden` | `regio/leeuwarden.jpg` | 2400×1200 | Header /regio/leeuwarden (optioneel) |
+| `regio-friesland` | `regio/friesland.jpg` | 2400×1200 | Header /regio/friesland (optioneel) |
+| `regio-sneek` | `regio/sneek.jpg` | 2400×1200 | Header /regio/sneek (optioneel) |
+| `regio-drachten` | `regio/drachten.jpg` | 2400×1200 | Header /regio/drachten (optioneel) |
+| `regio-heerenveen` | `regio/heerenveen.jpg` | 2400×1200 | Header /regio/heerenveen (optioneel) |
+| `regio-groningen` | `regio/groningen.jpg` | 2400×1200 | Header /regio/groningen (optioneel) |
+| `cover-php-8-2-stopt-eind-2026` | `kennisbank/php-8-2-stopt-eind-2026-cover.jpg` | 1600×900 | /kennisbank/php-8-2-stopt-eind-2026 |
+| `cover-wat-kost-een-website-in-2026` | `kennisbank/wat-kost-een-website-in-2026-cover.jpg` | 1600×900 | /kennisbank/wat-kost-een-website-in-2026 |
+| `cover-gevonden-worden-in-chatgpt-lokaal-bedrijf` | `kennisbank/gevonden-worden-in-chatgpt-lokaal-bedrijf-cover.jpg` | 1600×900 | /kennisbank/gevonden-worden-in-chatgpt-lokaal-bedrijf |
+| `cover-veilig-ai-gebruiken-in-je-bedrijf` | `kennisbank/veilig-ai-gebruiken-in-je-bedrijf-cover.jpg` | 1600×900 | /kennisbank/veilig-ai-gebruiken-in-je-bedrijf |
+| `cover-webshop-laten-beheren-wat-levert-het-op` | `kennisbank/webshop-laten-beheren-wat-levert-het-op-cover.jpg` | 1600×900 | /kennisbank/webshop-laten-beheren-wat-levert-het-op |
+| `og-default` | `og/default.png` | 1200×630 | Social sharing (fallback) |
 
 ---
 
@@ -118,7 +185,6 @@ Let op: link vanuit andere teksten pas naar een artikel als het gepubliceerd is.
 
 | Variabele | Nodig? | Uitleg |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Ja | Bijv. `https://www.qkcommerce.nl` |
 | `RESEND_API_KEY` + `LEAD_TO_EMAIL` | Ja (optie 1) | Formulieren via Resend. Verifieer je domein in Resend. `LEAD_FROM_EMAIL` is optioneel. |
 | `FORMSPREE_ENDPOINT` | Optie 2 | Terugval als je geen Resend gebruikt |
 | `UPSTASH_REDIS_REST_URL` + `_TOKEN` | Nee | Rate-limit over alle serverinstanties. Zonder deze twee werkt de rate-limit per instance. |
@@ -157,7 +223,7 @@ Let op: link vanuit andere teksten pas naar een artikel als het gepubliceerd is.
 - Crawler: 65 URL's (productie) en 71 (preview), 0 kapotte links, één H1 per pagina, JSON-LD geldig.
 - Lighthouse mobiel:
   - Accessibility, Best Practices en SEO: **100** op alle geteste pagina's.
-  - Performance: pakketten 92–95, dienstpagina 90, home 85–88.
+  - Performance (na pakketten-update, mobiel, lokaal): home 82–86, pakketten 89, dienstpagina 88–91.
   - CLS overal 0. LCP gemeten met echte throttling: 2,0 s.
   - De gesimuleerde LCP (3,4 s) is een schatting van Lighthouse, die lokaal alle JavaScript meetelt die vóór de eerste paint binnen was. Kijk na livegang naar de echte cijfers in Search Console.
 - Getest:
@@ -174,14 +240,17 @@ Let op: link vanuit andere teksten pas naar een artikel als het gepubliceerd is.
 - [ ] KvK, btw, e-mail, telefoon (weergave + E.164), WhatsApp, adres
 - [ ] Cal.com/Calendly-link, LinkedIn/Instagram, achternaam en LinkedIn van Quinten
 
-### Prijzen (`content/directions.ts` en `content/pricing.ts`)
-- [ ] Maandprijzen: E-commerce Partner, Marketing Compleet, Maatwerk & Development, consultancy (losse sessie, wekelijkse sparring, Groeistrategie)
-- [ ] Magento-beheer, Magento-development, maatwerk, koppelingen, development-uren, e-mailflows, e-mailcampagnes, AI-oplossing op maat
-- [ ] Aantallen in pakketten: productmutaties per maand (Webshop Beheer), development-uren, e-mails per maand
-- [ ] Voorwaarden van "Niet tevreden? Geld terug" (spelregels, FAQ en algemene voorwaarden)
+### Pakketten (`content/pricing.ts`)
+- [ ] Levertijden per project (Web Start, Web Groei, Shop Start, …): staan nu als TODO op de kaarten
+- [ ] Betaaltermijn facturen ("Zo start je" / facturatie)
+- [ ] Doorlooptijd inrichting (dagen) bij groeipakketten en ads-modules
+- [ ] Geld-terug-regeling bevestigen: tekst staat als voorstel in spelregels, FAQ en `content/legal/algemene-voorwaarden.md` (gemarkeerd `TODO: bevestigen`)
+- [ ] Voorstelprijzen bevestigen (`proposal: true`): Ontzorgd Op Maat, Development-uren, dev-uur €95, Koppeling, Strategiesessie, Sparring, Groeistrategie
+- [ ] Zorg Webshop: aantal productmutaties per maand
 
 ### Cases (`content/cases.ts`)
-- [ ] Screenshots desktop + mobiel per case (`public/cases/<slug>/`)
+- [ ] Screenshots desktop + mobiel per case (slots in `content/images.ts`, map `public/images/cases/`)
+- [ ] Goedkeuring per case van de klant (naam, cijfers, beelden)
 - [ ] Klantquotes
 - [ ] Miedema-webshop: concreet wat je deed
 - [ ] Aanvullingen bij uitdaging en aanpak (Miedema Groep, Crossing of Limits, Lado Bridal)
@@ -191,7 +260,7 @@ Let op: link vanuit andere teksten pas naar een artikel als het gepubliceerd is.
 - [ ] `content/services.ts`: doorlooptijden, gebruikte platforms/CMS, hostingpartij, ERP/PIM-ervaring, Magento-versies, data van de open workshops
 - [ ] `content/home.ts`: FAQ "niet tevreden"
 - [ ] `content/over-ons.md`: eigen achtergrond en eventuele partners
-- [ ] Portretfoto Quinten (homepage en /over-ons)
+- [ ] Foto's: zie §2b (`npm run images:check`), o.a. portret Quinten
 - [ ] Kennisbank: 5 artikelen nalezen, de TODO verwerken en `draft: false` zetten
 - [ ] Juridisch: privacy, cookies en algemene voorwaarden laten opstellen of controleren
 - [ ] Marktcijfers in `content/stats.ts`: bronnen controleren vóór livegang

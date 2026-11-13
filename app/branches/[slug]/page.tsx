@@ -3,12 +3,12 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { Page } from '@/components/layout/Page';
 import { PageHero, Section, SectionHead, Faq, CtaBand } from '@/components/sections/Basics';
-import { TierCard } from '@/components/sections/Packages';
+import { GroeiCard } from '@/components/sections/Packages';
 import { Related } from '@/components/sections/Related';
 import { Icon } from '@/components/ui/Icon';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { branches, branch, branchHref } from '@/content/branches';
-import { directions } from '@/content/directions';
+import { pkg } from '@/content/pricing';
 import { serviceRef } from '@/lib/content';
 import { pageMeta } from '@/lib/seo';
 
@@ -21,15 +21,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return b ? pageMeta({ title: b.seoTitle, description: b.description, path: branchHref(b.slug) }) : {};
 }
 
-const bundleTier = { lokaal: ['website', 'web-lokaal'], groei: ['marketing', 'mkt-groei'], webshop: ['ecommerce', 'ecom-groei'] } as const;
+const bundlePkg = { lokaal: 'ontzorgd-lokaal', groei: 'ontzorgd-leads', webshop: 'ontzorgd-webshop' } as const;
 
 export default async function BranchPage({ params }: { params: Promise<{ slug: string }> }) {
   const b = branch((await params).slug);
   if (!b) notFound();
   const path = branchHref(b.slug);
-  const [dirId, tierId] = bundleTier[b.bundle];
-  const dir = directions.find((d) => d.id === dirId)!;
-  const tier = dir.tiers.find((t) => t.id === tierId)!;
+  const bundle = pkg(bundlePkg[b.bundle]);
   const svcs = b.services.map((s) => serviceRef(s.sub ? `${s.line}/${s.sub}` : s.line)).filter((x) => !!x);
   return (
     <Page>
@@ -66,7 +64,7 @@ export default async function BranchPage({ params }: { params: Promise<{ slug: s
           </div>
           <div>
             <p className="mono-label mb-4 text-[11px] text-accent">Aanrader voor {b.name.toLowerCase()}</p>
-            <TierCard t={tier} direction={dir} />
+            <GroeiCard p={bundle} />
           </div>
         </div>
       </Section>

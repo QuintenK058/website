@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Wordmark } from '@/components/ui/Monogram';
+import { BrandLogo } from '@/components/ui/BrandLogo';
 import { Scramble, Magnetic } from '@/components/motion/primitives';
 import { SoundToggle } from '@/components/motion/SoundToggle';
 import { MobileMenu } from './MobileMenu';
@@ -20,7 +20,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-line bg-bg/95" style={{ top: 'env(safe-area-inset-top, 0px)' }}>
       <div className="container-site flex h-16 items-center justify-between gap-4">
         <Link href="/" aria-label="QK Commerce Solutions, naar de homepage" className="shrink-0 rounded-lg">
-          <Wordmark />
+          <BrandLogo />
         </Link>
 
         <nav aria-label="Hoofdmenu" className="hidden lg:block">
@@ -35,8 +35,8 @@ export function Header() {
                   {services.map((s) => (
                     <li key={s.href}>
                       <Link href={s.href} className="block rounded-xl px-3 py-3 transition-colors hover:bg-surface-2">
-                        <span className="mono-label block text-[10px] text-accent">[{s.index}]</span>
-                        <span className="block text-sm font-semibold text-ink">{s.label}</span>
+                        <span className="mono-label block text-[10px] text-accent">[{s.index}]</span>{' '}
+                        <span className="block text-sm font-semibold text-ink">{s.label}</span>{' '}
                         <span className="mt-0.5 block text-xs leading-snug text-muted">{s.short}</span>
                       </Link>
                     </li>
@@ -56,7 +56,7 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <SoundToggle />
-          <Link href="/contact" className="btn btn-ghost btn-sm hidden xl:inline-flex">Kennismaking</Link>
+          <Link href="/contact" className="btn btn-ghost btn-sm hidden xl:inline-flex">Kennismaking</Link>{' '}
           <Magnetic>
             <Link href="/online-check" className="btn btn-primary btn-sm hidden sm:inline-flex">Gratis Online Check</Link>
           </Magnetic>

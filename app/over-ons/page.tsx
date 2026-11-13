@@ -4,6 +4,7 @@ import { Page } from '@/components/layout/Page';
 import { PageHero, Section, CtaBand } from '@/components/sections/Basics';
 import { ResultsStrip } from '@/components/sections/Results';
 import { Icon } from '@/components/ui/Icon';
+import { ImageSlot } from '@/components/ui/ImageSlot';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { readMdRoot } from '@/lib/markdown';
 import { siteConfig } from '@/site.config';
@@ -31,16 +32,14 @@ export default function OverOnsPage() {
       <Section border={false}>
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.5fr]">
           <div className="grid content-start gap-6 lg:sticky lg:top-24">
-            <div className="panel"><div className="panel-in relative aspect-[4/5] bg-[radial-gradient(ellipse_at_top,#1d2024,#0e0f12)]">
-              <div className="flex size-full flex-col items-center justify-center gap-3 text-muted"><Icon name="user" size={64} /><span className="mono-label text-[10px]">Foto {siteConfig.founder.name}</span></div>
-              {showTodos && <span className="absolute bottom-3 left-3 rounded-md border border-dashed border-todo bg-todo-bg px-2 py-1 text-xs text-todo">TODO: portretfoto</span>}
-            </div></div>
+            <div className="panel"><div className="panel-in"><ImageSlot id="quinten-portret" sizes="(min-width:1024px) 35vw, 90vw" priority /></div></div>
             <dl className="grid gap-3 text-sm">
               {facts.map(([k, v]) => <div key={k} className="flex justify-between gap-4 border-b border-line pb-3"><dt className="mono-label text-[10px] text-muted">{k}</dt><dd className="text-right">{v}</dd></div>)}
             </dl>
           </div>
           <article className="prose-qk" dangerouslySetInnerHTML={{ __html: md.html }} />
         </div>
+        <div className="panel mt-12" data-reveal><div className="panel-in"><ImageSlot id="quinten-werk" sizes="100vw" /></div></div>
         <div className="mt-12"><Link href="/cases" className="btn btn-ghost">Bekijk de cases <Icon name="arrow" size={16} /></Link></div>
       </Section>
       <CtaBand title={['Zullen we kennismaken?', 'Op locatie of via video.']} />

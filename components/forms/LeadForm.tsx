@@ -7,6 +7,7 @@
  */
 import { useEffect, useRef, useState } from 'react';
 import { ScanConsole } from './ScanConsole';
+import { contactOptionFor } from '@/content/pricing';
 
 export type Field = { name: string; label: string; type?: 'text' | 'email' | 'tel' | 'url' | 'textarea' | 'select'; required?: boolean; autoComplete?: string; placeholder?: string; options?: string[]; half?: boolean; hint?: string };
 
@@ -39,7 +40,7 @@ export function LeadForm({ form, fields, submitLabel, successTitle, successText,
     if (prefill) {
       const pakket = p.get('pakket');
       const dienst = p.get('dienst');
-      if (pakket || dienst) setValues({ onderwerp: pakket ? 'Pakket' : '', bericht: pakket ? `Ik heb interesse in ${pakket}.` : `Ik heb interesse in ${dienst}.` });
+      if (pakket || dienst) setValues({ pakket: pakket ? contactOptionFor(pakket) : '', bericht: pakket ? `Ik heb interesse in ${pakket}.` : `Ik heb interesse in ${dienst}.` });
     }
   }, [prefill]);
 

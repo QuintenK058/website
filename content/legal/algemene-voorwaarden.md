@@ -24,7 +24,7 @@ Minimale looptijd 3 maanden, daarna maandelijks opzegbaar. TODO: opzegtermijn, e
 
 ## Niet tevreden, geld terug
 
-TODO: leg vast wanneer en hoe de niet-tevreden-geld-terugregeling geldt (periode, welk bedrag, uitzonderingen zoals advertentiebudget en externe kosten).
+TODO: bevestigen. Voorstel: Ben je na je eerste maand van een maandpakket (Zorg- of Ontzorgd-pakket, module of Sparring) niet tevreden? Meld dit dan schriftelijk binnen 30 dagen na de start. We beëindigen de overeenkomst dan zonder opzegtermijn en betalen de fee van de eerste maand terug. Deze regeling geldt niet voor advertentiebudget, eenmalige projecten (zoals websites, webshops, audits en koppelingen), workshops en kosten van derden (zoals licenties en Shopify-abonnementen). De regeling geldt eenmaal per klant.
 
 ## Eigendom en intellectueel eigendom
 

@@ -4,7 +4,11 @@ import { Page } from '@/components/layout/Page';
 import { HomeHero } from '@/components/sections/HomeHero';
 import { Section, SectionHead, Faq, CtaBand, Source } from '@/components/sections/Basics';
 import { Marquee, Magnetic, CountUp } from '@/components/motion/primitives';
-import { DirectionRail } from '@/components/sections/DirectionRail';
+import { ServiceRail } from '@/components/sections/ServiceRail';
+import { PackageFinder } from '@/components/sections/PackageFinder';
+import { FinderFallback } from '@/components/sections/FinderFallback';
+import { GroeiCard } from '@/components/sections/Packages';
+import { railItems } from '@/lib/services-view';
 import { ResultsStrip } from '@/components/sections/Results';
 import { Pipeline } from '@/components/sections/Pipeline';
 import { CaseCard } from '@/components/sections/CaseCard';
@@ -13,13 +17,13 @@ import { GovernancePanel } from '@/components/control/GovernancePanel';
 import { MetricCard, AIVisibilityCard, AgentLog } from '@/components/control/Animated';
 import { ConnectionMap } from '@/components/control/ConnectionMap';
 import { Icon } from '@/components/ui/Icon';
+import { ImageSlot } from '@/components/ui/ImageSlot';
 import { SplitHeading } from '@/components/motion/primitives';
 import { home } from '@/content/home';
-import { directions } from '@/content/directions';
 import { stats } from '@/content/stats';
 import { featuredCases } from '@/content/cases';
 import { branches, branchHref } from '@/content/branches';
-import { euro } from '@/content/pricing';
+import { pkg } from '@/content/pricing';
 import { siteConfig } from '@/site.config';
 import { pageMeta } from '@/lib/seo';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -27,24 +31,8 @@ import { showTodos } from '@/lib/todo';
 
 export const metadata: Metadata = pageMeta({ title: home.seoTitle, description: home.description, path: '/', absoluteTitle: true });
 
-function priceRange(d: (typeof directions)[number]) {
-  const nums = d.tiers.map((t) => t.monthly).filter((n): n is number => n != null);
-  if (nums.length) return `vanaf ${euro(Math.min(...nums))}/mnd`;
-  return d.tiers.find((t) => t.oneOff)?.oneOff ?? 'op offerte';
-}
-
 export default function HomePage() {
-  const rail = directions.map((d) => ({
-    id: d.id,
-    index: d.index,
-    name: d.name,
-    mono: d.mono,
-    icon: d.icon,
-    headline: d.headline,
-    bullets: d.tiers.map((t) => t.name),
-    price: priceRange(d),
-    href: `/pakketten#${d.id}`,
-  }));
+  const rail = railItems();
   const featured = featuredCases();
   return (
     <Page>
@@ -65,19 +53,30 @@ export default function HomePage() {
       {/* Social proof */}
       <ResultsStrip />
 
-      {/* 3. Richtingen */}
-      <section className="py-20 md:py-32" aria-labelledby="richting-title">
+      {/* 3. Pakketkiezer */}
+      <section className="py-20 md:py-32" aria-labelledby="kiezer-title">
         <div className="container-site">
-          <SectionHead index="01" label="Kies je richting" title={['Waar wil je hulp bij?', 'Kies een richting, dan een pakket.']} intro="Vijf richtingen, elk met drie pakketten waarin precies staat wat we doen. Liever iets anders? Elk onderdeel is ook los te krijgen." id="richting-title" />
+          <SectionHead index="01" label="Waar wil je hulp bij?" title={['Drie vragen.', 'Eén passend pakket.']} intro="Eerst je basis, dan je groei. Losse projecten en AI ernaast. Beantwoord drie vragen en je ziet meteen wat bij je past, met prijs." id="kiezer-title" />
+          <div className="min-h-[360px]">
+            <FinderFallback />
+            <PackageFinder compact />
+          </div>
         </div>
-        <DirectionRail items={rail} />
+      </section>
+
+      {/* Diensten-rail */}
+      <section className="border-t border-line py-20 md:py-32" aria-labelledby="diensten-title">
+        <div className="container-site">
+          <SectionHead index="02" label="Diensten" title={['Zes diensten.', 'Eén aanspreekpunt.']} intro="Diensten zijn wat we doen. Pakketten zijn hoe je het afneemt." id="diensten-title" />
+        </div>
+        <ServiceRail items={rail} />
       </section>
 
       {/* 4. Herken je dit? */}
       <Section labelledby="pains-title">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
           <div>
-            <SectionHead index="02" label="Herken je dit?" title={home.pains.title} id="pains-title" />
+            <SectionHead index="03" label="Herken je dit?" title={home.pains.title} id="pains-title" />
             <div className="grid gap-4">
               {home.pains.statIds.map((id) => {
                 const s = stats[id];
@@ -106,7 +105,7 @@ export default function HomePage() {
 
       {/* 5. Mission Control */}
       <Section id="ontzorgd" labelledby="mc-title">
-        <SectionHead index="03" label="Mission control" title={['Jij onderneemt.', 'Wij houden het in de gaten.']} intro="Zo ziet ontzorgd eruit: alles bewaakt, alles gemeten, elke maand een rapport van één pagina." id="mc-title" />
+        <SectionHead index="04" label="Mission control" title={['Jij onderneemt.', 'Wij houden het in de gaten.']} intro="Zo ziet ontzorgd eruit: alles bewaakt, alles gemeten, elke maand een rapport van één pagina." id="mc-title" />
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
           <StatusCard className="lg:col-span-4" />
           <MetricCard className="lg:col-span-8" title="Weergaven Bedrijfsprofiel · 30 dagen" value={1284} delta="+22%" points={[12, 18, 15, 24, 22, 31, 28, 40, 37, 49, 56]} />
@@ -123,13 +122,13 @@ export default function HomePage() {
         <Pipeline
           steps={home.pipeline}
           consoleText={home.pipelineConsole}
-          heading={<SectionHead index="04" label="Zo werkt ontzorgen" title={['Vier stappen.', 'Geen verrassingen.']} id="pipe-title" className="mb-10!" />}
+          heading={<SectionHead index="05" label="Zo werkt ontzorgen" title={['Vier stappen.', 'Geen verrassingen.']} id="pipe-title" className="mb-10!" />}
         />
       </section>
 
       {/* 7. Connection map */}
       <Section labelledby="map-title">
-        <SectionHead index="05" label="Alles gekoppeld" title={['Eén systeem.', 'Geen losse eilandjes.']} intro="Website, webshop, Google, Meta, e-mail, CRM en AI-assistent: wij koppelen het en houden het draaiende." id="map-title" />
+        <SectionHead index="06" label="Alles gekoppeld" title={['Eén systeem.', 'Geen losse eilandjes.']} intro="Website, webshop, Google, Meta, e-mail, CRM en AI-assistent: wij koppelen het en houden het draaiende." id="map-title" />
         <ConnectionMap />
         <ul className="mt-8 flex flex-wrap gap-2" aria-label="Tools waarmee we werken">
           {home.tools.map((t) => <li key={t} className="mono-label rounded-full border border-line px-3 py-1.5 text-[11px] text-muted">{t}</li>)}
@@ -138,24 +137,11 @@ export default function HomePage() {
 
       {/* 8. Pakketten */}
       <Section id="pakketten" labelledby="pk-title">
-        <SectionHead index="06" label="Volledig ontzorgd" title={['Vaste prijs.', 'Vaste scope.']} intro="Per richting drie pakketten, met wat we doen én wat er níet in zit. Prijzen excl. btw." id="pk-title" />
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {directions.slice(0, 3).map((d) => {
-            const t = d.tiers.find((x) => x.featured) ?? d.tiers[1];
-            return (
-              <Link key={d.id} href={`/pakketten#${d.id}`} data-cursor="KIES" className="panel panel-glow group" data-reveal>
-                <div className="panel-in grid h-full content-start gap-4 p-7">
-                  <span className="mono-label text-[11px] text-accent">[{d.index}] {d.mono}</span>
-                  <h3 className="text-2xl font-bold">{t.name}</h3>
-                  <p className="text-5xl font-bold tracking-[-0.04em]">{t.monthly != null ? euro(t.monthly) : 'Op offerte'}<span className="text-base font-normal text-muted">{t.monthly != null ? '/mnd' : ''}</span></p>
-                  <ul className="grid gap-2 text-sm">{t.weDo.slice(0, 4).map((w) => <li key={w} className="flex gap-2"><Icon name="check" size={16} className="mt-0.5 shrink-0 text-accent" />{w.replace(/\s*\(TODO[^)]*\)/, '')}</li>)}</ul>
-                  <span className="mono-label mt-2 inline-flex items-center gap-2 text-[11px] text-accent">Alle {d.name.toLowerCase()}-pakketten <Icon name="arrow" size={14} className="transition-transform group-hover:translate-x-1" /></span>
-                </div>
-              </Link>
-            );
-          })}
+        <SectionHead index="07" label="Volledig ontzorgd" title={['Vaste prijs.', 'Vaste scope.']} intro="Drie groeipakketten waarin je basis al zit, met wat we doen én wat er níet in zit. Prijzen excl. btw, inrichting inbegrepen." id="pk-title" />
+        <div className="grid items-stretch gap-4 lg:grid-cols-3">
+          {['ontzorgd-lokaal', 'ontzorgd-leads', 'ontzorgd-webshop'].map((id) => <GroeiCard key={id} p={pkg(id)} />)}
         </div>
-        <div className="mt-8"><Magnetic><Link href="/pakketten" className="btn btn-ghost">Alle pakketten, calculator en spelregels <Icon name="arrow" size={16} /></Link></Magnetic></div>
+        <div className="mt-8"><Magnetic><Link href="/pakketten" className="btn btn-ghost">Alle pakketten, projecten, AI en advies <Icon name="arrow" size={16} /></Link></Magnetic></div>
       </Section>
 
       {/* 9. AI-blok */}
@@ -163,7 +149,7 @@ export default function HomePage() {
         <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_80%_30%,rgb(122_92_255/0.16),transparent_70%)]" />
         <div className="relative grid gap-12 lg:grid-cols-[1.1fr_1fr]">
           <div>
-            <SectionHead index="07" label="AI · mission control" title={['Van losse proefjes.', 'Naar veilig, gemeten AI.']} intro="Workshops in Leeuwarden en in-company, met een AI-geletterdheidsdossier. Daarna chatbots en workflows die echt werk uit handen nemen." id="ai-title" />
+            <SectionHead index="08" label="AI · mission control" title={['Van losse proefjes.', 'Naar veilig, gemeten AI.']} intro="Workshops in Leeuwarden en in-company, met een AI-geletterdheidsdossier. Daarna chatbots en workflows die echt werk uit handen nemen." id="ai-title" />
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="panel" data-reveal><div className="panel-in p-5"><p className="mono-label text-[10px] text-accent">Open groep</p><p className="mt-2 text-xl font-bold">AI-Kennismaking</p><p className="text-muted">€195 p.p. · 3 uur in Leeuwarden</p></div></div>
               <div className="panel" data-reveal><div className="panel-in p-5"><p className="mono-label text-[10px] text-accent">In-company</p><p className="mt-2 text-xl font-bold">AI-Teamworkshop</p><p className="text-muted">€1.295 · incl. AI-dossier</p></div></div>
@@ -178,7 +164,7 @@ export default function HomePage() {
       {/* 10. Cases */}
       <Section labelledby="cases-title">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHead index="08" label="Cases" title={['Echte klanten.', 'Echte resultaten.']} id="cases-title" />
+          <SectionHead index="09" label="Cases" title={['Echte klanten.', 'Echte resultaten.']} id="cases-title" />
           <Link href="/cases" className="btn btn-ghost mb-14">Alle cases <Icon name="arrow" size={16} /></Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -188,7 +174,7 @@ export default function HomePage() {
 
       {/* 11. Branches */}
       <Section labelledby="br-title">
-        <SectionHead index="09" label="Branches" title={['Voor mkb zonder', 'eigen marketingafdeling.']} id="br-title" />
+        <SectionHead index="10" label="Branches" title={['Voor mkb zonder', 'eigen marketingafdeling.']} id="br-title" />
         <ul className="flex flex-wrap gap-3">
           {branches.map((b) => (
             <li key={b.slug}><Link href={branchHref(b.slug)} data-reveal className="inline-flex items-center gap-3 rounded-full border border-line px-5 py-3 text-lg font-semibold transition-colors hover:border-accent hover:text-accent">{b.name}<Icon name="arrow" size={16} /></Link></li>
@@ -200,13 +186,10 @@ export default function HomePage() {
       <Section labelledby="about-title">
         <div className="grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="panel mx-auto w-full max-w-sm" data-reveal>
-            <div className="panel-in relative aspect-[4/5] bg-[radial-gradient(ellipse_at_top,#1d2024,#0e0f12)]">
-              <div className="flex size-full flex-col items-center justify-center gap-3 text-muted"><Icon name="user" size={64} /><span className="mono-label text-[10px]">Foto {siteConfig.founder.name}</span></div>
-              {showTodos && <span className="absolute bottom-3 left-3 rounded-md border border-dashed border-todo bg-todo-bg px-2 py-1 text-xs text-todo">TODO: portretfoto Quinten</span>}
-            </div>
+            <div className="panel-in"><ImageSlot id="quinten-portret" sizes="(min-width:1024px) 30vw, 90vw" /></div>
           </div>
           <div>
-            <SectionHead index="10" label="Over Quinten" title={['Ik kom gewoon langs.', 'Eén aanspreekpunt.']} id="about-title" className="mb-6!" />
+            <SectionHead index="11" label="Over Quinten" title={['Ik kom gewoon langs.', 'Eén aanspreekpunt.']} id="about-title" className="mb-6!" />
             <div className="grid gap-4 text-lg text-muted" data-reveal>
               <p>Ik ben {siteConfig.founder.name}, e-commercespecialist met de nadruk op B2B. Als specialist bij een familiebedrijf in Leeuwarden groeide de webshop onder mijn beheer in 11 maanden met 75% in omzet. Die ervaring zet ik nu in voor ondernemers in Friesland en daarbuiten.</p>
               <p>Je spreekt mij, geen accountmanager. In Leeuwarden, Friesland en Noord-Nederland kom ik langs, ook voor workshops met je team.</p>
@@ -217,7 +200,7 @@ export default function HomePage() {
       </Section>
 
       {/* 13. FAQ */}
-      <Faq items={home.faq} path="/" index="11" />
+      <Faq items={home.faq} path="/" index="12" />
 
       {/* 14. CTA */}
       <CtaBand />

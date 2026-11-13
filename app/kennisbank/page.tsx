@@ -40,7 +40,7 @@ export default function KennisbankPage() {
           <div className="panel max-w-2xl"><div className="panel-in grid gap-4 p-8">
             <h2 className="text-2xl font-bold">De eerste artikelen komen eraan</h2>
             <p className="text-muted">Over PHP 8.2, websiteprijzen, gevonden worden in ChatGPT en veilig AI-gebruik. Tot die tijd beantwoorden we je vragen graag persoonlijk.</p>
-            <div className="flex flex-wrap gap-3"><Link href="/online-check" className="btn btn-primary btn-sm">Gratis Online Check</Link><Link href="/contact" className="btn btn-ghost btn-sm">Stel je vraag</Link></div>
+            <div className="flex flex-wrap gap-3"><Link href="/online-check" className="btn btn-primary btn-sm">Gratis Online Check</Link>{' '}<Link href="/contact" className="btn btn-ghost btn-sm">Stel je vraag</Link></div>
           </div></div>
         )}
       </Section>

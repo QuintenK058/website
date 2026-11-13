@@ -9,6 +9,9 @@ import { CountUp } from '@/components/motion/primitives';
 import { Icon } from '@/components/ui/Icon';
 import { TodoText } from '@/components/ui/Todo';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { ImageSlot } from '@/components/ui/ImageSlot';
+import { slotFile } from '@/lib/images';
+import { slots } from '@/content/images';
 import { visibleCases, caseHref } from '@/content/cases';
 import { serviceRef } from '@/lib/content';
 import { isTodo, showTodos, stripTodo } from '@/lib/todo';
@@ -50,8 +53,8 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
       <JsonLd nodes={[ld]} page={{ path, title: `Case ${c.client}`, description: c.description }} />
       <PageHero eyebrow={`// CASE · ${c.client.toUpperCase()}`} title={[c.title]} intro={c.description} crumbs={[{ name: 'Home', href: '/' }, { name: 'Cases', href: '/cases' }, { name: c.client, href: path }]} ctas={false}>
         <div className="flex flex-wrap gap-2">
-          {c.context !== 'agency' && <span className="mono-label rounded-full border border-warn/50 px-3 py-1 text-[10px] text-warn">{c.context === 'concept' ? 'Concept / redesign' : 'In dienst'}</span>}
-          {c.tags.map((t) => <span key={t} className="mono-label rounded-full border border-accent/35 px-3 py-1 text-[10px] text-accent">{t}</span>)}
+          {c.context !== 'agency' && <span className="mono-label rounded-full border border-warn/50 px-3 py-1 text-[10px] text-warn">{c.context === 'concept' ? 'Concept / redesign' : 'In dienst'}</span>}{' '}
+          {c.tags.map((t) => <span key={t} className="mono-label rounded-full border border-accent/35 px-3 py-1 text-[10px] text-accent">{t} </span>)}
           {!c.approved && showTodos && <span className="mono-label rounded-full bg-danger px-3 py-1 text-[10px] text-bg">Niet goedgekeurd</span>}
         </div>
         {c.contextNote && <p className="flex max-w-2xl gap-3 border-l-2 border-warn pl-4 text-ink-2">{c.contextNote}</p>}
@@ -63,14 +66,24 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
             {c.metrics.map((m) => (
               <div key={m.label}>
                 <dt className="sr-only">{m.label}</dt>
-                <dd><CountUp value={m.value} prefix={m.prefix} suffix={m.suffix} className="block text-5xl font-bold tracking-[-0.05em] md:text-7xl" /><span className="mt-1 block text-sm text-muted">{m.label}</span></dd>
+                <dd><CountUp value={m.value} prefix={m.prefix} suffix={m.suffix} className="block text-5xl font-bold tracking-[-0.05em] md:text-7xl" />{' '}<span className="mt-1 block text-sm text-muted">{m.label}</span></dd>
               </div>
             ))}
           </dl>
         </section>
       )}
 
-      <CaseFilm client={c.client} desktop={c.screenshots.desktop} alt={c.screenshots.alt} features={features} showTodo={showTodos} />
+      {slots.some((x) => x.id === `case-${c.slug}-hero`) && (
+        <div className="container-site -mt-6 mb-6"><div className="panel"><div className="panel-in"><ImageSlot id={`case-${c.slug}-hero`} sizes="100vw" /></div></div></div>
+      )}
+      <CaseFilm
+        client={c.client}
+        desktop={slotFile(`case-${c.slug}-desktop`) ? { url: slotFile(`case-${c.slug}-desktop`)!.url, alt: slotFile(`case-${c.slug}-desktop`)!.alt } : undefined}
+        mobile={slotFile(`case-${c.slug}-mobile`) ? { url: slotFile(`case-${c.slug}-mobile`)!.url, alt: slotFile(`case-${c.slug}-mobile`)!.alt } : undefined}
+        placeholderDesktop={<ImageSlot id={`case-${c.slug}-desktop`} className="absolute inset-0 aspect-auto! size-full" />}
+        placeholderMobile={<ImageSlot id={`case-${c.slug}-mobile`} className="absolute inset-0 aspect-auto! size-full" />}
+        features={features}
+      />
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
@@ -103,7 +116,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
             {svc && (
               <div className="panel"><div className="panel-in grid gap-3 p-6">
                 <p className="text-lg font-bold">Ook zoiets voor jouw bedrijf?</p>
-                <Link href={svc.href} className="btn btn-primary btn-sm">{svc.label} <Icon name="arrow" size={16} /></Link>
+                <Link href={svc.href} className="btn btn-primary btn-sm">{svc.label} <Icon name="arrow" size={16} /></Link>{' '}
                 <Link href="/online-check" className="btn btn-ghost btn-sm">Gratis Online Check</Link>
               </div></div>
             )}

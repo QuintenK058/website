@@ -33,7 +33,7 @@ export default function OnlineCheckPage() {
           {checks.map((c) => (
             <li key={c.t} className="flex gap-3 rounded-[var(--radius-panel)] border border-line bg-surface/70 p-4">
               <Icon name={c.icon} className="shrink-0 text-accent" />
-              <span><span className="block font-semibold">{c.t}</span><span className="block text-sm text-muted">{c.d}</span></span>
+              <span><span className="block font-semibold">{c.t}</span> <span className="block text-sm text-muted">{c.d}</span></span>
             </li>
           ))}
         </ul>
@@ -44,7 +44,7 @@ export default function OnlineCheckPage() {
             <h2 id="form-title" className="text-3xl font-bold">Vraag de check aan</h2>
             <ol className="grid gap-4">
               {['Je vult het formulier in (1 minuut)', 'Wij scannen site, profiel en AI-zichtbaarheid', 'Binnen 2 werkdagen 3 verbeterpunten in je mail'].map((s, i) => (
-                <li key={s} className="flex items-center gap-3"><span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent font-mono text-sm font-bold text-accent-ink">{i + 1}</span>{s}</li>
+                <li key={s} className="flex items-center gap-3"><span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent font-mono text-sm font-bold text-accent-ink">{i + 1}</span> {s}</li>
               ))}
             </ol>
             <p className="text-sm text-muted">PHP 8.2 krijgt na 31 december 2026 geen beveiligingsupdates meer. In de check zie je meteen of dat voor jou speelt.</p>

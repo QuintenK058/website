@@ -172,7 +172,7 @@ export const branches: Branch[] = [
       { title: 'Performance marketing', text: 'Meta en Google Shopping, gestuurd op marge.' },
       { title: 'Retentie', text: 'E-mailflows zodat klanten terugkomen.' },
     ],
-    services: [{ line: 'webshops', sub: 'beheer' }, { line: 'webshops', sub: 'magento' }, { line: 'webshops', sub: 'conversie-optimalisatie' }, { line: 'advertenties', sub: 'e-mailmarketing' }, { line: 'advertenties', sub: 'mediabuying' }, { line: 'development', sub: 'koppelingen' }],
+    services: [{ line: 'webshops', sub: 'beheer' }, { line: 'webshops', sub: 'magento' }, { line: 'webshops', sub: 'conversie-optimalisatie' }, { line: 'advertenties', sub: 'e-mailmarketing' }, { line: 'advertenties', sub: 'mediabuying' }, { line: 'onderhoud', sub: 'koppelingen' }],
     bundle: 'webshop',
     faq: [
       { q: 'Werken jullie alleen met Shopify?', a: 'Nee. We bouwen het liefst op Shopify, maar beheren en ontwikkelen ook Magento-shops. Heb je WooCommerce, dan bespreken we beheer of een migratie.' },

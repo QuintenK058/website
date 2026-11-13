@@ -247,3 +247,8 @@ html.motion-paused .animate-blink { animation-play-state: paused !important; }
 @media (max-width: 767px) { .grain { display: none; } }
 /* Footer pas renderen als hij in beeld komt */
 footer { content-visibility: auto; contain-intrinsic-size: auto 700px; }
+
+/* Pakketkiezer: tekstversie alleen zonder JS */
+html.js .finder-fallback { display: none; }
+/* Programmatisch gefocuste koppen (tabIndex -1) geen focusring */
+[tabindex="-1"]:focus { outline: none; box-shadow: none; }

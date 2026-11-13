@@ -6,6 +6,8 @@ import { PageHero, Section, Faq, CtaBand } from '@/components/sections/Basics';
 import { Related } from '@/components/sections/Related';
 import { Icon } from '@/components/ui/Icon';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { ImageSlot } from '@/components/ui/ImageSlot';
+import { slotFile } from '@/lib/images';
 import { getRegions, getRegion, serviceRef } from '@/lib/content';
 import { pageMeta, serviceLd } from '@/lib/seo';
 
@@ -30,6 +32,7 @@ export default async function RegioPage({ params }: { params: Promise<{ slug: st
     <Page>
       <JsonLd nodes={[serviceLd({ name: `Online marketing, e-commerce en websites in ${d.place}`, description: d.description, path, serviceType: 'Online marketing, e-commerce en webdesign', area: [d.place] })]} page={{ path, title: d.seoTitle, description: d.description }} />
       <PageHero eyebrow={`// REGIO · ${d.place.toUpperCase()}`} title={[words.slice(0, -1).join(' '), words.slice(-1)[0]]} intro={d.intro} crumbs={[{ name: 'Home', href: '/' }, { name: 'Regio', href: '/regio' }, { name: d.place, href: path }]} />
+      {slotFile(`regio-${slug}`) && <div className="container-site pt-10"><div className="panel"><div className="panel-in"><ImageSlot id={`regio-${slug}`} sizes="100vw" priority /></div></div></div>}
       <Section border={false}>
         <h2 className="sr-only">Wat speelt er in {d.place}</h2>
         <div className="grid gap-4 md:grid-cols-3">

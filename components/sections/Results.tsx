@@ -14,7 +14,7 @@ export function ResultsStrip() {
         {items.map((c) => (
           <Link key={c.slug} href={caseHref(c.slug)} data-cursor="OPEN CASE" className="group grid gap-6 py-10 md:px-8 md:first:pl-0 md:last:border-l md:last:border-line">
             <div className="flex items-center justify-between gap-3">
-              <span className="mono-label text-[11px] text-accent">Case · {c.client}</span>
+              <span className="mono-label text-[11px] text-accent">Case · {c.client}</span>{' '}
               <span className="mono-label inline-flex items-center gap-1 text-[11px] text-muted group-hover:text-ink">Bekijk <Icon name="arrow" size={14} /></span>
             </div>
             <dl className="grid grid-cols-3 gap-4">
@@ -22,7 +22,7 @@ export function ResultsStrip() {
                 <div key={m.label} data-reveal>
                   <dt className="sr-only">{m.label}</dt>
                   <dd>
-                    <CountUp value={m.value} prefix={m.prefix} suffix={m.suffix} className="block text-4xl font-bold tracking-[-0.04em] text-ink md:text-5xl" />
+                    <CountUp value={m.value} prefix={m.prefix} suffix={m.suffix} className="block text-4xl font-bold tracking-[-0.04em] text-ink md:text-5xl" />{' '}
                     <span className="mt-1 block text-sm leading-snug text-muted">{m.label}</span>
                   </dd>
                 </div>

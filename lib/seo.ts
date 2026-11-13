@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { siteConfig } from '@/site.config';
 import { filled, stripTodo } from './todo';
-import { packages, formatPrice } from '@/content/pricing';
-import { directions } from '@/content/directions';
+import { packages, formatPriceLong, formatExtra, type Pkg } from '@/content/pricing';
 import type { QA } from '@/content/services';
+
+/** Vercel-preview (en elke niet-productie-deploy op Vercel) krijgt noindex. */
+export const noIndexDeploy = !!process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production';
 
 export const abs = (path = '/') => (path === '/' ? siteConfig.url + '/' : siteConfig.url + path);
 export const ORG_ID = `${siteConfig.url}/#organization`;
@@ -25,7 +27,7 @@ export function pageMeta(opts: { title: string; description: string; path: strin
       locale: 'nl_NL',
     },
     twitter: { card: 'summary_large_image', title: opts.title, description: opts.description },
-    robots: opts.noindex
+    robots: opts.noindex || noIndexDeploy
       ? { index: false, follow: true }
       : { index: true, follow: true, 'max-snippet': -1, 'max-image-preview': 'large', 'max-video-preview': -1 },
   };
@@ -91,20 +93,8 @@ export function serviceLd(opts: { name: string; description: string; path: strin
   const url = abs(opts.path);
   const offers = (opts.packageIds ?? [])
     .map((id) => packages.find((p) => p.id === id))
-    .filter((p) => p && p.price.amount != null)
-    .map((p) => ({
-      '@type': 'Offer',
-      name: p!.name,
-      description: p!.summary,
-      priceCurrency: 'EUR',
-      priceSpecification: {
-        '@type': p!.price.unit === 'mnd' ? 'UnitPriceSpecification' : 'PriceSpecification',
-        [p!.price.from ? 'minPrice' : 'price']: p!.price.amount,
-        priceCurrency: 'EUR',
-        valueAddedTaxIncluded: false,
-        ...(p!.price.unit === 'mnd' ? { unitText: 'maand' } : {}),
-      },
-    }));
+    .filter((p): p is Pkg => !!p)
+    .map(offerLd);
   return clean({
     '@type': 'Service',
     '@id': `${url}#service`,
@@ -118,37 +108,39 @@ export function serviceLd(opts: { name: string; description: string; path: strin
   });
 }
 
+const unitText: Partial<Record<Pkg['price']['unit'], string>> = { mnd: 'maand', pp: 'persoon', uur: 'uur', sessie: 'sessie' };
+
+function offerLd(p: Pkg) {
+  const unit = unitText[p.price.unit];
+  return clean({
+    '@type': 'Offer',
+    name: p.name,
+    description: `${p.summary} ${formatPriceLong(p.price)}${formatExtra(p.price) ? ` ${formatExtra(p.price)}` : ''}, excl. btw.`.replace(/\s*\(TODO[^)]*\)/g, ''),
+    priceCurrency: 'EUR',
+    ...(p.price.from ? {} : { price: p.price.amount }),
+    priceSpecification: {
+      '@type': unit ? 'UnitPriceSpecification' : 'PriceSpecification',
+      [p.price.from ? 'minPrice' : 'price']: p.price.amount,
+      priceCurrency: 'EUR',
+      valueAddedTaxIncluded: false,
+      unitText: unit,
+    },
+    seller: { '@id': ORG_ID },
+  });
+}
+
 export function offerCatalogLd() {
+  const groups: [string, Pkg['kind']][] = [['Basis', 'basis'], ['Groeipakketten', 'groei'], ['Modules', 'module'], ['Eenmalige projecten', 'project'], ['AI & workshops', 'ai'], ['Advies & sparring', 'advies']];
   return {
     '@type': 'OfferCatalog',
     '@id': `${siteConfig.url}/pakketten#catalog`,
-    name: 'Ontzorgbundels en diensten van QK Commerce Solutions',
+    name: 'Pakketten en prijzen van QK Commerce Solutions',
     url: abs('/pakketten'),
-    itemListElement: [
-      ...directions.flatMap((d) =>
-        d.tiers
-          .filter((t) => t.monthly != null)
-          .map((t) => ({
-            '@type': 'Offer',
-            name: `${d.name}: ${t.name}`,
-            description: `${t.forWho} Wat we doen: ${t.weDo.map(stripTodo).filter(Boolean).join('; ')}.`,
-            priceCurrency: 'EUR',
-            price: t.monthly,
-            priceSpecification: { '@type': 'UnitPriceSpecification', price: t.monthly, priceCurrency: 'EUR', unitText: 'maand', valueAddedTaxIncluded: false },
-            seller: { '@id': ORG_ID },
-          })),
-      ),
-      ...packages
-        .filter((p) => p.price.amount != null)
-        .map((p) => ({
-          '@type': 'Offer',
-          name: p.name,
-          description: `${p.summary} (${formatPrice(p.price)}${p.price.setup ? ` + €${p.price.setup} setup` : ''}, excl. btw)`,
-          priceCurrency: 'EUR',
-          priceSpecification: { '@type': 'PriceSpecification', [p.price.from ? 'minPrice' : 'price']: p.price.amount, priceCurrency: 'EUR', valueAddedTaxIncluded: false },
-          seller: { '@id': ORG_ID },
-        })),
-    ],
+    itemListElement: groups.map(([name, kind]) => ({
+      '@type': 'OfferCatalog',
+      name,
+      itemListElement: packages.filter((p) => p.kind === kind).map(offerLd),
+    })),
   };
 }
 

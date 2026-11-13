@@ -55,6 +55,17 @@ while (queue.length) {
       for (const k of required[t] ?? []) if (n[k] == null) problems.push(`${t} mist ${k} op ${clean}`);
     }
   }
+  // Platte tekst: woorden die alleen ontstaan als tags zonder spatie worden weggehaald (aan elkaar geplakt)
+  const body = html.replace(/<!--[\s\S]*?-->/g, '').replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<template[\s\S]*?<\/template>/g, '').replace(/<svg[\s\S]*?<\/svg>/g, ' ');
+  const dec = (t) => t.replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/&[a-z]+;|&#\d+;/g, ' ');
+  // zoals html-to-text: blok-elementen = scheiding, inline-elementen (span, a, button, strong…) niet
+  const blockRe = /<\/?(div|p|h[1-6]|li|ul|ol|section|header|footer|nav|main|article|aside|dl|dt|dd|table|thead|tbody|tr|td|th|caption|br|hr|figure|figcaption|blockquote|pre|summary|details|form|fieldset|legend|address|option|select|label)\b[^>]*>/gi;
+  const glued = new Set(dec(body.replace(blockRe, ' ').replace(/<[^>]+>/g, '')).split(/\s+/).filter(Boolean));
+  const spaced = new Set(dec(body.replace(/<[^>]+>/g, ' ')).split(/\s+/).filter(Boolean));
+  const alnum = /[\p{L}\d]/u;
+  // echt aan elkaar = te splitsen in twee woorden die allebei letters/cijfers bevatten (dus niet "link" + ".")
+  const stuck = [...glued].filter((w) => !spaced.has(w) && [...Array(w.length).keys()].slice(1).some((i) => spaced.has(w.slice(0, i)) && spaced.has(w.slice(i)) && alnum.test(w.slice(0, i)) && alnum.test(w.slice(i))));
+  for (const w of stuck.slice(0, 40)) problems.push(`aan elkaar: "${w}" op ${clean}`);
   // H1
   const h1 = (html.match(/<h1[\s>]/g) || []).length;
   if (h1 !== 1) problems.push(`${h1}× <h1> op ${clean}`);

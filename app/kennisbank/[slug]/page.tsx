@@ -4,6 +4,8 @@ import { Page } from '@/components/layout/Page';
 import { Breadcrumbs, Faq, CtaBand } from '@/components/sections/Basics';
 import { Related } from '@/components/sections/Related';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { ImageSlot } from '@/components/ui/ImageSlot';
+import { slots } from '@/content/images';
 import { getArticles, getArticle } from '@/lib/content';
 import { pageMeta, articleLd } from '@/lib/seo';
 import { siteConfig } from '@/site.config';
@@ -39,6 +41,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </p>
         </div>
       </section>
+      {slots.some((x) => x.id === `cover-${slug}`) && <div className="container-site pt-12"><div className="panel mx-auto max-w-4xl"><div className="panel-in"><ImageSlot id={`cover-${slug}`} sizes="(min-width:1024px) 900px, 100vw" /></div></div></div>}
       <section className="py-16">
         <article className="container-site prose-qk mx-auto" dangerouslySetInnerHTML={{ __html: a.html }} />
       </section>
