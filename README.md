@@ -85,6 +85,21 @@ Alles staat in `site.config.ts` en `content/`. Je hoeft geen componenten te open
 - In productie worden ze verborgen. Een belknop verschijnt pas als het nummer is ingevuld, en FAQ's met een TODO-antwoord worden overgeslagen.
 - Uitzondering: op de juridische pagina's blijven TODO's ook live zichtbaar, met een concept-melding.
 
+### Logo en huisstijl
+
+Het logo is het QK-monogram (variant B "Verfijnd"): een cyaan Q en een lichte K in een afgerond vierkant. De site tekent het als SVG (`components/ui/Monogram.tsx`), zodat het scherp blijft en de teken-animatie werkt. Favicon: `app/icon.svg`; app-icoon: `app/apple-icon.png`; logo voor Google: `public/logo.png`.
+
+Logobestanden voor e-mail, social media en drukwerk staan in `public/brand-kit/` (ook online op `/brand-kit/...`):
+
+| Bestand | Gebruik |
+| --- | --- |
+| `qk-logo-donker.png` / `qk-logo-licht.png` | Logo met naam, transparante achtergrond (op donker / op licht) |
+| `qk-monogram.svg` / `qk-monogram-licht.svg` | Monogram als vector |
+| `qk-monogram-mono-wit.svg` | Eenkleurig wit, voor op foto's |
+| `qk-profielfoto.png` | Profielfoto voor LinkedIn, Instagram en Google Bedrijfsprofiel |
+
+Kleuren: achtergrond `#0a0b0d`, accent `#4de1ff` (op wit: `#0aa5c8`), tekst `#edeff2`. Lettertype: Geist.
+
 ### 2b. Afbeeldingen
 
 Elke fotoplek is een *slot* in `content/images.ts` (bestand, Nederlandse alt-tekst, formaat, status). Zet een bestand op de juiste plek in `public/images/` en het verschijnt automatisch via `next/image` met vaste verhouding. Ontbreekt het, dan toont de site een gestileerde console-placeholder (`[IMG] Foto Quinten, portret 4:5`), nooit een kapotte afbeelding. Geen stockfoto's van mensen.
@@ -271,4 +286,3 @@ Let op: link vanuit andere teksten pas naar een artikel als het gepubliceerd is.
 ### Techniek
 - [ ] Resend-account (domein verifiëren) of Formspree-endpoint
 - [ ] Google Search Console en Bing Webmaster Tools koppelen, sitemap indienen
-- [ ] Definitief logo (tijdelijk: `app/icon.svg` en `components/ui/Monogram.tsx`)

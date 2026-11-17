@@ -15,7 +15,7 @@ export async function renderOg({ eyebrow, title, sub }: { eyebrow: string; title
       <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '64px 72px', background: '#0a0b0d', backgroundImage: 'radial-gradient(ellipse 70% 60% at 85% 0%, rgba(77,225,255,0.28), transparent 65%), radial-gradient(ellipse 50% 50% at 0% 100%, rgba(122,92,255,0.18), transparent 65%)', color: '#edeff2', fontFamily: 'Geist' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, fontSize: 30 }}>
-            <div style={{ width: 56, height: 56, borderRadius: 14, border: '2px solid #31353b', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, color: '#4de1ff' }}>QK</div>
+            <svg width="56" height="56" viewBox="0 0 40 40"><rect x="1" y="1" width="38" height="38" rx="9.5" fill="none" stroke="#31353b" strokeWidth="1.2" /><path d="M15.2 12a8 8 0 1 0 0 16 8 8 0 1 0 0-16M18.6 23.4l3 3" fill="none" stroke="#4de1ff" strokeWidth="2.8" strokeLinecap="round" /><path d="M26.6 11.8v16.4M32.8 11.8l-6 8.2 6 8.2" fill="none" stroke="#edeff2" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
             <span>QK Commerce</span>
             <span style={{ color: '#9aa0a8' }}>Solutions</span>
           </div>
