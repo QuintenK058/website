@@ -507,7 +507,7 @@ export const lines: Line[] = [
       { q: 'Maken jullie ook de advertenties?', a: 'Teksten en eenvoudige beelden maken we zelf. Foto\'s en video\'s van je product of bedrijf lever je aan, of we spreken een vaste prijs af voor een shoot.' },
     ],
     relatedBranches: ['webshops', 'bouw-en-installatie'],
-    relatedArticles: [],
+    relatedArticles: ['wat-kost-google-ads-uitbesteden'],
     serviceType: 'Online adverteren en mediabuying',
     subpages: [
       {
@@ -622,7 +622,7 @@ export const lines: Line[] = [
       { q: 'Met welke tools werken jullie?', a: 'ChatGPT, Microsoft Copilot en Claude voor dagelijks gebruik, en n8n of Make voor automatisering. We kiezen wat bij jouw situatie en privacy-eisen past.' },
     ],
     relatedBranches: ['zakelijke-dienstverlening', 'webshops'],
-    relatedArticles: ['veilig-ai-gebruiken-in-je-bedrijf'],
+    relatedArticles: ['veilig-ai-gebruiken-in-je-bedrijf', 'wat-kost-ai-voor-je-bedrijf'],
     serviceType: 'AI-training en AI-implementatie',
     subpages: [
       {
@@ -747,8 +747,8 @@ export const lines: Line[] = [
       { q: 'Hoe lang zit ik vast?', a: 'Doorlopende consultancy loopt minimaal 3 maanden, daarna maandelijks opzegbaar. Een strategiesessie of plan van aanpak is eenmalig.' },
       { q: 'Is dit online of op locatie?', a: 'Allebei. Online waar het kan, op locatie waar het helpt. In Friesland en Groningen kom ik gewoon langs.' },
     ],
-    relatedBranches: ['webshops', 'zakelijke-dienstverlening'],
-    relatedArticles: [],
+    relatedBranches: ['webshops', 'zakelijke-dienstverlening', 'industrie-en-groothandel'],
+    relatedArticles: ['consultancy-of-uitbesteden'],
     serviceType: 'E-commerce- en marketingconsultancy',
     subpages: [
       {

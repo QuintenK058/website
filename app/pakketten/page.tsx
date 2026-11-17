@@ -12,6 +12,7 @@ import { PackageFinder } from '@/components/sections/PackageFinder';
 import { FinderFallback } from '@/components/sections/FinderFallback';
 import { Todo } from '@/components/ui/Todo';
 import { ImageSlot } from '@/components/ui/ImageSlot';
+import { showSlot } from '@/lib/images';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { pkg, byKind, byGroup, tabs, legacyHash, startSteps, formatPriceLong, VAT_NOTE, AD_BUDGET_NOTE } from '@/content/pricing';
 import { pageMeta, offerCatalogLd } from '@/lib/seo';
@@ -87,7 +88,7 @@ export default function PakkettenPage() {
     ),
     ai: (
       <div className="grid gap-10">
-        <div className="panel max-w-3xl"><div className="panel-in"><ImageSlot id="quinten-workshop" sizes="(min-width:1024px) 60vw, 100vw" /></div></div>
+        {showSlot('quinten-workshop') && (<div className="panel max-w-3xl"><div className="panel-in"><ImageSlot id="quinten-workshop" sizes="(min-width:1024px) 60vw, 100vw" /></div></div>)}
         <StepLine
           steps={[
             { label: '01 · Leren', title: 'Workshops', body: <AiList ids={['ai-kennismaking', 'ai-teamworkshop']} /> },

@@ -3,7 +3,7 @@ title: "Veilig AI gebruiken in je bedrijf: zo voorkom je een datalek"
 seoTitle: "Veilig AI gebruiken in je bedrijf: ChatGPT, AVG en de AI Act"
 description: Hoe gebruik je ChatGPT, Copilot en Claude veilig in je bedrijf? Praktische afspraken over data, de AVG en wat artikel 4 van de AI Act van je vraagt.
 pubDate: 2026-11-13
-draft: true
+draft: false
 readingTime: 7
 relatedServices: [ai/workshops, ai/implementatie]
 faq:
@@ -37,9 +37,9 @@ Uit CBS-cijfers blijkt dat microbedrijven die AI overwogen maar niet invoerden, 
 
 ## En de AI Act?
 
-Artikel 4 van de AI Act vraagt organisaties maatregelen te nemen om de AI-geletterdheid van hun mensen te ondersteunen. Een training en vastgelegde afspraken zijn daar een logische invulling van. Ga niet in paniek, maar leg wel vast wat je doet.
+Artikel 4 van de AI Act gaat over AI-geletterdheid: organisaties die AI gebruiken, moeten ervoor zorgen dat hun mensen er verstandig mee omgaan. Die plicht geldt sinds 2 februari 2025. In 2026 heeft de EU de AI Act op onderdelen aangepast met de zogeheten Digital Omnibus. Volgens verschillende juridische bronnen is artikel 4 daarbij afgezwakt naar een inspanningsverplichting: je moet AI-geletterdheid *ondersteunen*, in plaats van een bepaald niveau te *waarborgen* ([AI Compliance Hub](https://www.aicompliancehub.nl/kennisbank/digital-omnibus-politiek-akkoord-mei-2026), [SAIG](https://www.saig.nl/en/kennisbank/artikel-4-eu-ai-verordening-geletterdheidsplicht)).
 
-TODO: controleer vóór publicatie de actuele tekst en status van artikel 4 (inclusief eventuele wijzigingen via de AI Omnibus).
+Wat betekent dat in de praktijk? Niet dat je niets hoeft te doen. Een training en vastgelegde afspraken blijven de logische invulling, en ze maken aantoonbaar dat je er werk van maakt. Ga niet in paniek, maar leg wel vast wat je doet. De officiële tekst vind je op [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1689/oj).
 
 *Dit is geen juridisch advies.*
 

@@ -3,7 +3,7 @@ title: Gevonden worden in ChatGPT als lokaal bedrijf
 seoTitle: "Gevonden worden in ChatGPT als lokaal bedrijf: zo werkt GEO"
 description: Hoe zorg je dat ChatGPT, Perplexity en Google AI Overviews jouw lokale bedrijf noemen? Praktische uitleg over GEO, structured data, llms.txt en vermeldingen.
 pubDate: 2026-11-13
-draft: true
+draft: false
 readingTime: 7
 relatedServices: [vindbaarheid/geo-ai-zichtbaarheid, vindbaarheid/lokale-seo]
 faq:
@@ -55,7 +55,7 @@ Een llms.txt-bestand is een korte samenvatting van je bedrijf en je belangrijkst
 
 Eerlijk is eerlijk: niemand kan garanderen dat ChatGPT jouw bedrijf noemt. Antwoorden verschillen per vraag, per moment en per model. Wat je wel kunt doen, is zorgen dat je de beste kandidaat bent. En de meeste maatregelen helpen ook gewoon bij je vindbaarheid in Google.
 
-TODO: voeg eventueel een eigen voorbeeld of praktijkervaring toe (zonder verzonnen cijfers).
+Een voorbeeld uit de praktijk: voor [Lado Bridal](/cases/lado-bridal) bouwden we een tweetalige site met regionale landingspagina's. Daarmee staat ze op #1 in haar niche, en kwamen er in één week 3 boekingen binnen via SEO. Dezelfde duidelijke, lokale pagina's zijn ook precies wat AI-assistenten nodig hebben om je te kunnen noemen.
 
 ## Hulp nodig?
 

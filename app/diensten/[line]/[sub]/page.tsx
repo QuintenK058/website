@@ -8,6 +8,7 @@ import { Related } from '@/components/sections/Related';
 import { Icon } from '@/components/ui/Icon';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { ImageSlot } from '@/components/ui/ImageSlot';
+import { showSlot } from '@/lib/images';
 import { lines, line, subpage, lineHref, subHref } from '@/content/services';
 import { pageMeta, serviceLd } from '@/lib/seo';
 
@@ -37,7 +38,7 @@ export default async function SubPage({ params }: { params: Promise<{ line: stri
       <JsonLd nodes={[serviceLd({ name: s.name, description: s.description, path, serviceType: l.serviceType, packageIds: s.packageIds })]} page={{ path, title: s.seoTitle, description: s.description }} />
       <PageHero eyebrow={`// ${l.name.toUpperCase()} · ${s.name.toUpperCase()}`} title={title[1] ? title : [s.title]} intro={s.intro} crumbs={crumbs} />
 
-      {l.id === 'ai' && s.slug === 'workshops' && (
+      {l.id === 'ai' && s.slug === 'workshops' && showSlot('quinten-workshop') && (
         <div className="container-site pt-12"><div className="panel" data-reveal><div className="panel-in"><ImageSlot id="quinten-workshop" sizes="100vw" /></div></div></div>
       )}
       <Section labelledby="wd-title">

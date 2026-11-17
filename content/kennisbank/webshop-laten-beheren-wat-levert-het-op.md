@@ -3,7 +3,7 @@ title: "Webshop laten beheren: wat levert het op?"
 seoTitle: "Webshop laten beheren: wat levert het op en wat kost het?"
 description: Wat doet een webshopbeheerder, wanneer is uitbesteden slim en wat levert het op? Uitleg over webshopbeheer, CRO en performance marketing voor Shopify en WooCommerce.
 pubDate: 2026-11-13
-draft: true
+draft: false
 readingTime: 6
 relatedServices: [webshops/beheer, advertenties/mediabuying]
 faq:
@@ -45,7 +45,7 @@ Wat webshopbeheer oplevert, verschilt per shop. Daarom geven we hier geen beloft
 - **Advertentierendement**: met goede tracking zie je wat winstgevend is, en stop je met wat dat niet is.
 - **Terugkerende klanten**: met e-mailflows verkoop je opnieuw aan klanten die je al hebt, zonder opnieuw voor ze te betalen.
 
-TODO: vul eventueel aan met een eigen praktijkvoorbeeld (alleen met toestemming en echte cijfers).
+Hoe dat er in de praktijk uitziet? Bij de [webshop van Miedema Bouwmaterialen](/cases/miedema-webshop), waar ik als e-commercespecialist werkte, groeide de omzet in 11 maanden met 75%, met 80% meer orders en meer dan 575 nieuwe klanten.
 
 ## Ervaring van binnenuit
 

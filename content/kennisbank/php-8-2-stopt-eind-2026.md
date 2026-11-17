@@ -3,7 +3,7 @@ title: "PHP 8.2 stopt eind 2026: wat betekent dat voor jouw website?"
 seoTitle: "PHP 8.2 einde ondersteuning 31 december 2026: wat moet je doen?"
 description: PHP 8.2 krijgt na 31 december 2026 geen beveiligingsupdates meer. Wat betekent dat voor je WordPress-site, hoe check je je versie en wat moet je doen?
 pubDate: 2026-11-13
-draft: true
+draft: false
 readingTime: 5
 relatedServices: [onderhoud, websites/audit]
 faq:
@@ -31,10 +31,8 @@ Dat staat niet op zichzelf. Volgens onderzoek van Bureau Imago, gepubliceerd doo
 
 1. **Check je PHP-versie.** In het controlepaneel van je hosting, of in WordPress onder *Hulpmiddelen → Sitediagnose*.
 2. **Update je thema en plugins.** Oude plugins werken soms niet op een nieuwere PHP-versie. Eerst bijwerken, dan overstappen.
-3. **Test op een kopie.** Zet PHP 8.3 of 8.4 eerst aan op een testomgeving. Werkt alles? Dan pas live.
+3. **Test op een kopie.** Zet PHP 8.4 of 8.5 eerst aan op een testomgeving. Werkt alles? Dan pas live. Kies liever niet voor 8.3: die krijgt alleen nog beveiligingsupdates tot eind 2027 ([php.net](https://www.php.net/supported-versions.php)).
 4. **Regel onderhoud.** Een update is geen eenmalige klus. Over een paar jaar stopt de volgende versie.
-
-TODO: controleer vóór publicatie welke PHP-versies op dat moment worden ondersteund en pas stap 3 eventueel aan.
 
 ## Te oud om te updaten?
 

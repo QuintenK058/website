@@ -10,7 +10,7 @@ import { Icon } from '@/components/ui/Icon';
 import { TodoText } from '@/components/ui/Todo';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { ImageSlot } from '@/components/ui/ImageSlot';
-import { slotFile } from '@/lib/images';
+import { slotFile, showSlot } from '@/lib/images';
 import { slots } from '@/content/images';
 import { visibleCases, caseHref } from '@/content/cases';
 import { serviceRef } from '@/lib/content';
@@ -73,7 +73,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         </section>
       )}
 
-      {slots.some((x) => x.id === `case-${c.slug}-hero`) && (
+      {slots.some((x) => x.id === `case-${c.slug}-hero`) && showSlot(`case-${c.slug}-hero`) && (
         <div className="container-site -mt-6 mb-6"><div className="panel"><div className="panel-in"><ImageSlot id={`case-${c.slug}-hero`} sizes="100vw" /></div></div></div>
       )}
       <CaseFilm

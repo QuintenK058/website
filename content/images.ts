@@ -17,8 +17,8 @@ export type Slot = {
 };
 
 const caseSlots = (slug: string, name: string, extra = ''): Slot[] => [
-  { id: `case-${slug}-desktop`, src: `cases/${slug}/desktop.png`, alt: `Homepage van de website van ${name} op desktop`, width: 2880, height: 1800, status: 'placeholder', label: `Screenshot ${name}, desktop 16:10`, where: 'Case-kaart, case-detail (device-frame)', note: `Screenshot van de live site${extra}` },
-  { id: `case-${slug}-mobile`, src: `cases/${slug}/mobile.png`, alt: `De website van ${name} op een smartphone`, width: 1170, height: 2532, status: 'placeholder', label: `Screenshot ${name}, mobiel`, where: 'Case-detail (device-frame)', note: `Screenshot van de live site${extra}` },
+  { id: `case-${slug}-desktop`, src: `cases/${slug}/desktop.jpg`, alt: `Homepage van de website van ${name} op desktop`, width: 2880, height: 1800, status: 'placeholder', label: `Screenshot ${name}, desktop 16:10`, where: 'Case-kaart, case-detail (device-frame)', note: `Screenshot van de live site${extra}` },
+  { id: `case-${slug}-mobile`, src: `cases/${slug}/mobile.jpg`, alt: `De website van ${name} op een smartphone`, width: 1170, height: 2532, status: 'placeholder', label: `Screenshot ${name}, mobiel`, where: 'Case-detail (device-frame)', note: `Screenshot van de live site${extra}` },
   { id: `case-${slug}-hero`, src: `cases/${slug}/hero.jpg`, alt: `Sfeerbeeld van ${name}`, width: 2400, height: 1500, status: 'placeholder', label: `Foto ${name}, 16:10`, where: 'Case-detail header, image-displacement hover', note: `Eigen foto van de klant, met toestemming${extra}` },
 ];
 

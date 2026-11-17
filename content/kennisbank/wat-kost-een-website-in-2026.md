@@ -3,12 +3,12 @@ title: "Wat kost een website in 2026? Eerlijke prijzen in Friesland"
 seoTitle: "Wat kost een website in 2026? Prijzen in Friesland en landelijk"
 description: Wat kost een website laten maken in 2026, in Leeuwarden en landelijk? Marktprijzen met bron, onze vaste prijzen en de kosten na livegang.
 pubDate: 2026-11-13
-draft: true
+draft: false
 readingTime: 6
 relatedServices: [websites/laten-maken, onderhoud]
 faq:
   - q: Wat kost een website in Leeuwarden?
-    a: Volgens Trustoo ligt het gemiddelde voor een nieuwe website in Leeuwarden tussen €800 en €4.000. Bij QK Commerce Solutions kost Web Start €995 en Web Groei vanaf €2.450, excl. btw.
+    a: Een webdesigner in Leeuwarden rekent volgens Trustoo €65 tot €105 per uur. Een starterwebsite via een bureau kost landelijk €2.000 tot €4.000. Bij QK Commerce Solutions kost Web Start €995 en Web Groei vanaf €2.450, excl. btw.
   - q: Wat zijn de maandelijkse kosten?
     a: Reken op hosting, updates, back-ups en beveiliging. Ons zorgabonnement begint bij €49 per maand excl. btw.
   - q: Waarom zeggen veel bureaus "prijs op aanvraag"?
@@ -21,12 +21,13 @@ faq:
 
 | Wat | Prijsindicatie | Bron |
 | --- | --- | --- |
-| Nieuwe website in Leeuwarden | gemiddeld €800–€4.000 | [Trustoo](https://trustoo.nl/friesland/leeuwarden/webdesign) |
+| Uurtarief webdesigner in Leeuwarden | €65–€105 per uur | [Trustoo](https://trustoo.nl/friesland/leeuwarden/webdesign) |
 | Website via freelancer, landelijk | €800–€3.000 | [Searchlab](https://searchlab.nl/blog/wat-kost-een-website-in-2026) |
+| Starterwebsite via bureau | €2.000–€4.000 | [Searchlab](https://searchlab.nl/blog/wat-kost-een-website-in-2026) |
 | Professionele mkb-site via bureau | €4.000–€8.000 | [Searchlab](https://searchlab.nl/blog/wat-kost-een-website-in-2026) |
-| Website-onderhoud | €50–€250 per maand | [Searchlab](https://searchlab.nl/statistieken/websitekosten-onderhoud-statistieken-2026) |
+| Technisch onderhoud zakelijke website | €25–€150 per maand | [Zazou Totaal](https://zazoutotaal.nl/website-onderhoud-kosten/) |
 
-Let op: Searchlab is zelf een online-marketingbureau. Lees de cijfers als marktindicatie, niet als onafhankelijk onderzoek.
+Let op: deze bronnen zijn zelf bureaus of vergelijkingssites. Lees de cijfers als marktindicatie, niet als onafhankelijk onderzoek. Gecontroleerd in november 2026.
 
 ## Wat wij rekenen
 
@@ -43,13 +44,11 @@ We publiceren onze prijzen, zodat je niet eerst een offerte hoeft aan te vragen.
 
 Een website is nooit af. Hosting, updates, back-ups en beveiliging lopen door. Wie dat laat liggen, heeft over een paar jaar een site op verouderde software. Daarom hoort bij elke site die wij bouwen een [zorgabonnement](/diensten/onderhoud), vanaf €49 per maand.
 
-Wil je meer dan alleen een veilige site? De [ontzorgbundels](/pakketten) combineren onderhoud met vindbaarheid, advertenties en AI.
+Wil je meer dan alleen een veilige site? De [groeipakketten](/pakketten#maandelijks) combineren onderhoud met vindbaarheid, advertenties en AI, vanaf €199 per maand.
 
 ## Goedkoop of duur?
 
 Een site van een paar honderd euro lijkt aantrekkelijk. Maar als hij geen aanvragen oplevert, is elke euro te veel. Kijk daarom vooral naar wat de site moet opleveren. Eén extra klus per maand maakt het verschil tussen een kostenpost en een investering.
-
-TODO: controleer de marktprijzen en bronnen vóór publicatie.
 
 ## Weten waar je nu staat?
 

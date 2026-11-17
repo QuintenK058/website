@@ -5,6 +5,7 @@ import { PageHero, Section, CtaBand } from '@/components/sections/Basics';
 import { ResultsStrip } from '@/components/sections/Results';
 import { Icon } from '@/components/ui/Icon';
 import { ImageSlot } from '@/components/ui/ImageSlot';
+import { showSlot } from '@/lib/images';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { readMdRoot } from '@/lib/markdown';
 import { siteConfig } from '@/site.config';
@@ -39,7 +40,7 @@ export default function OverOnsPage() {
           </div>
           <article className="prose-qk" dangerouslySetInnerHTML={{ __html: md.html }} />
         </div>
-        <div className="panel mt-12" data-reveal><div className="panel-in"><ImageSlot id="quinten-werk" sizes="100vw" /></div></div>
+        {showSlot('quinten-werk') && (<div className="panel mt-12" data-reveal><div className="panel-in"><ImageSlot id="quinten-werk" sizes="100vw" /></div></div>)}
         <div className="mt-12"><Link href="/cases" className="btn btn-ghost">Bekijk de cases <Icon name="arrow" size={16} /></Link></div>
       </Section>
       <CtaBand title={['Zullen we kennismaken?', 'Op locatie of via video.']} />

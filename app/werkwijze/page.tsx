@@ -7,6 +7,7 @@ import { GovernancePanel } from '@/components/control/GovernancePanel';
 import { AgentLog } from '@/components/control/Animated';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { ImageSlot } from '@/components/ui/ImageSlot';
+import { showSlot } from '@/lib/images';
 import { home } from '@/content/home';
 import { pageMeta } from '@/lib/seo';
 
@@ -33,7 +34,7 @@ export default function WerkwijzePage() {
         <HouseRules />
       </Section>
       <Section>
-        <div className="panel mb-8" data-reveal><div className="panel-in"><ImageSlot id="quinten-werk" sizes="100vw" /></div></div>
+        {showSlot('quinten-werk') && (<div className="panel mb-8" data-reveal><div className="panel-in"><ImageSlot id="quinten-werk" sizes="100vw" /></div></div>)}
         <div className="grid gap-4 lg:grid-cols-2">
           <GovernancePanel />
           <AgentLog title="Een week ontzorgd · log" />
