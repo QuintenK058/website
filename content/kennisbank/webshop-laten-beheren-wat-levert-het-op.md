@@ -1,7 +1,7 @@
 ---
 title: "Webshop laten beheren: wat levert het op?"
 seoTitle: "Webshop laten beheren: wat levert het op en wat kost het?"
-description: Wat doet een webshopbeheerder, wanneer is uitbesteden slim en wat levert het op? Uitleg over webshopbeheer, CRO en performance marketing voor Shopify en WooCommerce.
+description: Wat doet een webshopbeheerder, wanneer is uitbesteden slim en wat levert het op? Over webshopbeheer, CRO en performance marketing.
 pubDate: 2026-11-13
 draft: false
 readingTime: 6

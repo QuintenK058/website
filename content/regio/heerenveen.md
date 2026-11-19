@@ -1,7 +1,7 @@
 ---
 place: Heerenveen
 title: Website en vindbaarheid in Heerenveen
-seoTitle: Website laten maken in Heerenveen – SEO & webshops | QK Commerce Solutions
+seoTitle: "Website laten maken in Heerenveen: SEO en webshops"
 description: Online marketing voor ondernemers in Heerenveen en omgeving. Websites, webshops, lokale SEO en advertenties, met korte lijnen vanuit Leeuwarden.
 order: 5
 intro: Heerenveen ligt centraal in Friesland, op het kruispunt van de A7 en de A32. Veel bedrijven hier bedienen klanten in een groot deel van de provincie, en ook daarbuiten. Online vindbaarheid moet dat brede werkgebied bijhouden.

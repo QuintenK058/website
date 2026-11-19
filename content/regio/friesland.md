@@ -1,8 +1,8 @@
 ---
 place: Friesland
 title: Online marketing voor bedrijven in Friesland
-seoTitle: Online marketing in Friesland – websites, SEO & ads | QK Commerce Solutions
-description: Online marketing voor Friese ondernemers. Websites, webshops, lokale SEO en advertenties voor bedrijven in heel Friesland, vanuit Leeuwarden. Volledig ontzorgd.
+seoTitle: "Online marketing in Friesland: websites, SEO en ads"
+description: "Online marketing voor Friese ondernemers: websites, webshops, lokale SEO en advertenties voor bedrijven in heel Friesland, vanuit Leeuwarden."
 order: 2
 intro: Friesland is groot en divers. Een installateur in Dokkum heeft een ander werkgebied dan een B&B op Terschelling of een webshop in Heerenveen. Wat ze gemeen hebben, is dat hun klanten online zoeken. Wij zorgen dat ze gevonden worden.
 highlights:

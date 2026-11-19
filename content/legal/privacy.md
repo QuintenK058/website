@@ -1,6 +1,6 @@
 ---
 title: Privacyverklaring
-description: Hoe QK Commerce Solutions B.V. omgaat met persoonsgegevens.
+description: "Hoe QK Commerce Solutions B.V. omgaat met persoonsgegevens: welke gegevens we verwerken, waarom, hoe lang we ze bewaren en wat je rechten zijn."
 updated: "TODO: datum"
 ---
 

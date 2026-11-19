@@ -1,6 +1,6 @@
 ---
 title: "PHP 8.2 stopt eind 2026: wat betekent dat voor jouw website?"
-seoTitle: "PHP 8.2 einde ondersteuning 31 december 2026: wat moet je doen?"
+seoTitle: "PHP 8.2 stopt op 31 december 2026: wat moet je doen?"
 description: PHP 8.2 krijgt na 31 december 2026 geen beveiligingsupdates meer. Wat betekent dat voor je WordPress-site, hoe check je je versie en wat moet je doen?
 pubDate: 2026-11-13
 draft: false

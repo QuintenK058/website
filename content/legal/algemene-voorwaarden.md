@@ -1,6 +1,6 @@
 ---
 title: Algemene voorwaarden
-description: De algemene voorwaarden van QK Commerce Solutions B.V.
+description: De algemene voorwaarden van QK Commerce Solutions B.V. voor websites, webshops, maandpakketten, advertentiebeheer, AI en consultancy.
 updated: "TODO: datum"
 ---
 

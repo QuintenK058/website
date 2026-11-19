@@ -29,6 +29,16 @@ export default function RegioIndex() {
             </Link>
           ))}
         </div>
+        <div className="mt-16 grid gap-8 md:grid-cols-2">
+          <div>
+            <h2 className="text-2xl font-bold">Op locatie in het noorden</h2>
+            <p className="mt-3 text-ink-2">In Leeuwarden, Friesland en Groningen kom ik gewoon langs: voor een kennismaking aan de keukentafel, een workshop met je team of om je werkplaats en projecten te fotograferen voor je site. Lokale kennis helpt ook bij je vindbaarheid. Ik weet welke plaatsnamen en wijken klanten intypen, en welke concurrenten er al bovenaan staan.</p>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold">Online in heel Nederland</h2>
+            <p className="mt-3 text-ink-2">Zit je verder weg? Websites, webshops, advertenties en consultancy werken net zo goed via een videocall. Je krijgt dezelfde vaste prijzen, hetzelfde maandrapport van één pagina en één vast aanspreekpunt. <Link href="/contact" className="link">Plan een kennismaking</Link>, online of op locatie.</p>
+          </div>
+        </div>
       </Section>
       <CtaBand />
     </Page>

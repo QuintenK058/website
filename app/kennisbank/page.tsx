@@ -8,7 +8,7 @@ import { getArticles } from '@/lib/content';
 import { pageMeta } from '@/lib/seo';
 
 const title = 'Kennisbank: websites, SEO, GEO, webshops en AI';
-const description = 'Praktische artikelen over wat een website, Google Ads en AI kosten, PHP 8.2, gevonden worden in ChatGPT, webshops en consultancy. In gewone taal, voor ondernemers.';
+const description = 'Praktische artikelen over wat een website, Google Ads en AI kosten, PHP 8.2, gevonden worden in ChatGPT en webshops. In gewone taal.';
 export const metadata: Metadata = pageMeta({ title, description, path: '/kennisbank' });
 const fmt = new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
 

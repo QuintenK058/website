@@ -61,8 +61,8 @@ export const lines: Line[] = [
     short: 'Sites die snel zijn, gevonden worden en aanvragen opleveren.',
     icon: 'web',
     headline: ['Een website die werkt.', 'Ook als jij er niet naar kijkt.'],
-    seoTitle: 'Website laten maken in Leeuwarden en Friesland, vaste prijzen',
-    description: 'Website laten maken, vernieuwen of laten checken. Web Start €995, Web Groei vanaf €2.450, Website-audit €395. Excl. btw, inclusief SEO-basis en structured data.',
+    seoTitle: 'Website laten maken in Friesland, vaste prijs',
+    description: 'Website laten maken, vernieuwen of checken. Web Start €995, Web Groei vanaf €2.450, audit €395. Excl. btw, met SEO-basis en structured data.',
     intro: 'Je website is vaak het eerste wat een klant van je ziet. We bouwen sites die snel laden, goed scoren in Google en AI, en bezoekers omzetten in aanvragen. Met een vaste prijs vooraf.',
     problems: ['Je site is verouderd en traag op mobiel.', 'Aanpassen kan alleen via iemand die niet meer reageert.', 'Bezoekers komen wel, maar bellen niet.', 'Je weet niet of de software nog veilig is.'],
     approach: [
@@ -88,7 +88,7 @@ export const lines: Line[] = [
         name: 'Website laten maken',
         title: 'Website laten maken met een vaste prijs',
         seoTitle: 'Website laten maken, vaste prijs vanaf €995',
-        description: 'Website laten maken in Friesland of online. Web Start €995, Web Groei vanaf €2.450, Web Maatwerk vanaf €4.000. Inclusief SEO-basis, structured data en Bedrijfsprofiel.',
+        description: 'Website laten maken in Friesland. Web Start €995, Web Groei vanaf €2.450, Web Maatwerk vanaf €4.000. Met SEO-basis en Google Bedrijfsprofiel.',
         intro: 'Van een site van een paar pagina\'s tot een uitgebreide, animatierijke site. Je weet vooraf wat het kost en wat erin zit.',
         points: [
           { title: 'Mobiel-first', text: 'De meeste bezoekers komen via hun telefoon. Daar ontwerpen we eerst voor.' },
@@ -129,7 +129,7 @@ export const lines: Line[] = [
         slug: 'audit',
         name: 'Website-audit',
         title: 'Website-audit: weten waar je staat',
-        seoTitle: 'Website-audit €395: techniek, snelheid, SEO, GEO en beveiliging',
+        seoTitle: 'Website-audit €395: snelheid, SEO, GEO en beveiliging',
         description: 'Website-audit voor €395 excl. btw: techniek, snelheid, SEO, AI-vindbaarheid (GEO) en beveiliging, met een rapport en prioriteitenlijst.',
         intro: 'Een grondige check van je site, met een rapport in gewone taal en een lijst van wat je als eerste moet aanpakken. Liever eerst gratis? Begin met de Online Check.',
         points: [
@@ -159,8 +159,8 @@ export const lines: Line[] = [
     short: 'Shopify-shops bouwen en beheren, Magento-shops runnen. Echt alles rondom je webshop.',
     icon: 'shop',
     headline: ['Een webshop bouwen is één ding.', 'Hem laten groeien is het werk.'],
-    seoTitle: 'Shopify-webshop laten maken en beheren, Magento-shop laten runnen',
-    description: 'Alles rondom webshops: Shopify-webshop laten maken (vanaf €2.750), Shopify-beheer, je Magento-shop laten runnen, CRO, e-mail, ads en migratie. Ervaring als e-commercespecialist.',
+    seoTitle: 'Webshop laten maken en beheren: Shopify en Magento',
+    description: 'Shopify-webshop laten maken (vanaf €2.750) en beheren, je Magento-shop laten runnen, CRO, e-mail, ads en migratie. Door een e-commercespecialist.',
     intro: 'Bouwen, beheren, koppelen, adverteren, mailen, optimaliseren. Shopify-shops bouwen en beheren we zelf. Draait je shop op Magento, dan runnen we hem: assortiment, content, campagnes en conversie. Het technische deel blijft bij je Magento-bureau. Met ervaring van binnenuit, als e-commercespecialist bij een B2B/B2C-webshop.',
     problems: ['Je bent meer tijd kwijt aan de shop dan aan inkoop en klanten.', 'Er komt verkeer binnen, maar de conversie blijft achter.', 'Advertenties lopen, maar zijn ze winstgevend?', 'Je WooCommerce-shop vraagt steeds meer onderhoud.'],
     approach: [
@@ -246,8 +246,8 @@ export const lines: Line[] = [
         slug: 'magento',
         name: 'Magento-shop runnen',
         title: 'Je Magento-shop laten runnen',
-        seoTitle: 'Magento-webshop laten runnen: e-commercemanagement (Adobe Commerce)',
-        description: 'Je Magento-webshop laten runnen: assortiment, content, acties, campagnes, conversie en het aansturen van je Magento-bureau. Wij doen het e-commercemanagement, je bureau de techniek.',
+        seoTitle: 'Magento-webshop laten runnen: e-commercemanagement',
+        description: 'Je Magento-webshop laten runnen: assortiment, acties, campagnes, conversie en regie op je Magento-bureau. Wij doen het management, je bureau de techniek.',
         intro: 'Een Magento-shop (Adobe Commerce) draait niet vanzelf. Iemand moet het assortiment bijhouden, acties plannen, campagnes sturen en zorgen dat je developer aan de goede dingen werkt. Dat doen wij. Technisch beheer en development blijven bij je eigen Magento-bureau of -developer.',
         points: [
           { title: 'Dagelijks runnen', text: 'Assortiment, productcontent, prijzen, acties en categorieën.' },
@@ -323,7 +323,7 @@ export const lines: Line[] = [
         slug: 'maatwerk',
         name: 'Maatwerk',
         title: 'Maatwerk-development voor sites en webshops',
-        seoTitle: 'Maatwerk-development: B2B-functies, configurators en eigen tools',
+        seoTitle: 'Maatwerk: B2B-functies, configurators en eigen tools',
         description: 'Maatwerk voor je website of webshop: B2B-prijzen, configurators, snel-bestellen, klantportalen en eigen tools. Vaste prijs per project.',
         intro: 'Functionaliteit die niet standaard bestaat. Bijvoorbeeld zakelijke accounts met nettoprijzen, bestellen via een lijst of XML-upload, een productconfigurator of een klantportaal.',
         points: [
@@ -372,7 +372,7 @@ export const lines: Line[] = [
     short: 'SEO, lokale SEO, Bedrijfsprofiel en GEO: gevonden in Google én AI.',
     icon: 'search',
     headline: ['Gevonden in Google.', 'Genoemd door AI.'],
-    seoTitle: 'SEO, lokale SEO en GEO in Friesland, gevonden in Google en AI',
+    seoTitle: 'SEO en GEO in Friesland: gevonden in Google en AI',
     description: 'SEO, lokale SEO, Google Bedrijfsprofiel en GEO (AI-vindbaarheid). Bedrijfsprofiel-setup €245, Lokale SEO €395/mnd, SEO + GEO Groei €795/mnd. Excl. btw.',
     intro: 'Klanten zoeken in Google, in Google Maps en steeds vaker in ChatGPT, Gemini en Perplexity. Wij zorgen dat jij daar gevonden wordt, en we meten het.',
     problems: ['Je concurrent staat bovenaan, ook al ben jij beter.', 'Je Bedrijfsprofiel is half ingevuld en heeft weinig reviews.', 'In ChatGPT word je niet genoemd.', 'Je weet niet wat SEO je oplevert.'],
@@ -398,7 +398,7 @@ export const lines: Line[] = [
         slug: 'seo',
         name: 'SEO',
         title: 'SEO: hoger in Google, zonder per klik te betalen',
-        seoTitle: 'SEO uitbesteden in Friesland, technisch, content en structured data',
+        seoTitle: 'SEO uitbesteden in Friesland: techniek en content',
         description: 'SEO voor mkb: technische SEO, content en structured data. SEO + GEO Groei €795/mnd excl. btw, met AI-citatiemeting.',
         intro: 'Organisch gevonden worden levert blijvend bezoek op. We zorgen dat de techniek klopt, dat je content antwoord geeft en dat zoekmachines je goed begrijpen.',
         points: [
@@ -534,7 +534,7 @@ export const lines: Line[] = [
         slug: 'meta-ads',
         name: 'Meta Ads',
         title: 'Meta Ads: Facebook en Instagram, gestructureerd getest',
-        seoTitle: 'Meta Ads (Facebook en Instagram) uitbesteden: €499 per maand + 2%',
+        seoTitle: 'Meta Ads uitbesteden: €499 per maand + 2%',
         description: 'Meta Ads beheer (Facebook en Instagram): €499 per maand + 2% van je advertentiebudget. Geen opstartkosten. Excl. btw.',
         intro: 'Meta is sterk voor webshops en voor bedrijven die vraag willen creëren. We bouwen een heldere campagnestructuur en testen gestructureerd wat werkt.',
         points: [
@@ -573,7 +573,7 @@ export const lines: Line[] = [
         slug: 'e-mailmarketing',
         name: 'E-mailmarketing',
         title: 'E-mailmarketing: flows en campagnes op maat',
-        seoTitle: 'E-mailmarketing uitbesteden: flows en campagnes (Klaviyo, Mailchimp)',
+        seoTitle: 'E-mailmarketing uitbesteden: flows en campagnes',
         description: 'E-mailflows en e-mailcampagnes op maat voor webshops en dienstverleners: welkomstreeks, verlaten winkelmandje, nieuwsbrieven en segmentatie.',
         intro: 'E-mail is het kanaal dat je zelf bezit. Geen algoritme, geen klikprijs. Met slimme flows en campagnes verkoop je opnieuw aan klanten die je al hebt.',
         points: [
@@ -604,7 +604,7 @@ export const lines: Line[] = [
     icon: 'ai',
     headline: ['Van losse proefjes.', 'Naar veilig, gemeten AI.'],
     seoTitle: 'AI-workshops en AI-implementatie voor mkb in Friesland',
-    description: 'AI-workshops in Leeuwarden (€245 p.p.) en in-company (€1.495) met AI-geletterdheidsdossier, AI-Quickscan €795, chatbots en automatisering. Veilig AI-gebruik voor mkb.',
+    description: 'AI-workshops in Leeuwarden (€245 p.p.) en in-company (€1.495), AI-Quickscan €795, chatbots, automatisering en agents. Veilig AI voor mkb.',
     intro: 'Bijna elk bedrijf heeft ChatGPT wel eens geprobeerd. Weinig bedrijven gebruiken AI veilig en structureel. De grootste drempels zijn gebrek aan ervaring en zorgen over privacy, niet de kosten. Wij brengen je van losse proefjes naar veilig, gemeten en gekoppeld AI-gebruik.',
     problems: ['Medewerkers plakken klantgegevens in gratis chatbots.', 'Iedereen gebruikt een ander tooltje, niemand meet wat het oplevert.', 'Je wilt "iets met AI", maar weet niet waar te beginnen.', 'Je hebt geen idee wat de AI Act van je vraagt.'],
     approach: [
@@ -671,7 +671,7 @@ export const lines: Line[] = [
         slug: 'chatbots',
         name: 'AI-chatbots',
         title: 'AI-chatbot op je site of webshop',
-        seoTitle: 'AI-chatbot voor website of webshop: €1.495 eenmalig + €149 per maand',
+        seoTitle: 'AI-chatbot voor je website: €1.495 + €149 per maand',
         description: 'AI-chatbot voor FAQ of klantenservice op je website of webshop: €1.495 eenmalig + €149 per maand, excl. btw. Kennisbank gevuld en getest.',
         intro: 'Een chatbot die vragen van klanten beantwoordt op basis van jouw eigen informatie, ook \'s avonds en in het weekend. Getest voordat hij live gaat.',
         points: [
@@ -721,8 +721,8 @@ export const lines: Line[] = [
     short: 'Je houdt het in huis. Een specialist brengt richting, expertise en een plan van aanpak.',
     icon: 'consult',
     headline: ['Jullie voeren uit.', 'Wij brengen richting.'],
-    seoTitle: 'E-commerce en marketing consultancy: wekelijks of per maand een specialist',
-    description: 'Consultancy voor bedrijven die het in huis houden: vanaf €75 per uur, of een vast maandbedrag: elke week een uur (€300/mnd), 8 uur per maand (€600/mnd), een compleet plan van aanpak (vanaf €1.195) of Groeistrategie (vanaf €995/mnd). Excl. btw.',
+    seoTitle: 'E-commerce- en marketingconsultancy vanaf €75 per uur',
+    description: 'Een e-commerce- en marketingspecialist voor je eigen team: vanaf €75 per uur, of vast per maand, zoals elke week een uur voor €300. Excl. btw.',
     intro: 'Je wilt niet uitbesteden. Je hebt een eigen marketeer, webshopteam of doet het zelf. Wat je mist, is iemand die het vak kent, de valkuilen al eens gezien heeft en zegt wat eerst moet. Wekelijks een uur, of maandelijks een aantal uren. Met een plan van aanpak dat je team zelf kan uitvoeren. De kennis blijft bij jou.',
     problems: [
       'Je team is druk, maar niemand weet zeker of het de goede dingen doet.',
@@ -756,7 +756,7 @@ export const lines: Line[] = [
         name: 'Wekelijkse sparring',
         title: 'Consultancy Wekelijks: elke week een uur met een specialist',
         seoTitle: 'Wekelijkse e-commerce- en marketingsparring: €300 per maand',
-        description: 'Elke week 1 uur met een e-commerce- en marketingspecialist, online of op locatie. Review van campagnes, SEO, webshop en cijfers, met een actielijst. €300 per maand excl. btw.',
+        description: 'Elke week 1 uur met een e-commerce- en marketingspecialist: review van campagnes, SEO, webshop en cijfers, met een actielijst. €300 per maand excl. btw.',
         intro: 'Een vast uur per week waarin we samen kijken naar wat er gebeurt en wat er moet gebeuren. Jij of je team voert uit, wij houden de lijn vast.',
         points: [
           { title: 'Vast ritme', text: 'Elke week 1 uur, op een vaste dag. Online of op locatie.' },
@@ -795,8 +795,8 @@ export const lines: Line[] = [
         slug: 'plan-van-aanpak',
         name: 'Plan van aanpak',
         title: 'Plan van aanpak: een compleet plan voor je eigen team',
-        seoTitle: 'Online plan van aanpak voor je webshop of marketing: vanaf €1.195',
-        description: 'Analyse van data, kanalen, site en team, en een compleet plan van aanpak: doelen, prioriteiten, roadmap voor 12 maanden, KPI\'s en taakverdeling. Vanaf €1.195 eenmalig excl. btw.',
+        seoTitle: 'Plan van aanpak voor je webshop of marketing',
+        description: 'Analyse plus een compleet plan van aanpak: doelen, prioriteiten, roadmap voor 12 maanden, KPI\'s en taakverdeling. Vanaf €1.195 eenmalig excl. btw.',
         intro: 'Geen dik rapport voor in de la, maar een plan dat je team morgen kan oppakken. Wat moet er gebeuren, in welke volgorde, door wie, met welk budget, en hoe meet je of het werkt?',
         points: [
           { title: 'Analyse', text: 'Data, kanalen, site of webshop, marges en de mensen die het moeten doen.' },
@@ -816,8 +816,8 @@ export const lines: Line[] = [
         slug: 'groeistrategie',
         name: 'Groeistrategie',
         title: 'Groeistrategie: je externe e-commerce- en marketingmanager',
-        seoTitle: 'Externe e-commerce- en marketingmanager: Groeistrategie vanaf €995 per maand',
-        description: 'Plan van aanpak, wekelijkse begeleiding, maandelijkse KPI-review en een kwartaalplan. Je externe e-commerce- en marketingmanager, vanaf €600 per maand excl. btw.',
+        seoTitle: 'Externe e-commercemanager: Groeistrategie vanaf €995',
+        description: 'Plan van aanpak, wekelijkse begeleiding, maandelijkse KPI-review en een kwartaalplan. Je externe e-commercemanager, vanaf €995 per maand excl. btw.',
         intro: 'Richting en regie, zonder een fulltime manager aan te nemen. We maken het plan, sturen elke maand bij en schuiven aan bij overleg met je bureaus en leveranciers. Je eigen team voert uit.',
         points: [
           { title: 'Plan van aanpak', text: 'In de eerste maand inbegrepen.' },

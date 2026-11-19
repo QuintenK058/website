@@ -5,7 +5,14 @@ import { packages, formatPriceLong, formatExtra, type Pkg } from '@/content/pric
 import type { QA } from '@/content/services';
 
 /** Vercel-preview (en elke niet-productie-deploy op Vercel) krijgt noindex. */
-export const noIndexDeploy = !!process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production';
+/**
+ * LANCEERSCHAKELAAR. Zolang NEXT_PUBLIC_SITE_LIVE niet 'true' is, is de site
+ * onzichtbaar voor zoekmachines en AI-crawlers (noindex, robots.txt blokkeert
+ * alles, X-Robots-Tag-header). Preview-deploys zijn altijd noindex.
+ * Live gaan: zet NEXT_PUBLIC_SITE_LIVE=true in Vercel (Production) en redeploy.
+ */
+export const siteLive = process.env.NEXT_PUBLIC_SITE_LIVE === 'true';
+export const noIndexDeploy = !siteLive || (!!process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production');
 
 export const abs = (path = '/') => (path === '/' ? siteConfig.url + '/' : siteConfig.url + path);
 export const ORG_ID = `${siteConfig.url}/#organization`;
@@ -14,8 +21,11 @@ export const SITE_ID = `${siteConfig.url}/#website`;
 /** Metadata per pagina: title, description, canonical, OG, Twitter, robots. */
 export function pageMeta(opts: { title: string; description: string; path: string; noindex?: boolean; type?: 'website' | 'article'; absoluteTitle?: boolean }): Metadata {
   const url = abs(opts.path);
+  // Google toont ±60 tekens: merknaam alleen erachter als het past.
+  const branded = `${opts.title} | QK Commerce`;
+  const full = opts.absoluteTitle ? opts.title : branded.length <= 60 ? branded : opts.title;
   return {
-    title: opts.absoluteTitle ? { absolute: opts.title } : opts.title,
+    title: { absolute: full },
     description: opts.description,
     alternates: { canonical: url },
     openGraph: {
@@ -25,9 +35,13 @@ export function pageMeta(opts: { title: string; description: string; path: strin
       description: opts.description,
       siteName: siteConfig.shortName,
       locale: 'nl_NL',
+      // Standaard-deelafbeelding; pagina's met een eigen opengraph-image.tsx overschrijven dit.
+      images: [{ url: abs('/opengraph-image'), width: 1200, height: 630, alt: siteConfig.name }],
     },
     twitter: { card: 'summary_large_image', title: opts.title, description: opts.description },
-    robots: opts.noindex || noIndexDeploy
+    robots: noIndexDeploy
+      ? { index: false, follow: false }
+      : opts.noindex
       ? { index: false, follow: true }
       : { index: true, follow: true, 'max-snippet': -1, 'max-image-preview': 'large', 'max-video-preview': -1 },
   };

@@ -8,8 +8,8 @@ import { lines, lineHref, subHref } from '@/content/services';
 import { lineFromPrice, lineInBundles } from '@/lib/services-view';
 import { pageMeta } from '@/lib/seo';
 
-const title = 'Diensten: websites, webshops, onderhoud, vindbaarheid, ads en AI';
-const description = 'Zeven diensten van QK Commerce Solutions: websites, webshops & e-commerce, onderhoud & development, vindbaarheid (SEO en GEO), advertenties & e-mail, AI en consultancy. Met vanaf-prijzen.';
+const title = 'Diensten: websites, webshops, SEO, ads, AI en advies';
+const description = 'Zeven diensten: websites, webshops, onderhoud, vindbaarheid (SEO en GEO), advertenties, AI en consultancy. Met vaste vanaf-prijzen, excl. btw.';
 export const metadata: Metadata = pageMeta({ title, description, path: '/diensten' });
 
 export default function DienstenPage() {

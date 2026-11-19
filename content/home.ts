@@ -1,8 +1,8 @@
 /** HOMEPAGE-teksten. */
 export const home = {
-  seoTitle: 'QK Commerce Solutions: online agency in Leeuwarden, volledig ontzorgd',
+  seoTitle: 'QK Commerce Solutions | Online agency in Leeuwarden',
   description:
-    'Websites, webshops, vindbaarheid, advertenties en AI voor ondernemers in Friesland en daarbuiten. Eén partner, vaste prijzen, gepubliceerd. Vraag de gratis Online Check aan.',
+    'Websites, webshops, vindbaarheid, advertenties en AI voor ondernemers in Friesland. Eén partner, vaste prijzen. Vraag de gratis Online Check aan.',
   hero: {
     eyebrow: '// FULL-SERVICE ONLINE AGENCY — LEEUWARDEN',
     lines: ['Alles rondom', 'internet', 'verbeteren.'],

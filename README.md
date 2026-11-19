@@ -208,6 +208,8 @@ Let op: link vanuit andere teksten pas naar een artikel als het gepubliceerd is.
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | Nee | Cookieloze analytics, geen banner nodig |
 | `NEXT_PUBLIC_GA4_ID` | Nee | GA4 met Consent Mode v2. De cookiebanner verschijnt dan automatisch. |
 | `NEXT_PUBLIC_PREVIEW` | Nee | `true` = TODO's en concepten zichtbaar |
+| `NEXT_PUBLIC_SITE_LIVE` | Bij livegang | `true` = vindbaar voor Google en AI. Leeg = noindex overal (zie §7) |
+| `NEXT_PUBLIC_GSC_VERIFICATION` / `NEXT_PUBLIC_BING_VERIFICATION` | Bij livegang | Verificatiecode van Search Console / Bing |
 
 **Formulieren**:
 - Werken met én zonder JS. Zonder JS is het een gewone POST met een redirect naar `/bedankt`.
@@ -229,10 +231,36 @@ Let op: link vanuit andere teksten pas naar een artikel als het gepubliceerd is.
 
 ## 7. SEO en GEO
 
-- Per pagina: unieke title en description, canonical, Open Graph en Twitter, en `max-snippet:-1, max-image-preview:large`.
-- Een eigen OG-afbeelding per dienst, subdienst, case, branche, regio en artikel (`opengraph-image.tsx`).
+### Lanceerschakelaar (belangrijk)
+
+De site is **onzichtbaar voor zoekmachines en AI-crawlers** zolang `NEXT_PUBLIC_SITE_LIVE` niet op `true` staat:
+
+- `robots.txt` blokkeert alles (`Disallow: /`), ook GPTBot, ClaudeBot en PerplexityBot;
+- elke pagina krijgt `<meta name="robots" content="noindex, nofollow">`;
+- de server stuurt `X-Robots-Tag: noindex, nofollow, noarchive` mee, ook bij afbeeldingen en bestanden.
+
+Preview-deploys zijn altijd noindex. De schakelaar zit in `lib/seo.ts` (`siteLive`) en `next.config.ts`.
+
+**Let op:** noindex houdt zoekmachines buiten, maar de site blijft bereikbaar voor wie de link heeft. Wil je hem echt afschermen, zet dan in Vercel *Settings → Deployment Protection* aan, of pauzeer het project.
+
+### Checklist voor livegang
+
+1. Domein `qkcommerce.nl` koppelen in Vercel, `www` → apex (308).
+2. Contactgegevens, KvK en btw invullen in `site.config.ts` (NAP: naam, adres, telefoon, overal gelijk).
+3. In Vercel (Production): `NEXT_PUBLIC_SITE_LIVE=true` en redeploy.
+4. Google Search Console: eigendom toevoegen, kies *HTML-tag*, zet alleen de code in `NEXT_PUBLIC_GSC_VERIFICATION`, redeploy en verifieer. Dien `https://qkcommerce.nl/sitemap.xml` in.
+5. Bing Webmaster Tools: importeer vanuit Search Console, of zet de code in `NEXT_PUBLIC_BING_VERIFICATION`.
+6. Google Bedrijfsprofiel: zelfde naam, adres en telefoon als op de site; link naar de site; profielfoto uit `public/brand-kit/`.
+7. Na een week: in Search Console controleren op indexering (*Pagina's*) en Core Web Vitals.
+
+### Wat er al in zit
+
+- Per pagina een unieke titel (max. ±60 tekens; " | QK Commerce" alleen als het past) en omschrijving (max. ±158 tekens), canonical, Open Graph en Twitter-kaart. Controle: Lighthouse (SEO 100) en `npm run check`.
+- Eigen deelafbeelding per dienst, subdienst, case, branche, regio en artikel; overige pagina's krijgen de standaardafbeelding.
 - **JSON-LD**: Organization + ProfessionalService, WebSite, WebPage, Service (met prijzen), OfferCatalog, FAQPage, BreadcrumbList, Article, HowTo, Person en CreativeWork. Er staan nooit TODO's in.
-- `sitemap.xml`, `robots.txt` (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended en meer toegestaan) en `/llms.txt` (wordt uit de content gegenereerd).
+- `sitemap.xml` (artikelen met echte datum), `robots.txt`, `manifest.webmanifest` en `/llms.txt` (wordt uit de content gegenereerd).
+- Interne links: diensten ↔ subdiensten ↔ branches ↔ regio's ↔ artikelen (blok "Verder lezen").
+- Eén H1 per pagina, alt-teksten bij alle afbeeldingen, geen kapotte links (`npm run check`).
 
 ## 8. Kwaliteit bij oplevering
 

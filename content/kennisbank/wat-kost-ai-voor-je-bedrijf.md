@@ -1,7 +1,7 @@
 ---
 title: "Wat kost AI voor je bedrijf? Workshop, chatbot of agent"
-seoTitle: "Wat kost AI voor je bedrijf in 2026? Workshops, chatbots en AI-agents"
-description: "Een AI-workshop, een chatbot of een AI-agent: de prijzen lopen ver uiteen. Wat kost wat, waar betaal je maandelijks voor, en waar begin je? Met marktprijzen en bron."
+seoTitle: "Wat kost AI voor je bedrijf? Workshop, chatbot of agent"
+description: "Een AI-workshop, chatbot of AI-agent: de prijzen lopen ver uiteen. Wat kost wat, wat betaal je per maand en waar begin je? Met marktprijzen."
 pubDate: 2026-11-17
 draft: false
 readingTime: 6

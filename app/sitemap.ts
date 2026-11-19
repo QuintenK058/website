@@ -8,7 +8,7 @@ import { getRegions, getArticles, legalSlugs } from '@/lib/content';
 export default function sitemap(): MetadataRoute.Sitemap {
   const u = (p: string) => (p === '/' ? `${siteConfig.url}/` : `${siteConfig.url}${p}`);
   const now = new Date();
-  const paths: { p: string; prio: number }[] = [
+  const paths: { p: string; prio: number; mod?: Date }[] = [
     { p: '/', prio: 1 },
     { p: '/pakketten', prio: 0.9 },
     { p: '/online-check', prio: 0.9 },
@@ -25,8 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { p: '/regio', prio: 0.5 },
     ...getRegions().map((r) => ({ p: `/regio/${r.slug}`, prio: 0.6 })),
     { p: '/kennisbank', prio: 0.5 },
-    ...getArticles().filter((a) => !a.data.draft).map((a) => ({ p: `/kennisbank/${a.slug}`, prio: 0.5 })),
+    ...getArticles().filter((a) => !a.data.draft).map((a) => ({ p: `/kennisbank/${a.slug}`, prio: 0.5, mod: new Date(a.data.updatedDate ?? a.data.pubDate) })),
     ...legalSlugs.map((l) => ({ p: `/${l}`, prio: 0.2 })),
   ];
-  return paths.map(({ p, prio }) => ({ url: u(p), lastModified: now, priority: prio }));
+  return paths.map(({ p, prio, mod }) => ({ url: u(p), lastModified: mod ?? now, priority: prio }));
 }

@@ -1,7 +1,7 @@
 ---
 title: "Online marketing: uitbesteden of in huis houden met een consultant?"
-seoTitle: "Online marketing uitbesteden of zelf doen met een consultant? Zo kies je"
-description: "Laat je je online marketing of webshop helemaal uitbesteden, of houd je het in huis met een specialist die meedenkt? De voor- en nadelen, de kosten en hoe je kiest."
+seoTitle: "Marketing uitbesteden of zelf doen met een consultant?"
+description: "Online marketing helemaal uitbesteden, of in huis houden met een specialist die meedenkt? De voor- en nadelen, de kosten en hoe je kiest."
 pubDate: 2026-11-17
 draft: false
 readingTime: 5

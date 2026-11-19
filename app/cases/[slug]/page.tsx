@@ -25,7 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const slug = (await params).slug;
   const c = visibleCases().find((x) => x.slug === slug);
   if (!c) return {};
-  return pageMeta({ title: `Case ${c.client}: ${c.title}`, description: c.description, path: caseHref(c.slug), noindex: !c.approved });
+  const full = `Case ${c.client}: ${c.title}`;
+  const short = c.highlight ? `Case ${c.client}: ${c.highlight}` : `Case ${c.client}`;
+  return pageMeta({ title: full.length <= 60 ? full : short.length <= 60 ? short : `Case ${c.client}`, description: c.description, path: caseHref(c.slug), noindex: !c.approved });
 }
 
 export default async function CasePage({ params }: { params: Promise<{ slug: string }> }) {

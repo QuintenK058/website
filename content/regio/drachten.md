@@ -1,7 +1,7 @@
 ---
 place: Drachten
 title: Online marketing voor bedrijven in Drachten
-seoTitle: Website & online marketing in Drachten – B2B en mkb | QK Commerce Solutions
+seoTitle: Website en online marketing in Drachten
 description: Websites, SEO en advertenties voor ondernemers in Drachten en Smallingerland. Voor maakbedrijven, techniek, B2B-dienstverleners en lokale mkb'ers.
 order: 4
 intro: Drachten is een van de grootste werkgelegenheidskernen van Friesland, met veel techniek, maakindustrie en zakelijke dienstverlening. Voor B2B-bedrijven werkt online marketing net anders dan voor een winkel. De klant oriënteert zich langer en wil vooral vertrouwen.

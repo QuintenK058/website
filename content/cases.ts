@@ -120,7 +120,7 @@ export const cases: Case[] = [
     ],
     client: 'Miedema Bouwmaterialen',
     title: '+75% omzet in 11 maanden voor een B2B/B2C-webshop',
-    description: 'Webshopbeheer, e-commercestrategie en groei voor een brede bouwmaterialen-webshop in Noord-Nederland: 75% meer omzet, 80% meer orders en 575+ nieuwe klanten binnen 11 maanden.',
+    description: 'Webshopbeheer en e-commercestrategie voor een bouwmaterialen-webshop: 75% meer omzet, 80% meer orders en 575+ nieuwe klanten in 11 maanden.',
     branch: 'Webshop bouwmaterialen (B2B en B2C)',
     region: 'Noord-Nederland',
     context: 'in-dienst',

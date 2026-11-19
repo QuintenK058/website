@@ -19,7 +19,7 @@ import { pageMeta, offerCatalogLd } from '@/lib/seo';
 import { showTodos } from '@/lib/todo';
 
 const title = 'Pakketten en prijzen: eerst je basis, dan je groei';
-const description = 'Vaste prijzen, vaste scope. Zorg Basis €49/mnd, Lokaal Gevonden €199/mnd, Meer Aanvragen €745/mnd, Meer Verkopen €1.195/mnd. Plus losse projecten, AI-workshops en consultancy. Excl. btw.';
+const description = 'Vaste prijzen, vaste scope: Zorg Basis €49, Lokaal Gevonden €199, Meer Aanvragen €745, Meer Verkopen €1.195 per maand. Plus projecten, AI en advies.';
 export const metadata: Metadata = pageMeta({ title, description, path: '/pakketten' });
 
 const consultExpertise = ['Webshops (Shopify, WooCommerce, Magento)', 'SEO en GEO', 'Google Ads', 'Meta Ads', 'Conversie (CRO)', 'E-mailmarketing', 'Data en tracking', 'AI in je processen', 'Bureaus aansturen', 'B2B-e-commerce'];

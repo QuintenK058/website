@@ -20,7 +20,7 @@ export const branches: Branch[] = [
   {
     slug: 'zakelijke-dienstverlening',
     name: 'Zakelijke dienstverlening',
-    seoTitle: 'Online marketing en AI voor accountants, adviseurs en makelaars',
+    seoTitle: 'Online marketing en AI voor zakelijke dienstverleners',
     description: 'Website, vindbaarheid en veilig AI-gebruik voor accountants, adviseurs en makelaars in Friesland. Inclusief AI-teamworkshop met AI-geletterdheidsdossier.',
     headline: ['Vertrouwen online.', 'Veilig met AI.'],
     intro: 'Accountants, adviseurs en makelaars verkopen kennis en vertrouwen. Klanten kiezen je na online onderzoek, en steeds vaker na een vraag aan ChatGPT. Tegelijk is dit de branche waar de AI-vraag het grootst is: veel repeterend werk, en veel vertrouwelijke gegevens.',
@@ -47,7 +47,7 @@ export const branches: Branch[] = [
   {
     slug: 'bouw-en-installatie',
     name: 'Bouw, techniek & installatie',
-    seoTitle: 'Website en vindbaarheid voor aannemers, installateurs en schilders',
+    seoTitle: 'Website en vindbaarheid voor bouw en installatie',
     description: 'Meer aanvragen voor aannemers, installateurs, elektriciens en schilders in Friesland. Website met projecten, lokale SEO en Google Ads. Vaste prijzen.',
     headline: ['Jij staat op de bouw.', 'Wij regelen online.'],
     intro: 'Je hebt je handen vol aan het werk zelf. Offertes, planning, personeel, materiaal. De website schiet er dan bij in, terwijl klanten je juist online zoeken voordat ze bellen.',
@@ -74,7 +74,7 @@ export const branches: Branch[] = [
   {
     slug: 'zorg',
     name: 'Zorg & welzijn',
-    seoTitle: 'Website en vindbaarheid voor zorgpraktijken, therapeuten en coaches',
+    seoTitle: 'Website en vindbaarheid voor zorgpraktijken',
     description: 'Websites en lokale vindbaarheid voor fysiotherapie en andere zorgpraktijken in Friesland. Duidelijk, toegankelijk en AVG-proof. Vaste prijzen.',
     headline: ['Patiënten zoeken online.', 'Laat ze jou vinden.'],
     intro: 'Patiënten zoeken een praktijk in de buurt, vaak op het moment dat ze klachten hebben. Ze willen snel weten of je kunt helpen, of je vergoed wordt en hoe ze een afspraak maken.',
@@ -101,7 +101,7 @@ export const branches: Branch[] = [
   {
     slug: 'horeca',
     name: 'Horeca & recreatie',
-    seoTitle: 'Website en online marketing voor horeca, verblijf en recreatie',
+    seoTitle: 'Online marketing voor horeca en recreatie',
     description: 'Meer reserveringen voor restaurants, cafés en hotels in Friesland. Snelle mobiele website, Google Maps, direct reserveren en Meta Ads.',
     headline: ['Gasten kiezen op hun telefoon.', 'In een paar seconden.'],
     intro: 'Gasten kiezen waar ze gaan eten vaak een uur van tevoren. Ze kijken naar foto\'s, de menukaart, openingstijden en reviews. Klopt dat niet online, dan gaan ze naar de buren.',
@@ -128,7 +128,7 @@ export const branches: Branch[] = [
   {
     slug: 'kappers-en-salons',
     name: 'Beauty, sport & wellness',
-    seoTitle: 'Website en online boekingen voor kappers, salons en sportscholen',
+    seoTitle: 'Website en online boeken voor salons en sportscholen',
     description: 'Website, Google Bedrijfsprofiel, reviews en online boeken voor kappers, salons, sportscholen en personal trainers in Friesland. Vaste prijzen.',
     headline: ['Een volle agenda.', 'Zonder dat jij aan de telefoon hangt.'],
     intro: 'Klanten van kappers, salons en sportscholen kiezen op foto\'s, reviews en hoe makkelijk ze kunnen boeken. Je werk is visueel en lokaal, en daar moet je online zichtbaarheid op aansluiten.',
@@ -182,8 +182,8 @@ export const branches: Branch[] = [
   {
     slug: 'industrie-en-groothandel',
     name: 'Industrie, groothandel & B2B',
-    seoTitle: 'Online marketing en e-commerce voor groothandels en B2B-bedrijven',
-    description: 'B2B-webshop, vindbaarheid op productgroepen, Google Ads en consultancy voor groothandels, producenten en technische leveranciers in Noord-Nederland. Ervaring van binnenuit.',
+    seoTitle: 'E-commerce en marketing voor groothandel en B2B',
+    description: 'B2B-webshop, vindbaarheid op productgroepen, Google Ads en consultancy voor groothandels en producenten in Noord-Nederland.',
     headline: ['Zakelijke klanten kopen ook online.', 'Maak het ze makkelijk.'],
     intro: 'Inkopers zoeken leveranciers online, vergelijken specificaties en willen 24/7 kunnen nabestellen. Veel B2B-bedrijven werken nog met prijslijsten, mail en telefoon. Als e-commercespecialist bij een B2B/B2C-webshop zag ik de omzet in 11 maanden met 75% groeien. Die ervaring breng ik mee.',
     examples: ['Groothandels', 'Producenten en maakbedrijven', 'Technische leveranciers', 'Bouwmaterialen', 'Agrarische toeleveranciers', 'Logistiek en transport'],
@@ -209,8 +209,8 @@ export const branches: Branch[] = [
   {
     slug: 'automotive-en-mobiliteit',
     name: 'Automotive & mobiliteit',
-    seoTitle: 'Website, vindbaarheid en ads voor garages, autobedrijven en rijscholen',
-    description: 'Meer afspraken en verkopen voor garages, autobedrijven, fietsenwinkels en rijscholen in Friesland. Website, Google Bedrijfsprofiel, reviews en Google Ads. Vaste prijzen.',
+    seoTitle: 'Website en ads voor garages, autobedrijven en rijscholen',
+    description: 'Meer afspraken voor garages, autobedrijven, fietsenwinkels en rijscholen in Friesland: website, Bedrijfsprofiel, reviews en Google Ads.',
     headline: ['Klanten zoeken "garage in de buurt".', 'Zorg dat ze jou vinden.'],
     intro: 'Voor een APK, een nieuwe band of een occasion kijken mensen eerst online: wie zit er dichtbij, wat vinden anderen ervan, en kan ik direct een afspraak maken? Daar win of verlies je de klant.',
     examples: ['Garages en APK-stations', 'Autobedrijven en occasions', 'Bandenservice', 'Fiets- en scooterwinkels', 'Rijscholen', 'Verhuur van auto\'s, boten en campers'],

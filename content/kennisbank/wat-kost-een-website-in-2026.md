@@ -1,6 +1,6 @@
 ---
 title: "Wat kost een website in 2026? Eerlijke prijzen in Friesland"
-seoTitle: "Wat kost een website in 2026? Prijzen in Friesland en landelijk"
+seoTitle: "Wat kost een website in 2026? Eerlijke prijzen"
 description: Wat kost een website laten maken in 2026, in Leeuwarden en landelijk? Marktprijzen met bron, onze vaste prijzen en de kosten na livegang.
 pubDate: 2026-11-13
 draft: false

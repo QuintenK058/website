@@ -1,7 +1,7 @@
 ---
 place: Leeuwarden
 title: Online agency in Leeuwarden
-seoTitle: Website laten maken in Leeuwarden – SEO & online marketing | QK Commerce Solutions
+seoTitle: "Website laten maken in Leeuwarden: SEO en marketing"
 description: Online agency in Leeuwarden voor websites, webshops, SEO en advertenties. Eén aanspreekpunt, korte lijnen en even langskomen is zo geregeld.
 order: 1
 intro: QK Commerce Solutions is gevestigd in Leeuwarden. Voor ondernemers in de stad betekent dat korte lijnen, een kop koffie aan de keukentafel of in de werkplaats, en iemand die weet hoe de lokale markt werkt.

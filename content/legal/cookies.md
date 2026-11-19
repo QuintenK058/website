@@ -1,6 +1,6 @@
 ---
 title: Cookieverklaring
-description: Welke cookies QK Commerce Solutions gebruikt en waarom.
+description: Welke cookies QK Commerce Solutions gebruikt, waarom, en hoe je je toestemming beheert of intrekt. Zonder toestemming plaatsen we alleen functionele cookies.
 updated: "TODO: datum"
 ---
 

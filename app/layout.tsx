@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   alternates: { types: { 'text/plain': '/llms.txt' } },
   formatDetection: { telephone: false },
   ...(noIndexDeploy ? { robots: { index: false, follow: false } } : {}),
+  // Search Console / Bing: zet de codes als env-variabele in Vercel (zie README, SEO).
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } : {}),
+    ...(process.env.NEXT_PUBLIC_BING_VERIFICATION ? { other: { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION } } : {}),
+  },
 };
 
 export const viewport: Viewport = {

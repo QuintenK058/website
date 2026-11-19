@@ -1,7 +1,7 @@
 ---
 title: "Wat kost Google Ads uitbesteden in 2026?"
-seoTitle: "Wat kost Google Ads uitbesteden in 2026? Beheerkosten en budget"
-description: "Wat kost Google Ads-beheer per maand, hoeveel advertentiebudget heb je nodig en waar let je op? Marktprijzen met bron, en onze vaste prijs: €499 per maand + 2%."
+seoTitle: "Wat kost Google Ads uitbesteden in 2026?"
+description: "Wat kost Google Ads-beheer per maand, hoeveel budget heb je nodig en waar let je op? Marktprijzen met bron, en onze prijs: €499 per maand + 2%."
 pubDate: 2026-11-17
 draft: false
 readingTime: 5

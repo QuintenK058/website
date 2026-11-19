@@ -1,7 +1,7 @@
 ---
 place: Sneek
 title: Website en online marketing in Sneek
-seoTitle: Website laten maken in Sneek – SEO & online marketing | QK Commerce Solutions
+seoTitle: "Website laten maken in Sneek: SEO en marketing"
 description: Websites, webshops en online vindbaarheid voor ondernemers in Sneek en Súdwest-Fryslân. Voor watersport, recreatie, retail en lokale dienstverleners.
 order: 3
 intro: Sneek is de watersportstad van Friesland en het centrum van Súdwest-Fryslân. Veel ondernemers hier hebben twee soorten klanten. Inwoners uit de regio, en bezoekers die in het seizoen komen voor het water. Allebei zoeken ze online.
