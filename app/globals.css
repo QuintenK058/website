@@ -161,7 +161,9 @@
   .prose-qk a { @apply font-semibold text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent; }
   .prose-qk strong { @apply font-semibold text-ink; }
   .prose-qk blockquote { @apply border-l-2 border-accent pl-4 text-muted; }
-  .prose-qk table { @apply w-full text-left text-sm; }
+  .prose-qk { overflow-wrap: break-word; }
+  .prose-qk a { overflow-wrap: anywhere; }
+  .prose-qk table { @apply w-full text-left text-sm; display: block; max-width: 100%; overflow-x: auto; }
   .prose-qk th, .prose-qk td { @apply border-b border-line px-2 py-2 align-top; }
   .prose-qk code { @apply rounded bg-surface-2 px-1 py-0.5 font-mono text-[0.88em]; }
   .prose-qk [data-todo] { margin-top: 1em; }

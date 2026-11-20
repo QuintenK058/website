@@ -24,7 +24,7 @@ export default async function LegalPage({ params }: { params: Promise<{ legal: s
       <section className="border-b border-line">
         <div className="container-site grid gap-5 pt-10 pb-12">
           <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: l.data.title, href: `/${slug}` }]} />
-          <h1 className="pt-4 text-5xl font-bold">{l.data.title}</h1>
+          <h1 lang="nl" className="pt-4 text-4xl font-bold hyphens-auto [overflow-wrap:anywhere] sm:text-5xl">{l.data.title}</h1>
           {!isTodo(l.data.updated) && <p className="text-muted">Laatst bijgewerkt: {l.data.updated}</p>}
         </div>
       </section>

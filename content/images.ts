@@ -17,13 +17,13 @@ export type Slot = {
 };
 
 const caseSlots = (slug: string, name: string, extra = ''): Slot[] => [
-  { id: `case-${slug}-desktop`, src: `cases/${slug}/desktop.jpg`, alt: `Homepage van de website van ${name} op desktop`, width: 2880, height: 1800, status: 'placeholder', label: `Screenshot ${name}, desktop 16:10`, where: 'Case-kaart, case-detail (device-frame)', note: `Screenshot van de live site${extra}` },
-  { id: `case-${slug}-mobile`, src: `cases/${slug}/mobile.jpg`, alt: `De website van ${name} op een smartphone`, width: 1170, height: 2532, status: 'placeholder', label: `Screenshot ${name}, mobiel`, where: 'Case-detail (device-frame)', note: `Screenshot van de live site${extra}` },
+  { id: `case-${slug}-desktop`, src: `cases/${slug}/desktop.jpg`, alt: `Homepage van de website van ${name} op desktop`, width: 2880, height: 1800, status: 'ready', label: `Screenshot ${name}, desktop 16:10`, where: 'Case-kaart, case-detail (device-frame)', note: `Screenshot van de live site${extra}` },
+  { id: `case-${slug}-mobile`, src: `cases/${slug}/mobile.jpg`, alt: `De website van ${name} op een smartphone`, width: 1170, height: 2532, status: 'ready', label: `Screenshot ${name}, mobiel`, where: 'Case-detail (device-frame)', note: `Screenshot van de live site${extra}` },
   { id: `case-${slug}-hero`, src: `cases/${slug}/hero.jpg`, alt: `Sfeerbeeld van ${name}`, width: 2400, height: 1500, status: 'placeholder', label: `Foto ${name}, 16:10`, where: 'Case-detail header, image-displacement hover', note: `Eigen foto van de klant, met toestemming${extra}` },
 ];
 
 export const slots: Slot[] = [
-  { id: 'quinten-portret', src: 'team/quinten-portret.jpg', alt: 'Portret van Quinten, oprichter van QK Commerce Solutions', width: 1600, height: 2000, status: 'placeholder', label: 'Foto Quinten, portret 4:5', where: 'Home "Ik kom gewoon langs", Over ons, Person-schema', note: 'TIJDELIJK: LinkedIn-foto (200×200 px). Vervangen door een scherpe versie van minimaal 1600×2000 px' },
+  { id: 'quinten-portret', src: 'team/quinten-portret.jpg', alt: 'Portret van Quinten, oprichter van QK Commerce Solutions', width: 1600, height: 2000, status: 'ready', label: 'Foto Quinten, portret 4:5', where: 'Home "Ik kom gewoon langs", Over ons, Person-schema', note: 'TIJDELIJK: LinkedIn-foto (200×200 px). Vervangen door een scherpe versie van minimaal 1600×2000 px' },
   { id: 'quinten-werk', src: 'team/quinten-aan-het-werk.jpg', alt: 'Quinten aan het werk met een laptop bij een klant', width: 2400, height: 1600, status: 'placeholder', label: 'Foto Quinten aan het werk, 3:2', where: 'Over ons, Werkwijze', note: 'Laptop, op locatie of op kantoor' },
   { id: 'quinten-workshop', src: 'team/quinten-workshop.jpg', alt: 'Quinten geeft een AI-workshop aan een team', width: 2400, height: 1600, status: 'placeholder', label: 'Foto AI-workshop, 3:2', where: '/diensten/ai/workshops, AI-tab op /pakketten', note: 'Pas plaatsen na een echte workshop' },
   ...caseSlots('lado-bridal', 'Lado Bridal'),
